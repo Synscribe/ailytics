@@ -4,18 +4,19 @@ import home from "@/app/(marketing)/home.module.css";
 import proof from "@/components/customer-proof/customer-proof.module.css";
 import styles from "./tuner.module.css";
 const controls = [
-  ["heroTop", "Hero top", 56, 0, 140],
+  ["heroTop", "Hero top", 64, 0, 140],
   ["heroGap", "Heading, copy and buttons", 24, 8, 64],
-  ["controlsTop", "Above alert and categories", 20, 0, 64],
+  ["controlsTop", "Above alert and categories", 24, 0, 64],
   ["controlsGap", "Alert to categories", 24, 4, 60],
-  ["cameraGap", "Categories to cameras", 16, -16, 100],
+  ["cameraGap", "Categories to cameras", -8, -16, 100],
   ["proofSpace", "Hero to customer proof", 120, 24, 200],
   ["proofBottom", "Stats to problem", 120, 24, 200],
-  ["featureTop", "How it works to features", 120, 24, 240],
-  ["usesTop", "Features to use cases", 120, 24, 240],
-  ["industriesTop", "Use cases to industries", 120, 24, 240],
-  ["capabilitiesTop", "Industries to capabilities", 120, 24, 240],
-  ["casesTop", "Capabilities to results", 120, 24, 240],
+  ["featureTop", "How it works to features", 160, 24, 240],
+  ["usesTop", "Features to use cases", 160, 24, 240],
+  ["industriesTop", "Use cases to industries", 160, 24, 240],
+  ["capabilitiesTop", "Industries to capabilities", 160, 24, 240],
+  ["casesTop", "Capabilities to results", 160, 24, 240],
+  ["trustTop", "Results to footage control", 160, 24, 240],
 ] as const;
 type Values = Record<string, number>;
 const defaults: Values = Object.fromEntries(
@@ -34,7 +35,8 @@ export function LayoutTuner() {
  .${home.useCases}{padding-top:${values.usesTop}px!important}
  .${home.industries}{padding-top:${values.industriesTop}px!important}
  .${home.capabilities}{padding-top:${values.capabilitiesTop}px!important}
- .${home.cases}{padding-top:${values.casesTop}px!important}`;
+ .${home.cases}{padding-top:${values.casesTop}px!important}
+ .${home.trust}{padding-top:${values.trustTop}px!important}`;
   async function copy() {
     try {
       await navigator.clipboard.writeText(JSON.stringify(values, null, 2));
