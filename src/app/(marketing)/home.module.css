@@ -1274,7 +1274,9 @@
 .story[data-mode="scroll"] .storyIntro {
   position: absolute;
   width: 100%;
-  top: calc(50% - min(24vw, 30vh) - 12px);
+  top: calc(50% - var(--sw) / 3.2 + 48px * (1 - var(--e)) - 40px);
+  transform: translateY(-100%);
+  margin: 0;
   padding: 0 24px;
   opacity: calc(1 - var(--e) * 4);
   pointer-events: none;
