@@ -4,20 +4,24 @@
     "description": "AI video analytics for construction adds site safety monitoring to existing CCTV, detecting hazards through rain, dust, and low light."
   },
   "problems": {
-    "title": "Hazards Between Site Inspections",
+    "title": "What can happen between site inspections?",
     "description": "Changing work areas, moving equipment, and multiple crews leave safety teams with more ground than they can watch.",
     "items": [
       {
-        "title": "Missing PPE Goes Unnoticed",
-        "description": "Workers enter hazardous areas without required protection while supervisors are checking another part of the site."
+        "title": "Missing protection",
+        "description": "Workers enter active work areas without the hard hats, vests or gloves their task requires."
       },
       {
-        "title": "Workers Enter Machinery Paths",
-        "description": "People move near operating equipment or beneath crane loads before anyone can warn them."
+        "title": "Workers near moving machinery",
+        "description": "People and operating plant share delivery routes and work areas, creating struck-by risks."
       },
       {
-        "title": "Site Records Stay Incomplete",
-        "description": "Manual logs leave gaps in workforce hours, equipment use, and evidence of changing site conditions."
+        "title": "People beneath suspended loads",
+        "description": "A worker crosses into a lifting area while the supervisor is watching another part of the site."
+      },
+      {
+        "title": "Open edges and restricted areas",
+        "description": "Changing layouts leave crews exposed to unprotected edges or entering zones that should be clear."
       }
     ]
   },

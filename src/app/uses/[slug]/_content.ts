@@ -14,44 +14,59 @@ export const USE_CASE_ROUTE_COPY: Record<string, ContentPageRouteCopy> = {
         "PPE detection runs on your current cameras and fits into the safety checks your team already does.",
       steps: [
         {
-          title: "Connect existing cameras",
+          title: "Check the required PPE",
           description:
-            "Link IP cameras and recording systems through RTSP or ONVIF, then confirm which views cover your work areas.",
+            "Monitor visible workers for the hard hats, vests or gloves required in each work area.",
         },
         {
-          title: "Select the PPE to check",
+          title: "Notify the supervisor",
           description:
-            "Choose hard hats, vests or gloves for each work area, and set how long before an alert fires.",
+            "Send the event frame, time and location when a missing-PPE event is detected.",
         },
         {
-          title: "Supervisors respond with evidence",
+          title: "Address missing protection",
           description:
-            "Each alert includes the event frame, time and location. Reports collect PPE events for reviews and audits.",
+            "The supervisor checks the evidence and follows up with the crew during the shift.",
+        },
+        {
+          title: "Keep a record",
+          description:
+            "Collect PPE events in reports for safety reviews, toolbox talks and audit preparation.",
         },
       ],
     },
     valueProps: {
-      title: "Why teams use Ailytics for PPE detection",
+      title: "Will PPE checks work in our site conditions?",
       items: [
         {
-          title: "Built for harsh site conditions",
+          title: "Clear checks in difficult conditions",
           description:
-            "Detects missing PPE through rain, dust and low light, including night shifts.",
+            "Models are built for rain, dust and low light. Camera angle, obstructions and the size of PPE in the frame still determine what can be checked.",
         },
         {
-          title: "No new cameras",
+          title: "Alerts your team can manage",
           description:
-            "Adds PPE checks to the CCTV you already own through RTSP or ONVIF.",
+            "Set grace periods and cooldowns per camera and person to reduce repeat notifications from the same violation.",
+        },
+      ],
+    },
+    deployment: {
+      title: "How does it fit our cameras and IT requirements?",
+      items: [
+        {
+          title: "Connect existing CCTV",
+          description:
+            "Connect compatible IP cameras and recording systems through RTSP or ONVIF. Review camera views and coverage before choosing detections.",
         },
         {
-          title: "Fewer repeat alerts",
+          title: "Choose where footage stays",
           description:
-            "Cooldowns per camera and per person stop one violation from flooding supervisors with alerts.",
+            "Run on the edge, on-premise or in the cloud. Agree video storage, access and data-residency requirements with your IT team.",
         },
         {
-          title: "Footage can stay on site",
+          title: "Support security reviews",
           description:
-            "Run on the edge or on-premise. Ailytics is ISO/IEC 27001 certified.",
+            "Ailytics is ISO/IEC 27001 certified. Discuss face blurring, regional hosting and your security requirements during the demo.",
         },
       ],
     },

@@ -4,7 +4,7 @@
     "description": "PPE detection adds construction safety monitoring to your existing CCTV. Spot missing hard hats, vests, and gloves and alert supervisors with evidence."
   },
   "problems": {
-    "title": "Missing Protection Between Site Checks",
+    "title": "Where do manual PPE checks fall short?",
     "description": "Crews move between work areas throughout the shift. Supervisors cannot check every worker on every camera continuously.",
     "items": [
       {

@@ -326,3 +326,24 @@ button {
     transform: rotate(45deg);
   }
 }
+
+/* Detail pages: the incoming section owns the space between narrative beats. */
+.detail-page .detail-section {
+  scroll-margin-top: 6rem;
+  padding: 160px 0 0;
+}
+.detail-page #problems {
+  padding-top: 40px;
+}
+.detail-page > section:last-child {
+  padding-top: 160px;
+}
+@media (max-width: 720px) {
+  .detail-page .detail-section,
+  .detail-page > section:last-child {
+    padding-top: 80px;
+  }
+  .detail-page #problems {
+    padding-top: 0;
+  }
+}

@@ -14,44 +14,66 @@ export const INDUSTRY_ROUTE_COPY: Record<string, ContentPageRouteCopy> = {
         "Ailytics runs on the cameras already on site, and most projects go live in under 2 weeks.",
       steps: [
         {
-          title: "Connect your site cameras",
+          title: "Detect the hazard",
           description:
-            "Link existing IP cameras and recording systems through RTSP or ONVIF. Your current camera network stays in place.",
+            "Watch configured camera views for missing PPE, workers near machinery and unsafe access beneath suspended loads.",
         },
         {
-          title: "Choose the hazards to watch",
+          title: "Warn the site team",
           description:
-            "Pick detections for each camera, such as missing PPE, open edges and suspended loads. Set zones and alert timing to match your site rules.",
+            "Send supervisors the camera frame, time and location while the event is happening.",
         },
         {
-          title: "Alert supervisors with evidence",
+          title: "Act on the evidence",
           description:
-            "Supervisors receive an event frame, time and location for each alert. Reports bring the records into site reviews.",
+            "The supervisor reviews the alert and follows site procedures to address the hazard.",
+        },
+        {
+          title: "Review and report",
+          description:
+            "Use recorded events in toolbox talks, safety reviews and reports across your projects.",
         },
       ],
     },
     valueProps: {
-      title: "Why construction teams choose Ailytics",
+      title: "Will it work on a changing construction site?",
       items: [
         {
-          title: "Works on your existing CCTV",
+          title: "Distance that reflects the scene",
           description:
-            "Connects to the cameras already on site through RTSP or ONVIF.",
+            "Measure the real 3D distance between workers and machinery from one camera, with no additional lidar or radar.",
         },
         {
-          title: "Accurate in rain, dust and low light",
+          title: "Built for outdoor conditions",
           description:
-            "Detection models are built for the conditions on working outdoor sites.",
+            "Detection models are built for rain, dust and low light. Assess representative footage to confirm what each camera can reliably cover.",
+        },
+      ],
+    },
+    proof: {
+      value: "69.1%",
+      context: "Construction site · 16 months",
+      title: "Fewer safety non-compliances on one construction site",
+      description:
+        "An Ailytics construction deployment recorded a 69.1% reduction in non-compliances over 16 months. This is a site-wide safety result, not a result for an individual detection.",
+    },
+    deployment: {
+      title: "How does it fit our cameras and IT requirements?",
+      items: [
+        {
+          title: "Connect existing CCTV",
+          description:
+            "Connect compatible IP cameras and recording systems through RTSP or ONVIF. Review camera views and coverage before choosing detections.",
         },
         {
-          title: "Real distance from one camera",
+          title: "Choose where footage stays",
           description:
-            "Measures 3D distance between workers and machinery from a single camera, with no lidar or radar.",
+            "Run on the edge, on-premise or in the cloud. Agree video storage, access and data-residency requirements with your IT team.",
         },
         {
-          title: "Deployment that fits your IT rules",
+          title: "Support security reviews",
           description:
-            "Run on the edge, on-premise or in the cloud. Ailytics is ISO/IEC 27001 certified.",
+            "Ailytics is ISO/IEC 27001 certified. Discuss face blurring, regional hosting and your security requirements during the demo.",
         },
       ],
     },
