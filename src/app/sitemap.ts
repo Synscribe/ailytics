@@ -3,12 +3,15 @@ import type { MetadataRoute } from "next";
 import { usesDefaultSiteUrl } from "@/config/env";
 import { siteConfig } from "@/config/site";
 import { getAllBlogPosts, type BlogPostSummary } from "@/lib/blog";
-import { getAllUseCases } from "@/lib/use-cases";
+import { listPageContent } from "@/lib/page-content";
 
 export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const useCases = await getAllUseCases();
+  const [useCases, industries] = await Promise.all([
+    listPageContent("uses"),
+    listPageContent("industries"),
+  ]);
   let blogPosts: BlogPostSummary[] = [];
 
   try {
@@ -20,7 +23,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const routes = [
     "/",
     "/uses",
-    ...useCases.map((useCase) => `/uses/${useCase.metadata.slug}`),
+    ...useCases.map((slug) => `/uses/${slug}`),
+    "/industries",
+    ...industries.map((slug) => `/industries/${slug}`),
     "/blog",
     "/contact",
   ];

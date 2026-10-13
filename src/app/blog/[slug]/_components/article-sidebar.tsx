@@ -92,7 +92,7 @@ export function ArticleSidebar({
         {items.length > 0 ? (
           <>
             <details className="group rounded-2xl border border-ink/10 bg-canvas p-5 lg:hidden">
-              <summary className="cursor-pointer list-none text-sm font-bold tracking-[0.12em] text-ink uppercase marker:content-none">
+              <summary className="cursor-pointer list-none text-sm font-semibold text-ink marker:content-none">
                 <span className="flex items-center justify-between gap-4">
                   On this page
                   <span
@@ -109,7 +109,7 @@ export function ArticleSidebar({
             </details>
 
             <div className="hidden lg:block">
-              <h2 className="text-xs font-bold tracking-[0.14em] text-ink-faint uppercase">
+              <h2 className="text-sm font-semibold text-ink-muted">
                 On this page
               </h2>
               <div className="mt-5 max-h-[55vh] overflow-y-auto pr-4">
@@ -120,7 +120,7 @@ export function ArticleSidebar({
         ) : null}
 
         <div className="mt-7 border-t border-ink/10 pt-7">
-          <h2 className="text-xs font-bold tracking-[0.14em] text-ink-faint uppercase">
+          <h2 className="text-sm font-semibold text-ink-muted">
             Share this article
           </h2>
           <ul className="mt-4 flex gap-2.5">

@@ -14,21 +14,17 @@ export function LegalTemplate({
   sections,
 }: LegalTemplateProps) {
   return (
-    <main id="main-content" className="bg-paper">
+    <main id="main-content">
       <article className="mx-auto w-full max-w-3xl px-5 pt-14 pb-20 sm:px-8 sm:pt-16 sm:pb-28 lg:pt-20">
-        <p className="text-xs font-bold tracking-[0.2em] text-signal uppercase">
-          {eyebrow}
-        </p>
-        <h1 className="mt-5 font-display text-5xl tracking-[-0.045em] sm:text-7xl">
-          {title}
-        </h1>
-        <div className="mt-8 rounded-2xl border border-signal/20 bg-signal/5 p-5 text-sm leading-6 text-ink-muted">
+        <p className="text-sm font-semibold text-ink-muted">{eyebrow}</p>
+        <h1 className="brand-h1 mt-4">{title}</h1>
+        <div className="brand-card mt-8 p-5 text-sm leading-6 text-ink-muted">
           <strong className="text-ink">Template status:</strong>{" "}
           TODO_CLIENT_LEGAL_REVIEW. This page is an implementation scaffold, not
           approved legal advice. Replace it with terms reviewed for the actual
           organization, product, data practices, and markets before production.
         </div>
-        <p className="mt-10 text-lg leading-8 text-ink-muted">{introduction}</p>
+        <p className="brand-lead mt-10">{introduction}</p>
 
         <div className="mt-14 space-y-10">
           {sections.map((section) => (
@@ -41,7 +37,7 @@ export function LegalTemplate({
           ))}
         </div>
 
-        <p className="mt-16 border-t border-ink/10 pt-8 text-sm text-ink-muted">
+        <p className="mt-16 text-sm text-ink-muted">
           Return to the{" "}
           <Link className="underline" href="/">
             homepage

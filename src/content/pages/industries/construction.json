@@ -1,0 +1,131 @@
+{
+  "hero": {
+    "title": "AI Video Analytics for Construction Safety",
+    "description": "AI video analytics for construction adds site safety monitoring to existing CCTV, detecting hazards through rain, dust, and low light."
+  },
+  "problems": {
+    "title": "Hazards Between Site Inspections",
+    "description": "Changing work areas, moving equipment, and multiple crews leave safety teams with more ground than they can watch.",
+    "items": [
+      {
+        "title": "Missing PPE Goes Unnoticed",
+        "description": "Workers enter hazardous areas without required protection while supervisors are checking another part of the site."
+      },
+      {
+        "title": "Workers Enter Machinery Paths",
+        "description": "People move near operating equipment or beneath crane loads before anyone can warn them."
+      },
+      {
+        "title": "Site Records Stay Incomplete",
+        "description": "Manual logs leave gaps in workforce hours, equipment use, and evidence of changing site conditions."
+      }
+    ]
+  },
+  "solution": {
+    "title": "Monitor Construction Risks Across Existing Cameras",
+    "description": "Ailytics connects to existing CCTV and detects hazards through rain, dust, and low light. Combine safety warnings, restricted-area alerts, workforce tracking, and progress views, with edge, on-premise, or cloud deployment."
+  },
+  "features": {
+    "title": "Coverage for Your Construction Site",
+    "description": "Choose detections that match your crews, lifting operations, and work areas. Use the same camera network for safety monitoring and site records.",
+    "items": [
+      {
+        "id": "ppe-detection",
+        "eyebrow": "Safety",
+        "title": "Catch Missing PPE During Work",
+        "description": "Detect missing hard hats, vests, and gloves across monitored work areas. Give supervisors evidence of non-compliance while work is happening, with an event frame, time, and location.",
+        "highlights": [
+          "Hard hat detection",
+          "Vest and glove checks",
+          "Time and location evidence"
+        ]
+      },
+      {
+        "id": "machinery-proximity",
+        "eyebrow": "Safety",
+        "title": "Warn Before Workers Approach Machinery",
+        "description": "Watch for workers moving too close to active machinery and vehicles. Help supervisors identify struck-by risks around excavators, delivery routes, and shared work areas.",
+        "highlights": [
+          "Worker proximity warnings",
+          "Active machinery monitoring",
+          "Vehicle interaction alerts"
+        ]
+      },
+      {
+        "id": "under-load-detection",
+        "eyebrow": "Safety",
+        "title": "Spot Workers Beneath Suspended Loads",
+        "description": "Detect people beneath suspended crane loads during lifting operations. Alert the site team with the event evidence so they can intervene and review unsafe access.",
+        "highlights": [
+          "Suspended load detection",
+          "Worker exposure alerts",
+          "Evidence for incident review"
+        ]
+      },
+      {
+        "id": "no-access-zones",
+        "eyebrow": "Security",
+        "title": "Catch Entry Into Restricted Areas",
+        "description": "Monitor restricted areas around hazardous work, equipment, and site access points. Alert supervisors when someone enters a defined zone so they can check the event and respond.",
+        "highlights": [
+          "Configurable restricted zones",
+          "Unauthorized access alerts",
+          "Event frames for review"
+        ]
+      },
+      {
+        "id": "man-hour-tracking",
+        "eyebrow": "Productivity",
+        "title": "Record Workforce Hours by Area",
+        "description": "Track workforce presence and hours in monitored areas. Give project teams camera-based records to support labour planning, billing reviews, and discussions about how crews use the site.",
+        "highlights": [
+          "Workforce presence tracking",
+          "Hours by monitored area",
+          "Planning and billing records"
+        ]
+      },
+      {
+        "id": "timelapse-xray",
+        "eyebrow": "Progress",
+        "title": "Review How Work Areas Change",
+        "description": "Use timelapse and spot-comparison X-ray views to review visible changes across construction work areas. Bring camera records into progress discussions alongside your existing project reporting.",
+        "highlights": [
+          "Construction timelapse views",
+          "Before and after comparisons",
+          "Visual records of changes"
+        ]
+      }
+    ]
+  },
+  "faq": [
+    {
+      "question": "Do we need new cameras for construction safety AI?",
+      "answer": "Ailytics connects to existing IP cameras and compatible recording systems through RTSP or ONVIF, which are methods for connecting to video feeds. You can use your current CCTV rather than replace the camera network. During a demo, discuss camera positions and the work areas you want monitored so the team can assess coverage for your selected hazards."
+    },
+    {
+      "question": "What PPE can Ailytics detect on a construction site?",
+      "answer": "Ailytics detects missing hard hats, vests, and gloves in monitored camera views. Supervisors receive an event frame, time, and location to help them review the issue and respond. Camera placement and visibility matter, so discuss the PPE items and work areas you need covered. See the [PPE detection page](/uses/ppe-detection) for more detail."
+    },
+    {
+      "question": "Does construction site monitoring work in rain, dust, and low light?",
+      "answer": "Ailytics is built for the rain, dust, and low light found on working construction sites. Its detection models are designed for these harsh conditions. Results still depend on what each camera can see, including obstructions and the size of people or equipment in the frame. Share representative footage to assess your site's conditions and coverage."
+    },
+    {
+      "question": "Can construction footage stay on our own network?",
+      "answer": "Yes. The Ailyssa detection engine supports edge, on-premise, and cloud deployment. An on-premise setup allows data to stay on-site, while the available deployment options help address your project's data-residency and latency requirements. Ailytics is ISO/IEC 27001 certified. Your IT team can discuss video storage, access, and network requirements during the sales process."
+    },
+    {
+      "question": "Can we monitor safety and productivity across multiple construction sites?",
+      "answer": "Yes. Ailytics provides a multi-camera, multi-site map dashboard. Construction teams can select relevant safety detections alongside man-hour tracking, machinery-usage tracking, and timelapse or spot-comparison progress views. This gives project and operations teams a shared place to review monitored activity. Each site's selected use cases should reflect its camera coverage, work areas, and operating risks."
+    },
+    {
+      "question": "Can we configure detection for our construction site's hazards?",
+      "answer": "Ailytics offers 50+ configurable pre-built use cases and a custom use-case builder. Construction teams can select detections for missing PPE, open edges, suspended loads, machinery proximity, and restricted areas, among others. Bring your site rules and representative footage to the demo. The team can assess which existing detections fit and where a custom scenario needs further review."
+    }
+  ],
+  "cta": {
+    "title": "See Ailytics on Your Construction Site",
+    "description": "Show us your camera setup and priority hazards. Explore the detections, deployment options, and site records that fit your project.",
+    "buttonText": "Book a Demo"
+  }
+}

@@ -5,7 +5,14 @@ import {
   ProjectVisual,
   VISUAL_ENTRIES,
 } from "@/components/visuals/project-visual";
-import { getAllUseCases } from "@/lib/use-cases";
+import { INDUSTRY_ROUTE_COPY } from "@/app/industries/[slug]/_content";
+import { USE_CASE_ROUTE_COPY } from "@/app/uses/[slug]/_content";
+import type { ContentPageRouteCopy } from "@/components/content-page/content-page";
+import {
+  getPageContent,
+  listPageContent,
+  type PageContentKind,
+} from "@/lib/page-content";
 import type { VisualId } from "@/lib/visuals";
 
 type VisualPlacement = {
@@ -14,22 +21,29 @@ type VisualPlacement = {
 };
 
 export default async function VisualInventoryPage() {
-  const useCases = await getAllUseCases();
   const placements = new Map<VisualId, VisualPlacement[]>();
+  const routeCopy: Record<
+    PageContentKind,
+    Record<string, ContentPageRouteCopy>
+  > = {
+    industries: INDUSTRY_ROUTE_COPY,
+    uses: USE_CASE_ROUTE_COPY,
+  };
 
-  for (const useCase of useCases) {
-    const href = `/uses/${useCase.metadata.slug}`;
-    const heroPlacements = placements.get(useCase.hero.visualId) ?? [];
-    heroPlacements.push({ href, label: `${useCase.metadata.anchor} hero` });
-    placements.set(useCase.hero.visualId, heroPlacements);
+  function place(id: VisualId, placement: VisualPlacement) {
+    placements.set(id, [...(placements.get(id) ?? []), placement]);
+  }
 
-    for (const capability of useCase.solution.items) {
-      const capabilityPlacements = placements.get(capability.visualId) ?? [];
-      capabilityPlacements.push({
-        href,
-        label: `${useCase.metadata.anchor}: ${capability.title}`,
-      });
-      placements.set(capability.visualId, capabilityPlacements);
+  for (const kind of ["industries", "uses"] as const) {
+    for (const slug of await listPageContent(kind)) {
+      const href = `/${kind}/${slug}`;
+      const copy = routeCopy[kind][slug];
+      const content = await getPageContent(kind, slug);
+      const name = copy?.name ?? slug;
+      if (copy) place(copy.heroVisualId, { href, label: `${name} hero` });
+      for (const feature of content.features.items) {
+        place(feature.id, { href, label: `${name}: ${feature.title}` });
+      }
     }
   }
 

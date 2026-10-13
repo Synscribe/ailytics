@@ -33,15 +33,15 @@ Reusable illustrations have one implementation boundary:
 - IDs and the `VisualId` type: `src/lib/visuals.ts`
 - Exhaustive ID-to-source map and renderer: `src/components/visuals/project-visual.tsx`
 - React implementations: `src/components/visuals`
-- Use-case placement wrapper: `src/app/uses/[slug]/_components/use-case-visual.tsx`
+- Detail-page placement: `src/components/content-page/content-page.tsx`
 - Visual inventory: `src/app/dev/visuals/page.tsx`
 
-Use cases, the inventory, and launch assets all consume that one resolver. Do not add a separate
+Use-case and industry pages, the inventory, and launch assets all consume that one resolver. Do not add a separate
 feature-visual map. Content JSON may select only a validated `visualId`; it never receives a
 component name, path, class, layout, or serialized React props.
 
 The inventory shows the source kind, placeholder/project status, named motion pattern, and every
-current use-case placement derived from the real content files. Review the ordinary state there,
+current page placement derived from the real content files. Review the ordinary state there,
 then use browser emulation to inspect `prefers-reduced-motion: reduce` separately.
 
 ## Launch frame sources

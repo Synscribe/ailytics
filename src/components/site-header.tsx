@@ -10,7 +10,7 @@ import { MobileNav } from "./mobile-nav";
 
 const primaryAction = {
   href: "/contact",
-  label: "Launch Website",
+  label: "Request a demo",
 } as const;
 
 export function SiteHeader() {
@@ -24,13 +24,12 @@ export function SiteHeader() {
         >
           <Image
             alt=""
-            className="size-7 transition-transform group-hover:-rotate-6"
-            height={28}
+            className="h-8 w-auto"
+            height={32}
             priority
             src={defaultOrganizationLogoPath}
-            width={28}
+            width={100}
           />
-          <span>{siteConfig.name}</span>
         </Link>
 
         <nav aria-label="Primary navigation" className="hidden md:block">
@@ -54,7 +53,7 @@ export function SiteHeader() {
             className={buttonVariants({
               size: "sm",
               className:
-                "h-auto rounded-full bg-signal px-4 py-2 text-sm font-semibold text-white shadow-[0_8px_28px_rgba(224,78,34,0.22)] hover:-translate-y-0.5 hover:bg-signal-strong",
+                "h-auto rounded-full bg-signal px-4 py-2 text-sm font-semibold text-ink shadow-[0_8px_24px_rgba(52,193,196,0.3)] hover:-translate-y-0.5 hover:bg-mint",
             })}
           >
             {primaryAction.label}

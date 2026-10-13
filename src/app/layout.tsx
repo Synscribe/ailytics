@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Poppins } from "next/font/google";
 import { Suspense } from "react";
 
 import { VisitorContextTracker } from "@/app/contact/_components/visitor-context-tracker";
@@ -12,6 +13,13 @@ import {
 } from "@/lib/seo";
 
 import "./globals.css";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-poppins",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -29,7 +37,7 @@ export default function RootLayout({
   const websiteJsonLd = buildWebsiteJsonLd();
 
   return (
-    <html lang="en" data-scroll-behavior="smooth">
+    <html lang="en" data-scroll-behavior="smooth" className={poppins.variable}>
       <body>
         <script
           type="application/ld+json"

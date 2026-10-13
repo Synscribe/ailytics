@@ -23,7 +23,7 @@ export function PostCard({
   const Heading = `h${headingLevel}` as "h2" | "h3";
 
   return (
-    <Card className="relative h-full gap-0 rounded-2xl py-0 ring-ink/10 transition-transform duration-200 hover:-translate-y-1">
+    <Card className="brand-card brand-card-link relative h-full gap-0 rounded-2xl py-0 ring-0">
       {post.image ? (
         <Link
           className="relative block aspect-[16/9] overflow-hidden bg-muted"
@@ -49,7 +49,7 @@ export function PostCard({
         ) : null}
 
         <Heading
-          className={`${label ? "mt-4" : "mt-0"} text-balance font-display text-2xl leading-[1.15] font-normal tracking-[-0.025em]`}
+          className={`${label ? "mt-4" : "mt-0"} text-balance text-xl leading-snug font-semibold tracking-[-0.015em]`}
         >
           <Link
             className="outline-none after:absolute after:inset-0 focus-visible:underline"

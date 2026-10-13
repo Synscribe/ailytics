@@ -134,14 +134,14 @@ export function ContactForm({
         className="-m-5 bg-mint/25 p-5 sm:-m-8 sm:p-8 lg:-m-10 lg:p-10"
         role="status"
       >
-        <h2 className="max-w-lg font-display text-3xl leading-tight tracking-[-0.03em] sm:text-4xl">
+        <h2 className="brand-h2 max-w-lg">
           Thank you. We&apos;ve received your message.
         </h2>
         <p className="mt-4 max-w-md leading-7 text-ink-muted">
           We&apos;ll get back to you within 1–3 working days.
         </p>
 
-        <div className="mt-8 border-t border-ink/10 pt-6">
+        <div className="mt-8">
           <Button
             className="h-auto rounded-full px-5 py-3"
             onClick={() => {
@@ -298,7 +298,7 @@ export function ContactForm({
       ) : null}
 
       <Button
-        className="mt-7 h-auto w-full rounded-full bg-signal px-6 py-3.5 text-base font-semibold text-white shadow-[0_8px_28px_rgba(224,78,34,0.2)] hover:bg-signal-strong sm:w-auto"
+        className="mt-7 h-auto w-full rounded-full bg-signal px-6 py-3.5 text-base font-semibold text-white shadow-[0_8px_28px_rgba(52,193,196,0.2)] hover:bg-signal-strong sm:w-auto"
         disabled={
           !deliveryConfigured ||
           state === "sending" ||

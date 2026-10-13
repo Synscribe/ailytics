@@ -515,8 +515,8 @@ async function auditExplicitMarkdownRoutes(enabled: boolean): Promise<void> {
     fetchPage(`${baseUrl}/uses.md`),
     fetchPage(`${baseUrl}/uses.md`, { Accept: "text/html" }),
     fetchPage(`${baseUrl}/uses`, { Accept: "text/markdown" }),
-    fetchPage(`${baseUrl}/uses/website-migrations.md`),
-    fetchPage(`${baseUrl}/uses/website-migrations`, {
+    fetchPage(`${baseUrl}/uses/ppe-detection.md`),
+    fetchPage(`${baseUrl}/uses/ppe-detection`, {
       Accept: "text/markdown",
     }),
     fetchPage(`${baseUrl}${missingPath}.md`),
@@ -572,7 +572,7 @@ async function auditExplicitMarkdownRoutes(enabled: boolean): Promise<void> {
   record(
     "LLM-02",
     nestedPassed ? "PASS" : "FAIL",
-    "/uses/website-migrations.md",
+    "/uses/ppe-detection.md",
     nestedPassed
       ? "Nested alias matches its negotiated Markdown representation"
       : `Expected a nested Markdown alias identical to its negotiated page; received HTTP ${nestedAlias.status}, ${nestedAlias.contentType || "no content type"}`,

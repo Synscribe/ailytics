@@ -95,14 +95,14 @@ describe("SEO helpers", () => {
   it("builds ordered absolute breadcrumb items", () => {
     const breadcrumbs = buildBreadcrumbJsonLd([
       { name: "Home", path: "/" },
-      { name: "Website migrations", path: "/uses/website-migrations" },
+      { name: "PPE detection", path: "/uses/ppe-detection" },
     ]);
 
     expect(breadcrumbs.itemListElement[1]).toEqual({
       "@type": "ListItem",
       position: 2,
-      name: "Website migrations",
-      item: "http://localhost:3000/uses/website-migrations",
+      name: "PPE detection",
+      item: "http://localhost:3000/uses/ppe-detection",
     });
   });
 

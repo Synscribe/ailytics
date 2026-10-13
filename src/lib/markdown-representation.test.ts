@@ -52,10 +52,10 @@ describe("Markdown representations", () => {
     const markdown = htmlToMarkdown(`<main>
       <ul>
         <li>
-          <a href="/uses/website-migrations" title="Open use case">
+          <a href="/uses/ppe-detection" title="Open use case">
             <article>
-              <h3>Website migrations</h3>
-              <p>Protect important URLs and search traffic.</p>
+              <h3>PPE detection</h3>
+              <p>Spots missing hard hats, vests and gloves.</p>
             </article>
             <span>View use case <svg><path /></svg></span>
           </a>
@@ -64,9 +64,9 @@ describe("Markdown representations", () => {
     </main>`);
 
     expect(markdown).toContain(
-      '### [Website migrations](/uses/website-migrations "Open use case")',
+      '### [PPE detection](/uses/ppe-detection "Open use case")',
     );
-    expect(markdown).toContain("Protect important URLs and search traffic.");
+    expect(markdown).toContain("Spots missing hard hats, vests and gloves.");
     expect(markdown).toContain("View use case");
     expect(markdown).not.toMatch(/\[\s*#{1,6}\s/);
   });

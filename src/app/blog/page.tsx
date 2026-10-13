@@ -15,7 +15,6 @@ import {
   getBlogFilter,
   labelForBlogTags,
 } from "./blog.config";
-import styles from "./blog.module.css";
 
 type BlogPageProps = {
   searchParams: Promise<{
@@ -27,9 +26,9 @@ type BlogPageProps = {
 
 export const metadata: Metadata = {
   ...createPageMetadata({
-    title: "Blog",
+    title: "AI Video Analytics and Site Safety Blog",
     description:
-      "Read practical articles from the publication connected to this website.",
+      "AI video analytics and site safety guides for heavy industry: worker safety, CCTV monitoring and running safer construction, plant and logistics sites.",
     path: "/blog",
   }),
   alternates: {
@@ -63,7 +62,7 @@ async function BlogResults({ searchParams }: BlogPageProps) {
 
   if (!isWispConfigured) {
     return (
-      <div className="rounded-2xl border border-ink/10 bg-paper px-6 py-10 sm:px-10">
+      <div className="brand-card px-6 py-10 sm:px-10">
         <h2 className="text-2xl font-semibold tracking-tight">
           Connect the publication
         </h2>
@@ -92,7 +91,7 @@ async function BlogResults({ searchParams }: BlogPageProps) {
 
   if (gridOutcome.status === "rejected") {
     return (
-      <div className="rounded-2xl border border-ink/10 bg-paper px-6 py-10 sm:px-10">
+      <div className="brand-card px-6 py-10 sm:px-10">
         <h2 className="text-2xl font-semibold tracking-tight">
           Articles are temporarily unavailable
         </h2>
@@ -153,7 +152,7 @@ async function BlogResults({ searchParams }: BlogPageProps) {
                   className={buttonVariants({
                     variant: category === "all" ? "default" : "outline",
                     className:
-                      "h-auto rounded-full bg-paper px-4 py-2 text-sm aria-[current=page]:bg-ink aria-[current=page]:text-paper",
+                      "h-auto rounded-full bg-paper px-4 py-2 text-sm aria-[current=page]:border-transparent aria-[current=page]:bg-signal aria-[current=page]:text-ink",
                   })}
                   href={filterHref("all", query)}
                 >
@@ -170,7 +169,7 @@ async function BlogResults({ searchParams }: BlogPageProps) {
                       variant:
                         category === filter.value ? "default" : "outline",
                       className:
-                        "h-auto rounded-full bg-paper px-4 py-2 text-sm aria-[current=page]:bg-ink aria-[current=page]:text-paper",
+                        "h-auto rounded-full bg-paper px-4 py-2 text-sm aria-[current=page]:border-transparent aria-[current=page]:bg-signal aria-[current=page]:text-ink",
                     })}
                     href={filterHref(filter.value, query)}
                   >
@@ -196,7 +195,7 @@ async function BlogResults({ searchParams }: BlogPageProps) {
             aria-hidden="true"
           />
           <input
-            className={styles.searchInput}
+            className="min-h-11 w-full rounded-full border border-ink/15 bg-paper py-2.5 pr-4 pl-10 text-sm text-ink outline-none placeholder:text-ink-faint focus-visible:border-signal focus-visible:ring-3 focus-visible:ring-signal/20"
             defaultValue={query}
             id="blog-search"
             name="query"
@@ -242,7 +241,7 @@ async function BlogResults({ searchParams }: BlogPageProps) {
           ))}
         </div>
       ) : (
-        <div className="rounded-2xl border border-ink/10 bg-paper px-6 py-10 sm:px-10">
+        <div className="brand-card px-6 py-10 sm:px-10">
           <h2 className="text-2xl font-semibold tracking-tight">
             No articles found
           </h2>
@@ -267,24 +266,19 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
   return (
     <main id="main-content">
-      <section className={`${styles.hero} border-b border-ink/10`}>
-        <div className="mx-auto w-full max-w-7xl px-5 pt-14 pb-14 sm:px-8 sm:pt-16 sm:pb-16 lg:pt-20 lg:pb-20">
-          <div className="max-w-4xl">
-            <p className="text-sm font-bold tracking-[0.16em] text-signal-strong uppercase">
-              Blog
-            </p>
-            <h1 className="mt-5 max-w-3xl text-balance font-display text-[clamp(3.2rem,6vw,5.6rem)] leading-[0.95] tracking-[-0.04em]">
-              Useful ideas, clearly explained.
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-ink-muted">
-              The latest articles from the publication connected to this
-              website.
-            </p>
-          </div>
+      <section className="brand-hero">
+        <div className="mx-auto w-full max-w-7xl px-5 pt-14 pb-10 sm:px-8 sm:pt-16 lg:pt-20">
+          <h1 className="brand-h1 max-w-3xl">
+            AI video analytics and site safety blog
+          </h1>
+          <p className="brand-lead mt-5 max-w-2xl">
+            Guides and news on AI video analytics, worker safety and running
+            safer heavy-industry sites.
+          </p>
         </div>
       </section>
 
-      <section className="py-14 sm:py-16 lg:py-20">
+      <section className="pt-6 pb-24 sm:pb-28">
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">{results}</div>
       </section>
     </main>

@@ -5,19 +5,21 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --canvas: #f5f2ea;
-  --paper: #fbfaf6;
-  --ink: #17201f;
-  --ink-muted: #56605d;
-  --ink-faint: #7e8783;
-  --line: rgba(23, 32, 31, 0.12);
-  --signal: #df5028;
-  --signal-strong: #c83f1b;
-  --mint: #bfe3d1;
-  --mint-strong: #7ab99b;
-  --night: #12201e;
+  --canvas: #f9fbfd;
+  --paper: #ffffff;
+  --ink: #27405d;
+  --ink-muted: #52667d;
+  --ink-faint: #7d8c9e;
+  --line: rgba(39, 64, 93, 0.12);
+  --signal: #34c1c4;
+  --signal-strong: #27405d;
+  --mint: #aee6e7;
+  --mint-strong: #34c1c4;
+  --night: #1f3349;
+  --alert: #ff7a59;
+  --caution: #fbc02d;
   --radius-card: 1.5rem;
-  --shadow-card: 0 24px 80px rgba(29, 41, 38, 0.09);
+  --shadow-card: 0 24px 80px rgba(39, 64, 93, 0.09);
   --radius: 0.75rem;
   --background: var(--canvas);
   --foreground: var(--ink);
@@ -29,7 +31,7 @@
   --primary-foreground: var(--paper);
   --secondary: var(--mint);
   --secondary-foreground: var(--ink);
-  --muted: #ece9df;
+  --muted: #eef3f7;
   --muted-foreground: var(--ink-muted);
   --accent: var(--mint);
   --accent-foreground: var(--ink);
@@ -37,10 +39,11 @@
   --border: var(--line);
   --input: var(--line);
   --ring: var(--signal);
+  /* Brand primary is Avenir (licensed); Poppins is the brand's approved free alternate. */
   --font-sans:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  --font-display: Georgia, "Times New Roman", serif;
+    "Avenir Next", Avenir, var(--font-poppins), ui-sans-serif, system-ui,
+    -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-sans);
 }
 
 @theme inline {
@@ -54,6 +57,8 @@
   --color-mint: var(--mint);
   --color-mint-strong: var(--mint-strong);
   --color-night: var(--night);
+  --color-alert: var(--alert);
+  --color-caution: var(--caution);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -138,5 +143,186 @@ button {
     animation: none !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/*
+ * Brand layer for every page outside the homepage module. These mirror the
+ * homepage's hero ground, type scale, pill buttons, 16px cards and closing
+ * banner, so new routes match it without copying CSS. They sit in the base
+ * layer so Tailwind keeps them and utilities can still override them.
+ */
+@layer base {
+  .brand-hero {
+    position: relative;
+    /* Clip sideways only, so the glow fades into the next section. */
+    overflow-x: clip;
+    isolation: isolate;
+  }
+
+  /* Dot grid fading out from the top, plus a soft teal glow. */
+  .brand-hero::before,
+  .brand-hero::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .brand-hero::before {
+    inset: 0;
+    background-image: radial-gradient(
+      rgba(39, 64, 93, 0.08) 1px,
+      transparent 1px
+    );
+    background-size: 24px 24px;
+    mask-image: radial-gradient(ellipse at 50% 0%, #000, transparent 70%);
+  }
+
+  .brand-hero::after {
+    left: 50%;
+    top: 55%;
+    width: min(1300px, 140vw);
+    height: 700px;
+    transform: translateX(-50%);
+    background: radial-gradient(
+      closest-side,
+      rgba(52, 193, 196, 0.16),
+      rgba(52, 193, 196, 0.06) 55%,
+      transparent
+    );
+    filter: blur(20px);
+  }
+
+  .brand-h1 {
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
+    line-height: 1.05;
+    font-weight: 500;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+
+  .brand-h2 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    line-height: 1.08;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  .brand-lead {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--ink-muted);
+    text-wrap: pretty;
+  }
+
+  .brand-btn-primary,
+  .brand-btn-secondary,
+  .brand-btn-light {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-size: 0.97rem;
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+    transition:
+      transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+      background-color 0.2s,
+      border-color 0.2s;
+  }
+
+  .brand-btn-primary {
+    background: var(--signal);
+    color: var(--ink);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.45),
+      0 8px 20px -12px rgba(52, 193, 196, 0.9);
+  }
+
+  .brand-btn-primary:hover,
+  .brand-btn-light:hover {
+    background: var(--mint);
+    transform: translateY(-1px);
+  }
+
+  .brand-btn-secondary {
+    background: var(--paper);
+    color: var(--ink);
+    border: 1px solid rgba(39, 64, 93, 0.18);
+  }
+
+  .brand-btn-secondary:hover {
+    border-color: rgba(52, 193, 196, 0.7);
+    transform: translateY(-1px);
+  }
+
+  .brand-btn-light {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  .brand-btn-primary:focus-visible,
+  .brand-btn-secondary:focus-visible,
+  .brand-btn-light:focus-visible,
+  .brand-card-link:focus-visible {
+    outline: 2px solid var(--signal);
+    outline-offset: 3px;
+  }
+
+  .brand-card {
+    background: var(--paper);
+    border: 1px solid rgba(39, 64, 93, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px -32px rgba(39, 64, 93, 0.4);
+  }
+
+  .brand-card-link {
+    transition:
+      transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+      border-color 0.25s;
+  }
+
+  .brand-card-link:hover {
+    transform: translateY(-2px);
+    border-color: rgba(52, 193, 196, 0.6);
+  }
+
+  .brand-banner {
+    border-radius: 16px;
+    color: #fff;
+    background: linear-gradient(
+      225deg,
+      var(--signal) 0%,
+      #2f7f93 30%,
+      var(--signal-strong) 62%
+    );
+  }
+
+  .brand-faq summary {
+    list-style: none;
+    cursor: pointer;
+    border-radius: 16px;
+  }
+
+  .brand-faq summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .brand-faq summary:focus-visible {
+    outline: 2px solid var(--signal);
+    outline-offset: 2px;
+  }
+
+  .brand-faq summary svg {
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .brand-faq[open] summary svg {
+    transform: rotate(45deg);
   }
 }

@@ -44,14 +44,11 @@ Check:
   - `src/app/icon.svg`
   - `src/app/opengraph-image.tsx`
   - `public/media`
-  - `src/app/uses/[slug]/_components`
   - `src/app/dev/visuals`
   - `src/app/dev/launch-assets`
   - `src/components/visuals`
-  - `src/content/use-cases`
+  - `src/content/pages`
   - `src/lib/visuals.ts`
-  - `src/lib/use-cases.ts`
-  - `src/lib/use-cases.test.ts`
   - `scripts/launch-assets.mjs`
 
 Why it matters: template artwork can look finished enough to survive a rushed launch while still showing the wrong identity, language, or visual system.
@@ -229,7 +226,7 @@ Check production returns 200 at `/robots.txt`, allows intended public routes, bl
 - Files:
   - `src/app/sitemap.ts`
   - `src/lib/blog.ts`
-  - `src/lib/use-cases.ts`
+  - `src/lib/page-content.ts`
 
 Why it matters: a sitemap helps discovery and communicates which canonical URLs the site considers public. It is a hint, not a replacement for internal links.
 
@@ -544,7 +541,7 @@ For animation work, use `.agents/skills/micro-ui` and verify both ordinary and `
   - `src/app/opengraph-image.tsx`
   - `src/lib/visuals.ts`
   - `src/components/visuals/project-visual.tsx`
-  - `src/app/uses/[slug]/_components/use-case-visual.tsx`
+  - `src/components/content-page/content-page.tsx`
   - `src/app/dev/visuals`
   - `src/app/dev/launch-assets`
   - `scripts/launch-assets.mjs`
@@ -562,7 +559,7 @@ Check:
 - Generated visuals use real project language and do not invent customers, metrics, integrations, or outcomes.
 - A JSON-backed page references only a validated visual ID. File paths, React component names, layout classes, and serialized props stay in code.
 
-For `/uses`, confirm every `hero.visualId` and `solution.items[].visualId` resolves to either an approved React component or local image source through the one project resolver.
+For `/uses/[slug]` and `/industries/[slug]`, confirm every route-copy `heroVisualId` and JSON `features.items[].id` resolves to either an approved React component or local image source through the one project resolver.
 
 Use `.agents/skills/micro-ui` to create or adapt a visual, then register it through the resolver when it belongs to a current surface. Inspect the complete inventory at `/dev/visuals` with local review enabled.
 
