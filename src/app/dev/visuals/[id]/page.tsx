@@ -19,7 +19,7 @@ export default async function SingleVisualPage({
       className="fixed inset-0 z-[100] grid place-items-center overflow-auto bg-canvas p-8"
       id="main-content"
     >
-      <div className="w-[720px] max-w-full">
+      <div className="w-full min-w-0 max-w-[720px]">
         <ProjectVisual id={id as VisualId} priority />
       </div>
     </main>

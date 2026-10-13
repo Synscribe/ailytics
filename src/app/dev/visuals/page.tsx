@@ -103,7 +103,13 @@ export default async function VisualInventoryPage() {
                   </div>
                 </div>
 
-                <div className="rounded-[2rem] border border-ink/10 bg-paper/70 p-5 sm:p-7">
+                <div
+                  className={
+                    entry.id === "real-time-alerts"
+                      ? "p-5 sm:p-7"
+                      : "rounded-[2rem] border border-ink/10 bg-paper/70 p-5 sm:p-7"
+                  }
+                >
                   <ProjectVisual
                     id={entry.id}
                     sizes="(min-width: 1024px) 44vw, 100vw"

@@ -236,8 +236,16 @@ export function ContentPage({
                       )}
                     </p>
                   </div>
-                  <div className="brand-card order-1 w-full min-w-0 overflow-hidden p-2">
-                    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-muted">
+                  <div
+                    className={
+                      item.id === "real-time-alerts"
+                        ? "order-1 w-full min-w-0 p-2"
+                        : "brand-card order-1 w-full min-w-0 overflow-hidden p-2"
+                    }
+                  >
+                    <div
+                      className={`relative w-full overflow-hidden ${item.id === "real-time-alerts" ? "h-[440px] lg:aspect-[4/3] lg:h-auto" : "aspect-[4/3] rounded-xl bg-muted"}`}
+                    >
                       <ProjectVisual
                         fill
                         id={item.id}

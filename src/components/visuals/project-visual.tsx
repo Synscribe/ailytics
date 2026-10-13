@@ -298,7 +298,12 @@ export function ProjectVisual({
   sizes?: string;
 }) {
   const source: VisualSource = visualSources[id];
-  const frame = fill ? "absolute inset-0 overflow-hidden" : heroFrame;
+  const frameless = id === "real-time-alerts";
+  const frame = fill
+    ? "absolute inset-0 overflow-hidden"
+    : frameless
+      ? "relative h-[480px] min-w-0"
+      : heroFrame;
 
   if (source.kind === "component") {
     const Visual = source.component;
@@ -312,7 +317,7 @@ export function ProjectVisual({
     return (
       <figure
         aria-label={source.stage.alt}
-        className={`${frame} bg-muted`}
+        className={`${frame} ${frameless ? "" : "bg-muted"}`}
         data-visual-id={id}
         role="img"
       >
