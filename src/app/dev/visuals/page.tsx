@@ -50,6 +50,14 @@ export default async function VisualInventoryPage() {
   return (
     <main className="bg-canvas px-5 py-14 sm:px-8 lg:py-20" id="main-content">
       <div className="mx-auto max-w-7xl">
+        <p className="mb-6 text-sm">
+          <Link
+            className="underline underline-offset-4"
+            href="/dev/visuals/hub-directions"
+          >
+            Compare PPE and Construction hub card directions
+          </Link>
+        </p>
         <Link
           className="inline-flex items-center gap-2 text-sm font-medium text-ink-muted hover:text-ink"
           href="/dev"

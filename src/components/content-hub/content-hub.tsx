@@ -50,7 +50,7 @@ function HubCard({ item }: { item: HubItem }) {
           sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
         />
       </div>
-      <div className="flex flex-1 flex-col gap-2 border-b border-ink/15 pt-5 pb-7">
+      <div className="flex flex-1 flex-col gap-2 pt-5 pb-2">
         <h3 className="flex items-start justify-between gap-3 text-lg leading-7 font-medium text-balance">
           {item.title}
         </h3>
