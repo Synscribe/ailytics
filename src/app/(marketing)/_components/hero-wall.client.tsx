@@ -147,7 +147,7 @@ const EVENTS: {
     cat: "safety",
     tag: "No hard hat",
     text: "Missing hard hat in low light",
-    href: "/uses/ppe-detection",
+    href: "/use-cases/ppe-detection",
   },
 ];
 
@@ -195,7 +195,7 @@ export function HeroWall() {
     <>
       <div className={styles.heroControls}>
         <Link
-          href={event.href ?? "/uses"}
+          href={event.href ?? "/use-cases"}
           className={styles.alertLine}
           data-cat={event.cat}
         >

@@ -52,7 +52,7 @@ describe("Markdown representations", () => {
     const markdown = htmlToMarkdown(`<main>
       <ul>
         <li>
-          <a href="/uses/ppe-detection" title="Open use case">
+          <a href="/use-cases/ppe-detection" title="Open use case">
             <article>
               <h3>PPE detection</h3>
               <p>Spots missing hard hats, vests and gloves.</p>
@@ -64,7 +64,7 @@ describe("Markdown representations", () => {
     </main>`);
 
     expect(markdown).toContain(
-      '### [PPE detection](/uses/ppe-detection "Open use case")',
+      '### [PPE detection](/use-cases/ppe-detection "Open use case")',
     );
     expect(markdown).toContain("Spots missing hard hats, vests and gloves.");
     expect(markdown).toContain("View use case");
@@ -108,8 +108,8 @@ describe("Markdown representations", () => {
     const root = "/tmp/example-markdown-root";
 
     expect(markdownOverridePath("/", root)).toBe(path.join(root, "index.md"));
-    expect(markdownOverridePath("/uses/example/", root)).toBe(
-      path.join(root, "uses/example.md"),
+    expect(markdownOverridePath("/use-cases/example/", root)).toBe(
+      path.join(root, "use-cases/example.md"),
     );
     expect(() => markdownOverridePath("/%2e%2e/private", root)).toThrow(
       /Unsafe pathname/,
@@ -118,15 +118,15 @@ describe("Markdown representations", () => {
 
   it("uses a custom override when present and otherwise returns undefined", async () => {
     const root = await temporaryDirectory();
-    await mkdir(path.join(root, "uses"), { recursive: true });
+    await mkdir(path.join(root, "use-cases"), { recursive: true });
     await writeFile(
-      path.join(root, "uses/example.md"),
+      path.join(root, "use-cases/example.md"),
       "# Custom representation\n",
     );
 
-    await expect(readMarkdownOverride("/uses/example", root)).resolves.toBe(
-      "# Custom representation",
-    );
+    await expect(
+      readMarkdownOverride("/use-cases/example", root),
+    ).resolves.toBe("# Custom representation");
     await expect(
       readMarkdownOverride("/missing", root),
     ).resolves.toBeUndefined();

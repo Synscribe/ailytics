@@ -6,7 +6,7 @@ import {
   VISUAL_ENTRIES,
 } from "@/components/visuals/project-visual";
 import { INDUSTRY_ROUTE_COPY } from "@/app/industries/[slug]/_content";
-import { USE_CASE_ROUTE_COPY } from "@/app/uses/[slug]/_content";
+import { USE_CASE_ROUTE_COPY } from "@/app/use-cases/[slug]/_content";
 import type { ContentPageRouteCopy } from "@/components/content-page/content-page";
 import {
   getPageContent,

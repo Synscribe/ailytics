@@ -490,7 +490,7 @@ async function auditMarkdownNegotiation(enabled: boolean): Promise<void> {
 
 async function auditExplicitMarkdownRoutes(enabled: boolean): Promise<void> {
   if (!enabled) {
-    const alias = await fetchPage(`${baseUrl}/uses.md`);
+    const alias = await fetchPage(`${baseUrl}/use-cases.md`);
     const removed = !/^text\/markdown(?:;|$)/i.test(alias.contentType);
     record(
       "LLM-02",
@@ -498,7 +498,7 @@ async function auditExplicitMarkdownRoutes(enabled: boolean): Promise<void> {
       "explicit Markdown routes",
       removed
         ? "Deliberately removed"
-        : "Checklist marks explicit Markdown routes not applicable, but /uses.md still serves text/markdown",
+        : "Checklist marks explicit Markdown routes not applicable, but /use-cases.md still serves text/markdown",
     );
     return;
   }
@@ -512,11 +512,11 @@ async function auditExplicitMarkdownRoutes(enabled: boolean): Promise<void> {
     nestedNegotiated,
     missingAlias,
   ] = await Promise.all([
-    fetchPage(`${baseUrl}/uses.md`),
-    fetchPage(`${baseUrl}/uses.md`, { Accept: "text/html" }),
-    fetchPage(`${baseUrl}/uses`, { Accept: "text/markdown" }),
-    fetchPage(`${baseUrl}/uses/ppe-detection.md`),
-    fetchPage(`${baseUrl}/uses/ppe-detection`, {
+    fetchPage(`${baseUrl}/use-cases.md`),
+    fetchPage(`${baseUrl}/use-cases.md`, { Accept: "text/html" }),
+    fetchPage(`${baseUrl}/use-cases`, { Accept: "text/markdown" }),
+    fetchPage(`${baseUrl}/use-cases/ppe-detection.md`),
+    fetchPage(`${baseUrl}/use-cases/ppe-detection`, {
       Accept: "text/markdown",
     }),
     fetchPage(`${baseUrl}${missingPath}.md`),
@@ -531,10 +531,10 @@ async function auditExplicitMarkdownRoutes(enabled: boolean): Promise<void> {
   record(
     "LLM-02",
     aliasPassed ? "PASS" : "FAIL",
-    "/uses.md",
+    "/use-cases.md",
     aliasPassed
-      ? "Matches the Markdown negotiated from /uses"
-      : `Expected HTTP 200 text/markdown identical to negotiated /uses; received HTTP ${alias.status}, ${alias.contentType || "no content type"}`,
+      ? "Matches the Markdown negotiated from /use-cases"
+      : `Expected HTTP 200 text/markdown identical to negotiated /use-cases; received HTTP ${alias.status}, ${alias.contentType || "no content type"}`,
   );
 
   const linkedCardsPassed =
@@ -546,7 +546,7 @@ async function auditExplicitMarkdownRoutes(enabled: boolean): Promise<void> {
   record(
     "LLM-03",
     linkedCardsPassed ? "PASS" : "FAIL",
-    "/uses Markdown cards",
+    "/use-cases Markdown cards",
     linkedCardsPassed
       ? "Card headings carry their links without multiline block content inside link brackets"
       : "Expected linked card headings without multiline block links or empty-alt images",
@@ -561,8 +561,8 @@ async function auditExplicitMarkdownRoutes(enabled: boolean): Promise<void> {
     explicitWins ? "PASS" : "FAIL",
     "explicit representation preference",
     explicitWins
-      ? "/uses.md stays Markdown when the request accepts HTML"
-      : `Expected /uses.md to remain Markdown; received HTTP ${aliasWithHtmlAccept.status}, ${aliasWithHtmlAccept.contentType || "no content type"}`,
+      ? "/use-cases.md stays Markdown when the request accepts HTML"
+      : `Expected /use-cases.md to remain Markdown; received HTTP ${aliasWithHtmlAccept.status}, ${aliasWithHtmlAccept.contentType || "no content type"}`,
   );
 
   const nestedPassed =
@@ -572,7 +572,7 @@ async function auditExplicitMarkdownRoutes(enabled: boolean): Promise<void> {
   record(
     "LLM-02",
     nestedPassed ? "PASS" : "FAIL",
-    "/uses/ppe-detection.md",
+    "/use-cases/ppe-detection.md",
     nestedPassed
       ? "Nested alias matches its negotiated Markdown representation"
       : `Expected a nested Markdown alias identical to its negotiated page; received HTTP ${nestedAlias.status}, ${nestedAlias.contentType || "no content type"}`,

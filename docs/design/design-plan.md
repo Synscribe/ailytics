@@ -105,12 +105,12 @@ Each template uses at least four different layout families, with no three image-
 10. FAQ: accordion.
 11. Closing banner (brand gradient), then footer.
 
-### Use cases hub (`/uses`) and industries hub (`/industries`)
+### Use cases hub (`/use-cases`) and industries hub (`/industries`)
 
 - Hero with the hub's search purpose, then category tabs (use cases: Safety, Security, Productivity, Progress; industries: Core, Other).
 - Card grid with one visual per item. Other industries sit in their own section below core ones.
 
-### Use case and industry pages (`/uses/{slug}`, `/industries/{slug}`)
+### Use case and industry pages (`/use-cases/{slug}`, `/industries/{slug}`)
 
 Hero with breadcrumb and client media, problems (three cards), solution and how it works, features grouped by category (each feature has its own visual), value props, related pages (industry links to its use cases and back), FAQ, closing banner. Content comes from JSON in `src/content/pages/`.
 
@@ -122,7 +122,7 @@ Case studies hub and detail, blog index and article, request-a-demo page (form w
 
 1. Rebrand (done) and brand tokens in `globals.css`.
 2. Feature visuals for construction and PPE detection (in progress).
-3. Dynamic `/industries/{slug}` and `/uses/{slug}`, both hubs, remove the template sample pages.
+3. Dynamic `/industries/{slug}` and `/use-cases/{slug}`, both hubs, remove the template sample pages.
 4. Homepage from the scaffold, with the signature motions.
 5. Request a demo page.
 6. Impeccable finish review on home and one detail page, then the documenter writes `DESIGN.md`.
@@ -151,7 +151,7 @@ Case studies hub and detail, blog index and article, request-a-demo page (form w
 - Homepage features: stacking cards (each feature card settles at the top and the next slides over it), with the optional hover and drag extras inside each visual. Prototype: https://claude.ai/artifact/WXrKBL9Rdht7yKunK4ZbFR (option I).
 - Homepage industries: industry and hazard pill cloud (links to industry and use case pages) replaces both the industry cards and the use-case tiles. Platform capabilities grid (6 items) follows it.
 - Reversed: the pill cloud is dropped. Homepage industries go back to industry cards (6 core industries, name plus hazards line, 3x2), then "See all industries".
-- Homepage use cases are back as their own section after the features: Safety / Security / Productivity tabs over tiles with each use case's own micro UI (6/3/3). Without JavaScript all three groups show. PPE links to its page; the rest go to /uses until their pages exist.
+- Homepage use cases are back as their own section after the features: Safety / Security / Productivity tabs over tiles with each use case's own micro UI (6/3/3). Without JavaScript all three groups show. PPE links to its page; the rest go to /use-cases until their pages exist.
 - Homepage gets two light mid-page CTA rows (after How it works, after case studies), not more banners.
 - Hero Safety / Security / Productivity switch is clickable. A pick holds the wall on that category until it is clicked again or left alone for 12 s.
 - How it works (desktop): the intro scrolls away, then the photo fills the pinned viewport at 16:10, is never cropped, and the step caption sits on it as a card top-left. Greyed side feeds (Cam 12, 13, 15, 16) show the camera wall at the start, then slide out.

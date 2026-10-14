@@ -11,7 +11,7 @@ export const metadata: Metadata = createPageMetadata({
   title: "AI Video Analytics Use Cases for Industrial Sites",
   description:
     "AI video analytics use cases for safety, security and productivity. 50+ detections run on the cameras you already have, with real-time alerts and evidence.",
-  path: "/uses",
+  path: "/use-cases",
 });
 
 export default async function UsesPage() {
@@ -21,7 +21,7 @@ export default async function UsesPage() {
     <ContentHub
       breadcrumbs={[
         { name: "Home", path: "/" },
-        { name: "Use cases", path: "/uses" },
+        { name: "Use cases", path: "/use-cases" },
       ]}
       title="Use cases"
       introduction="50+ ready-made detections that run on the cameras you already have, grouped by what they help you manage."
@@ -32,7 +32,7 @@ export default async function UsesPage() {
           .map(({ slug, title, description }) => ({
             title,
             description,
-            href: `/uses/${slug}`,
+            href: `/use-cases/${slug}`,
             visualId: USE_CASE_ROUTE_COPY[slug].heroVisualId,
           })),
       })).filter((group) => group.items.length > 0)}

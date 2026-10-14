@@ -1,5 +1,5 @@
 /**
- * The use cases listed on the /uses hub. `slug` names the page in
+ * The use cases listed on the /use-cases hub. `slug` names the page in
  * src/content/pages/uses; the hub lists it only once that JSON page exists.
  */
 export type HubEntry = {

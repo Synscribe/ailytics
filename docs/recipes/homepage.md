@@ -55,7 +55,7 @@ Aim for eight to ten short sections when real proof exists. Keep each section be
 
 1. merge sections making the same argument;
 2. split genuinely different audiences;
-3. summarise a subject and link to `/uses` or `/blog`;
+3. summarise a subject and link to `/use-cases` or `/blog`;
 4. keep the primary action available in the sticky header.
 
 Critical copy and links stay in server-rendered HTML. Animation may enhance a section but must preserve visible content without JavaScript and respect reduced motion.

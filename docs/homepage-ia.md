@@ -102,7 +102,7 @@ When a page genuinely needs more, the seven sites do four things rather than sta
 3. **Keep the action in the sticky header** so scroll cost is recoverable.
 4. **Merge before adding.** Three sections making the same argument are one section.
 
-This repo already has the escape valves: `/uses` and `/blog`.
+This repo already has the escape valves: `/use-cases` and `/blog`.
 
 ### Sources
 

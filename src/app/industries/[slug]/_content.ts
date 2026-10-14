@@ -37,7 +37,7 @@ export const INDUSTRY_ROUTE_COPY: Record<string, ContentPageRouteCopy> = {
     },
     featureLinks: {
       "ppe-detection": {
-        href: "/uses/ppe-detection",
+        href: "/use-cases/ppe-detection",
         phrase: "missing hard hats, vests, and gloves",
       },
     },
@@ -48,7 +48,7 @@ export const INDUSTRY_ROUTE_COPY: Record<string, ContentPageRouteCopy> = {
           title: "PPE detection",
           description:
             "Spot missing hard hats, vests and gloves on existing cameras and give supervisors evidence to act on.",
-          href: "/uses/ppe-detection",
+          href: "/use-cases/ppe-detection",
           label: "See PPE detection",
         },
       ],

@@ -26,9 +26,9 @@ export async function generateMetadata({
   const { slug } = await params;
   const content = await getPageContent("uses", slug);
   return createPageMetadata({
-    title: content.hero.title,
+    title: content.hero.seoTitle ?? content.hero.title,
     description: content.hero.description,
-    path: `/uses/${slug}`,
+    path: `/use-cases/${slug}`,
   });
 }
 
@@ -44,8 +44,8 @@ export default async function UseCasePage({ params }: SlugPageProps) {
       content={content}
       breadcrumbs={[
         { name: "Home", path: "/" },
-        { name: "Use cases", path: "/uses" },
-        { name, path: `/uses/${slug}` },
+        { name: "Use cases", path: "/use-cases" },
+        { name, path: `/use-cases/${slug}` },
       ]}
     />
   );

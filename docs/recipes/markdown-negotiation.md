@@ -24,7 +24,7 @@ HTML can wrap an entire card in one link, including a heading, description, imag
 For example, a linked use-case card becomes:
 
 ```md
-### [Website migrations](/uses/website-migrations)
+### [Website migrations](/use-cases/website-migrations)
 
 We protect important URLs, search traffic, and customer journeys while the new site is built.
 
@@ -37,11 +37,11 @@ This normalization is generated from the rendered page. It does not require a se
 
 Append `.md` to a public page path when a client cannot send an `Accept` header:
 
-| Canonical HTML URL         | Explicit Markdown URL         |
-| -------------------------- | ----------------------------- |
-| `/`                        | `/index.md`                   |
-| `/uses`                    | `/uses.md`                    |
-| `/uses/website-migrations` | `/uses/website-migrations.md` |
+| Canonical HTML URL              | Explicit Markdown URL              |
+| ------------------------------- | ---------------------------------- |
+| `/`                             | `/index.md`                        |
+| `/use-cases`                    | `/use-cases.md`                    |
+| `/use-cases/website-migrations` | `/use-cases/website-migrations.md` |
 
 The alias returns Markdown regardless of the request's `Accept` header. It uses the exact generated or overridden body returned by content negotiation on the canonical path.
 
@@ -55,12 +55,12 @@ An override is optional. Use one when an agent needs a shorter task guide, a mor
 
 Create a UTF-8 Markdown file under `src/content/markdown` using the public pathname:
 
-| Public URL         | Optional override file                    |
-| ------------------ | ----------------------------------------- |
-| `/`                | `src/content/markdown/index.md`           |
-| `/contact`         | `src/content/markdown/contact.md`         |
-| `/uses/example`    | `src/content/markdown/uses/example.md`    |
-| `/guide/first-run` | `src/content/markdown/guide/first-run.md` |
+| Public URL           | Optional override file                    |
+| -------------------- | ----------------------------------------- |
+| `/`                  | `src/content/markdown/index.md`           |
+| `/contact`           | `src/content/markdown/contact.md`         |
+| `/use-cases/example` | `src/content/markdown/uses/example.md`    |
+| `/guide/first-run`   | `src/content/markdown/guide/first-run.md` |
 
 The file body is served verbatim. It must not be empty. Query-string variants use the override for the pathname.
 
@@ -151,7 +151,7 @@ Header negotiation is the P0 baseline. If a project keeps negotiation but delibe
 2. Remove the explicit-path branch and `.md` matcher exception from `src/proxy.ts`.
 3. Remove explicit redirect rewriting from `src/app/api/agent-markdown/route.ts`.
 4. Set `LLM-02` to `not_applicable`, update the feature catalog and this recipe, then regenerate the readable checklist.
-5. Confirm `/uses.md` no longer returns `text/markdown`, while `Accept: text/markdown` on `/uses` still works.
+5. Confirm `/use-cases.md` no longer returns `text/markdown`, while `Accept: text/markdown` on `/use-cases` still works.
 
 ## Remove every Markdown representation
 

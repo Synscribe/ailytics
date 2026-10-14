@@ -12,7 +12,7 @@ export const siteConfig = Object.freeze({
   url: env.siteUrl,
   locale: "en-US",
   navigation: [
-    { label: "Use cases", href: "/uses" },
+    { label: "Use cases", href: "/use-cases" },
     { label: "Industries", href: "/industries" },
     { label: "Blog", href: "/blog" },
   ] satisfies NavigationItem[],

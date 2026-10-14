@@ -5,8 +5,8 @@ import { isVisualId } from "@/lib/visuals";
 
 import { INDUSTRY_GROUPS } from "./industries/_groups";
 import { INDUSTRY_ROUTE_COPY } from "./industries/[slug]/_content";
-import { USE_CASE_GROUPS } from "./uses/_groups";
-import { USE_CASE_ROUTE_COPY } from "./uses/[slug]/_content";
+import { USE_CASE_GROUPS } from "./use-cases/_groups";
+import { USE_CASE_ROUTE_COPY } from "./use-cases/[slug]/_content";
 
 const routes = [
   {
