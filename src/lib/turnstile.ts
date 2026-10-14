@@ -2,6 +2,7 @@ const VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 const MAX_TOKEN_LENGTH = 2_048;
 
 export const TURNSTILE_CONTACT_ACTION = "contact";
+export const TURNSTILE_CAREERS_ACTION = "careers";
 
 type TurnstileConfiguration =
   { enabled: false } | { enabled: true; siteKey: string };

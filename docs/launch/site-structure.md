@@ -12,7 +12,7 @@ The URL map (`docs/launch/url-map.csv`) decides where each old URL redirects. Up
 
 Main nav:
 
-1. **Use cases** (URL `/uses`): hub plus dropdown grouped by Safety, Security, Productivity
+1. **Use cases** (URL `/use-cases`): hub plus dropdown grouped by Safety, Security, Productivity
 2. **Industries**: dropdown split into two groups. Working labels: "Core industries" (tier 1) and "Other industries" (tier 2, alternative label "Emerging verticals")
 3. **Blog**: blog posts and news. News keeps its own listing under the blog section
 4. **Case studies**: own page
@@ -67,8 +67,8 @@ Items marked **(launch)** are needed for 26 Oct. Everything else follows in the 
 /platform/integrations              Camera and VMS brands, EHS platforms, alert channels
 /platform/integrations/[brand]      Later: one page per major VMS or camera brand (Milestone, Genetec, Hikvision...)
 
-/uses                          (launch) Hub: 50+ use cases grouped by Safety / Security / Productivity
-/uses/[slug]                   (launch: top 10, then all) One page per detection
+/use-cases                          (launch) Hub: 50+ use cases grouped by Safety / Security / Productivity
+/use-cases/[slug]                   (launch: top 10, then all) One page per detection
     e.g. machinery-proximity, open-edge-detection, under-suspended-load, ppe-detection,
          smoke-and-fire-detection, vehicle-reversing, exclusion-zone, slip-trip-fall,
          ergonomics, loitering, wrong-way-detection, license-plate-recognition, idle-machinery
@@ -104,7 +104,7 @@ Footer only:
 /us/weapon-detection/[industry]     Later: per industry, excluding schools unless the client approves
 
 /ja/...  /zh-tw/...  /ko/...        Month 3 onward: translated copies of the launch pages
-/privacy-policy  /terms  /eula      Legal
+/privacy-policy-policy  /eula  /eula      Legal
 /llms.txt                           Plain-text summary for AI search tools
 ```
 
@@ -118,8 +118,8 @@ Not built: pricing (client never publishes pricing), events, gated e-book landin
 | AI video analytics platform                                                  | `/platform`                        |
 | AI camera search / talk to your cameras / vision language model safety       | `/platform/ask-your-cameras`       |
 | [industry] safety AI / AI video analytics for [industry]                     | `/industries/[industry]`           |
-| [hazard] detection (e.g. machinery proximity detection, open edge detection) | `/uses/[slug]`                     |
-| AI safety monitoring use cases                                               | `/uses`                            |
+| [hazard] detection (e.g. machinery proximity detection, open edge detection) | `/use-cases/[slug]`                |
+| AI safety monitoring use cases                                               | `/use-cases`                       |
 | [brand] video analytics integration                                          | `/platform/integrations/[brand]`   |
 | [competitor] alternative / Ailytics vs [competitor]                          | `/compare/[competitor]`            |
 | gun detection camera / AI weapon detection                                   | `/us/weapon-detection`             |
@@ -129,7 +129,7 @@ Keywords are placeholders until volume research is done. Fill in the real number
 
 ## Page templates
 
-### Use case page (`/uses/[slug]`)
+### Use case page (`/use-cases/[slug]`)
 
 The highest-value template. Neither competitor does this well with real proof.
 

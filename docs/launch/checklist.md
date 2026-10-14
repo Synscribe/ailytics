@@ -90,7 +90,7 @@ Check:
 ### HOME-01 — the homepage keeps one primary action within reach
 
 - [ ] **Todo**
-- Recipe: [docs/recipes/homepage.md](../recipes/homepage.md)
+- Recipe: [docs/recipes/homepage.md](..\recipes\homepage.md)
 - Files:
   - `src/components/site-header.tsx`
   - `src/app/(marketing)/page.tsx`
@@ -110,7 +110,7 @@ This check covers reaching the conversion path. `FORM-01` separately covers whet
 ### HOME-02 — homepage proof is real, sourced, and approved
 
 - [ ] **Todo**
-- Recipe: [docs/recipes/homepage.md](../recipes/homepage.md)
+- Recipe: [docs/recipes/homepage.md](..\recipes\homepage.md)
 - Files:
   - `src/app/(marketing)/page.tsx`
   - `public/media`
@@ -402,7 +402,7 @@ Verify old and new Search Console properties and host variants. Use Search Conso
 ### FORM-01 — the primary conversion path works end to end
 
 - [ ] **Todo**
-- Recipe: [docs/recipes/contact.md](../recipes/contact.md)
+- Recipe: [docs/recipes/contact.md](..\recipes\contact.md)
 - Files:
   - `src/app/contact/page.tsx`
   - `src/app/contact/_components/contact-form.tsx`
@@ -415,7 +415,7 @@ Test production delivery, the actual recipient or CRM, confirmation, failure han
 ### FORM-02 — form input and output are bounded
 
 - [ ] **Todo**
-- Recipe: [docs/recipes/contact.md](../recipes/contact.md)
+- Recipe: [docs/recipes/contact.md](..\recipes\contact.md)
 - Files:
   - `src/lib/contact.ts`
   - `src/lib/contact-delivery.ts`
@@ -426,7 +426,7 @@ Validate types and sensible lengths server-side, escape output, reject unexpecte
 ### FORM-03 — abuse and retention match the risk
 
 - [ ] **Todo**
-- Recipe: [docs/recipes/contact.md](../recipes/contact.md)
+- Recipe: [docs/recipes/contact.md](..\recipes\contact.md)
 - Files:
   - `src/app/api/contact/route.ts`
   - `src/app/api/contact/_lib/rate-limit.ts`
@@ -443,7 +443,7 @@ The included honeypot, completion-time check, same-origin check, and in-memory p
 ### FORM-04 — attribution is minimized
 
 - [ ] **Todo**
-- Recipe: [docs/recipes/contact.md](../recipes/contact.md)
+- Recipe: [docs/recipes/contact.md](..\recipes\contact.md)
 - Files:
   - `src/lib/visitor-context.ts`
   - `src/app/contact/_components/visitor-context-tracker.tsx`
@@ -459,7 +459,7 @@ The default keeps first-touch UTM fields, an external referrer without its query
 ### LLM-03 — public pages negotiate a useful Markdown representation
 
 - [ ] **Todo**
-- Recipe: [docs/recipes/markdown-negotiation.md](../recipes/markdown-negotiation.md)
+- Recipe: [docs/recipes/markdown-negotiation.md](..\recipes\markdown-negotiation.md)
 - Files:
   - `src/proxy.ts`
   - `src/app/api/agent-markdown/route.ts`
@@ -478,7 +478,7 @@ Check:
 - Negotiation honors media-range specificity, quality values, wildcards, and `q=0`; return HTTP 406 when neither HTML nor Markdown is acceptable.
 - Generated Markdown comes from the rendered page's `<main>` content. Do not maintain a second Markdown copy for ordinary pages.
 - Normalize full-card links into ordinary blocks with a linked heading. Omit accessibility-hidden elements and images without useful alt text, and expose the original source URL for meaningful Next.js optimized images.
-- A file under `src/content/markdown` may deliberately override one route. `/` maps to `index.md`; `/uses/example` maps to `uses/example.md`. An override changes only the Markdown representation and never creates a missing HTML route or changes its status.
+- A file under `src/content/markdown` may deliberately override one route. `/` maps to `index.md`; `/use-cases/example` maps to `uses/example.md`. An override changes only the Markdown representation and never creates a missing HTML route or changes its status.
 - Keep source paths in the internal rewrite cache key so cached Markdown cannot leak between routes.
 
 The live launch audit checks both homepage representations, quality-value selection, HTTP 406 behavior, linked-card structure, and Markdown 404 recovery. Repeat it against the production URL before launch.
@@ -488,7 +488,7 @@ The live launch audit checks both homepage representations, quality-value select
 ### HOME-03 — the homepage defines the offer once and consistently
 
 - [ ] **Todo**
-- Recipe: [docs/recipes/homepage.md](../recipes/homepage.md)
+- Recipe: [docs/recipes/homepage.md](..\recipes\homepage.md)
 - Files:
   - `src/config/site.ts`
   - `src/app/(marketing)/page.tsx`
@@ -559,7 +559,7 @@ Check:
 - Generated visuals use real project language and do not invent customers, metrics, integrations, or outcomes.
 - A JSON-backed page references only a validated visual ID. File paths, React component names, layout classes, and serialized props stay in code.
 
-For `/uses/[slug]` and `/industries/[slug]`, confirm every route-copy `heroVisualId` and JSON `features.items[].id` resolves to either an approved React component or local image source through the one project resolver.
+For `/use-cases/[slug]` and `/industries/[slug]`, confirm every route-copy `heroVisualId` and JSON `features.items[].id` resolves to either an approved React component or local image source through the one project resolver.
 
 Use `.agents/skills/micro-ui` to create or adapt a visual, then register it through the resolver when it belongs to a current surface. Inspect the complete inventory at `/dev/visuals` with local review enabled.
 
@@ -568,7 +568,7 @@ For launch assets, inspect the exact reduced-motion PNGs emitted by `pnpm launch
 ### ANALYTICS-01 — analytics is configured and privacy-aware
 
 - [ ] **Todo**
-- Recipe: [docs/recipes/posthog.md](../recipes/posthog.md)
+- Recipe: [docs/recipes/posthog.md](..\recipes\posthog.md)
 
 PostHog is included by default but inactive without a token. Verify the production project, pageviews and named conversion events, internal/staff exclusions, consent behavior where required, session-replay policy, retention, and that sensitive form values are not captured. Delete `src/instrumentation-client.ts` and `posthog-js` if analytics is unused.
 
@@ -578,12 +578,22 @@ PostHog is included by default but inactive without a token. Verify the producti
 
 Check Search Console, analytics, uptime/error monitoring, and field performance after launch. Decide how often to review them and what should trigger rollback or remediation.
 
+## P1 — project-specific launch checks
+
+### CAREERS-01 — job applications are delivered with the resume attached
+
+- [ ] **Todo**
+- Recipe: [docs/launch/clone-journal.md](./clone-journal.md)
+
+The /careers/[slug] application form posts to /api/careers and emails the resume to CAREERS_TO_EMAIL, falling back to CONTACT_TO_EMAIL.
+Set the mail values, submit a test application with a PDF and a Word file, and confirm the attachment and reply-to arrive in the reviewed inbox.
+
 ## P2 — later enhancements
 
 ### LLM-01 — `llms.txt` is client-specific, useful, and current
 
 - [ ] **Automated**
-- Recipe: [docs/recipes/llms-txt.md](../recipes/llms-txt.md)
+- Recipe: [docs/recipes/llms-txt.md](..\recipes\llms-txt.md)
 - Automated check: `llms-txt-ready`
 - Files:
   - `public/llms.txt`
@@ -610,7 +620,7 @@ Check:
 ### LLM-02 — explicit `.md` URLs match negotiated Markdown
 
 - [ ] **Todo**
-- Recipe: [docs/recipes/markdown-negotiation.md](../recipes/markdown-negotiation.md)
+- Recipe: [docs/recipes/markdown-negotiation.md](..\recipes\markdown-negotiation.md)
 - Files:
   - `src/proxy.ts`
   - `src/app/api/agent-markdown/route.ts`
@@ -621,8 +631,8 @@ Why it matters: an agent that cannot set an `Accept` header can still request th
 
 Check:
 
-- `/uses.md` returns the exact body produced by requesting `/uses` with `Accept: text/markdown`, even when the `.md` request sends `Accept: text/html` or no specific preference.
-- Nested aliases follow the same rule: `/uses/example.md` maps to `/uses/example`. `/index.md` maps to the homepage.
+- `/use-cases.md` returns the exact body produced by requesting `/use-cases` with `Accept: text/markdown`, even when the `.md` request sends `Accept: text/html` or no specific preference.
+- Nested aliases follow the same rule: `/use-cases/example.md` maps to `/use-cases/example`. `/index.md` maps to the homepage.
 - Aliases use the same generated content and optional override files as header negotiation. Never maintain a second `.md` copy for the alias.
 - Preserve source status codes. A missing alias returns HTTP 404 with the Markdown recovery body, and same-origin redirects keep the `.md` representation.
 - Keep the HTML URL canonical and keep `.md` aliases out of the HTML sitemap unless a project adopts a reviewed alternate-indexing policy.
@@ -633,7 +643,7 @@ The live launch audit compares exact bodies for top-level and nested aliases, ve
 ### INDEX-01 — IndexNow ownership key is unique and verifiable
 
 - [ ] **Todo**
-- Recipe: [docs/recipes/indexnow.md](../recipes/indexnow.md)
+- Recipe: [docs/recipes/indexnow.md](..\recipes\indexnow.md)
 - Files:
   - `scripts/generate-indexnow-key.mjs`
   - `indexnow-key.json`
@@ -644,7 +654,7 @@ Add URL submission automation only when publishing frequency and target search e
 ### CONTENT-01 — richer publishing tools
 
 - [ ] **Todo**
-- Recipe: [docs/recipes/blog.md](../recipes/blog.md)
+- Recipe: [docs/recipes/blog.md](..\recipes\blog.md)
 - Files:
   - `src/app/blog/blog.config.ts`
   - `src/app/blog/page.tsx`
@@ -669,6 +679,24 @@ Check:
 - Keep `/blog` canonical. Exclude search, filter, and pagination variants from the main sitemap unless a project deliberately promotes a stable archive page with unique value.
 - Avoid repeating a pinned article in the first result grid. Test page one, a middle and final page, every configured filter, an empty result, and a search with and without results.
 - When changing the CMS or tag model, update the route config and the matching items in this checklist; do not create a second publishing or SEO checklist.
+
+## P2 — project-specific launch checks
+
+### COMPANY-01 — omitted company-page surfaces are approved
+
+- [ ] **Todo**
+- Recipe: [docs/launch/clone-journal.md](./clone-journal.md)
+
+The rebuilt About, Partnerships, Careers and Projects pages leave out the old site's Talk-to-us popup form, footer office addresses and phone numbers, the News, EULA and LinkedIn footer links, and the Japanese locale.
+Confirm with the client that these stay out, or supply the approved contact details and destinations.
+
+### CAREERS-02 — job postings carry JobPosting structured data with real dates
+
+- [ ] **Todo**
+- Recipe: [docs/launch/clone-journal.md](./clone-journal.md)
+
+The migrated roles have no posting or closing dates, so no JobPosting schema is emitted yet.
+Add datePosted and validThrough from the client's ATS before adding the schema.
 
 ## Primary references
 

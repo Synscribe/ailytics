@@ -17,10 +17,12 @@ describe("launch checklist", () => {
     );
 
     expect(checklist.items).toHaveLength(44);
-    expect(checklist.projectItems).toEqual([]);
+    for (const item of checklist.projectItems) {
+      expect(item.id).toMatch(/^[A-Z]+-\d{2}$/);
+    }
     expect(
       new Set(allChecklistItems(checklist).map((item) => item.id)).size,
-    ).toBe(44);
+    ).toBe(44 + checklist.projectItems.length);
     expect(checklist.items.find((item) => item.id === "SEO-02")?.priority).toBe(
       "P0",
     );
