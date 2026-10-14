@@ -267,9 +267,9 @@ export default function WaterHazardVisual() {
         Safety line
       </Tag>
       <span
-        className="absolute z-10 rounded-full px-2 py-[3px] text-[10px] font-semibold shadow-sm"
+        className="absolute z-10 rounded-full px-2 py-[3px] text-[10px] font-medium shadow-sm"
         style={{
-          left: "91%",
+          right: "3%",
           top: "8%",
           background: "var(--paper)",
           color: "var(--ink)",

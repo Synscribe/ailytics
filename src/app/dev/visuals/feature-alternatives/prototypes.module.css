@@ -15,7 +15,7 @@
 .eyebrow {
   font-size: 11px;
   letter-spacing: 0.13em;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--ink-faint);
 }
 .header .eyebrow {
@@ -133,7 +133,7 @@
 .camera > span {
   display: block;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
 }
 .camera small {
   display: flex;
@@ -397,7 +397,7 @@
   align-items: center;
   gap: 10px;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   border-bottom: 1px solid var(--line);
   padding-bottom: 20px;
 }

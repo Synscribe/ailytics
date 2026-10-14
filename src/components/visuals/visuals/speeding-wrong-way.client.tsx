@@ -110,7 +110,7 @@ export default function SpeedingWrongWayVisual() {
       </CamOverlay>
 
       <span
-        className="absolute z-10 inline-flex -translate-x-1/2 -translate-y-[160%] items-center gap-1 rounded-full px-2 py-[3px] text-[10px] font-semibold shadow-sm"
+        className="absolute z-10 inline-flex -translate-x-1/2 -translate-y-[160%] items-center gap-1 rounded-full px-2 py-[3px] text-[10px] font-medium shadow-sm"
         style={{
           ...at(990, 766),
           background: "var(--paper)",
@@ -137,11 +137,11 @@ export default function SpeedingWrongWayVisual() {
         style={{ background: "var(--paper)", color: "var(--ink)" }}
         transition={{ duration: reduce ? 0 : 0.45, ease: EASE }}
       >
-        <span className="flex items-center justify-between text-[10.5px] font-semibold">
+        <span className="flex items-center justify-between text-[10.5px] font-medium">
           Speed
           <Pill tone="neutral">Sample</Pill>
         </span>
-        <span className="mt-1 block text-[20px] leading-none font-bold tracking-[-0.02em] tabular-nums">
+        <span className="mt-1 block text-[20px] leading-none font-medium tracking-[-0.02em] tabular-nums">
           <Counter
             duration={2.2}
             format={(v) => `${Math.round(v)} mph`}

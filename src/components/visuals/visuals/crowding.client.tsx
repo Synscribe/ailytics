@@ -9,7 +9,6 @@ import {
   CamOverlay,
   EventCard,
   Frame,
-  at,
   type Box,
 } from "./_camera";
 import { EASE, SPRING, TONES, useLoop } from "./_kit";
@@ -72,14 +71,15 @@ export default function CrowdingVisual() {
 
       {/* Head count against the zone limit. */}
       <div
-        className="absolute z-10 flex w-[150px] flex-col gap-2 rounded-xl p-2.5 shadow-md"
+        className="camera-detail absolute z-10 flex w-[150px] flex-col gap-2 rounded-xl p-2.5 shadow-md"
         style={{
-          ...at(28, 648),
+          right: "3%",
+          top: "21%",
           background: "var(--paper)",
           color: "var(--ink)",
         }}
       >
-        <span className="flex items-center justify-between text-[10.5px] font-semibold">
+        <span className="flex items-center justify-between text-[10.5px] font-medium">
           Zone B head count
           <UsersIcon
             aria-hidden="true"
@@ -90,7 +90,7 @@ export default function CrowdingVisual() {
         <span className="flex items-end gap-1.5">
           <motion.span
             animate={{ scale: [1.18, 1] }}
-            className="block text-[24px] leading-none font-bold tabular-nums"
+            className="block text-[24px] leading-none font-medium tabular-nums"
             key={count}
             style={{
               color: over ? t.fg : "var(--ink)",

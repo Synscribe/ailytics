@@ -1,3 +1,4 @@
+import { ProblemStory } from "./problem-story.client";
 import { ScrollSequence } from "./scroll-sequence.client";
 import { FaqAccordion } from "@/components/faq-accordion/faq-accordion";
 import { RevealGroup } from "@/components/reveal-group.client";
@@ -127,18 +128,12 @@ export function ContentPage({
       </section>
       <CustomerProof />
 
-      <section id="problems" className="detail-section">
-        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-          <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-            <h2 className={sectionHeading}>{content.problems.title}</h2>
-            <p className="brand-lead mt-5 max-w-2xl">
-              {content.problems.description}
-            </p>
-          </div>
-
-          <ScrollSequence items={content.problems.items} tone="alert" />
-        </div>
-      </section>
+      <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
+        <ProblemStory
+          kind={heroVisualId === "construction-hero" ? "construction" : "ppe"}
+          content={content.problems}
+        />
+      </div>
 
       <section id="how-it-works" className="detail-section">
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
@@ -171,12 +166,12 @@ export function ContentPage({
                   >
                     <div
                       data-reveal
-                      className={`flex min-w-0 flex-col gap-4 ${index % 2 ? "lg:order-2" : ""}`}
+                      className={`order-2 flex min-w-0 flex-col gap-4 ${index % 2 ? "lg:order-2" : "lg:order-1"}`}
                     >
-                      <p className="text-sm font-semibold text-ink-muted">
+                      <p className="text-sm font-medium text-ink-muted">
                         {item.eyebrow}
                       </p>
-                      <h3 className="text-balance text-3xl leading-[1.12] font-semibold tracking-[-0.025em]">
+                      <h3 className="text-balance text-3xl leading-[1.12] font-medium tracking-[-0.025em]">
                         {item.title}
                       </h3>
                       <p className="text-base leading-7 text-pretty text-ink-muted">
@@ -207,8 +202,8 @@ export function ContentPage({
                       data-reveal
                       className={
                         item.id === "real-time-alerts"
-                          ? "min-w-0 p-3"
-                          : "min-w-0"
+                          ? `order-1 min-w-0 p-3 ${index % 2 ? "lg:order-1" : "lg:order-2"}`
+                          : `order-1 min-w-0 ${index % 2 ? "lg:order-1" : "lg:order-2"}`
                       }
                     >
                       <div
@@ -248,15 +243,14 @@ export function ContentPage({
                   href={item.href}
                   key={item.href}
                 >
-                  <h3 className="text-xl font-semibold tracking-tight">
+                  <h3 className="text-xl font-medium tracking-tight">
                     {item.title}
                   </h3>
                   <p className="text-base leading-7 text-pretty text-ink-muted">
                     {item.description}
                   </p>
-                  <span className="mt-auto inline-flex items-center gap-2 pt-2 text-sm font-semibold group-hover:underline">
+                  <span className="mt-auto inline-flex items-center gap-2 pt-2 text-sm font-medium group-hover:underline">
                     {item.label}
-                    <ArrowRightIcon className="size-4" aria-hidden="true" />
                   </span>
                 </Link>
               ))}

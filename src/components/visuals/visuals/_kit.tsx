@@ -93,7 +93,7 @@ export function useLoop(phases: number, phaseMs = 1100, enabled = true) {
 
   return {
     ref,
-    phase,
+    phase: reduce ? phases - 1 : phase,
     cycle,
     running: !reduce && inView && enabled,
     reduce: !!reduce,
@@ -222,7 +222,7 @@ export function PlateHead({
   return (
     <div className="mb-3 flex items-center gap-2.5">
       {lead}
-      <span className="truncate text-[14px] font-semibold tracking-[-0.01em]">
+      <span className="truncate text-[14px] font-medium tracking-[-0.01em]">
         {title}
       </span>
       <span className="ml-auto">{badge}</span>
@@ -242,7 +242,7 @@ export function LiveBadge({
   const t = TONES[tone];
   return (
     <span
-      className="inline-flex items-center gap-[7px] rounded-full px-2.5 py-1 text-[10.5px] font-semibold tracking-[0.08em]"
+      className="inline-flex items-center gap-[7px] rounded-full px-2.5 py-1 text-[10.5px] font-medium tracking-[0.08em]"
       style={{ color: t.fg, background: t.tint }}
     >
       {pulse && (
@@ -273,7 +273,7 @@ export function Pill({
   return (
     <span
       className={cn(
-        "inline-flex rounded-full px-2.5 py-[3px] text-[10.5px] font-semibold transition-colors duration-500",
+        "inline-flex rounded-full px-2.5 py-[3px] text-[10.5px] font-medium transition-colors duration-500",
         className,
       )}
       style={{

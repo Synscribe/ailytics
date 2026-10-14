@@ -1,7 +1,6 @@
 import { FaqAccordion } from "@/components/faq-accordion/faq-accordion";
 import { CustomerProof } from "@/components/customer-proof/customer-proof";
 import {
-  ArrowRightIcon,
   BellRingIcon,
   CctvIcon,
   CloudIcon,
@@ -390,7 +389,6 @@ export default function HomePage() {
                   </div>
                   <h3>{uc.title}</h3>
                   <p>{uc.body}</p>
-                  <ArrowRightIcon aria-hidden="true" strokeWidth={1.75} />
                 </Link>
               </li>
             ))}
@@ -422,7 +420,6 @@ export default function HomePage() {
                   <Link href={ind.href} className={styles.industryCard}>
                     <h3>{ind.label}</h3>
                     <p>{ind.hazards}</p>
-                    <ArrowRightIcon aria-hidden="true" strokeWidth={1.75} />
                   </Link>
                 </li>
               ))}

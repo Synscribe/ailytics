@@ -55,9 +55,9 @@ export default function HardwareAgnosticVisual() {
                   className="size-4"
                   style={{ color: on ? accent.fg : MUTED }}
                 />
-                <span className="text-[11px] font-semibold">{camera.name}</span>
+                <span className="text-[11px] font-medium">{camera.name}</span>
                 <span
-                  className="text-[9.5px] font-semibold tracking-[0.06em]"
+                  className="text-[9.5px] font-medium tracking-[0.06em]"
                   style={{ color: MUTED }}
                 >
                   {camera.protocol}
@@ -128,7 +128,7 @@ export default function HardwareAgnosticVisual() {
           style={{ background: "var(--ink)", color: "var(--paper)" }}
         >
           <CpuIcon aria-hidden="true" className="size-3.5" />
-          <span className="text-[12px] font-semibold">Ailytics</span>
+          <span className="text-[12px] font-medium">Ailytics</span>
           <span className="text-[11px] font-medium tabular-nums opacity-75">
             {connected}/{CAMERAS.length} streams
           </span>

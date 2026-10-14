@@ -111,7 +111,7 @@ export function MobileNav({ navigation, primaryAction }: MobileNavProps) {
               </ul>
             </nav>
             <Link
-              className="mt-3 flex items-center justify-between rounded-xl bg-signal px-3 py-2.5 text-sm font-semibold text-ink"
+              className="mt-3 flex items-center justify-between rounded-xl bg-signal px-3 py-2.5 text-sm font-medium text-ink"
               href={primaryAction.href}
               onClick={() => setOpen(false)}
             >

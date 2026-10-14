@@ -135,7 +135,7 @@ export default function UnlimitedReportingVisual() {
                     />
                   </span>
                   <span className="min-w-0 flex-1">
-                    <span className="block truncate text-[11.5px] font-semibold">
+                    <span className="block truncate text-[11.5px] font-medium">
                       {row.what}
                     </span>
                     <span
@@ -146,7 +146,7 @@ export default function UnlimitedReportingVisual() {
                     </span>
                   </span>
                   <span
-                    className="text-[10.5px] font-semibold tabular-nums"
+                    className="text-[10.5px] font-medium tabular-nums"
                     style={{ color: MUTED }}
                   >
                     {row.time}
@@ -172,7 +172,7 @@ export default function UnlimitedReportingVisual() {
           </span>
           <motion.span
             animate={{ opacity: ready ? 1 : 0, scale: ready ? 1 : 0.6 }}
-            className="rounded-full px-2.5 py-[3px] text-[10.5px] font-semibold"
+            className="rounded-full px-2.5 py-[3px] text-[10.5px] font-medium"
             initial={false}
             style={{
               background: TONES.positive.tint,

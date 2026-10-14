@@ -11,7 +11,6 @@ import {
   Frame,
   StatePill,
   Tag,
-  at,
   type Box,
 } from "./_camera";
 import { EASE, TONES, useLoop } from "./_kit";
@@ -111,16 +110,17 @@ export default function PpeDetectionVisual() {
       {/* What the check found, item by item. */}
       <motion.div
         animate={{ opacity: phase >= 2 ? 1 : 0, x: phase >= 2 ? 0 : 8 }}
-        className="absolute z-10 flex w-[158px] flex-col gap-1.5 rounded-xl p-2 shadow-md"
+        className="camera-detail absolute z-10 flex w-[158px] flex-col gap-1.5 rounded-xl p-2 shadow-md"
         initial={false}
         style={{
-          ...at(752, 300),
+          right: "3%",
+          top: "33%",
           background: "var(--paper)",
           color: "var(--ink)",
         }}
         transition={{ duration: reduce ? 0 : 0.5, ease: EASE }}
       >
-        <span className="flex items-center gap-1.5 px-0.5 text-[10.5px] font-semibold">
+        <span className="flex items-center gap-1.5 px-0.5 text-[10.5px] font-medium">
           <HardHatIcon
             aria-hidden="true"
             className="size-3"
@@ -149,7 +149,7 @@ export default function PpeDetectionVisual() {
       <EventCard
         badge={
           <span
-            className="rounded-full px-2 py-[3px] text-[10.5px] font-semibold"
+            className="rounded-full px-2 py-[3px] text-[10.5px] font-medium"
             style={{ background: TONES.human.tint, color: TONES.human.fg }}
           >
             Alert sent

@@ -131,7 +131,7 @@ export default function CustomUseCasesVisual() {
                   >
                     {block.kind}
                   </span>
-                  <span className="ml-auto pr-1.5 text-[11.5px] font-semibold">
+                  <span className="ml-auto pr-1.5 text-[11.5px] font-medium">
                     {block.label}
                   </span>
                 </motion.div>
@@ -148,7 +148,7 @@ export default function CustomUseCasesVisual() {
           transition={{ duration: reduce ? 0 : 0.45, ease: EASE }}
         >
           <span>Applied to Camera 04 · Gate 2</span>
-          <span className="font-semibold" style={{ color: TONES.positive.fg }}>
+          <span className="font-medium" style={{ color: TONES.positive.fg }}>
             Saved
           </span>
         </motion.div>

@@ -58,7 +58,7 @@ export default function EdgeEngineVisual() {
             }}
           >
             <span
-              className="absolute top-1.5 left-2.5 text-[10.5px] font-semibold"
+              className="absolute top-1.5 left-2.5 text-[10.5px] font-medium"
               style={{ color: MUTED }}
             >
               Your site
@@ -66,7 +66,7 @@ export default function EdgeEngineVisual() {
             <div className="flex gap-1.5">
               {["Camera 01", "Camera 02"].map((name) => (
                 <span
-                  className="flex flex-1 items-center gap-1.5 rounded-lg px-2 py-1.5 text-[10.5px] font-semibold"
+                  className="flex flex-1 items-center gap-1.5 rounded-lg px-2 py-1.5 text-[10.5px] font-medium"
                   key={name}
                   style={{ background: INSET }}
                 >
@@ -118,7 +118,7 @@ export default function EdgeEngineVisual() {
             transition={{ duration: reduce ? 0 : 0.4, ease: EASE }}
           >
             <LockKeyholeIcon aria-hidden="true" className="size-3.5" />
-            <span className="text-[11.5px] font-semibold">
+            <span className="text-[11.5px] font-medium">
               Video stays on your site
             </span>
           </motion.div>
@@ -133,7 +133,7 @@ export default function EdgeEngineVisual() {
             transition={{ duration: reduce ? 0 : 0.4, ease: EASE }}
           >
             <CloudIcon aria-hidden="true" className="size-3.5" />
-            <span className="text-[11.5px] font-semibold">
+            <span className="text-[11.5px] font-medium">
               Runs in the cloud, no hardware on site
             </span>
           </motion.div>
@@ -166,14 +166,14 @@ function Slot({
         style={{ color: active ? "var(--ink)" : MUTED }}
       />
       <span
-        className="text-[10.5px] font-semibold"
+        className="text-[10.5px] font-medium"
         style={{ color: active ? "var(--ink)" : MUTED }}
       >
         {target.label}
       </span>
       {active ? (
         <motion.span
-          className="mt-auto inline-flex items-center gap-1 rounded-full px-2 py-[3px] text-[10px] font-semibold"
+          className="mt-auto inline-flex items-center gap-1 rounded-full px-2 py-[3px] text-[10px] font-medium"
           layoutId="edge-engine-chip"
           style={{ background: "var(--ink)", color: "var(--paper)" }}
           transition={reduce ? { duration: 0 } : SPRING}

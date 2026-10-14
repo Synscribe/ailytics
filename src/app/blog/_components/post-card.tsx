@@ -49,7 +49,7 @@ export function PostCard({
         ) : null}
 
         <Heading
-          className={`${label ? "mt-4" : "mt-0"} text-balance text-xl leading-snug font-semibold tracking-[-0.015em]`}
+          className={`${label ? "mt-4" : "mt-0"} text-balance text-xl leading-snug font-medium tracking-[-0.015em]`}
         >
           <Link
             className="outline-none after:absolute after:inset-0 focus-visible:underline"
@@ -59,7 +59,7 @@ export function PostCard({
           </Link>
         </Heading>
 
-        <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-signal-strong">
+        <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-signal-strong">
           Read article
           <ArrowUpRightIcon className="size-4" aria-hidden="true" />
         </span>

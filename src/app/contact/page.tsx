@@ -49,7 +49,7 @@ export default function ContactPage() {
             </p>
 
             <div className="mt-10 hidden lg:block">
-              <p className="text-sm font-semibold">It helps to include:</p>
+              <p className="text-sm font-medium">It helps to include:</p>
               <ul className="mt-5 space-y-4">
                 {usefulDetails.map((detail) => (
                   <li

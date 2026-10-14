@@ -82,7 +82,7 @@ export default function TimelapseXrayVisual() {
       </motion.div>
 
       <motion.span
-        className="absolute top-3 left-3 rounded-full px-2.5 py-1 text-[11px] font-semibold shadow-sm sm:top-4 sm:left-4"
+        className="absolute top-3 left-3 rounded-full px-2.5 py-1 text-[11px] font-medium shadow-sm sm:top-4 sm:left-4"
         style={{
           background: "var(--paper)",
           color: "var(--ink)",
@@ -92,7 +92,7 @@ export default function TimelapseXrayVisual() {
         Earlier
       </motion.span>
       <motion.span
-        className="absolute top-3 right-3 rounded-full px-2.5 py-1 text-[11px] font-semibold shadow-sm sm:top-4 sm:right-4"
+        className="absolute top-3 right-3 rounded-full px-2.5 py-1 text-[11px] font-medium shadow-sm sm:top-4 sm:right-4"
         style={{
           background: "var(--ink)",
           color: "var(--paper)",

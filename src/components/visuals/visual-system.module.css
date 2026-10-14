@@ -48,3 +48,61 @@
   :global(.rounded-xl) {
   border-radius: 8px;
 }
+
+.system {
+  container-type: inline-size;
+}
+.system :global(.camera-tag) {
+  max-width: calc(100% - 16px);
+}
+.system :global(.camera-tag) > span {
+  white-space: normal;
+}
+@container (max-width: 420px) {
+  .system :global(.camera-tag) {
+    left: clamp(8px, var(--tag-x), calc(100% - 112px)) !important;
+    max-width: 108px;
+  }
+  .system :global(.camera-tag) > span {
+    font-size: 9px;
+    line-height: 1.15;
+  }
+  .system :global(.camera-event) {
+    gap: 6px;
+    padding: 8px;
+    inset-inline: 8px;
+    bottom: 8px;
+    width: auto;
+  }
+  .system :global(.camera-event) > span:first-child {
+    width: 22px;
+    height: 22px;
+  }
+  .system :global(.camera-event) > span:last-child:not(:nth-child(2)) {
+    display: none;
+  }
+}
+
+@container (max-width: 420px) {
+  .system :global(.truncate) {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+}
+
+@container (max-width: 420px) {
+  .system
+    :global(.camera-stage):has(:global(.camera-event[data-visible="true"]))
+    :global(.camera-detail) {
+    visibility: hidden;
+  }
+}
+@container (max-width: 340px) {
+  .system :global(.camera-badge) > span {
+    display: none;
+  }
+  .system :global(.camera-event) > span:nth-child(2) > span:nth-child(2) {
+    display: none;
+  }
+}

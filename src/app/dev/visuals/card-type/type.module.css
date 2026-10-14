@@ -97,7 +97,7 @@
 .type .toast > span:nth-child(2) > span:first-child,
 .combined .toast > span:nth-child(2) > span:first-child {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: -0.015em;
   line-height: 1.4;
 }

@@ -50,7 +50,7 @@ export default function RealTimeAlertsVisual() {
             className="flex items-center justify-between border-b px-3 py-2"
             style={{ borderColor: LINE }}
           >
-            <span className="text-[12px] font-semibold">Alerts</span>
+            <span className="text-[12px] font-medium">Alerts</span>
             <BellRingIcon
               aria-hidden="true"
               className="size-3.5"
@@ -107,7 +107,7 @@ export default function RealTimeAlertsVisual() {
                   <BellRingIcon aria-hidden="true" className="size-3" />
                 </span>
                 <span className="min-w-0">
-                  <span className="block truncate text-[11.5px] font-semibold">
+                  <span className="block truncate text-[11.5px] font-medium">
                     Missing PPE detected
                   </span>
                   <span
@@ -133,7 +133,7 @@ export default function RealTimeAlertsVisual() {
                 transition={{ duration: 0.55, ease: EASE }}
               >
                 <div className="px-3 pt-2.5 pb-2">
-                  <span className="block text-[12.5px] font-semibold">
+                  <span className="block text-[12.5px] font-medium">
                     No vest, no hard hat
                   </span>
                   <span
@@ -175,7 +175,7 @@ export default function RealTimeAlertsVisual() {
                   <span className="relative mt-0.5 h-[20px]">
                     <motion.span
                       animate={{ opacity: reviewed ? 0 : 1 }}
-                      className="absolute inset-y-0 left-0 inline-flex items-center rounded-full px-2 text-[10px] font-semibold"
+                      className="absolute inset-y-0 left-0 inline-flex items-center rounded-full px-2 text-[10px] font-medium"
                       initial={false}
                       style={{ background: alert.tint, color: alert.fg }}
                       transition={{ duration: 0.3 }}
@@ -187,7 +187,7 @@ export default function RealTimeAlertsVisual() {
                         opacity: reviewed ? 1 : 0,
                         scale: reviewed ? 1 : 0.6,
                       }}
-                      className="absolute inset-y-0 left-0 inline-flex items-center rounded-full px-2 text-[10px] font-semibold"
+                      className="absolute inset-y-0 left-0 inline-flex items-center rounded-full px-2 text-[10px] font-medium"
                       initial={false}
                       style={{
                         background: TONES.positive.tint,

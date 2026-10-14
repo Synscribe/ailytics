@@ -83,7 +83,7 @@ export default function NoAccessZonesVisual() {
 
       <motion.span
         animate={{ opacity: closed ? 1 : 0, y: closed ? 0 : 6 }}
-        className="absolute top-[42%] left-1/2 -translate-x-1/2 rounded-full px-2.5 py-1 text-[11px] font-semibold whitespace-nowrap shadow-sm"
+        className="absolute top-[42%] left-1/2 -translate-x-1/2 rounded-full px-2.5 py-1 text-[11px] font-medium whitespace-nowrap shadow-sm"
         initial={false}
         style={{ background: "var(--paper)", color: alert.fg }}
         transition={{ duration: reduce ? 0 : 0.5, ease: EASE }}
@@ -118,7 +118,7 @@ export default function NoAccessZonesVisual() {
           </svg>
         </span>
         <span className="min-w-0 flex-1">
-          <span className="block truncate text-[12.5px] font-semibold">
+          <span className="block truncate text-[12.5px] font-medium">
             Restricted zone saved
           </span>
           <span
@@ -129,7 +129,7 @@ export default function NoAccessZonesVisual() {
           </span>
         </span>
         <span
-          className="rounded-full px-2 py-[3px] text-[10.5px] font-semibold"
+          className="rounded-full px-2 py-[3px] text-[10.5px] font-medium"
           style={{ background: TONES.positive.tint, color: TONES.positive.fg }}
         >
           On

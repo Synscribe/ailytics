@@ -51,7 +51,7 @@ export default async function VisualInventoryPage() {
     <main className="bg-canvas px-5 py-14 sm:px-8 lg:py-20" id="main-content">
       <div className="mx-auto max-w-7xl">
         <Link
-          className="inline-flex items-center gap-2 text-sm font-semibold text-ink-muted hover:text-ink"
+          className="inline-flex items-center gap-2 text-sm font-medium text-ink-muted hover:text-ink"
           href="/dev"
         >
           <ArrowLeftIcon className="size-4" />
@@ -59,7 +59,7 @@ export default async function VisualInventoryPage() {
         </Link>
 
         <header className="mt-10 max-w-4xl border-b border-ink/10 pb-10">
-          <p className="text-xs font-bold tracking-[0.18em] text-signal-strong uppercase">
+          <p className="text-xs font-medium tracking-[0.18em] text-signal-strong uppercase">
             {VISUAL_ENTRIES.length} registered visuals
           </p>
           <h1 className="mt-5 font-display text-5xl leading-[0.96] tracking-[-0.045em] sm:text-6xl">
@@ -84,18 +84,18 @@ export default async function VisualInventoryPage() {
               >
                 <div className="mb-5 flex flex-wrap items-start justify-between gap-4">
                   <div>
-                    <p className="text-[11px] font-bold tracking-[0.14em] text-ink-faint uppercase">
+                    <p className="text-[11px] font-medium tracking-[0.14em] text-ink-faint uppercase">
                       Visual {String(index + 1).padStart(2, "0")}
                     </p>
-                    <h2 className="mt-2 text-2xl font-semibold tracking-tight">
+                    <h2 className="mt-2 text-2xl font-medium tracking-tight">
                       {entry.label}
                     </h2>
                   </div>
                   <div className="flex flex-wrap justify-end gap-2">
-                    <span className="rounded-full border border-ink/10 bg-paper px-3 py-1.5 text-[10px] font-bold tracking-[0.1em] text-ink-muted uppercase">
+                    <span className="rounded-full border border-ink/10 bg-paper px-3 py-1.5 text-[10px] font-medium tracking-[0.1em] text-ink-muted uppercase">
                       {entry.kind}
                     </span>
-                    <span className="rounded-full border border-signal/15 bg-signal/5 px-3 py-1.5 text-[10px] font-bold tracking-[0.1em] text-signal-strong uppercase">
+                    <span className="rounded-full border border-signal/15 bg-signal/5 px-3 py-1.5 text-[10px] font-medium tracking-[0.1em] text-signal-strong uppercase">
                       {entry.status === "template-placeholder"
                         ? "Template placeholder"
                         : "Project visual"}

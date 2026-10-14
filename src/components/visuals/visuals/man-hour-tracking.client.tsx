@@ -74,7 +74,7 @@ export default function ManHourTrackingVisual() {
 
         <div className="mb-3 flex items-end justify-between gap-3">
           <div>
-            <span className="block text-[22px] leading-none font-bold tracking-[-0.02em]">
+            <span className="block text-[22px] leading-none font-medium tracking-[-0.02em]">
               <Hours instant={reduce} value={total} />
             </span>
             <span
@@ -85,7 +85,7 @@ export default function ManHourTrackingVisual() {
             </span>
           </div>
           <span
-            className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold tabular-nums"
+            className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-medium tabular-nums"
             style={{ background: INSET }}
           >
             <svg fill="none" height="12" viewBox="0 0 24 24" width="12">
@@ -115,7 +115,7 @@ export default function ManHourTrackingVisual() {
         <div className="flex flex-col gap-2">
           {AREAS.map((area) => (
             <div className="flex items-center gap-2.5" key={area.name}>
-              <span className="w-[52px] flex-none text-[11.5px] font-semibold">
+              <span className="w-[52px] flex-none text-[11.5px] font-medium">
                 {area.name}
               </span>
               <span
@@ -131,7 +131,7 @@ export default function ManHourTrackingVisual() {
                 />
               </span>
               <span
-                className="w-[40px] flex-none text-right text-[11.5px] font-semibold"
+                className="w-[40px] flex-none text-right text-[11.5px] font-medium"
                 style={{ color: area.hours[phase] ? "var(--ink)" : FAINT }}
               >
                 <Hours instant={reduce} value={area.hours[phase]} />

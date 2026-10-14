@@ -87,7 +87,7 @@ export default function LoiteringUnattendedVisual() {
       {/* Dwell clock beside the person. */}
       <motion.div
         animate={{ opacity: watching ? 1 : 0, x: watching ? 0 : -6 }}
-        className="absolute z-10 flex w-[132px] flex-col gap-1 rounded-xl p-2.5 shadow-md"
+        className="camera-detail absolute z-10 flex w-[132px] flex-col gap-1 rounded-xl p-2.5 shadow-md"
         initial={false}
         style={{
           ...at(560, 420),
@@ -96,7 +96,7 @@ export default function LoiteringUnattendedVisual() {
         }}
         transition={{ duration: reduce ? 0 : 0.45, ease: EASE }}
       >
-        <span className="flex items-center gap-1.5 text-[10.5px] font-semibold">
+        <span className="flex items-center gap-1.5 text-[10.5px] font-medium">
           <TimerIcon
             aria-hidden="true"
             className="size-3"
@@ -104,7 +104,7 @@ export default function LoiteringUnattendedVisual() {
           />
           Time at gate
         </span>
-        <span className="text-[20px] leading-none font-bold tracking-[-0.02em] tabular-nums">
+        <span className="text-[20px] leading-none font-medium tracking-[-0.02em] tabular-nums">
           {STEPS[step]}
         </span>
         <span

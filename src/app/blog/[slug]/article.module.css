@@ -13,7 +13,7 @@
 .prose h4 {
   color: var(--ink);
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: -0.025em;
   text-wrap: balance;
   scroll-margin-top: 6rem;
@@ -39,7 +39,7 @@
 
 .prose a {
   color: var(--signal-strong);
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: underline;
   text-decoration-thickness: 0.08em;
   text-underline-offset: 0.16em;

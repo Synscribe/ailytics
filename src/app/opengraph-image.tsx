@@ -48,14 +48,14 @@ export default function OpenGraphImage() {
     >
       <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
         <BrandMark />
-        <span style={{ fontSize: 36, fontWeight: 700 }}>{siteConfig.name}</span>
+        <span style={{ fontSize: 36, fontWeight: 500 }}>{siteConfig.name}</span>
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
         <div
           style={{
             display: "flex",
             fontSize: 72,
-            fontWeight: 600,
+            fontWeight: 500,
             lineHeight: 1.05,
             letterSpacing: -2,
             maxWidth: 900,

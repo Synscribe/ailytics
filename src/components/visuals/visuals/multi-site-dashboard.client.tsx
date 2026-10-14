@@ -116,7 +116,7 @@ export default function MultiSiteDashboardVisual() {
                 transition={reduce ? { duration: 0 } : SPRING}
               >
                 <span
-                  className="inline-flex items-center gap-1 rounded-full px-1.5 py-[2px] text-[9.5px] font-semibold whitespace-nowrap shadow-sm"
+                  className="inline-flex items-center gap-1 rounded-full px-1.5 py-[2px] text-[9.5px] font-medium whitespace-nowrap shadow-sm"
                   style={{ background: "var(--paper)", color: "var(--ink)" }}
                 >
                   <i
@@ -151,7 +151,7 @@ export default function MultiSiteDashboardVisual() {
                 style={{ background: INSET }}
                 transition={SPRING}
               >
-                <span className="font-semibold">{site.name}</span>
+                <span className="font-medium">{site.name}</span>
                 <span className="ml-auto inline-grid justify-items-end">
                   <motion.span
                     animate={{ opacity: on ? 0 : 1 }}
@@ -164,7 +164,7 @@ export default function MultiSiteDashboardVisual() {
                   </motion.span>
                   <motion.span
                     animate={{ opacity: on ? 1 : 0, scale: on ? 1 : 0.7 }}
-                    className="col-start-1 row-start-1 rounded-full px-2 py-[1px] text-[10px] font-semibold tabular-nums"
+                    className="col-start-1 row-start-1 rounded-full px-2 py-[1px] text-[10px] font-medium tabular-nums"
                     initial={false}
                     style={{ background: t.tint, color: t.fg }}
                     transition={reduce ? { duration: 0 } : SPRING}

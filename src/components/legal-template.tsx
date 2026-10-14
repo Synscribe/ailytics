@@ -16,7 +16,7 @@ export function LegalTemplate({
   return (
     <main id="main-content">
       <article className="mx-auto w-full max-w-3xl px-5 pt-14 pb-20 sm:px-8 sm:pt-16 sm:pb-28 lg:pt-20">
-        <p className="text-sm font-semibold text-ink-muted">{eyebrow}</p>
+        <p className="text-sm font-medium text-ink-muted">{eyebrow}</p>
         <h1 className="brand-h1 mt-4">{title}</h1>
         <div className="brand-card mt-8 p-5 text-sm leading-6 text-ink-muted">
           <strong className="text-ink">Template status:</strong>{" "}
@@ -29,7 +29,7 @@ export function LegalTemplate({
         <div className="mt-14 space-y-10">
           {sections.map((section) => (
             <section key={section.title}>
-              <h2 className="text-2xl font-semibold tracking-tight">
+              <h2 className="text-2xl font-medium tracking-tight">
                 {section.title}
               </h2>
               <p className="mt-4 leading-7 text-ink-muted">{section.body}</p>

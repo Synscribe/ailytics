@@ -81,7 +81,7 @@ export default function ConstructionHeroVisual() {
       {/* Everything this one camera checks at the site entrance. */}
       <motion.div
         animate={{ opacity: checking ? 1 : 0, x: checking ? 0 : 8 }}
-        className="absolute z-10 flex w-[178px] flex-col gap-1.5 rounded-xl p-2 shadow-md"
+        className="camera-detail absolute z-10 flex w-[178px] flex-col gap-1.5 rounded-xl p-2 shadow-md"
         initial={false}
         style={{
           right: "3%",
@@ -91,7 +91,7 @@ export default function ConstructionHeroVisual() {
         }}
         transition={{ duration: reduce ? 0 : 0.5, ease: EASE }}
       >
-        <span className="flex items-center gap-1.5 px-0.5 text-[10.5px] font-semibold">
+        <span className="flex items-center gap-1.5 px-0.5 text-[10.5px] font-medium">
           <ConstructionIcon
             aria-hidden="true"
             className="size-3"
@@ -101,7 +101,7 @@ export default function ConstructionHeroVisual() {
         </span>
         {CHECKS.map((item) => (
           <span
-            className="flex items-center justify-between gap-2 rounded-lg px-1.5 py-1 text-[10.5px] font-medium whitespace-nowrap"
+            className="flex items-center justify-between gap-2 rounded-lg px-1.5 py-1 text-[10.5px] font-medium"
             key={item.label}
             style={{ background: "var(--muted)" }}
           >
@@ -121,7 +121,7 @@ export default function ConstructionHeroVisual() {
       <EventCard
         badge={
           <span
-            className="rounded-full px-2 py-[3px] text-[10.5px] font-semibold whitespace-nowrap"
+            className="rounded-full px-2 py-[3px] text-[10.5px] font-medium"
             style={{
               background: TONES.positive.tint,
               color: TONES.positive.fg,

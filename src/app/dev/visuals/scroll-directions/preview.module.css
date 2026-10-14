@@ -44,13 +44,13 @@
 }
 .small {
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.1em;
   color: var(--ink-muted);
 }
 .number {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--ink-muted);
 }
 .sectionIntro {
@@ -121,7 +121,7 @@
   display: flex;
   gap: 8px;
   align-items: center;
-  font-weight: 600;
+  font-weight: 500;
 }
 .consoleHead span:last-child {
   color: var(--ink-muted);
@@ -201,7 +201,7 @@
 .event h4 {
   font-size: 17px;
   margin: 8px 0 18px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: -0.02em;
 }
 .track {
@@ -466,5 +466,5 @@
 .mosaicCopy h2,
 .end h2,
 .step h3 {
-  font-weight: 600;
+  font-weight: 500;
 }

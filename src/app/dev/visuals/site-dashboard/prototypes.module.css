@@ -39,7 +39,7 @@
 }
 .description > span {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--ink-muted);
 }
 .description h2 {

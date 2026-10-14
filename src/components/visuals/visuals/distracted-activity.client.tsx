@@ -100,7 +100,7 @@ export default function DistractedActivityVisual() {
         transition={reduce ? { duration: 0 } : SPRING}
       >
         <span
-          className="absolute bottom-1.5 left-1.5 inline-flex items-center gap-1 rounded-md px-1.5 py-[3px] text-[10px] font-semibold"
+          className="absolute bottom-1.5 left-1.5 inline-flex items-center gap-1 rounded-md px-1.5 py-[3px] text-[10px] font-medium"
           style={{ background: "var(--paper)", color: "var(--ink)" }}
         >
           <SmartphoneIcon aria-hidden="true" className="size-3" />
@@ -111,18 +111,18 @@ export default function DistractedActivityVisual() {
       {/* Dwell timer: how long the phone has been in use. */}
       <motion.div
         animate={{ opacity: timing ? 1 : 0, y: timing ? 0 : 6 }}
-        className="absolute z-10 w-[150px] rounded-xl p-2.5 shadow-md"
+        className="camera-detail absolute z-10 w-[150px] rounded-xl p-2.5 shadow-md"
         initial={false}
         style={{
-          ...at(300, 590),
+          ...at(300, 455),
           background: "var(--paper)",
           color: "var(--ink)",
         }}
         transition={{ duration: reduce ? 0 : 0.45, ease: EASE }}
       >
-        <span className="flex items-baseline justify-between text-[10.5px] font-semibold">
+        <span className="flex items-baseline justify-between text-[10.5px] font-medium">
           In use for
-          <span className="text-[15px] font-bold tabular-nums">
+          <span className="text-[15px] font-medium tabular-nums">
             <Counter
               duration={2.6}
               format={(v) => `${Math.round(v)} s`}

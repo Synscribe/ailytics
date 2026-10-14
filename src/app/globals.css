@@ -19,7 +19,7 @@
   --alert: #ff7a59;
   --caution: #fbc02d;
   --radius-card: 1.5rem;
-  --shadow-card: 0 24px 80px rgba(39, 64, 93, 0.09);
+  --shadow-card: 0 2px 8px rgba(39, 64, 93, 0.035);
   --radius: 0.75rem;
   --background: var(--canvas);
   --foreground: var(--ink);
@@ -122,7 +122,7 @@ button {
   color: var(--paper);
   padding: 0.65rem 1rem;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .skip-link:focus {
@@ -194,7 +194,7 @@ button {
   .brand-h1 {
     font-size: clamp(2.5rem, 5vw, 3.75rem);
     line-height: 1.05;
-    font-weight: 500;
+    font-weight: 300;
     letter-spacing: -0.035em;
     text-wrap: balance;
   }
@@ -202,7 +202,7 @@ button {
   .brand-h2 {
     font-size: clamp(1.875rem, 3.2vw, 2.5rem);
     line-height: 1.08;
-    font-weight: 500;
+    font-weight: 300;
     letter-spacing: -0.03em;
     text-wrap: balance;
   }
@@ -224,7 +224,7 @@ button {
     padding: 14px 22px;
     border-radius: 999px;
     font-size: 0.97rem;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.2;
     white-space: nowrap;
     transition:
@@ -235,10 +235,8 @@ button {
 
   .brand-btn-primary {
     background: var(--signal);
-    color: var(--ink);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.45),
-      0 8px 20px -12px rgba(52, 193, 196, 0.9);
+    color: var(--paper);
+    box-shadow: 0 1px 3px rgba(39, 64, 93, 0.08);
   }
 
   .brand-btn-primary:hover,
@@ -275,7 +273,7 @@ button {
     background: var(--paper);
     border: 1px solid rgba(39, 64, 93, 0.1);
     border-radius: 16px;
-    box-shadow: 0 20px 40px -32px rgba(39, 64, 93, 0.4);
+    box-shadow: 0 2px 8px rgba(39, 64, 93, 0.035);
   }
 
   .brand-card-link {
@@ -320,4 +318,23 @@ button {
   .detail-page #problems {
     padding-top: 0;
   }
+}
+
+/* Shared editorial hierarchy: size establishes rank, weight stays restrained. */
+main h1,
+main h2 {
+  font-weight: 300;
+}
+main h3,
+main h4 {
+  font-weight: 500;
+}
+strong,
+b {
+  font-weight: 500;
+}
+
+.brand-btn-primary:hover {
+  background: var(--ink-muted);
+  color: var(--paper);
 }

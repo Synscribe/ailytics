@@ -107,7 +107,7 @@ export default function PpeHeroVisual() {
       <EventCard
         badge={
           <span
-            className="rounded-full px-2 py-[3px] text-[10.5px] font-semibold whitespace-nowrap"
+            className="rounded-full px-2 py-[3px] text-[10.5px] font-medium whitespace-nowrap"
             style={{
               background: TONES.positive.tint,
               color: TONES.positive.fg,

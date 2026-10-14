@@ -199,7 +199,7 @@ function Stat({
         {label}
       </span>
       <span
-        className="block text-[18px] leading-tight font-bold tracking-[-0.02em]"
+        className="block text-[18px] leading-tight font-medium tracking-[-0.02em]"
         style={{ color: muted ? "var(--ink-muted)" : "var(--ink)" }}
       >
         <Counter

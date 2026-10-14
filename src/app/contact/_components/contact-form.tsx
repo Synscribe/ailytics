@@ -298,7 +298,7 @@ export function ContactForm({
       ) : null}
 
       <Button
-        className="mt-7 h-auto w-full rounded-full bg-signal px-6 py-3.5 text-base font-semibold text-white shadow-[0_8px_28px_rgba(52,193,196,0.2)] hover:bg-signal-strong sm:w-auto"
+        className="mt-7 h-auto w-full rounded-full bg-signal px-6 py-3.5 text-base font-medium text-white shadow-[0_8px_28px_rgba(52,193,196,0.2)] hover:bg-signal-strong sm:w-auto"
         disabled={
           !deliveryConfigured ||
           state === "sending" ||
@@ -337,7 +337,7 @@ function Field({
 }) {
   return (
     <div>
-      <label className="text-sm font-semibold text-ink" htmlFor={id}>
+      <label className="text-sm font-medium text-ink" htmlFor={id}>
         {label}
         {required ? <span className="text-signal"> *</span> : null}
       </label>

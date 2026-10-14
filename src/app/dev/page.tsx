@@ -29,7 +29,7 @@ export default function DevPage() {
     <main className="bg-canvas px-5 py-16 sm:px-8 lg:py-24" id="main-content">
       <div className="mx-auto max-w-6xl">
         <header className="max-w-3xl">
-          <p className="text-xs font-bold tracking-[0.18em] text-signal-strong uppercase">
+          <p className="text-xs font-medium tracking-[0.18em] text-signal-strong uppercase">
             Environment-gated workspace
           </p>
           <h1 className="mt-5 font-display text-5xl leading-[0.96] tracking-[-0.045em] sm:text-6xl">
@@ -57,10 +57,10 @@ export default function DevPage() {
                   </span>
                   <ArrowRightIcon className="size-5 text-ink-faint transition-transform duration-200 group-hover:translate-x-1" />
                 </div>
-                <p className="mt-10 text-xs font-bold tracking-[0.14em] text-signal-strong uppercase">
+                <p className="mt-10 text-xs font-medium tracking-[0.14em] text-signal-strong uppercase">
                   {tool.eyebrow}
                 </p>
-                <h2 className="mt-3 text-2xl font-semibold tracking-tight">
+                <h2 className="mt-3 text-2xl font-medium tracking-tight">
                   {tool.title}
                 </h2>
                 <p className="mt-4 leading-7 text-ink-muted">

@@ -118,7 +118,7 @@ export default function MachineryProximityVisual() {
 
       <motion.span
         animate={{ opacity: armed ? 1 : 0, scale: armed ? 1 : 0.8 }}
-        className="absolute top-2.5 right-2.5 z-10 rounded-full px-2.5 py-1 text-[10.5px] font-semibold shadow-sm sm:top-3.5 sm:right-3.5"
+        className="absolute top-2.5 right-2.5 z-10 rounded-full px-2.5 py-1 text-[10.5px] font-medium shadow-sm sm:top-3.5 sm:right-3.5"
         initial={false}
         style={{ background: "var(--paper)", color: TONES.human.fg }}
         transition={reduce ? { duration: 0 } : SPRING}

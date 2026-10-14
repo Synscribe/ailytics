@@ -51,12 +51,8 @@ function HubCard({ item }: { item: HubItem }) {
         />
       </div>
       <div className="flex flex-1 flex-col gap-2 border-b border-ink/15 pt-5 pb-7">
-        <h3 className="flex items-start justify-between gap-3 text-lg leading-7 font-semibold text-balance">
+        <h3 className="flex items-start justify-between gap-3 text-lg leading-7 font-medium text-balance">
           {item.title}
-          <ArrowRightIcon
-            className="mt-1 size-4 shrink-0 text-ink-muted transition-transform group-hover:translate-x-0.5 group-hover:text-ink"
-            aria-hidden="true"
-          />
         </h3>
         <p className="text-sm leading-6 text-pretty text-ink-muted">
           {item.description}

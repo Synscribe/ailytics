@@ -63,7 +63,7 @@ async function BlogResults({ searchParams }: BlogPageProps) {
   if (!isWispConfigured) {
     return (
       <div className="brand-card px-6 py-10 sm:px-10">
-        <h2 className="text-2xl font-semibold tracking-tight">
+        <h2 className="text-2xl font-medium tracking-tight">
           Connect the publication
         </h2>
         <p className="mt-3 max-w-2xl leading-7 text-ink-muted">
@@ -92,7 +92,7 @@ async function BlogResults({ searchParams }: BlogPageProps) {
   if (gridOutcome.status === "rejected") {
     return (
       <div className="brand-card px-6 py-10 sm:px-10">
-        <h2 className="text-2xl font-semibold tracking-tight">
+        <h2 className="text-2xl font-medium tracking-tight">
           Articles are temporarily unavailable
         </h2>
         <p className="mt-3 text-ink-muted">
@@ -221,7 +221,7 @@ async function BlogResults({ searchParams }: BlogPageProps) {
           </p>
           {query ? (
             <Link
-              className="font-semibold text-signal-strong"
+              className="font-medium text-signal-strong"
               href={clearSearchHref}
             >
               Clear search
@@ -242,7 +242,7 @@ async function BlogResults({ searchParams }: BlogPageProps) {
         </div>
       ) : (
         <div className="brand-card px-6 py-10 sm:px-10">
-          <h2 className="text-2xl font-semibold tracking-tight">
+          <h2 className="text-2xl font-medium tracking-tight">
             No articles found
           </h2>
           <p className="mt-3 text-ink-muted">

@@ -56,7 +56,7 @@ export function CameraStage({
 }) {
   return (
     <VisualFrame
-      className={cn("overflow-hidden p-0 sm:p-0", className)}
+      className={cn("camera-stage overflow-hidden p-0 sm:p-0", className)}
       innerRef={innerRef}
     >
       <Image
@@ -98,7 +98,7 @@ export function CamOverlay({
 export function CamBadge({ camera, place }: { camera: string; place: string }) {
   return (
     <span
-      className="absolute top-2.5 left-2.5 inline-flex items-center gap-1.5 rounded-full py-1 pr-2.5 pl-2 text-[10.5px] font-semibold shadow-sm sm:top-3.5 sm:left-3.5"
+      className="camera-badge absolute top-2.5 left-2.5 inline-flex items-center gap-1.5 rounded-full py-1 pr-2.5 pl-2 text-[10.5px] font-medium shadow-sm sm:top-3.5 sm:left-3.5"
       style={{ background: "var(--paper)", color: "var(--ink)" }}
     >
       <motion.i
@@ -204,16 +204,20 @@ export function Tag({
         y: visible ? 0 : 4,
         filter: visible ? "blur(0px)" : "blur(4px)",
       }}
-      className="absolute z-10 flex items-center"
+      className="camera-tag absolute z-10 flex items-center"
       initial={false}
-      style={{
-        ...at(x, y),
-        translate: below ? "-1px 3px" : "-1px calc(-100% - 3px)",
-      }}
+      style={
+        {
+          ...at(x, y),
+          "--tag-x": `${(x / CAM_W) * 100}%`,
+          top: `max(64px, ${(y / CAM_H) * 100}%)`,
+          translate: below ? "-1px 3px" : "-1px calc(-100% - 3px)",
+        } as CSSProperties
+      }
       transition={instant ? { duration: 0 } : { duration: 0.4, ease: EASE }}
     >
       <span
-        className="inline-flex items-center gap-1 rounded-[5px] px-1.5 py-[3px] text-[10px] leading-none font-semibold whitespace-nowrap shadow-sm"
+        className="inline-flex items-center gap-1 rounded-[5px] px-1.5 py-[3px] text-[10px] leading-none font-medium whitespace-nowrap shadow-sm"
         style={style}
       >
         {tone === "detect" ? (
@@ -257,9 +261,10 @@ export function EventCard({
         filter: show ? "blur(0px)" : "blur(6px)",
       }}
       className={cn(
-        "absolute inset-x-2.5 bottom-2.5 z-20 flex items-center gap-2.5 rounded-xl px-3 py-2.5 shadow-md sm:inset-x-3.5 sm:bottom-3.5",
+        "camera-event absolute inset-x-2.5 bottom-2.5 z-20 flex items-center gap-2.5 rounded-xl px-3 py-2.5 shadow-md sm:inset-x-3.5 sm:bottom-3.5",
         className,
       )}
+      data-visible={show}
       initial={false}
       style={{ background: "var(--paper)", color: "var(--ink)" }}
       transition={instant ? { duration: 0 } : { duration: 0.6, ease: EASE }}
@@ -271,11 +276,11 @@ export function EventCard({
         {icon}
       </span>
       <span className="min-w-0 flex-1">
-        <span className="block truncate text-[12.5px] font-semibold">
+        <span className="block text-[12.5px] leading-snug font-medium">
           {title}
         </span>
         <span
-          className="block truncate text-[11px] font-medium"
+          className="block text-[11px] leading-snug font-medium"
           style={{ color: "var(--ink-faint)" }}
         >
           {meta}
@@ -302,7 +307,7 @@ export function StatePill({
 }) {
   const t = TONES[onTone];
   return (
-    <span className="relative inline-grid flex-none text-[10.5px] font-semibold">
+    <span className="relative inline-grid flex-none text-[10.5px] font-medium">
       <motion.span
         animate={{ opacity: on ? 0 : 1 }}
         className="col-start-1 row-start-1 rounded-full px-2 py-[3px] text-center"

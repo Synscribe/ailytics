@@ -42,7 +42,7 @@ export function FeaturedPost({
             {post.description}
           </p>
         ) : null}
-        <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-signal-strong">
+        <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-signal-strong">
           Read article
           <ArrowUpRightIcon className="size-4" aria-hidden="true" />
         </span>
