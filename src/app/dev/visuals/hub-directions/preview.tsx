@@ -12,7 +12,7 @@ const cards: {
   {
     title: "PPE detection",
     description: "Spots missing hard hats, vests and gloves in each work area.",
-    href: "/uses/ppe-detection",
+    href: "/use-cases/ppe-detection",
     visualId: "ppe-hero",
   },
   {
