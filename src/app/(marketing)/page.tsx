@@ -7,9 +7,9 @@ import {
   FileTextIcon,
   MapPinnedIcon,
   PlusIcon,
-  ScanFaceIcon,
-  ServerIcon,
   ShieldCheckIcon,
+  ServerIcon,
+  ScanFaceIcon,
   WorkflowIcon,
 } from "lucide-react";
 import type { Metadata } from "next";
@@ -32,7 +32,7 @@ import {
 } from "./_components/feature-visuals.client";
 import { HeroWall } from "./_components/hero-wall.client";
 import { ProblemScene } from "./_components/problem-scene.client";
-import { RevealGroup } from "./_components/reveal-group.client";
+import { RevealGroup } from "@/components/reveal-group.client";
 import styles from "./home.module.css";
 
 export const metadata: Metadata = createPageMetadata({
@@ -54,19 +54,19 @@ const FEATURES: Feature[] = [
   {
     id: "real-3d-distance",
     title: "Real 3D distance from one camera",
-    body: "Measures how close workers are to plant, vehicles and lifted loads in real meters, from a single CCTV camera. No LiDAR or radar.",
+    body: "Measures how close workers are to plant, vehicles and lifted loads in real metres, from a single CCTV camera. No LiDAR or radar.",
     visual: <DepthVisual />,
     link: { href: "#how-it-works", label: "How 3D distance works" },
   },
   {
     id: "harsh-conditions",
     title: "Accurate in rain, dust and low light",
-    body: "Built for live outdoor sites: night shifts, rain, dust and long-range cameras, with 80 to 95% detection accuracy in the field.",
+    body: "Built for live outdoor sites: night shifts, rain, dust and long-range cameras, with 80–95% detection accuracy in the field.",
     visual: <HarshVisual />,
   },
   {
     id: "ask-your-cameras",
-    title: "Search footage in plain English",
+    title: "Search footage in plain language",
     body: "Ask about smoke, idle machinery or unauthorized entry and get the matching clips with camera and time. Powered by Ailytics’ vision language model.",
     visual: <AskVisual />,
   },
@@ -79,7 +79,7 @@ const FEATURES: Feature[] = [
   {
     id: "set-up-your-way",
     title: "Rules that match your site",
-    body: "Draw exclusion zones, set grace periods and alert cooldowns, and combine detections into your own rules to cut false alarms.",
+    body: "Draw exclusion zones, set grace periods and alert cooldowns, and combine detections into your own rules to cut false alerts.",
     visual: <SetupVisual />,
   },
 ];
@@ -181,7 +181,7 @@ const CAPABILITIES = [
   },
   {
     icon: CloudIcon,
-    title: "Deployment that meets data residency rules",
+    title: "Deployment that meets data-residency rules",
     body: "Run detection on the edge, on-premise or in the cloud, with regional hosting so video stays where your policies require.",
   },
   {
@@ -253,7 +253,7 @@ const FAQS = [
   {
     question: "How accurate is it?",
     answer:
-      "Ailytics maintains 80 to 95% detection accuracy across its projects in the field, and each use case can be tuned to your site.",
+      "Ailytics maintains 80–95% detection accuracy across its projects in the field, and each use case can be tuned to your site.",
   },
   {
     question: "How long does it take to go live?",
@@ -262,7 +262,7 @@ const FAQS = [
   {
     question: "Does it replace our EHS software or video management system?",
     answer:
-      "No. Ailytics adds AI detection to your cameras and sends its alerts and reports to the systems you already use.",
+      "No. Ailytics adds AI detection to your cameras and sends its alerts and reports to the systems you already use (your VMS and EHS platform).",
   },
   {
     question: "Can we choose which hazards to detect?",
@@ -287,13 +287,15 @@ export default function HomePage() {
         <div className={styles.heroDots} aria-hidden="true" />
         <div className={styles.heroStack}>
           <h1 id="hero-title" className={styles.h1}>
-            AI video analytics that turns your CCTV into a safety team
+            AI video analytics that turns your existing CCTV into a detection
+            layer
           </h1>
           <p className={styles.heroLead}>
-            Ailytics connects to the CCTV you already own and alerts your EHS
-            and site teams to PPE breaches, exclusion zone entries, near misses
-            and idle equipment as they happen. Live in under 2 weeks on
-            construction sites, plants, ports and yards.
+            Ailytics connects to the cameras you already own and alerts your EHS
+            and site teams to PPE breaches, exclusion-zone entries, near misses,
+            struck-by risk and idle plant the moment they happen. Live in under
+            2 weeks on construction sites, plants, ports and yards — no
+            rip-and-replace.
           </p>
           <div className={styles.actions}>
             <Link href="/contact" className={styles.btnPrimary}>
@@ -483,8 +485,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 9. Security and privacy */}
-      <section className={styles.trust} aria-labelledby="trust-title">
+      <section
+        className={styles.trust}
+        id="security"
+        aria-labelledby="trust-title"
+      >
         <div className={`${styles.container} ${styles.trustGrid}`}>
           <div className={styles.secHead}>
             <h2 id="trust-title" className={styles.h2}>

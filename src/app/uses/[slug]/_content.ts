@@ -35,41 +35,6 @@ export const USE_CASE_ROUTE_COPY: Record<string, ContentPageRouteCopy> = {
         },
       ],
     },
-    valueProps: {
-      title: "Will PPE checks work in our site conditions?",
-      items: [
-        {
-          title: "Clear checks in difficult conditions",
-          description:
-            "Models are built for rain, dust and low light. Camera angle, obstructions and the size of PPE in the frame still determine what can be checked.",
-        },
-        {
-          title: "Alerts your team can manage",
-          description:
-            "Set grace periods and cooldowns per camera and person to reduce repeat notifications from the same violation.",
-        },
-      ],
-    },
-    deployment: {
-      title: "How does it fit our cameras and IT requirements?",
-      items: [
-        {
-          title: "Connect existing CCTV",
-          description:
-            "Connect compatible IP cameras and recording systems through RTSP or ONVIF. Review camera views and coverage before choosing detections.",
-        },
-        {
-          title: "Choose where footage stays",
-          description:
-            "Run on the edge, on-premise or in the cloud. Agree video storage, access and data-residency requirements with your IT team.",
-        },
-        {
-          title: "Support security reviews",
-          description:
-            "Ailytics is ISO/IEC 27001 certified. Discuss face blurring, regional hosting and your security requirements during the demo.",
-        },
-      ],
-    },
     related: {
       title: "PPE detection by industry",
       items: [

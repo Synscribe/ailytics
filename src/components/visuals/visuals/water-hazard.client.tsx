@@ -3,8 +3,13 @@
 import { motion } from "framer-motion";
 import { WavesIcon } from "lucide-react";
 
-import { CamBadge, CamOverlay, EventCard, Tag } from "./_camera";
-import { EASE, useLoop, VisualFrame } from "./_kit";
+import {
+  CamBadge,
+  CamOverlay,
+  EventCard,
+  Tag,
+} from "@/components/visuals/visuals/_camera";
+import { EASE, useLoop, VisualFrame } from "@/components/visuals/visuals/_kit";
 
 /** Quay edge between the deck (left) and the water (right), in still pixels. */
 const EDGE_X = 760;
@@ -205,18 +210,16 @@ export default function WaterHazardVisual() {
           y2={960}
         />
         {/* The walked path and the person marker. */}
-        <motion.path
-          animate={{ pathLength: reduce ? 1 : step / (WALK.length - 1) }}
-          d={`M${WALK.map(([x, y]) => `${x} ${y}`).join(" L")}`}
-          fill="none"
-          initial={false}
-          stroke="var(--ink)"
-          strokeDasharray="3 9"
-          strokeLinecap="round"
-          strokeOpacity={0.5}
-          strokeWidth={3}
-          transition={{ duration: reduce ? 0 : 1, ease: EASE }}
-        />
+        {WALK.slice(Math.max(0, step - 2), step).map(([x, y], i) => (
+          <circle
+            key={`${x}-${y}`}
+            cx={x}
+            cy={y}
+            r={5}
+            fill="var(--ink-muted)"
+            opacity={0.2 + i * 0.2}
+          />
+        ))}
         <motion.g
           animate={{ x: px, y: py }}
           initial={false}
@@ -229,6 +232,24 @@ export default function WaterHazardVisual() {
             strokeWidth={5}
           />
           <circle fill={flagged ? "var(--alert)" : "var(--signal)"} r={12} />
+          <rect
+            x={-56}
+            y={-70}
+            width={112}
+            height={30}
+            rx={5}
+            fill="var(--paper)"
+          />
+          <text
+            x={0}
+            y={-50}
+            textAnchor="middle"
+            fill="var(--ink)"
+            fontSize={20}
+            fontWeight={600}
+          >
+            Person
+          </text>
           {flagged && !reduce ? (
             <motion.circle
               animate={{ r: [30, 70], opacity: [0.6, 0] }}

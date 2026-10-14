@@ -54,7 +54,7 @@ const LOGOS = [
 ];
 
 const STATS = [
-  { value: "60-80%", label: "reduction in safety non-compliance" },
+  { value: "60–80%", label: "reduction in safety non-compliance" },
   {
     value: "50+",
     label: "configurable safety, security and productivity use cases",

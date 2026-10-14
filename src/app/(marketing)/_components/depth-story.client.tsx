@@ -31,7 +31,7 @@ const STEPS = [
   },
   {
     title: "Measure real distance",
-    body: "It measures how far each worker is from the zone in meters and alerts the lifting supervisor the moment someone steps inside.",
+    body: "It measures how far each worker is from the zone in metres and alerts the lifting supervisor the moment someone steps inside.",
   },
 ];
 

@@ -93,6 +93,10 @@
       "answer": "Ailytics' models are built for harsh construction conditions, including rain, dust, and low light. Detection still depends on usable footage and a clear enough view of the worker and equipment being checked. Share examples from different shifts and weather conditions so the team can assess where your current cameras provide suitable PPE coverage."
     },
     {
+      "question": "Can we reduce repeated PPE alerts?",
+      "answer": "Set grace periods and cooldowns per camera and person to reduce repeat notifications from the same violation. Match these settings to your work areas and the way supervisors respond during a shift."
+    },
+    {
       "question": "Can PPE footage stay on our construction site's network?",
       "answer": "Yes. The Ailyssa detection engine can run on edge, on-premise, or cloud infrastructure. On-premise deployment allows data to stay on-site. Your IT and safety teams can review the deployment approach together, including video access, storage, network requirements, and how supervisors receive alerts. Ailytics is ISO/IEC 27001 certified. Discuss your project's requirements during the demo."
     },

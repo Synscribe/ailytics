@@ -26,7 +26,10 @@ export function RevealGroup({
   const armed = useRef(false);
 
   useEffect(() => {
-    if (reduce) return;
+    if (reduce) {
+      animate("[data-reveal]", { opacity: 1, y: 0 }, { duration: 0 });
+      return;
+    }
     if (!inView && !armed.current) {
       armed.current = true;
       animate("[data-reveal]", { opacity: 0, y: 14 }, { duration: 0 });

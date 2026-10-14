@@ -77,7 +77,7 @@ export const BRAND: {
 
   plate: {
     maxWidth: "400px",
-    radius: "1rem",
+    radius: "var(--visual-radius-panel, 12px)",
     shadow: "0 12px 32px color-mix(in srgb, var(--ink) 10%, transparent)",
   },
 };

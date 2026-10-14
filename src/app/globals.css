@@ -347,3 +347,33 @@ button {
     padding-top: 0;
   }
 }
+
+/* Detail-page disclosures follow the same gentle timing as the homepage. */
+@media (prefers-reduced-motion: no-preference) {
+  .detail-page .brand-faq {
+    transition:
+      border-color 220ms ease,
+      box-shadow 220ms ease;
+  }
+  .detail-page .brand-faq:hover {
+    border-color: color-mix(in srgb, var(--signal) 40%, var(--line));
+  }
+  @supports (interpolate-size: allow-keywords) {
+    .detail-page .brand-faq {
+      interpolate-size: allow-keywords;
+    }
+    .detail-page .brand-faq::details-content {
+      block-size: 0;
+      opacity: 0;
+      overflow: clip;
+      transition:
+        block-size 350ms ease,
+        opacity 250ms ease,
+        content-visibility 350ms allow-discrete;
+    }
+    .detail-page .brand-faq[open]::details-content {
+      block-size: auto;
+      opacity: 1;
+    }
+  }
+}

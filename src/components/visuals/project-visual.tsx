@@ -1,3 +1,9 @@
+import {
+  RulesVisual,
+  ReportsVisual,
+  SitesVisual,
+} from "./visuals/workflow-stage.client";
+import visualSystem from "./visual-system.module.css";
 import type { ComponentType } from "react";
 import Image, { type ImageProps } from "next/image";
 
@@ -5,7 +11,6 @@ import { VISUAL_IDS, type VisualId } from "../../lib/visuals";
 
 import ConstructionHeroVisual from "./visuals/construction-hero.client";
 import CrowdingVisual from "./visuals/crowding.client";
-import CustomUseCasesVisual from "./visuals/custom-use-cases.client";
 import DistractedActivityVisual from "./visuals/distracted-activity.client";
 import EdgeEngineVisual from "./visuals/edge-engine.client";
 import FireSmokeDetectionVisual from "./visuals/fire-smoke-detection.client";
@@ -14,7 +19,6 @@ import LoiteringUnattendedVisual from "./visuals/loitering-unattended.client";
 import MachineryProximityVisual from "./visuals/machinery-proximity.client";
 import MachineryUsageVisual from "./visuals/machinery-usage.client";
 import ManHourTrackingVisual from "./visuals/man-hour-tracking.client";
-import MultiSiteDashboardVisual from "./visuals/multi-site-dashboard.client";
 import NoAccessZonesVisual from "./visuals/no-access-zones.client";
 import OpenEdgeDetectionVisual from "./visuals/open-edge-detection.client";
 import PoorErgonomicsVisual from "./visuals/poor-ergonomics.client";
@@ -24,7 +28,6 @@ import RealTimeAlertsVisual from "./visuals/real-time-alerts.client";
 import SpeedingWrongWayVisual from "./visuals/speeding-wrong-way.client";
 import TimelapseXrayVisual from "./visuals/timelapse-xray.client";
 import UnderLoadDetectionVisual from "./visuals/under-load-detection.client";
-import UnlimitedReportingVisual from "./visuals/unlimited-reporting.client";
 import WaterHazardVisual from "./visuals/water-hazard.client";
 
 export type VisualStatus = "project" | "template-placeholder";
@@ -38,6 +41,7 @@ type VisualMetadata = {
 type ComponentVisualSource = VisualMetadata & {
   kind: "component";
   component: ComponentType;
+  interactive?: boolean;
   /**
    * Set for visuals that fill a 4:3 stage instead of sizing themselves. The
    * text is the accessible description of the looping illustration.
@@ -233,10 +237,11 @@ const visualSources: Record<VisualId, VisualSource> = {
   "custom-use-cases": {
     ...stagedComponent,
     label: "Build your own use case",
-    motionPattern: "rule blocks snap into a chain",
-    component: CustomUseCasesVisual,
+    motionPattern: "nodes connect detection, condition and response",
+    component: RulesVisual,
+    interactive: true,
     stage: {
-      alt: "Detection, zone, condition, timing and alert blocks snap together into a custom use case that starts running on a camera.",
+      alt: "Interactive example: select a person detection, missing hard hat condition or supervisor alert to inspect the rule.",
     },
   },
   "real-time-alerts": {
@@ -251,19 +256,21 @@ const visualSources: Record<VisualId, VisualSource> = {
   "unlimited-reporting": {
     ...stagedComponent,
     label: "On-demand PPE report",
-    motionPattern: "report rows print behind a progress bar",
-    component: UnlimitedReportingVisual,
+    motionPattern: "camera evidence becomes an incident report",
+    component: ReportsVisual,
+    interactive: true,
     stage: {
-      alt: "A sample PPE events report generating, with recorded events and their evidence frames.",
+      alt: "Interactive example: prepare a PPE incident report with event details, camera evidence and review history.",
     },
   },
   "multi-site-dashboard": {
     ...stagedComponent,
     label: "Every site on one map",
-    motionPattern: "map pins report in and the list re-ranks",
-    component: MultiSiteDashboardVisual,
+    motionPattern: "selected site updates camera evidence and open alerts",
+    component: SitesVisual,
+    interactive: true,
     stage: {
-      alt: "Sample sites report in on a central map, and the site with open alerts rises to the top of the list.",
+      alt: "Interactive map of illustrative sites. Select a site to see its camera evidence and open alerts.",
     },
   },
 };
@@ -317,9 +324,9 @@ export function ProjectVisual({
     return (
       <figure
         aria-label={source.stage.alt}
-        className={`${frame} ${frameless ? "" : "bg-muted"}`}
+        className={`${visualSystem.system} ${frame} ${frameless ? "" : "bg-muted"}`}
         data-visual-id={id}
-        role="img"
+        role={source.interactive ? "group" : "img"}
       >
         <Visual />
       </figure>
@@ -327,7 +334,7 @@ export function ProjectVisual({
   }
 
   return (
-    <figure className={frame} data-visual-id={id}>
+    <figure className={`${visualSystem.system} ${frame}`} data-visual-id={id}>
       <Image
         alt={source.alt}
         className="object-cover"

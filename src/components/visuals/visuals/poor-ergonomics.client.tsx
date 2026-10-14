@@ -1,15 +1,13 @@
 "use client";
 
+import styles from "./pose-annotation.module.css";
 import { motion } from "framer-motion";
-import { PersonStandingIcon } from "lucide-react";
 
 import {
   CamBadge,
   CameraStage,
   CamOverlay,
-  EventCard,
   Frame,
-  StatePill,
   Tag,
   at,
   type Box,
@@ -130,28 +128,34 @@ export default function PoorErgonomicsVisual() {
           strokeWidth={5}
           transition={{ duration: reduce ? 0 : 0.9, ease: EASE }}
         />
+        <motion.path
+          d="M745 520 L800 480 L840 480"
+          fill="none"
+          stroke="var(--paper)"
+          strokeWidth="1.3"
+          vectorEffect="non-scaling-stroke"
+          initial={false}
+          animate={{ opacity: gauge ? 1 : 0, pathLength: gauge ? 1 : 0 }}
+          transition={{ duration: reduce ? 0 : 0.4 }}
+        />
       </CamOverlay>
 
-      <motion.span
-        animate={{ opacity: gauge ? 1 : 0, y: gauge ? 0 : 6 }}
-        className="absolute z-10 flex -translate-y-full items-center gap-1.5 rounded-lg px-2 py-1 text-[11px] font-semibold shadow-md"
+      <motion.div
+        className={styles.annotation}
+        style={at(850, 480)}
         initial={false}
-        style={{
-          ...at(HX + 30, HY - R - 30),
-          background: "var(--paper)",
-          color: "var(--ink)",
-        }}
+        animate={{ opacity: gauge ? 1 : 0, y: gauge ? 0 : 5 }}
         transition={{ duration: reduce ? 0 : 0.4, ease: EASE }}
       >
-        Back bend <span className="tabular-nums">{BEND}°</span>
-        <StatePill
-          instant={reduce}
-          offLabel="Within limit"
-          on={flagged}
-          onLabel="Over limit"
-        />
-      </motion.span>
-
+        <small>BACK BEND</small>
+        <strong>
+          {BEND}
+          <span>°</span>
+        </strong>
+        <span className={styles.condition}>
+          {flagged ? "Over limit" : "Measuring"}
+        </span>
+      </motion.div>
       <Tag
         instant={reduce}
         tone={flagged ? "hazard" : "detect"}
@@ -162,13 +166,6 @@ export default function PoorErgonomicsVisual() {
       </Tag>
 
       <CamBadge camera="Camera 05" place="Warehouse floor" />
-      <EventCard
-        icon={<PersonStandingIcon aria-hidden="true" />}
-        instant={reduce}
-        meta="Lifting with a bent back · Camera 05"
-        show={phase >= 5}
-        title="Poor lifting posture"
-      />
     </CameraStage>
   );
 }

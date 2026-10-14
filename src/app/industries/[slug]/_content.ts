@@ -35,48 +35,6 @@ export const INDUSTRY_ROUTE_COPY: Record<string, ContentPageRouteCopy> = {
         },
       ],
     },
-    valueProps: {
-      title: "Will it work on a changing construction site?",
-      items: [
-        {
-          title: "Distance that reflects the scene",
-          description:
-            "Measure the real 3D distance between workers and machinery from one camera, with no additional lidar or radar.",
-        },
-        {
-          title: "Built for outdoor conditions",
-          description:
-            "Detection models are built for rain, dust and low light. Assess representative footage to confirm what each camera can reliably cover.",
-        },
-      ],
-    },
-    proof: {
-      value: "69.1%",
-      context: "Construction site · 16 months",
-      title: "Fewer safety non-compliances on one construction site",
-      description:
-        "An Ailytics construction deployment recorded a 69.1% reduction in non-compliances over 16 months. This is a site-wide safety result, not a result for an individual detection.",
-    },
-    deployment: {
-      title: "How does it fit our cameras and IT requirements?",
-      items: [
-        {
-          title: "Connect existing CCTV",
-          description:
-            "Connect compatible IP cameras and recording systems through RTSP or ONVIF. Review camera views and coverage before choosing detections.",
-        },
-        {
-          title: "Choose where footage stays",
-          description:
-            "Run on the edge, on-premise or in the cloud. Agree video storage, access and data-residency requirements with your IT team.",
-        },
-        {
-          title: "Support security reviews",
-          description:
-            "Ailytics is ISO/IEC 27001 certified. Discuss face blurring, regional hosting and your security requirements during the demo.",
-        },
-      ],
-    },
     featureLinks: {
       "ppe-detection": {
         href: "/uses/ppe-detection",

@@ -1,5 +1,6 @@
+import { RevealGroup } from "@/components/reveal-group.client";
 import { CustomerProof } from "@/components/customer-proof/customer-proof";
-import { ArrowRightIcon, PlusIcon } from "lucide-react";
+import { ArrowRightIcon, CheckIcon, PlusIcon } from "lucide-react";
 import Link from "next/link";
 
 import { ProjectVisual } from "@/components/visuals/project-visual";
@@ -30,18 +31,12 @@ export type ContentPageProps = {
     introduction: string;
     steps: Block[];
   };
-  valueProps: {
-    title: string;
-    items: Block[];
-  };
   /** Links words in a feature description to a related page, as anchor text. */
   featureLinks?: Record<string, { href: string; phrase: string }>;
   related?: {
     title: string;
     items: (Block & { href: string; label: string })[];
   };
-  proof?: Block & { value: string; context: string };
-  deployment: { title: string; items: Block[] };
   ctaHref?: string;
 };
 
@@ -79,11 +74,8 @@ export function ContentPage({
   breadcrumbs,
   heroVisualId,
   howItWorks,
-  valueProps,
   featureLinks = {},
   related,
-  proof,
-  deployment,
   ctaHref = "/contact",
 }: ContentPageProps) {
   const breadcrumbJsonLd = buildBreadcrumbJsonLd(breadcrumbs);
@@ -162,11 +154,11 @@ export function ContentPage({
             </p>
           </div>
 
-          <div
+          <RevealGroup
             className={`mt-12 grid gap-4 sm:grid-cols-2 ${content.problems.items.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4"}`}
           >
             {content.problems.items.map((item) => (
-              <article className="brand-card p-7" key={item.title}>
+              <article data-reveal className="brand-card p-7" key={item.title}>
                 <h3 className="text-lg font-semibold tracking-tight text-balance">
                   {item.title}
                 </h3>
@@ -175,7 +167,7 @@ export function ContentPage({
                 </p>
               </article>
             ))}
-          </div>
+          </RevealGroup>
         </div>
       </section>
 
@@ -185,21 +177,27 @@ export function ContentPage({
           <p className="brand-lead mt-5 max-w-2xl">
             {content.solution.description}
           </p>
-          <ol className="mt-12 grid gap-8 border-t border-ink/10 pt-8 sm:grid-cols-2 lg:grid-cols-4">
-            {howItWorks.steps.map((step, index) => (
-              <li className="flex flex-col gap-3" key={step.title}>
-                <span className="text-sm font-semibold text-signal-strong">
-                  0{index + 1}
-                </span>
-                <h3 className="text-lg font-semibold tracking-tight">
-                  {step.title}
-                </h3>
-                <p className="text-sm leading-6 text-pretty text-ink-muted">
-                  {step.description}
-                </p>
-              </li>
-            ))}
-          </ol>
+          <RevealGroup>
+            <ol className="mt-12 grid gap-8 border-t border-ink/10 pt-8 sm:grid-cols-2 lg:grid-cols-4">
+              {howItWorks.steps.map((step, index) => (
+                <li
+                  data-reveal
+                  className="flex flex-col gap-3"
+                  key={step.title}
+                >
+                  <span className="text-sm font-semibold text-signal-strong">
+                    0{index + 1}
+                  </span>
+                  <h3 className="text-lg font-semibold tracking-tight">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm leading-6 text-pretty text-ink-muted">
+                    {step.description}
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </RevealGroup>
         </div>
       </section>
 
@@ -212,102 +210,72 @@ export function ContentPage({
             </p>
           </div>
 
-          <div className="mt-12 grid items-start gap-x-8 gap-y-14 lg:grid-cols-2">
-            {content.features.items.map((item) => {
+          <div className="mt-20 flex flex-col gap-24 sm:gap-28">
+            {content.features.items.map((item, index) => {
               const link = featureLinks[item.id];
               return (
-                <article
-                  className="flex min-w-0 scroll-mt-24 flex-col gap-6"
-                  id={item.id}
-                  key={item.id}
-                >
-                  <div className="order-2 flex min-w-0 flex-col gap-3">
-                    <p className="text-sm font-semibold text-ink-muted">
-                      {item.eyebrow}
-                    </p>
-                    <h3 className="text-balance text-2xl leading-[1.2] font-semibold tracking-[-0.025em]">
-                      {item.title}
-                    </h3>
-                    <p className="text-base leading-7 text-pretty text-ink-muted">
-                      {link ? (
-                        <AnchorPhrase link={link} text={item.description} />
-                      ) : (
-                        item.description
-                      )}
-                    </p>
-                  </div>
-                  <div
-                    className={
-                      item.id === "real-time-alerts"
-                        ? "order-1 w-full min-w-0 p-2"
-                        : "brand-card order-1 w-full min-w-0 overflow-hidden p-2"
-                    }
+                <RevealGroup key={item.id}>
+                  <article
+                    className="grid min-w-0 scroll-mt-24 grid-cols-[minmax(0,1fr)] items-center gap-10 lg:grid-cols-2 lg:gap-20"
+                    id={item.id}
+                    key={item.id}
                   >
                     <div
-                      className={`relative w-full overflow-hidden ${item.id === "real-time-alerts" ? "h-[440px] lg:aspect-[4/3] lg:h-auto" : "aspect-[4/3] rounded-xl bg-muted"}`}
+                      data-reveal
+                      className={`flex min-w-0 flex-col gap-4 ${index % 2 ? "lg:order-2" : ""}`}
                     >
-                      <ProjectVisual
-                        fill
-                        id={item.id}
-                        sizes="(min-width: 1024px) 45vw, 100vw"
-                      />
+                      <p className="text-sm font-semibold text-ink-muted">
+                        {item.eyebrow}
+                      </p>
+                      <h3 className="text-balance text-3xl leading-[1.12] font-semibold tracking-[-0.025em]">
+                        {item.title}
+                      </h3>
+                      <p className="text-base leading-7 text-pretty text-ink-muted">
+                        {link ? (
+                          <AnchorPhrase link={link} text={item.description} />
+                        ) : (
+                          item.description
+                        )}
+                      </p>
+                      <ul className="mt-2 flex flex-col gap-3">
+                        {item.highlights.map((highlight) => (
+                          <li
+                            className="flex gap-3 text-sm leading-6 font-medium"
+                            key={highlight}
+                          >
+                            <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-mint text-ink">
+                              <CheckIcon
+                                className="size-3"
+                                aria-hidden="true"
+                              />
+                            </span>
+                            {highlight}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                  </div>
-                </article>
+                    <div
+                      data-reveal
+                      className={
+                        item.id === "real-time-alerts"
+                          ? "min-w-0 p-3"
+                          : "min-w-0"
+                      }
+                    >
+                      <div
+                        className={`relative w-full overflow-hidden ${item.id === "real-time-alerts" ? "h-[440px] lg:aspect-[4/3] lg:h-auto" : "aspect-[4/3] rounded-2xl border border-ink/10 bg-muted"}`}
+                      >
+                        <ProjectVisual
+                          fill
+                          id={item.id}
+                          sizes="(min-width: 1024px) 45vw, 100vw"
+                        />
+                      </div>
+                    </div>
+                  </article>
+                </RevealGroup>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      <section id="value" className="detail-section">
-        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-          <h2 className={sectionHeading}>{valueProps.title}</h2>
-          <div className="mt-12 grid gap-x-14 gap-y-10 sm:grid-cols-2">
-            {valueProps.items.map((item) => (
-              <div className="flex flex-col gap-3" key={item.title}>
-                <h3 className="text-lg font-semibold tracking-tight text-balance">
-                  {item.title}
-                </h3>
-                <p className="text-sm leading-6 text-pretty text-ink-muted">
-                  {item.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {proof ? (
-        <section id="results" className="detail-section">
-          <div className="mx-auto grid max-w-7xl items-center gap-8 px-5 sm:px-8 lg:grid-cols-2">
-            <div>
-              <p className="text-sm font-semibold text-ink-muted">
-                {proof.context}
-              </p>
-              <p className="mt-4 text-7xl font-medium tracking-tight text-ink">
-                {proof.value}
-              </p>
-            </div>
-            <div>
-              <h2 className={sectionHeading}>{proof.title}</h2>
-              <p className="brand-lead mt-5">{proof.description}</p>
-            </div>
-          </div>
-        </section>
-      ) : null}
-      <section id="deployment" className="detail-section">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <h2 className={sectionHeading}>{deployment.title}</h2>
-          <div className="mt-12 grid gap-8 md:grid-cols-3">
-            {deployment.items.map((item) => (
-              <article key={item.title} className="border-t border-ink/15 pt-6">
-                <h3 className="text-lg font-semibold">{item.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-ink-muted">
-                  {item.description}
-                </p>
-              </article>
-            ))}
           </div>
         </div>
       </section>

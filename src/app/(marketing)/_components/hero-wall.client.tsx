@@ -104,7 +104,7 @@ const EVENTS: {
     tile: 10,
     cat: "security",
     tag: "Restricted area · 23:14",
-    text: "After-hours restricted entry",
+    text: "After-hours restricted-area entry",
   },
   {
     tile: 9,
