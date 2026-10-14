@@ -1,0 +1,110 @@
+.system {
+  --visual-radius-frame: 16px;
+  --visual-radius-panel: 12px;
+  --visual-radius-control: 8px;
+  font-family: var(--font-sans);
+  color: var(--ink);
+}
+.system:not([data-visual-id="real-time-alerts"]) {
+  border-radius: var(--visual-radius-frame);
+}
+.system :global(.rounded-xl),
+.system :global(.rounded-2xl) {
+  border-radius: var(--visual-radius-panel);
+}
+.system :global(.rounded-lg) {
+  border-radius: var(--visual-radius-control);
+}
+/* Status pills and circular tracking markers retain their semantic shapes. */
+
+/* Quiet product surfaces: one panel, shared type, lighter chart framing. */
+.system:is(
+    [data-visual-id="hardware-agnostic"],
+    [data-visual-id="edge-engine"],
+    [data-visual-id="man-hour-tracking"],
+    [data-visual-id="machinery-usage"]
+  )
+  > div
+  > div {
+  box-shadow: none !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+.system:is(
+    [data-visual-id="man-hour-tracking"],
+    [data-visual-id="machinery-usage"]
+  )
+  :global(.grid-cols-3)
+  > div {
+  background: transparent !important;
+  padding-left: 0;
+  border-radius: 0;
+  border-right: 1px solid var(--line);
+}
+.system[data-visual-id="machinery-usage"]
+  :global(.grid-cols-3)
+  > div:last-child {
+  border-right: 0;
+}
+.system:is([data-visual-id="hardware-agnostic"], [data-visual-id="edge-engine"])
+  :global(.rounded-xl) {
+  border-radius: 8px;
+}
+
+.system {
+  container-type: inline-size;
+}
+.system :global(.camera-tag) {
+  max-width: calc(100% - 16px);
+}
+.system :global(.camera-tag) > span {
+  white-space: normal;
+}
+@container (max-width: 420px) {
+  .system :global(.camera-tag) {
+    left: clamp(8px, var(--tag-x), calc(100% - 112px)) !important;
+    max-width: 108px;
+  }
+  .system :global(.camera-tag) > span {
+    font-size: 9px;
+    line-height: 1.15;
+  }
+  .system :global(.camera-event) {
+    gap: 6px;
+    padding: 8px;
+    inset-inline: 8px;
+    bottom: 8px;
+    width: auto;
+  }
+  .system :global(.camera-event) > span:first-child {
+    width: 22px;
+    height: 22px;
+  }
+  .system :global(.camera-event) > span:last-child:not(:nth-child(2)) {
+    display: none;
+  }
+}
+
+@container (max-width: 420px) {
+  .system :global(.truncate) {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+}
+
+@container (max-width: 420px) {
+  .system
+    :global(.camera-stage):has(:global(.camera-event[data-visible="true"]))
+    :global(.camera-detail) {
+    visibility: hidden;
+  }
+}
+@container (max-width: 340px) {
+  .system :global(.camera-badge) > span {
+    display: none;
+  }
+  .system :global(.camera-event) > span:nth-child(2) > span:nth-child(2) {
+    display: none;
+  }
+}

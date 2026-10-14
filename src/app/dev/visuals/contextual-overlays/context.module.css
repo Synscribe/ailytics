@@ -1,0 +1,319 @@
+.page {
+  max-width: 1400px;
+  padding: 48px 5vw 70px;
+  margin: auto;
+  color: var(--ink);
+}
+.page > a {
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+.page h1 {
+  font-size: clamp(32px, 4vw, 48px);
+  letter-spacing: -0.04em;
+  margin: 30px 0 12px;
+}
+.page > p {
+  color: var(--ink-muted);
+  font-size: 15px;
+}
+.page section {
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 50px;
+  align-items: center;
+  padding: 64px 0;
+  border-bottom: 1px solid var(--line);
+}
+.copy > span {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--ink-faint);
+}
+.copy h2 {
+  font-size: 30px;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  margin: 18px 0;
+}
+.copy p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-muted);
+}
+.stage {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  border-radius: 14px;
+}
+.annotation {
+  position: absolute;
+  color: var(--paper);
+  text-shadow: 0 1px 5px color-mix(in srgb, var(--ink) 75%, transparent);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  border-left: 1px solid color-mix(in srgb, var(--paper) 65%, transparent);
+  padding-left: 12px;
+}
+.annotation small {
+  font-size: 8px;
+  letter-spacing: 0.13em;
+  display: block;
+}
+.annotation strong {
+  font-size: 34px;
+  font-weight: 500;
+  letter-spacing: -0.06em;
+  line-height: 1.2;
+  display: block;
+  margin: 4px 0;
+}
+.annotation strong > span {
+  font-size: 23px;
+  vertical-align: top;
+}
+.condition {
+  font-size: 10px;
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.condition:before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  background: var(--alert);
+  border-radius: 50%;
+}
+.statusStrip {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 13px 18px;
+  background: color-mix(in srgb, var(--ink) 88%, transparent);
+  backdrop-filter: blur(10px);
+  color: var(--paper);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  border-top: 1px solid color-mix(in srgb, var(--paper) 18%, transparent);
+}
+.statusStrip strong {
+  font-size: 12px;
+  font-weight: 500;
+}
+.statusIcon {
+  width: 5px;
+  height: 5px;
+  background: var(--signal);
+  border-radius: 50%;
+}
+.statusIcon[data-alert="true"] {
+  background: var(--alert);
+}
+.stripMeta {
+  font-size: 10px;
+  opacity: 0.65;
+  border-left: 1px solid color-mix(in srgb, var(--paper) 25%, transparent);
+  padding-left: 10px;
+}
+.live {
+  margin-left: auto;
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  opacity: 0.6;
+}
+.inspector {
+  position: absolute;
+  z-index: 25;
+  width: 175px;
+  border-radius: 10px;
+  background: var(--paper);
+  border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+  box-shadow:
+    0 2px 4px color-mix(in srgb, var(--ink) 10%, transparent),
+    0 10px 24px color-mix(in srgb, var(--ink) 16%, transparent);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  overflow: hidden;
+}
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 11px 10px;
+  cursor: pointer;
+  text-align: left;
+}
+.trigger > span:nth-child(2) {
+  font-size: 10px;
+  flex: 1;
+  color: var(--ink-muted);
+}
+.trigger strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-top: 2px;
+}
+.checkMark {
+  display: grid;
+  place-items: center;
+  width: 23px;
+  height: 23px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--signal) 14%, var(--paper));
+  color: var(--ink);
+}
+.drawer {
+  overflow: hidden;
+}
+.rows {
+  padding: 0 12px 8px;
+}
+.rows > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-top: 1px solid var(--line);
+  font-size: 10px;
+}
+.rows svg {
+  color: var(--signal);
+}
+.wait {
+  color: var(--ink-faint);
+}
+.resume {
+  padding: 8px;
+  width: 100%;
+  font-size: 9px;
+  border-top: 1px solid var(--line);
+  cursor: pointer;
+  color: var(--ink-muted);
+}
+.trigger:focus-visible,
+.resume:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: -3px;
+}
+@media (max-width: 760px) {
+  .page section {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 40px 0;
+  }
+  .copy h2 {
+    font-size: 27px;
+  }
+  .inspector {
+    width: 135px;
+  }
+  .trigger {
+    gap: 5px;
+    padding: 8px;
+  }
+  .annotation {
+    padding-left: 8px;
+  }
+  .annotation strong {
+    font-size: 27px;
+  }
+  .stripMeta {
+    display: none;
+  }
+  .statusStrip {
+    padding: 11px 12px;
+  }
+  .rows > div {
+    padding: 6px 0;
+  }
+}
+
+.statusStrip {
+  transition:
+    background 0.35s ease,
+    box-shadow 0.35s ease;
+}
+.statusStrip[data-alert="true"] {
+  background: color-mix(in srgb, var(--alert) 24%, var(--ink));
+  box-shadow: inset 0 3px 0 var(--alert);
+}
+.statusStrip[data-alert="true"] strong {
+  color: var(--paper);
+  font-weight: 650;
+}
+.statusStrip[data-alert="true"] .live {
+  opacity: 1;
+  color: var(--paper);
+  background: color-mix(in srgb, var(--alert) 35%, transparent);
+  padding: 4px 6px;
+  border-radius: 3px;
+}
+.checkMark {
+  background: transparent;
+  color: var(--ink-muted);
+  width: 20px;
+  height: 23px;
+}
+.inspector {
+  font-family: var(--font-sans);
+}
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 8px 8px;
+}
+.rows > div {
+  border: 0;
+  border-radius: 8px;
+  background: var(--muted);
+  padding: 6px;
+  font-size: 10.5px;
+  font-weight: 500;
+  align-items: center;
+  gap: 5px;
+}
+@media (max-width: 760px) {
+  .inspector {
+    width: 155px;
+  }
+  .statusStrip[data-alert="true"] .live {
+    font-size: 7px;
+  }
+  .statusStrip strong {
+    font-size: 11px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .statusStrip {
+    transition: none;
+  }
+}
+
+.smokeToast {
+  bottom: 58px !important;
+}
+.smokeToast {
+  background: color-mix(in srgb, var(--ink) 94%, transparent) !important;
+  color: var(--paper) !important;
+  border: 1px solid color-mix(in srgb, var(--paper) 18%, transparent);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 20px color-mix(in srgb, var(--ink) 25%, transparent);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.smokeToast > span:first-child {
+  background: transparent !important;
+  color: var(--alert) !important;
+}
+.smokeToast > span:nth-child(2) > span:last-child {
+  color: color-mix(in srgb, var(--paper) 65%, transparent) !important;
+  font-weight: 400;
+}

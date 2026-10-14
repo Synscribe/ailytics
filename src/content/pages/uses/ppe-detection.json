@@ -1,0 +1,113 @@
+{
+  "hero": {
+    "title": "PPE Detection for Construction Site Safety",
+    "description": "PPE detection adds construction safety monitoring to your existing CCTV. Spot missing hard hats, vests, and gloves and alert supervisors with evidence."
+  },
+  "problems": {
+    "title": "Where do manual PPE checks fall short?",
+    "description": "Crews move between work areas throughout the shift. Supervisors cannot check every worker on every camera continuously.",
+    "items": [
+      {
+        "title": "Workers Enter Without Protection",
+        "description": "Missing hard hats, vests, or gloves can go unnoticed as crews enter monitored work areas."
+      },
+      {
+        "title": "Supervisors Find Violations Too Late",
+        "description": "Footage reviewed after a shift cannot help supervisors address missing PPE while workers are exposed."
+      },
+      {
+        "title": "Compliance Records Have Gaps",
+        "description": "Scattered notes and manual checks leave safety teams without consistent evidence of when and where PPE violations occurred."
+      }
+    ]
+  },
+  "solution": {
+    "title": "Detect Missing PPE Across Existing Cameras",
+    "description": "Ailytics adds PPE detection to existing CCTV, with models built for rain, dust, and low light. Supervisors receive event evidence to review missing protection and respond during the shift."
+  },
+  "features": {
+    "title": "PPE Checks Your Team Can Act On",
+    "description": "Connect your cameras, select the PPE checks your site needs, and give supervisors alerts and reports that support daily safety work.",
+    "items": [
+      {
+        "id": "ppe-detection",
+        "eyebrow": "Safety",
+        "title": "Spot Missing Protection During Work",
+        "description": "Detect missing hard hats, vests, and gloves in monitored construction work areas. Configure the checks around your site's PPE requirements and assess camera visibility for each item.",
+        "highlights": [
+          "Hard hat checks",
+          "Vest and glove detection",
+          "Configurable PPE checks"
+        ]
+      },
+      {
+        "id": "hardware-agnostic",
+        "eyebrow": "Camera connection",
+        "title": "Use Cameras You Already Own",
+        "description": "Connect existing IP cameras and compatible recording systems through RTSP or ONVIF. Add PPE monitoring to your CCTV network without replacing cameras, with coverage assessed against your work areas and camera views.",
+        "highlights": [
+          "Existing IP cameras",
+          "RTSP and ONVIF connections",
+          "No camera replacement"
+        ]
+      },
+      {
+        "id": "real-time-alerts",
+        "eyebrow": "Response",
+        "title": "Give Supervisors Evidence to Respond",
+        "description": "Notify the right people when a missing-PPE event is detected. Include the event frame, time, and location so supervisors can review what happened and address the issue with the crew.",
+        "highlights": [
+          "Missing PPE notifications",
+          "Event frame and time",
+          "Location for follow up"
+        ]
+      },
+      {
+        "id": "unlimited-reporting",
+        "eyebrow": "Compliance",
+        "title": "Bring PPE Evidence Into Reviews",
+        "description": "Generate safety and compliance reports on demand. Use recorded PPE events to support site reviews, toolbox discussions, and audit preparation alongside your existing inspection records.",
+        "highlights": [
+          "Reports on demand",
+          "Recorded PPE event evidence",
+          "Support for safety reviews"
+        ]
+      }
+    ]
+  },
+  "faq": [
+    {
+      "question": "What is PPE detection for construction sites?",
+      "answer": "PPE stands for personal protective equipment. Ailytics uses computer vision to detect missing hard hats, vests, and gloves in existing CCTV views. When it detects an event, it can notify supervisors with the frame, time, and location. This adds ongoing camera monitoring to the inspections and safety procedures your construction team already uses."
+    },
+    {
+      "question": "Can PPE detection use our existing construction CCTV cameras?",
+      "answer": "Yes. Ailytics connects to existing IP cameras and compatible recording systems through RTSP or ONVIF, which are methods for accessing video feeds. You do not need to replace your cameras. Camera position, visibility, and the size of PPE items in the image affect coverage, so bring representative site footage to the demo for assessment."
+    },
+    {
+      "question": "Can Ailytics detect missing hard hats, safety vests, and gloves?",
+      "answer": "These are the PPE items covered by Ailytics' detection capabilities. Your team can configure checks to match site requirements. Each camera must show enough detail to assess the selected item, especially smaller items such as gloves. During the demo, review representative camera views and the PPE requirements for the work areas you want to monitor."
+    },
+    {
+      "question": "Does PPE detection work in rain, dust, and low light?",
+      "answer": "Ailytics' models are built for harsh construction conditions, including rain, dust, and low light. Detection still depends on usable footage and a clear enough view of the worker and equipment being checked. Share examples from different shifts and weather conditions so the team can assess where your current cameras provide suitable PPE coverage."
+    },
+    {
+      "question": "Can we reduce repeated PPE alerts?",
+      "answer": "Set grace periods and cooldowns per camera and person to reduce repeat notifications from the same violation. Match these settings to your work areas and the way supervisors respond during a shift."
+    },
+    {
+      "question": "Can PPE footage stay on our construction site's network?",
+      "answer": "Yes. The Ailyssa detection engine can run on edge, on-premise, or cloud infrastructure. On-premise deployment allows data to stay on-site. Your IT and safety teams can review the deployment approach together, including video access, storage, network requirements, and how supervisors receive alerts. Ailytics is ISO/IEC 27001 certified. Discuss your project's requirements during the demo."
+    },
+    {
+      "question": "Can we combine PPE detection with other construction safety checks?",
+      "answer": "Yes. PPE detection can sit alongside open-edge detection, under-load detection, machinery proximity warnings, and restricted-area alerts in the same platform. Select the checks that fit each work area and its camera coverage. See the [construction industry page](/industries/construction) for how Ailytics combines safety monitoring with workforce tracking and visual progress records across a construction site."
+    }
+  ],
+  "cta": {
+    "title": "See PPE Detection on Your Site",
+    "description": "Bring your CCTV views and PPE requirements. See how Ailytics can help your supervisors detect, review, and respond to missing protection.",
+    "buttonText": "Book a PPE Detection Demo"
+  }
+}

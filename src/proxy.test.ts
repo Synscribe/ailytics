@@ -21,7 +21,7 @@ describe("Markdown negotiation proxy", () => {
       unstable_doesMiddlewareMatch({
         config,
         nextConfig: {},
-        url: "/uses/example",
+        url: "/use-cases/example",
       }),
     ).toBe(true);
     expect(
@@ -35,7 +35,7 @@ describe("Markdown negotiation proxy", () => {
       unstable_doesMiddlewareMatch({
         config,
         nextConfig: {},
-        url: "/uses.md",
+        url: "/use-cases.md",
       }),
     ).toBe(true);
     expect(
@@ -63,7 +63,7 @@ describe("Markdown negotiation proxy", () => {
 
   it("rewrites a Markdown request while preserving its public path", () => {
     const request = new NextRequest(
-      "https://example.com/uses/example?ref=agent",
+      "https://example.com/use-cases/example?ref=agent",
       {
         headers: {
           Accept: "text/markdown",
@@ -79,7 +79,7 @@ describe("Markdown negotiation proxy", () => {
     const rewritten = new URL(rewrittenUrl!);
     expect(rewritten.pathname).toBe(MARKDOWN_ROUTE);
     expect(rewritten.searchParams.get(MARKDOWN_CACHE_KEY_PARAM)).toBe(
-      "/uses/example?ref=agent",
+      "/use-cases/example?ref=agent",
     );
     expect(rewritten.searchParams.has(MARKDOWN_EXPLICIT_PARAM)).toBe(false);
     expect(
@@ -88,12 +88,12 @@ describe("Markdown negotiation proxy", () => {
     expect(response.headers.get("vary")).toContain("Accept");
     expect(
       response.headers.get("x-middleware-request-x-agent-markdown-source"),
-    ).toBe("/uses/example?ref=agent");
+    ).toBe("/use-cases/example?ref=agent");
   });
 
   it("serves an explicit .md alias regardless of the Accept header", () => {
     const request = new NextRequest(
-      "https://example.com/uses/example.md?ref=agent",
+      "https://example.com/use-cases/example.md?ref=agent",
       { headers: { Accept: "text/html" } },
     );
     const response = proxy(request);
@@ -104,7 +104,7 @@ describe("Markdown negotiation proxy", () => {
     const rewritten = new URL(rewrittenUrl!);
     expect(rewritten.pathname).toBe(MARKDOWN_ROUTE);
     expect(rewritten.searchParams.get(MARKDOWN_CACHE_KEY_PARAM)).toBe(
-      "/uses/example?ref=agent",
+      "/use-cases/example?ref=agent",
     );
     expect(rewritten.searchParams.get(MARKDOWN_EXPLICIT_PARAM)).toBe("1");
     expect(
@@ -112,7 +112,7 @@ describe("Markdown negotiation proxy", () => {
     ).toBe("1");
     expect(
       response.headers.get("x-middleware-request-x-agent-markdown-source"),
-    ).toBe("/uses/example?ref=agent");
+    ).toBe("/use-cases/example?ref=agent");
   });
 
   it("keeps HTML requests on the existing route and varies by Accept", () => {

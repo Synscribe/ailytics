@@ -102,7 +102,7 @@ When a page genuinely needs more, the seven sites do four things rather than sta
 3. **Keep the action in the sticky header** so scroll cost is recoverable.
 4. **Merge before adding.** Three sections making the same argument are one section.
 
-This repo already has the escape valves: `/uses` and `/blog`.
+This repo already has the escape valves: `/use-cases` and `/blog`.
 
 ### Sources
 
@@ -199,7 +199,7 @@ The remaining inputs are real proof. The page deliberately omits sections 2, 5, 
 
 ## 6. Constraints and practical notes
 
-- **Homepage anchors have inbound links.** `src/app/uses/page.tsx` and three files in `src/content/use-cases/` link to homepage anchors. Renaming a section id without updating them breaks `ROUTE-01`.
+- **Homepage anchors have inbound links.** Check `src/content/pages/` and the hub pages for links to homepage anchors. Renaming a section id without updating them breaks `ROUTE-01`.
 - Use the package-manager version declared by the repository and check `git status` after dependency operations. Do not commit an unrelated lockfile rewrite.
 
 ## 7. Verifying

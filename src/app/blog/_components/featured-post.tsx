@@ -14,7 +14,7 @@ export function FeaturedPost({
 }) {
   return (
     <Link
-      className="group grid overflow-hidden rounded-3xl border border-ink/10 bg-paper shadow-[var(--shadow-card)] md:grid-cols-2"
+      className="brand-card brand-card-link group grid overflow-hidden md:grid-cols-2"
       href={`/blog/${post.slug}`}
     >
       <div className="relative aspect-[16/10] overflow-hidden bg-muted md:aspect-auto md:min-h-[24rem]">
@@ -36,15 +36,13 @@ export function FeaturedPost({
             {label}
           </Badge>
         ) : null}
-        <h2 className="mt-5 text-balance font-display text-3xl leading-[1.08] tracking-[-0.03em] text-ink sm:text-4xl">
-          {post.title}
-        </h2>
+        <h2 className="brand-h2 mt-5 text-ink">{post.title}</h2>
         {post.description ? (
           <p className="mt-5 line-clamp-3 text-base leading-7 text-ink-muted">
             {post.description}
           </p>
         ) : null}
-        <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-signal-strong">
+        <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-signal-strong">
           Read article
           <ArrowUpRightIcon className="size-4" aria-hidden="true" />
         </span>

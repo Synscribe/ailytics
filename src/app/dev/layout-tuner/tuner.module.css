@@ -1,0 +1,73 @@
+.panel {
+  position: fixed;
+  z-index: 100;
+  right: 16px;
+  bottom: 16px;
+  width: 310px;
+  max-width: calc(100vw - 32px);
+  color: var(--ink);
+  background: white;
+  border: 1px solid #dce3e8;
+  border-radius: 14px;
+  box-shadow: 0 12px 50px #31455f30;
+  font-size: 13px;
+}
+.toggle {
+  width: 100%;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 500;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.body {
+  border-top: 1px solid #e7edf0;
+  padding: 16px;
+  max-height: 70vh;
+  overflow: auto;
+}
+.body > strong {
+  font-size: 17px;
+}
+.body p {
+  font-size: 12px;
+  color: var(--ink-muted);
+  margin: 6px 0 20px;
+}
+.body label {
+  display: block;
+  margin: 0 0 16px;
+}
+.body label span {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.body output {
+  white-space: nowrap;
+  color: var(--ink-muted);
+}
+.body input {
+  width: 100%;
+  accent-color: var(--signal);
+  margin-top: 8px;
+}
+.actions {
+  display: flex;
+  gap: 8px;
+}
+.actions button {
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #eef5f6;
+  border: 1px solid #dce3e8;
+  cursor: pointer;
+}
+.body details {
+  margin-top: 16px;
+  font-size: 11px;
+}
+.body pre {
+  white-space: pre-wrap;
+}

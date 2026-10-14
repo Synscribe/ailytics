@@ -21,7 +21,7 @@ All six values are required. The form stays visibly unavailable when one is miss
 
 SMTP delivery lives in `src/lib/contact-delivery.ts`. Replace that adapter when a project uses a transactional email API or CRM, while keeping validation and the route contract stable.
 
-The included success state promises a reply within 1–3 working days. Keep that sentence only when the client can meet it; otherwise replace it with an accurate response expectation before production.
+The included success state says "We'll be in touch soon." Replace it with a specific response time only when the client has confirmed one they can meet.
 
 ## Attribution kept by the default
 

@@ -2,7 +2,6 @@ import { ArrowRightIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import { defaultOrganizationLogoPath } from "@/lib/seo";
 
@@ -10,7 +9,7 @@ import { MobileNav } from "./mobile-nav";
 
 const primaryAction = {
   href: "/contact",
-  label: "Launch Website",
+  label: "Request a demo",
 } as const;
 
 export function SiteHeader() {
@@ -19,18 +18,17 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-6 px-5 sm:px-8">
         <Link
           href="/"
-          className="group inline-flex items-center gap-2.5 font-semibold tracking-tight"
+          className="group inline-flex items-center gap-2.5 font-medium tracking-tight"
           aria-label={`${siteConfig.name} home`}
         >
           <Image
             alt=""
-            className="size-7 transition-transform group-hover:-rotate-6"
-            height={28}
+            className="h-8 w-auto"
+            height={32}
             priority
             src={defaultOrganizationLogoPath}
-            width={28}
+            width={100}
           />
-          <span>{siteConfig.name}</span>
         </Link>
 
         <nav aria-label="Primary navigation" className="hidden md:block">
@@ -51,14 +49,14 @@ export function SiteHeader() {
         <div className="hidden md:block">
           <Link
             href={primaryAction.href}
-            className={buttonVariants({
-              size: "sm",
-              className:
-                "h-auto rounded-full bg-signal px-4 py-2 text-sm font-semibold text-white shadow-[0_8px_28px_rgba(224,78,34,0.22)] hover:-translate-y-0.5 hover:bg-signal-strong",
-            })}
+            className="brand-btn-primary h-9 px-4 py-0 text-sm"
           >
             {primaryAction.label}
-            <ArrowRightIcon data-icon="inline-end" aria-hidden="true" />
+            <ArrowRightIcon
+              className="size-4"
+              data-icon="inline-end"
+              aria-hidden="true"
+            />
           </Link>
         </div>
 

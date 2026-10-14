@@ -1,0 +1,60 @@
+/* The migrated job description: paragraphs, bold run-in headings and lists. */
+.prose {
+  color: var(--ink-muted);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.prose > * + * {
+  margin-top: 1rem;
+}
+
+.prose strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.prose em {
+  font-style: italic;
+}
+
+/* A paragraph holding only bold text is a section heading in the source. */
+.prose p:has(> strong:only-child) {
+  margin-top: 2rem;
+  font-size: 1.0625rem;
+}
+
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  margin-top: 2rem;
+  color: var(--ink);
+  font-size: 1.0625rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.4rem;
+}
+
+.prose ul {
+  list-style: disc;
+}
+
+.prose ol {
+  list-style: decimal;
+}
+
+.prose li + li {
+  margin-top: 0.4rem;
+}
+
+.prose a {
+  color: var(--signal-strong);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}

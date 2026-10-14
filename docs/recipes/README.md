@@ -8,7 +8,7 @@ Checklist priority, guidance, and status live only in `docs/launch/checklist.jso
 
 - [`homepage.md`](homepage.md): compose the homepage, place real proof, keep one primary action, and verify the positioning sentence.
 - [`posthog.md`](posthog.md): configure the default client analytics integration or remove it cleanly.
-- [`use-cases.md`](use-cases.md): add validated JSON-backed pages, register React or local-file visuals, or remove the default cleanly.
+- [`use-cases.md`](use-cases.md): add a JSON-backed use-case or industry page, or remove them cleanly.
 - [`blog.md`](blog.md): connect the Wisp-backed blog or remove its routes, feed, dependencies, and navigation.
 - [`contact.md`](contact.md): configure the contact delivery adapter, review minimized attribution and abuse controls, test it end to end, or remove it cleanly.
 - [`turnstile.md`](turnstile.md): activate the optional Cloudflare Turnstile form protection, reuse it on another form, verify it, or remove it cleanly.

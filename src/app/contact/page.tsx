@@ -13,16 +13,16 @@ import { ContactForm } from "./_components/contact-form";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Contact",
+  title: "Request a Demo of AI Video Analytics",
   description:
-    "Tell us about the website you want to migrate, rebuild, or launch.",
+    "Request a demo of Ailytics AI video analytics. Tell us about your sites and cameras, and see which safety, security and productivity detections fit.",
   path: "/contact",
 });
 
 const usefulDetails = [
-  "What you are building or changing",
-  "Your current website, if there is one",
-  "Any launch date or constraint that matters",
+  "Your industry and the number of sites",
+  "Roughly how many cameras you have",
+  "The hazards or areas you want to monitor",
 ];
 
 export default function ContactPage() {
@@ -36,22 +36,20 @@ export default function ContactPage() {
       data-turnstile={turnstile.enabled ? "configured" : "disabled"}
       id="main-content"
     >
-      <section className="pt-14 pb-12 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-28">
+      <section className="brand-hero pt-14 pb-20 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-28">
         <div className="mx-auto grid w-full max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20">
           <div>
-            <p className="text-sm font-semibold tracking-[0.16em] text-signal-strong uppercase">
-              Start a project
-            </p>
-            <h1 className="mt-5 max-w-2xl text-balance font-display text-5xl leading-[0.96] tracking-[-0.045em] sm:text-6xl lg:text-7xl">
-              Tell us what you&apos;re building.
+            <h1 className="brand-h1 max-w-2xl">
+              Request a demo of AI video analytics
             </h1>
-            <p className="mt-7 max-w-xl text-lg leading-8 text-ink-muted">
-              Moving an old site? Rebuilding one? Starting fresh? Share the
-              basics so we can understand the work.
+            <p className="brand-lead mt-6 max-w-xl">
+              Tell us about your sites and cameras. We will show you which
+              safety, security and productivity detections fit, running on the
+              cameras you already have.
             </p>
 
-            <div className="mt-10 hidden border-t border-ink/15 pt-7 lg:block">
-              <p className="text-sm font-semibold">It helps to include:</p>
+            <div className="mt-10 hidden lg:block">
+              <p className="text-sm font-medium">It helps to include:</p>
               <ul className="mt-5 space-y-4">
                 {usefulDetails.map((detail) => (
                   <li
@@ -68,7 +66,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="self-start overflow-hidden rounded-[var(--radius-card)] border border-ink/10 bg-paper p-5 shadow-[var(--shadow-card)] sm:p-8 lg:p-10">
+          <div className="brand-card self-start overflow-hidden p-5 sm:p-8 lg:p-10">
             <ContactForm
               deliveryConfigured={deliveryConfigured}
               turnstileAction={

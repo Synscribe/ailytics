@@ -6,15 +6,15 @@ export type NavigationItem = {
 };
 
 export const siteConfig = Object.freeze({
-  name: "Launch Template",
+  name: "Ailytics",
   description:
-    "Launch Template is a Next.js website foundation for developers and business owners building with Claude Code, Codex, or another AI coding tool.",
+    "Ailytics adds AI video analytics to the CCTV you already own, detecting safety, security and productivity risks on construction sites, plants, ports and yards.",
   url: env.siteUrl,
-  locale: "en-SG",
+  locale: "en-US",
   navigation: [
-    { label: "Use Cases", href: "/uses" },
+    { label: "Use cases", href: "/use-cases" },
+    { label: "Industries", href: "/industries" },
     { label: "Blog", href: "/blog" },
-    { label: "Contact", href: "/contact" },
   ] satisfies NavigationItem[],
 });
 

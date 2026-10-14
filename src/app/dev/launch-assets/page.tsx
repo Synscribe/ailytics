@@ -34,13 +34,13 @@ export default async function LaunchAssetsPage({
     >
       <div className="mx-auto mb-10 w-[1270px]">
         <Link
-          className="inline-flex items-center gap-2 text-sm font-semibold text-ink-muted hover:text-ink"
+          className="inline-flex items-center gap-2 text-sm font-medium text-ink-muted hover:text-ink"
           href="/dev"
         >
           <ArrowLeftIcon className="size-4" />
           Visual workshop
         </Link>
-        <p className="mt-10 text-[11px] font-bold tracking-[0.16em] text-ink-faint uppercase">
+        <p className="mt-10 text-[11px] font-medium tracking-[0.16em] text-ink-faint uppercase">
           {LAUNCH_ASSETS.length} export-ready frames
         </p>
         <h1 className="mt-3 font-display text-4xl tracking-tight">

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import { Suspense } from "react";
 
 import { VisitorContextTracker } from "@/app/contact/_components/visitor-context-tracker";
@@ -12,6 +13,17 @@ import {
 } from "@/lib/seo";
 
 import "./globals.css";
+
+const switzer = localFont({
+  src: [
+    { path: "./fonts/Switzer-300.woff2", weight: "300" },
+    { path: "./fonts/Switzer-400.woff2", weight: "400" },
+    { path: "./fonts/Switzer-500.woff2", weight: "500" },
+    { path: "./fonts/Switzer-600.woff2", weight: "600" },
+  ],
+  variable: "--font-switzer",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -29,7 +41,7 @@ export default function RootLayout({
   const websiteJsonLd = buildWebsiteJsonLd();
 
   return (
-    <html lang="en" data-scroll-behavior="smooth">
+    <html lang="en" data-scroll-behavior="smooth" className={switzer.variable}>
       <body>
         <script
           type="application/ld+json"

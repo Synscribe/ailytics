@@ -61,7 +61,7 @@ export function BlogPagination({
   if (items.length === 0) return null;
 
   const sharedArrowClass =
-    "inline-flex min-h-11 items-center gap-1.5 rounded-lg px-2 text-sm font-semibold text-ink-muted transition-colors hover:text-ink";
+    "inline-flex min-h-11 items-center gap-1.5 rounded-lg px-2 text-sm font-medium text-ink-muted transition-colors hover:text-ink";
 
   return (
     <nav
@@ -99,7 +99,7 @@ export function BlogPagination({
         ) : item === currentPage ? (
           <span
             aria-current="page"
-            className="grid size-11 place-items-center rounded-lg border border-ink bg-paper text-sm font-semibold text-ink"
+            className="grid size-11 place-items-center rounded-lg border border-ink bg-paper text-sm font-medium text-ink"
             key={item}
           >
             {item}

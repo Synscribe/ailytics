@@ -2,7 +2,7 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 
-import { VISUAL_IDS } from "../../lib/visuals";
+import { FEATURE_VISUAL_IDS, VISUAL_IDS } from "../../lib/visuals";
 
 import {
   getVisualSource,
@@ -19,6 +19,44 @@ describe("project visual inventory", () => {
       expect(
         renderToStaticMarkup(createElement(ProjectVisual, { id })),
       ).toContain(`data-visual-id="${id}"`);
+    }
+  });
+
+  it("registers a project visual for every generator feature id", () => {
+    const generatorFeatureIds = [
+      "hardware-agnostic",
+      "edge-engine",
+      "ppe-detection",
+      "open-edge-detection",
+      "under-load-detection",
+      "machinery-proximity",
+      "fire-smoke-detection",
+      "no-access-zones",
+      "poor-ergonomics",
+      "distracted-activity",
+      "speeding-wrong-way",
+      "crowding",
+      "water-hazard",
+      "loitering-unattended",
+      "man-hour-tracking",
+      "machinery-usage",
+      "timelapse-xray",
+      "custom-use-cases",
+      "real-time-alerts",
+      "unlimited-reporting",
+      "multi-site-dashboard",
+    ];
+
+    expect([...FEATURE_VISUAL_IDS].sort()).toEqual(
+      [...generatorFeatureIds].sort(),
+    );
+
+    for (const id of generatorFeatureIds) {
+      expect(VISUAL_IDS).toContain(id);
+      const source = getVisualSource(id as (typeof FEATURE_VISUAL_IDS)[number]);
+      expect(source.status).toBe("project");
+      expect(source.kind).toBe("component");
+      expect(source.motionPattern).toBeTruthy();
     }
   });
 

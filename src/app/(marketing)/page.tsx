@@ -1,502 +1,549 @@
-import { PlusIcon } from "lucide-react";
+import { FaqAccordion } from "@/components/faq-accordion/faq-accordion";
+import { CustomerProof } from "@/components/customer-proof/customer-proof";
+import {
+  BellRingIcon,
+  CctvIcon,
+  CloudIcon,
+  FileTextIcon,
+  MapPinnedIcon,
+  ShieldCheckIcon,
+  ServerIcon,
+  ScanFaceIcon,
+  WorkflowIcon,
+} from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
 
-import { Badge } from "@/components/ui/badge";
-import { buttonVariants } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { siteConfig } from "@/config/site";
+import { ProjectVisual } from "@/components/visuals/project-visual";
+import type { VisualId } from "@/lib/visuals";
+import Image from "next/image";
+import Link from "next/link";
+import type { ReactNode } from "react";
+
 import { buildFaqJsonLd, createPageMetadata, serializeJsonLd } from "@/lib/seo";
 
+import { DepthStory } from "./_components/depth-story.client";
+import {
+  AskVisual,
+  DepthVisual,
+  HarshVisual,
+  SetupVisual,
+  SitesVisual,
+} from "./_components/feature-visuals.client";
+import { HeroWall } from "./_components/hero-wall.client";
+import { ProblemScene } from "./_components/problem-scene.client";
+import { RevealGroup } from "@/components/reveal-group.client";
 import styles from "./home.module.css";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "A practical Next.js template for agentic websites",
-  description: siteConfig.description,
+  title: "AI Video Analytics for Construction & Heavy Industries",
+  description:
+    "AI video analytics for construction & heavy industries. Ailytics turns your existing CCTV into real-time safety, security and productivity alerts.",
   path: "/",
 });
 
-const signals = [
-  ["Identity", "Client brand is set"],
-  ["Routes", "Every URL has a home"],
-  ["Search", "Pages can be crawled"],
-  ["Migration", "Old URLs are mapped"],
-  ["Launch", "Checks are recorded"],
-];
+type Feature = {
+  id: string;
+  title: string;
+  body: string;
+  visual: ReactNode;
+  link?: { href: string; label: string };
+};
 
-const trustStack = ["Next.js", "TypeScript", "shadcn/ui", "PostHog"];
-
-const principles = [
+const FEATURES: Feature[] = [
   {
-    number: "01",
-    title: "Pages are easy to find",
-    body: "Open a route and see its copy, metadata, and layout. No catch-all renderer or hidden block registry.",
+    id: "real-3d-distance",
+    title: "Real 3D distance from one camera",
+    body: "Measures how close workers are to plant, vehicles and lifted loads in real metres, from a single CCTV camera. No LiDAR or radar.",
+    visual: <DepthVisual />,
+    link: { href: "#how-it-works", label: "How 3D distance works" },
   },
   {
-    number: "02",
-    title: "Features are easy to remove",
-    body: "Blog, use cases, and PostHog are ordinary code. Delete the files and links when a project does not need them.",
+    id: "harsh-conditions",
+    title: "Accurate in rain, dust and low light",
+    body: "Built for live outdoor sites: night shifts, rain, dust and long-range cameras, with 80–95% detection accuracy in the field.",
+    visual: <HarshVisual />,
   },
   {
-    number: "03",
-    title: "Important checks come first",
-    body: "Brand, indexability, routes, redirects, and forms can block launch. Nice-to-have experiments can wait.",
-  },
-];
-
-const priorities = [
-  {
-    tier: "P0",
-    label: "Protect the launch",
-    description:
-      "Fix anything that can lose traffic, break trust, or stop a visitor from completing the main action.",
-    items: [
-      "Brand and production domain",
-      "Indexability",
-      "Routes and redirects",
-    ],
+    id: "ask-your-cameras",
+    title: "Search footage in plain language",
+    body: "Ask about smoke, idle machinery or unauthorized entry and get the matching clips with camera and time. Powered by Ailytics’ vision language model.",
+    visual: <AskVisual />,
   },
   {
-    tier: "P1",
-    label: "Polish the experience",
-    description:
-      "Improve the experience once the launch risks are under control.",
-    items: ["Structured data", "Social previews", "Accessibility review"],
+    id: "every-site",
+    title: "Multi-site safety dashboard",
+    body: "Site supervisors get alerts on their phones. EHS managers compare PPE compliance and open alerts across every project on one screen.",
+    visual: <SitesVisual />,
   },
   {
-    tier: "P2",
-    label: "Add what the project needs",
-    description:
-      "Add advanced discovery and content tools only when there is a real use for them.",
-    items: [".md pages", "LLM discovery", "Experiments"],
+    id: "set-up-your-way",
+    title: "Rules that match your site",
+    body: "Draw exclusion zones, set grace periods and alert cooldowns, and combine detections into your own rules to cut false alerts.",
+    visual: <SetupVisual />,
   },
 ];
 
-const workflow = [
+type UseCaseTile = {
+  id: VisualId;
+  title: string;
+  body: string;
+  href: string;
+};
+
+const USE_CASES: UseCaseTile[] = [
   {
-    number: "01",
-    title: "Inventory",
-    body: "List the old URLs, traffic, content, forms, analytics, and design patterns before you replace them.",
+    id: "ppe-detection",
+    title: "PPE detection",
+    body: "Missing hard hats, vests and gloves, flagged in each work area.",
+    href: "/use-cases/ppe-detection",
   },
   {
-    number: "02",
-    title: "Build",
-    body: "Finish one route at a time. Keep its copy, metadata, links, and layout together.",
+    id: "machinery-proximity",
+    title: "Machinery proximity",
+    body: "Real distance between workers and moving plant, from one camera.",
+    href: "/use-cases",
   },
   {
-    number: "03",
-    title: "Audit",
-    body: "Crawl the preview. Check the URL map, first 200 words, forms, analytics, and launch blockers.",
+    id: "under-load-detection",
+    title: "Under suspended loads",
+    body: "Workers inside the drop zone of a lift, flagged for the lifting supervisor.",
+    href: "/use-cases",
   },
   {
-    number: "04",
-    title: "Launch",
-    body: "Switch to production with redirects, rollback ownership, and post-launch checks ready.",
+    id: "fire-smoke-detection",
+    title: "Smoke and fire",
+    body: "Early smoke and flame detection, so teams can respond quickly.",
+    href: "/use-cases",
+  },
+  {
+    id: "no-access-zones",
+    title: "Restricted areas",
+    body: "Unauthorized entry into barricaded or after-hours zones.",
+    href: "/use-cases",
+  },
+  {
+    id: "machinery-usage",
+    title: "Machinery utilization",
+    body: "Working and idle hours for excavators, cranes and rigs.",
+    href: "/use-cases",
   },
 ];
 
-const questions = [
+const INDUSTRIES = [
   {
-    question: "Is this only for brand-new websites?",
-    answer:
-      "No. Use it for a new launch, a rebuild, or a migration. Migration projects start with the existing URL inventory and redirect map before routes change.",
+    label: "Construction",
+    hazards: "Struck-by machinery, suspended loads, open edges, PPE",
+    href: "/industries/construction",
   },
   {
-    question: "Do I need to keep every included feature?",
-    answer:
-      "No. Blog, use cases, PostHog, and the contact flow are ordinary code. Delete what the project does not need.",
+    label: "Manufacturing",
+    hazards: "Machine areas, forklifts, PPE, smoke and fire",
+    href: "/industries",
   },
   {
-    question: "Can I bring my own design system?",
-    answer:
-      "Yes. Replace the semantic tokens first, then change the shared shell and route-level composition. The routing and launch checks can stay underneath.",
+    label: "Oil and gas",
+    hazards: "Exclusion zones, PPE, smoke and fire",
+    href: "/industries",
   },
   {
-    question: "What does the launch review check?",
+    label: "Logistics and warehousing",
+    hazards: "Forklifts, reversing vehicles, restricted areas",
+    href: "/industries",
+  },
+  {
+    label: "Ports and airports",
+    hazards: "Lifting, quayside and airside vehicles, restricted areas",
+    href: "/industries",
+  },
+  {
+    label: "Data centers",
+    hazards: "Restricted areas, contractor safety, smoke and fire",
+    href: "/industries",
+  },
+];
+
+const CAPABILITIES = [
+  {
+    icon: BellRingIcon,
+    title: "Real-time alerts",
+    body: "Each alert carries the event frame, time and location, and goes straight to the supervisor's phone and dashboard.",
+  },
+  {
+    icon: FileTextIcon,
+    title: "Compliance reporting",
+    body: "Automated weekly reports show alert trends by site, zone and hazard, ready for safety meetings and audits.",
+  },
+  {
+    icon: MapPinnedIcon,
+    title: "Multi-site view",
+    body: "Every project and plant on one map, with open alerts and trends for each site.",
+  },
+  {
+    icon: CloudIcon,
+    title: "Deployment that meets data-residency rules",
+    body: "Run detection on the edge, on-premise or in the cloud, with regional hosting so video stays where your policies require.",
+  },
+  {
+    icon: WorkflowIcon,
+    title: "Custom scenarios, two ways",
+    body: "Train a dedicated detection model for a site-specific hazard, or describe the scenario in plain language and let the vision language model check for it.",
+  },
+  {
+    icon: CctvIcon,
+    title: "Works with the cameras you own",
+    body: "Any IP camera from 2MP up, connected over RTSP. No new hardware.",
+  },
+];
+
+const CASES = [
+  {
+    industry: "Construction",
+    title: "69.1% fewer non-compliances on a construction site in 16 months",
+    src: "/media/ailytics/stills/open-edge-detection.jpg",
+    alt: "Camera view over a building under construction, with workers on an upper floor.",
+  },
+  {
+    industry: "Manufacturing",
+    title: "77% fewer non-compliances at a manufacturing site",
+    src: "/media/ailytics/stills/crowding.jpg",
+    alt: "Camera view of workers in high-visibility clothing on a factory floor.",
+  },
+];
+
+const TRUST = [
+  {
+    icon: ShieldCheckIcon,
+    title: "ISO/IEC 27001 certified",
+    body: "Independently audited information security.",
+  },
+  {
+    icon: ServerIcon,
+    title: "On-premise or cloud",
+    body: "Run on-premise and video stays on your network.",
+  },
+  {
+    icon: ScanFaceIcon,
+    title: "Privacy blurring",
+    body: "Blur faces or full bodies so workers stay anonymous.",
+  },
+];
+
+const FAQS = [
+  {
+    question: "Do I need new cameras?",
     answer:
-      "It checks identity, routes, indexing, metadata, the sitemap, redirects, forms, analytics, and the launch risks recorded in the checklist.",
+      "No. Ailytics works with the IP cameras you already have (2MP and up), connected over RTSP.",
+  },
+  {
+    question: "Where is my video processed and stored?",
+    answer:
+      "On the edge, on your own servers or in the cloud. You choose. With on-premise deployment, video stays on your network. Ailytics is ISO/IEC 27001 certified.",
+  },
+  {
+    question: "Does it work outdoors, at night and in bad weather?",
+    answer:
+      "Yes. The models are built for outdoor sites with poor lighting, rain, dust and vibration, and for long-range, small-object detection.",
+  },
+  {
+    question: "What does “2D to 3D from one camera” mean?",
+    answer:
+      "Ailytics works out depth from a single standard camera, with no lidar, radar or second camera. That lets it measure real distance between people and machinery, and project where a lifted load would fall.",
+  },
+  {
+    question: "How accurate is it?",
+    answer:
+      "Ailytics maintains 80–95% detection accuracy across its projects in the field, and each use case can be tuned to your site.",
+  },
+  {
+    question: "How long does it take to go live?",
+    answer: "Under 2 weeks on the cameras you already have.",
+  },
+  {
+    question: "Does it replace our EHS software or video management system?",
+    answer:
+      "No. Ailytics adds AI detection to your cameras and sends its alerts and reports to the systems you already use (your VMS and EHS platform).",
+  },
+  {
+    question: "Can we choose which hazards to detect?",
+    answer:
+      "Yes. Pick from 50+ use cases and set each one’s zones, grace period and alert cooldown to match your site rules.",
   },
 ];
 
 export default function HomePage() {
-  const faqJsonLd = buildFaqJsonLd(questions);
+  const faqJsonLd = buildFaqJsonLd(FAQS);
 
   return (
-    <main id="main-content">
+    <main id="main-content" className={styles.page}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqJsonLd) }}
       />
 
-      <section className={`${styles.hero} border-b border-ink/10`}>
-        <div className="mx-auto grid min-h-[calc(100vh-4rem)] w-full max-w-7xl items-start gap-14 px-5 pt-14 pb-20 sm:px-8 sm:pt-16 lg:grid-cols-[1.08fr_0.92fr] lg:pt-20 lg:pb-24">
-          <div>
-            <p
-              className={`${styles.kicker} flex items-center gap-3 text-xs font-bold tracking-[0.2em] text-ink-muted uppercase`}
-            >
-              A practical Next.js foundation
-            </p>
-            <h1
-              className={`${styles.displayTitle} mt-7 max-w-4xl font-display text-[clamp(3.6rem,8vw,7.4rem)] leading-[0.9] tracking-[-0.065em]`}
-            >
-              Launch a new agentic website.
-            </h1>
-            <p className="mt-8 max-w-2xl text-lg leading-8 text-ink-muted sm:text-xl sm:leading-9">
-              Start with a practical Next.js foundation for agentic websites,
-              migrations, and rebuilds. Technical SEO, redirects, analytics, and
-              launch checks stay close to the code. The design stays yours.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-3">
-              <Link
-                href="/contact"
-                className={buttonVariants({
-                  size: "lg",
-                  className:
-                    "h-auto rounded-full bg-ink px-6 py-3.5 text-sm font-semibold text-paper hover:-translate-y-0.5 hover:bg-ink/85",
-                })}
-              >
-                Launch Website
-              </Link>
-              <Link
-                href="#principles"
-                className={buttonVariants({
-                  variant: "outline",
-                  size: "lg",
-                  className:
-                    "h-auto rounded-full border-ink/15 bg-paper/70 px-6 py-3.5 text-sm font-semibold hover:border-ink/30 hover:bg-paper",
-                })}
-              >
-                See how it is built
-              </Link>
-            </div>
+      {/* 1. Hero */}
+      <section className={styles.hero} aria-labelledby="hero-title">
+        <div className={styles.heroGlow} aria-hidden="true" />
+        <div className={styles.heroDots} aria-hidden="true" />
+        <div className={styles.heroStack}>
+          <h1 id="hero-title" className={styles.h1}>
+            AI video monitoring for construction & heavy industries
+          </h1>
+          <p className={styles.heroHeadline}>
+            Safety & Productivity Monitoring That Never Blinks
+          </p>
+          <p className={styles.heroLead}>
+            Ailytics connects to the cameras you already own and alerts your EHS
+            and site teams to PPE breaches, exclusion-zone entries, near misses
+            and struck-by risk the moment they happen. Live in under 2 weeks on
+            construction sites, plants, ports and yards — no rip-and-replace.
+          </p>
+          <div className={styles.actions}>
+            <Link href="/contact" className={styles.btnPrimary}>
+              Request a demo
+            </Link>
+            <Link href="/use-cases" className={styles.btnSecondary}>
+              See all use cases
+            </Link>
           </div>
+          <HeroWall />
+        </div>
+      </section>
 
-          <div className={`${styles.signalBoard} rounded-[2rem] p-5 sm:p-7`}>
-            <div className="flex items-center justify-between border-b border-white/10 pb-5 text-paper">
-              <div>
-                <p className="text-xs font-bold tracking-[0.18em] text-mint uppercase">
-                  Launch signal
-                </p>
-                <p className="mt-1 text-lg font-semibold">Production review</p>
-              </div>
-              <Badge className="h-auto gap-2 border-0 bg-white/8 px-3 py-1.5 text-xs font-medium text-mint hover:bg-white/8">
-                <span className={styles.pulse} /> Live audit
-              </Badge>
+      {/* 2. Customers and results */}
+      <CustomerProof />
+
+      {/* 3. Problem */}
+      <ProblemScene />
+
+      {/* 4. How it works */}
+      <DepthStory />
+
+      {/* 5. Features */}
+      <section className={styles.features} aria-labelledby="features-title">
+        <div className={styles.container}>
+          <div className={styles.headRow}>
+            <div className={styles.secHead}>
+              <h2 id="features-title" className={styles.h2}>
+                Why EHS and site safety teams choose Ailytics
+              </h2>
+              <p className={styles.lead}>
+                Accurate on live sites, and simple to run across every project
+                you manage.
+              </p>
             </div>
-
-            <div className="mt-4">
-              {signals.map(([label, value], index) => (
-                <div
-                  className={`${styles.checkRow} flex items-center gap-4 border-b border-white/8 py-4 last:border-0`}
-                  key={label}
-                >
-                  <span className="grid size-8 shrink-0 place-items-center rounded-full border border-mint/25 bg-mint/10 text-xs font-bold text-mint">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-xs tracking-[0.12em] text-white/45 uppercase">
-                      {label}
-                    </p>
-                    <p className="mt-0.5 truncate text-sm font-medium text-paper">
-                      {value}
-                    </p>
-                  </div>
-                  <Badge className="h-auto border-0 bg-mint/10 px-2.5 py-1 text-[10px] font-bold tracking-[0.12em] text-mint uppercase hover:bg-mint/10">
-                    Ready
-                  </Badge>
+            <Link href="/contact" className={styles.btnPrimary}>
+              Request a demo
+            </Link>
+          </div>
+          <div className={styles.fstack}>
+            {FEATURES.map((f, i) => (
+              <article
+                key={f.id}
+                id={f.id}
+                className={styles.fcard}
+                style={{ "--i": i } as never}
+                aria-labelledby={`${f.id}-title`}
+              >
+                <div className={styles.fvis}>{f.visual}</div>
+                <div className={styles.ftext}>
+                  <h3 id={`${f.id}-title`}>{f.title}</h3>
+                  <p>{f.body}</p>
+                  {f.link ? (
+                    <a href={f.link.href} className={styles.textLink}>
+                      {f.link.label}
+                    </a>
+                  ) : null}
                 </div>
-              ))}
-            </div>
-
-            <div className="mt-5 grid grid-cols-3 gap-2">
-              {[
-                ["0", "Dead links"],
-                ["3", "Priority levels"],
-                ["1", "Launch checklist"],
-              ].map(([value, label]) => (
-                <div className="rounded-2xl bg-white/6 p-3" key={label}>
-                  <p className="font-display text-2xl text-paper">{value}</p>
-                  <p className="mt-1 text-[10px] leading-4 text-white/45 uppercase">
-                    {label}
-                  </p>
-                </div>
-              ))}
-            </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section
-        aria-label="Technology trust bar"
-        className="border-b border-ink/10 bg-paper"
-      >
-        <div className="mx-auto flex w-full max-w-7xl flex-col gap-5 px-5 py-7 sm:px-8 lg:flex-row lg:items-center lg:justify-between">
-          <p className="text-sm font-semibold text-ink-muted">
-            Built on a stack your team can inspect and own.
-          </p>
-          <ul className="flex flex-wrap gap-x-7 gap-y-3">
-            {trustStack.map((item) => (
-              <li
-                className="font-display text-lg tracking-[-0.02em] text-ink"
-                key={item}
-              >
-                {item}
+      {/* 6. Use cases */}
+      <section className={styles.useCases} aria-labelledby="uses-title">
+        <div className={styles.container}>
+          <div className={styles.headRow}>
+            <div className={styles.secHead}>
+              <h2 id="uses-title" className={styles.h2}>
+                AI video analytics use cases for every hazard on site
+              </h2>
+              <p className={styles.lead}>
+                Switch on the detections each camera needs, from PPE and
+                exclusion zones to idle machinery. 50+ ready to configure.
+              </p>
+            </div>
+            <Link href="/use-cases" className={styles.btnSecondary}>
+              See all use cases
+            </Link>
+          </div>
+          <ul className={styles.ucGrid}>
+            {USE_CASES.map((uc) => (
+              <li key={uc.id}>
+                <Link href={uc.href} className={styles.ucCard}>
+                  <div className={styles.ucVis}>
+                    <ProjectVisual
+                      fill
+                      id={uc.id}
+                      sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 92vw"
+                    />
+                  </div>
+                  <h3>{uc.title}</h3>
+                  <p>{uc.body}</p>
+                </Link>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      {/* Customer proof belongs below this trust bar once approved logos, outcomes, or quotes exist. */}
-
-      <section className="bg-paper py-24 sm:py-32">
-        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-          <p className="text-xs font-bold tracking-[0.2em] text-signal uppercase">
-            What Launch Template is
-          </p>
-          <h2 className="mt-6 max-w-6xl text-balance font-display text-4xl leading-[1.04] tracking-[-0.04em] sm:text-5xl lg:text-6xl">
-            {siteConfig.description}
-          </h2>
-          <p className="mt-8 max-w-3xl text-lg leading-8 text-ink-muted">
-            It keeps pages, metadata, redirects, analytics, forms, and launch
-            checks in one codebase, ready to change one route at a time.
-          </p>
-        </div>
-      </section>
-
-      <section
-        id="principles"
-        className="scroll-mt-24 border-t border-ink/10 bg-paper py-24 sm:py-32"
-      >
-        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
-            <div>
-              <p className="text-xs font-bold tracking-[0.2em] text-signal uppercase">
-                How it works
-              </p>
-              <h2 className="mt-5 max-w-lg font-display text-5xl leading-[0.98] tracking-[-0.045em] sm:text-6xl">
-                Clear rules. Flexible design.
+      {/* 7. Industries */}
+      <section className={styles.industries} aria-labelledby="industries-title">
+        <div className={styles.container}>
+          <div className={styles.headRow}>
+            <div className={styles.secHead}>
+              <h2 id="industries-title" className={styles.h2}>
+                Built for heavy industry and critical infrastructure
               </h2>
-            </div>
-            <p className="max-w-2xl self-end text-lg leading-8 text-ink-muted">
-              Every route owns its copy and metadata. The launch checklist lives
-              in one place. You can change the design without rebuilding the
-              SEO, routing, and launch foundation.
-            </p>
-          </div>
-
-          <div className="mt-14 grid gap-4 md:grid-cols-3">
-            {principles.map((principle) => (
-              <article key={principle.number}>
-                <Card
-                  className={`${styles.principleCard} h-full gap-0 rounded-[1.5rem] border border-ink/10 bg-paper/70 p-7 py-7 ring-0`}
-                >
-                  <CardContent className="px-0">
-                    <p className="font-display text-3xl text-signal">
-                      {principle.number}
-                    </p>
-                    <h3 className="mt-12 text-xl font-semibold tracking-tight">
-                      {principle.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-6 text-ink-muted">
-                      {principle.body}
-                    </p>
-                  </CardContent>
-                </Card>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="priorities"
-        className="scroll-mt-24 border-y border-ink/10 py-24 sm:py-32"
-      >
-        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-          <div className="max-w-3xl">
-            <p className="text-xs font-bold tracking-[0.2em] text-signal uppercase">
-              Start with the real risks
-            </p>
-            <h2 className="mt-5 font-display text-5xl leading-[0.98] tracking-[-0.045em] sm:text-6xl">
-              Know what must be fixed before launch.
-            </h2>
-          </div>
-
-          <div className="mt-14 grid overflow-hidden rounded-[1.75rem] border border-ink/10 bg-paper md:grid-cols-3">
-            {priorities.map((priority) => (
-              <article
-                className={`${styles.priorityCard} border-b border-ink/10 p-7 pt-16 last:border-0 md:border-r md:border-b-0 md:last:border-r-0`}
-                key={priority.tier}
-              >
-                <p className="text-xs font-bold tracking-[0.16em] text-ink-faint uppercase">
-                  {priority.tier}
-                </p>
-                <h3 className="mt-3 text-2xl font-semibold tracking-tight">
-                  {priority.label}
-                </h3>
-                <p className="mt-4 text-sm leading-6 text-ink-muted">
-                  {priority.description}
-                </p>
-                <ul className="mt-10 space-y-3 border-t border-ink/10 pt-5 text-sm">
-                  {priority.items.map((item) => (
-                    <li className="flex items-center gap-3" key={item}>
-                      <span
-                        aria-hidden="true"
-                        className="size-1.5 rounded-full bg-ink/35"
-                      />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-paper py-24 sm:py-32">
-        <div className="mx-auto grid w-full max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
-            <p className="text-xs font-bold tracking-[0.2em] text-signal uppercase">
-              A checklist that points to the work
-            </p>
-            <h2 className="mt-5 font-display text-5xl leading-[0.98] tracking-[-0.045em] sm:text-6xl">
-              Every rule links to code or a check.
-            </h2>
-            <p className="mt-6 max-w-xl text-lg leading-8 text-ink-muted">
-              Checklist IDs point to the code, command, evidence, and reason
-              behind each check. Teams can copy the document and fix the
-              highest-risk gaps first.
-            </p>
-          </div>
-
-          <div className={`${styles.codeWindow} rounded-[1.75rem] p-6 text-sm`}>
-            <div className="flex items-center gap-2 border-b border-white/10 pb-4 text-white/40">
-              <span className="size-2.5 rounded-full bg-signal" />
-              <span className="size-2.5 rounded-full bg-[#e4b85b]" />
-              <span className="size-2.5 rounded-full bg-mint-strong" />
-              <span className="ml-2 font-mono text-xs">
-                launch/checklist.md
-              </span>
-            </div>
-            <div className="space-y-5 py-7 font-mono leading-6">
-              <p>
-                <span className="text-signal">SEO-02</span>
-                <span className="text-white/35"> → </span>
-                <span className="text-paper">meta title</span>
-              </p>
-              <p className="pl-20 text-white/55">meta description</p>
-              <p className="pl-20 text-white/55">H1</p>
-              <p className="pl-20 text-white/55">first 200 words</p>
-              <p className="pl-20 text-white/55">dates when available</p>
-              <div className="border-t border-white/10 pt-5 text-white/55">
-                evidence: preview crawl + content review
-                <br />
-                code: src/lib/seo.ts
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="workflow"
-        className="scroll-mt-24 bg-night py-24 text-paper sm:py-32"
-      >
-        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-            <div>
-              <p className="text-xs font-bold tracking-[0.2em] text-mint uppercase">
-                Build one page at a time
-              </p>
-              <h2 className="mt-5 font-display text-5xl leading-[0.98] tracking-[-0.045em] sm:text-6xl">
-                Four steps anyone can follow.
-              </h2>
-              <p className="mt-6 max-w-xl text-base leading-7 text-white/60">
-                Use the same order for every project. Each finished page leaves
-                behind code, decisions, and launch evidence.
+              <p className={styles.lead}>
+                Find your industry and the hazards Ailytics watches for on sites
+                like yours.
               </p>
             </div>
-
-            <div className="border-t border-white/15">
-              {workflow.map((step) => (
-                <article
-                  className="grid grid-cols-[5rem_1fr] gap-4 border-b border-white/15 py-7 sm:grid-cols-[7rem_0.55fr_1fr] sm:items-start"
-                  key={step.number}
-                >
-                  <p className={`${styles.stepNumber} text-5xl leading-none`}>
-                    {step.number}
-                  </p>
-                  <h3 className="pt-1 text-lg font-semibold">{step.title}</h3>
-                  <p className="col-start-2 text-sm leading-6 text-white/55 sm:col-start-auto">
-                    {step.body}
-                  </p>
-                </article>
+            <Link href="/industries" className={styles.btnSecondary}>
+              See all industries
+            </Link>
+          </div>
+          <RevealGroup>
+            <ul className={styles.industryGrid}>
+              {INDUSTRIES.map((ind) => (
+                <li key={ind.label} data-reveal>
+                  <Link href={ind.href} className={styles.industryCard}>
+                    <h3>{ind.label}</h3>
+                    <p>{ind.hazards}</p>
+                  </Link>
+                </li>
               ))}
-            </div>
-          </div>
+            </ul>
+          </RevealGroup>
         </div>
       </section>
 
-      <section className="border-t border-ink/10 bg-paper py-24 sm:py-32">
-        <div className="mx-auto grid w-full max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-24">
-          <div>
-            <p className="text-xs font-bold tracking-[0.2em] text-signal uppercase">
-              Common questions
-            </p>
-            <h2 className="mt-5 max-w-xl font-display text-5xl leading-[0.98] tracking-[-0.045em] sm:text-6xl">
-              Start with a clear answer.
+      {/* 7. Platform capabilities */}
+      <section className={styles.capabilities} aria-labelledby="cap-title">
+        <div className={styles.container}>
+          <div className={styles.secHead}>
+            <h2 id="cap-title" className={styles.h2}>
+              Built for EHS reporting, compliance and IT
             </h2>
           </div>
+          <ul className={styles.capGrid}>
+            {CAPABILITIES.map(({ icon: Icon, title, body }) => (
+              <li key={title}>
+                <span className={styles.capIcon}>
+                  <Icon aria-hidden="true" strokeWidth={1.75} />
+                </span>
+                <h3>{title}</h3>
+                <p>{body}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
-          <div className="border-t border-ink/15">
-            {questions.map((item) => (
-              <details className={styles.faqItem} key={item.question}>
-                <summary className="grid cursor-pointer grid-cols-[1fr_1.5rem] gap-4 py-6">
-                  <span className="text-lg leading-7 font-semibold">
-                    {item.question}
-                  </span>
-                  <PlusIcon
-                    className={`${styles.faqMarker} mt-1 size-5 text-ink-faint`}
-                    aria-hidden="true"
+      {/* 8. Case studies */}
+      <section className={styles.cases} aria-labelledby="cases-title">
+        <div className={styles.container}>
+          <div className={styles.headRow}>
+            <div className={styles.secHead}>
+              <h2 id="cases-title" className={styles.h2}>
+                Safety results on live projects
+              </h2>
+            </div>
+            <Link href="/contact" className={styles.btnPrimary}>
+              Request a demo
+            </Link>
+          </div>
+          <div className={styles.caseGrid}>
+            {CASES.map((c) => (
+              <article key={c.title} className={styles.caseCard}>
+                <div className={styles.caseMedia}>
+                  <Image
+                    alt={c.alt}
+                    fill
+                    sizes="(min-width: 1024px) 600px, 92vw"
+                    src={c.src}
                   />
-                </summary>
-                <p className="max-w-2xl pr-8 pb-7 text-base leading-8 text-ink-muted">
-                  {item.answer}
-                </p>
-              </details>
+                  <span className={styles.caseChip}>{c.industry}</span>
+                </div>
+                <h3>{c.title}</h3>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-t border-ink/10 py-20 sm:py-24">
-        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-          <Card
-            className={`${styles.closingCard} gap-0 rounded-[2rem] border-0 p-8 py-8 text-paper ring-0 sm:p-12 sm:py-12`}
-          >
-            <CardContent className="grid gap-10 px-0 lg:grid-cols-[1fr_auto] lg:items-end">
-              <div>
-                <p className="text-xs font-bold tracking-[0.2em] text-mint uppercase">
-                  Ready when you are
-                </p>
-                <h2 className="mt-5 max-w-4xl text-balance font-display text-4xl leading-[1] tracking-[-0.04em] sm:text-6xl">
-                  Build the website you want. Keep the launch under control.
-                </h2>
-              </div>
-              <Link
-                href="/contact"
-                className={buttonVariants({
-                  size: "lg",
-                  className:
-                    "h-auto shrink-0 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-signal-strong hover:-translate-y-0.5 hover:bg-white/90",
-                })}
-              >
-                Launch Website
-              </Link>
-            </CardContent>
-          </Card>
+      <section
+        className={styles.trust}
+        id="security"
+        aria-labelledby="trust-title"
+      >
+        <div className={`${styles.container} ${styles.trustGrid}`}>
+          <div className={styles.secHead}>
+            <h2 id="trust-title" className={styles.h2}>
+              Your footage stays under your control
+            </h2>
+            <p className={styles.lead}>
+              Choose where video is processed and stored, and keep the people on
+              camera private.
+            </p>
+          </div>
+          <ul className={styles.trustList}>
+            {TRUST.map(({ icon: Icon, title, body }) => (
+              <li key={title} className={styles.trustCard}>
+                <span className={styles.capIcon}>
+                  <Icon aria-hidden="true" strokeWidth={1.75} />
+                </span>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* 10. FAQ */}
+      <section className={styles.faq} aria-labelledby="faq-title">
+        <div className={`${styles.container} ${styles.faqGrid}`}>
+          <div className={styles.secHead}>
+            <h2 id="faq-title" className={styles.h2}>
+              Common questions
+            </h2>
+            <p className={styles.lead}>
+              The questions safety, operations and IT teams ask before a demo.
+            </p>
+          </div>
+          <FaqAccordion items={FAQS} />
+        </div>
+      </section>
+
+      {/* 11. Closing banner */}
+      <section className={styles.closing} aria-labelledby="closing-title">
+        <div className={styles.container}>
+          <div className={styles.banner}>
+            <div>
+              <h2 id="closing-title">See Ailytics on a site like yours</h2>
+              <p>
+                Book a demo and we’ll show you how Ailytics would work on your
+                cameras.
+              </p>
+            </div>
+            <Link href="/contact" className={styles.btnLight}>
+              Request a demo
+            </Link>
+          </div>
         </div>
       </section>
     </main>

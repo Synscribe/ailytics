@@ -1,0 +1,125 @@
+.accordion {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.item {
+  border-bottom: 1px solid var(--line);
+  transition: background 0.25s ease;
+}
+.item:last-child {
+  border-bottom: 0;
+}
+.item summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 25px 20px;
+  border-radius: 4px;
+}
+.item summary::-webkit-details-marker {
+  display: none;
+}
+.item summary:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+}
+.item summary:hover {
+  background: color-mix(in srgb, var(--signal) 5%, transparent);
+}
+.item h3 {
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0;
+}
+.icon {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  flex: none;
+  color: var(--ink-muted);
+}
+.icon::before,
+.icon::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  top: 11px;
+  height: 1.5px;
+  background: currentColor;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+.icon::after {
+  transform: rotate(90deg);
+}
+.item[open] {
+  background: color-mix(in srgb, var(--signal) 4%, transparent);
+}
+.item[open] .icon::after {
+  transform: rotate(0);
+  opacity: 0;
+}
+.answer {
+  padding: 0 60px 26px 20px;
+}
+.answer p {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.8;
+  color: var(--ink-muted);
+  max-width: 62ch;
+}
+.answer a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+@supports (interpolate-size: allow-keywords) {
+  .item {
+    interpolate-size: allow-keywords;
+  }
+  .item::details-content {
+    block-size: 0;
+    opacity: 0;
+    overflow: clip;
+    transition:
+      block-size 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.3s ease,
+      content-visibility 0.4s allow-discrete;
+  }
+  .item[open]::details-content {
+    block-size: auto;
+    opacity: 1;
+  }
+}
+@media (max-width: 640px) {
+  .item summary {
+    padding: 22px 12px;
+    gap: 16px;
+  }
+  .item h3 {
+    font-size: 16px;
+  }
+  .answer {
+    padding: 0 44px 24px 12px;
+  }
+  .answer p {
+    font-size: 15px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .item,
+  .item::details-content,
+  .icon::before,
+  .icon::after {
+    transition: none;
+  }
+}

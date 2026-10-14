@@ -63,11 +63,11 @@ export function LaunchFrame({ asset }: { asset: LaunchAsset }) {
               src={defaultOrganizationLogoPath}
               width={36}
             />
-            <span className="text-xl font-semibold tracking-[-0.025em]">
+            <span className="text-xl font-medium tracking-[-0.025em]">
               {siteConfig.name}
             </span>
           </div>
-          <span className="text-[11px] font-bold tracking-[0.15em] text-ink-faint uppercase">
+          <span className="text-[11px] font-medium tracking-[0.15em] text-ink-faint uppercase">
             Agentic website template
           </span>
         </header>
@@ -75,7 +75,7 @@ export function LaunchFrame({ asset }: { asset: LaunchAsset }) {
         <div className="grid flex-1 grid-cols-[minmax(0,1fr)_500px] items-center gap-16">
           <div className="max-w-[600px]">
             <p
-              className={`mb-6 text-[12px] font-bold tracking-[0.18em] uppercase ${tone.accent}`}
+              className={`mb-6 text-[12px] font-medium tracking-[0.18em] uppercase ${tone.accent}`}
             >
               {asset.eyebrow}
             </p>
@@ -108,14 +108,14 @@ export function LaunchFrame({ asset }: { asset: LaunchAsset }) {
           <div className="flex items-center gap-2.5">
             {asset.proof.map((item) => (
               <span
-                className="rounded-full border border-ink/10 bg-paper/90 px-3.5 py-2 text-[11px] font-semibold text-ink-muted"
+                className="rounded-full border border-ink/10 bg-paper/90 px-3.5 py-2 text-[11px] font-medium text-ink-muted"
                 key={item}
               >
                 {item}
               </span>
             ))}
           </div>
-          <span className="text-[12px] font-semibold text-ink-muted">
+          <span className="text-[12px] font-medium text-ink-muted">
             {brandDestination()}
           </span>
         </footer>

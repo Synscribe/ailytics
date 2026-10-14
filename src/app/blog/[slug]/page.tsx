@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
   getBlogPost,
@@ -100,7 +99,7 @@ async function Article({ params }: BlogPostPageProps) {
       />
 
       <article>
-        <header className={`${styles.articleHero} border-b border-ink/10`}>
+        <header className="brand-hero">
           <div
             className={`mx-auto grid w-full max-w-7xl items-start gap-10 px-5 pt-14 pb-14 sm:px-8 sm:pt-16 sm:pb-16 lg:gap-14 lg:pt-20 lg:pb-20 ${post.image ? "lg:grid-cols-2" : ""}`}
           >
@@ -111,13 +110,11 @@ async function Article({ params }: BlogPostPageProps) {
                 </Badge>
               ) : null}
 
-              <h1 className="mt-6 max-w-3xl text-balance font-display text-[clamp(2.4rem,3vw,3.25rem)] leading-[1.03] tracking-[-0.035em] text-ink">
+              <h1 className="brand-h1 mt-6 max-w-3xl text-[clamp(2.25rem,3.4vw,3.25rem)]">
                 {post.title}
               </h1>
 
-              <p className="mt-5 max-w-2xl text-base leading-7 text-ink-muted sm:text-lg sm:leading-8">
-                {description}
-              </p>
+              <p className="brand-lead mt-5 max-w-2xl">{description}</p>
 
               <div className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-ink-muted">
                 {updatedAt ? (
@@ -138,7 +135,7 @@ async function Article({ params }: BlogPostPageProps) {
             </div>
 
             {post.image ? (
-              <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-muted shadow-[var(--shadow-card)]">
+              <div className="brand-card relative aspect-[16/10] overflow-hidden bg-muted">
                 <Image
                   className="object-cover"
                   src={post.image}
@@ -152,7 +149,7 @@ async function Article({ params }: BlogPostPageProps) {
           </div>
         </header>
 
-        <div className="bg-paper py-14 sm:py-18 lg:py-20">
+        <div className="py-14 sm:py-18 lg:py-20">
           <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-5 sm:px-8 lg:grid-cols-12 lg:gap-14">
             <ArticleSidebar
               items={tableOfContents}
@@ -168,18 +165,12 @@ async function Article({ params }: BlogPostPageProps) {
       </article>
 
       {relatedPosts.length > 0 ? (
-        <section className="border-t border-ink/10 py-16 sm:py-20 lg:py-24">
+        <section className="py-16 sm:py-20 lg:py-24">
           <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
             <div className="mb-9 flex items-end justify-between gap-6">
-              <h2 className="font-display text-4xl tracking-[-0.035em] sm:text-5xl">
-                Keep reading
-              </h2>
+              <h2 className="brand-h2">Keep reading</h2>
               <Link
-                className={buttonVariants({
-                  variant: "outline",
-                  className:
-                    "hidden h-auto rounded-full bg-paper px-5 py-2.5 sm:flex",
-                })}
+                className="brand-btn-secondary hidden sm:inline-flex"
                 href="/blog"
               >
                 All articles

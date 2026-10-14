@@ -33,7 +33,7 @@ export const LAUNCH_ASSETS = [
       "llms.txt validation",
     ],
     tone: "signal",
-    visualId: "search-intent",
+    visualId: "multi-site-dashboard",
     visualLabel: "Search intent organized into clear landing-page targets",
     ...MARKETPLACE_SIZE,
   },
@@ -46,7 +46,7 @@ export const LAUNCH_ASSETS = [
       "Inventory every URL, preserve useful design and content, map redirects, and verify the new site before cutover.",
     proof: ["URL map first", "Screenshot comparison", "Redirect verification"],
     tone: "mint",
-    visualId: "url-decisions",
+    visualId: "hardware-agnostic",
     visualLabel:
       "Old URLs receiving reviewed preserve, redirect, or remove decisions",
     ...MARKETPLACE_SIZE,
@@ -60,7 +60,7 @@ export const LAUNCH_ASSETS = [
       "Explicit App Router pages, canonical project instructions, typed boundaries, and production launch checks keep every change inspectable.",
     proof: ["Route-local composition", "Typed visual IDs", "Production audit"],
     tone: "signal",
-    visualId: "release-gates",
+    visualId: "real-time-alerts",
     visualLabel:
       "A release gate showing the production checks required before launch",
     ...MARKETPLACE_SIZE,

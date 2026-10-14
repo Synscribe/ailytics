@@ -104,7 +104,7 @@ describe("Markdown representation route", () => {
       vi.fn().mockResolvedValue(
         new Response(null, {
           status: 308,
-          headers: { Location: "/uses/new?from=old" },
+          headers: { Location: "/use-cases/new?from=old" },
         }),
       ),
     );
@@ -112,14 +112,14 @@ describe("Markdown representation route", () => {
     const response = await GET(
       new NextRequest("https://example.com/api/agent-markdown", {
         headers: {
-          [MARKDOWN_SOURCE_HEADER]: "/uses/old",
+          [MARKDOWN_SOURCE_HEADER]: "/use-cases/old",
           [MARKDOWN_EXPLICIT_HEADER]: "1",
         },
       }),
     );
 
     expect(response.status).toBe(308);
-    expect(response.headers.get("location")).toBe("/uses/new.md?from=old");
+    expect(response.headers.get("location")).toBe("/use-cases/new.md?from=old");
   });
 
   it("keeps negotiated and external redirect destinations unchanged", async () => {
@@ -128,7 +128,7 @@ describe("Markdown representation route", () => {
       .mockResolvedValueOnce(
         new Response(null, {
           status: 308,
-          headers: { Location: "/uses/new" },
+          headers: { Location: "/use-cases/new" },
         }),
       )
       .mockResolvedValueOnce(
@@ -141,7 +141,7 @@ describe("Markdown representation route", () => {
 
     const negotiated = await GET(
       new NextRequest("https://example.com/api/agent-markdown", {
-        headers: { [MARKDOWN_SOURCE_HEADER]: "/uses/old" },
+        headers: { [MARKDOWN_SOURCE_HEADER]: "/use-cases/old" },
       }),
     );
     const external = await GET(
@@ -153,7 +153,7 @@ describe("Markdown representation route", () => {
       }),
     );
 
-    expect(negotiated.headers.get("location")).toBe("/uses/new");
+    expect(negotiated.headers.get("location")).toBe("/use-cases/new");
     expect(external.headers.get("location")).toBe(
       "https://docs.example.org/new",
     );

@@ -51,14 +51,11 @@
         "src/app/icon.svg",
         "src/app/opengraph-image.tsx",
         "public/media",
-        "src/app/uses/[slug]/_components",
         "src/app/dev/visuals",
         "src/app/dev/launch-assets",
         "src/components/visuals",
-        "src/content/use-cases",
+        "src/content/pages",
         "src/lib/visuals.ts",
-        "src/lib/use-cases.ts",
-        "src/lib/use-cases.test.ts",
         "scripts/launch-assets.mjs"
       ],
       "check": "no-template-placeholders"
@@ -285,7 +282,11 @@
         "- Do not add `priority` or `changeFrequency` for Google; Google ignores them.",
         "- Optional `.md` representations are non-blocking. Their presence, absence, or sitemap omission must never stop launch."
       ],
-      "files": ["src/app/sitemap.ts", "src/lib/blog.ts", "src/lib/use-cases.ts"]
+      "files": [
+        "src/app/sitemap.ts",
+        "src/lib/blog.ts",
+        "src/lib/page-content.ts"
+      ]
     },
     {
       "id": "SEO-06",
@@ -641,7 +642,7 @@
         "- A JSON-backed page references only a validated visual ID. File paths, React component names, layout classes, and serialized props stay in code.",
         "",
         "",
-        "For `/uses`, confirm every `hero.visualId` and `solution.items[].visualId` resolves to either an approved React component or local image source through the one project resolver.",
+        "For `/use-cases/[slug]` and `/industries/[slug]`, confirm every route-copy `heroVisualId` and JSON `features.items[].id` resolves to either an approved React component or local image source through the one project resolver.",
         "",
         "Use `.agents/skills/micro-ui` to create or adapt a visual, then register it through the resolver when it belongs to a current surface. Inspect the complete inventory at `/dev/visuals` with local review enabled.",
         "",
@@ -652,7 +653,7 @@
         "src/app/opengraph-image.tsx",
         "src/lib/visuals.ts",
         "src/components/visuals/project-visual.tsx",
-        "src/app/uses/[slug]/_components/use-case-visual.tsx",
+        "src/components/content-page/content-page.tsx",
         "src/app/dev/visuals",
         "src/app/dev/launch-assets",
         "scripts/launch-assets.mjs",
@@ -729,7 +730,7 @@
         "- Negotiation honors media-range specificity, quality values, wildcards, and `q=0`; return HTTP 406 when neither HTML nor Markdown is acceptable.",
         "- Generated Markdown comes from the rendered page's `<main>` content. Do not maintain a second Markdown copy for ordinary pages.",
         "- Normalize full-card links into ordinary blocks with a linked heading. Omit accessibility-hidden elements and images without useful alt text, and expose the original source URL for meaningful Next.js optimized images.",
-        "- A file under `src/content/markdown` may deliberately override one route. `/` maps to `index.md`; `/uses/example` maps to `uses/example.md`. An override changes only the Markdown representation and never creates a missing HTML route or changes its status.",
+        "- A file under `src/content/markdown` may deliberately override one route. `/` maps to `index.md`; `/use-cases/example` maps to `uses/example.md`. An override changes only the Markdown representation and never creates a missing HTML route or changes its status.",
         "- Keep source paths in the internal rewrite cache key so cached Markdown cannot leak between routes.",
         "",
         "The live launch audit checks both homepage representations, quality-value selection, HTTP 406 behavior, linked-card structure, and Markdown 404 recovery. Repeat it against the production URL before launch."
@@ -756,8 +757,8 @@
         "",
         "Check:",
         "",
-        "- `/uses.md` returns the exact body produced by requesting `/uses` with `Accept: text/markdown`, even when the `.md` request sends `Accept: text/html` or no specific preference.",
-        "- Nested aliases follow the same rule: `/uses/example.md` maps to `/uses/example`. `/index.md` maps to the homepage.",
+        "- `/use-cases.md` returns the exact body produced by requesting `/use-cases` with `Accept: text/markdown`, even when the `.md` request sends `Accept: text/html` or no specific preference.",
+        "- Nested aliases follow the same rule: `/use-cases/example.md` maps to `/use-cases/example`. `/index.md` maps to the homepage.",
         "- Aliases use the same generated content and optional override files as header negotiation. Never maintain a second `.md` copy for the alias.",
         "- Preserve source status codes. A missing alias returns HTTP 404 with the Markdown recovery body, and same-origin redirects keep the `.md` representation.",
         "- Keep the HTML URL canonical and keep `.md` aliases out of the HTML sitemap unless a project adopts a reviewed alternate-indexing policy.",
@@ -821,7 +822,44 @@
       ]
     }
   ],
-  "projectItems": [],
+  "projectItems": [
+    {
+      "id": "CAREERS-01",
+      "title": "job applications are delivered with the resume attached",
+      "priority": "P1",
+      "group": "project-specific launch checks",
+      "status": "todo",
+      "details": [
+        "The /careers/[slug] application form posts to /api/careers and emails the resume to CAREERS_TO_EMAIL, falling back to CONTACT_TO_EMAIL.",
+        "Set the mail values, submit a test application with a PDF and a Word file, and confirm the attachment and reply-to arrive in the reviewed inbox."
+      ],
+      "recipe": "docs/launch/clone-journal.md"
+    },
+    {
+      "id": "COMPANY-01",
+      "title": "omitted company-page surfaces are approved",
+      "priority": "P2",
+      "group": "project-specific launch checks",
+      "status": "todo",
+      "details": [
+        "The rebuilt About, Partnerships, Careers and Projects pages leave out the old site's Talk-to-us popup form, footer office addresses and phone numbers, the News, EULA and LinkedIn footer links, and the Japanese locale.",
+        "Confirm with the client that these stay out, or supply the approved contact details and destinations."
+      ],
+      "recipe": "docs/launch/clone-journal.md"
+    },
+    {
+      "id": "CAREERS-02",
+      "title": "job postings carry JobPosting structured data with real dates",
+      "priority": "P2",
+      "group": "project-specific launch checks",
+      "status": "todo",
+      "details": [
+        "The migrated roles have no posting or closing dates, so no JobPosting schema is emitted yet.",
+        "Add datePosted and validThrough from the client's ATS before adding the schema."
+      ],
+      "recipe": "docs/launch/clone-journal.md"
+    }
+  ],
   "primaryReferences": [
     {
       "label": "Next.js Metadata and OG images",
