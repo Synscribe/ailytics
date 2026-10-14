@@ -26,7 +26,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const content = await getPageContent("industries", slug);
   return createPageMetadata({
-    title: content.hero.title,
+    title: content.hero.seoTitle ?? content.hero.title,
     description: content.hero.description,
     path: `/industries/${slug}`,
   });

@@ -138,7 +138,7 @@ export function ContactForm({
           Thank you. We&apos;ve received your message.
         </h2>
         <p className="mt-4 max-w-md leading-7 text-ink-muted">
-          We&apos;ll get back to you within 1–3 working days.
+          We&apos;ll be in touch soon.
         </p>
 
         <div className="mt-8">
@@ -166,8 +166,7 @@ export function ContactForm({
           className="mb-6 rounded-xl border border-signal/25 bg-signal/8 px-4 py-3 text-sm leading-6 text-ink"
           role="status"
         >
-          Form delivery is not configured in this template. Add the server-only
-          mail settings before testing it.
+          This form is not live yet.
         </div>
       ) : null}
 
@@ -219,23 +218,6 @@ export function ContactForm({
             value={fields.company}
           />
         </Field>
-
-        <Field id="website" label="Current website" error={fieldErrors.website}>
-          <input
-            aria-invalid={Boolean(fieldErrors.website)}
-            aria-describedby={fieldErrors.website ? "website-error" : undefined}
-            autoComplete="url"
-            className={fieldClassName}
-            id="website"
-            inputMode="url"
-            maxLength={CONTACT_LIMITS.website}
-            name="website"
-            onChange={(event) => updateField("website", event.target.value)}
-            placeholder="example.com"
-            type="url"
-            value={fields.website}
-          />
-        </Field>
       </div>
 
       <div className="mt-5">
@@ -247,26 +229,16 @@ export function ContactForm({
         >
           <textarea
             aria-invalid={Boolean(fieldErrors.message)}
-            aria-describedby={
-              fieldErrors.message
-                ? "message-help message-error"
-                : "message-help"
-            }
+            aria-describedby={fieldErrors.message ? "message-error" : undefined}
             className={`${fieldClassName} min-h-40 resize-y`}
             id="message"
             maxLength={CONTACT_LIMITS.message}
             name="message"
             onChange={(event) => updateField("message", event.target.value)}
-            placeholder="Tell us what you are launching, rebuilding, or moving."
+            placeholder="Tell us about your sites, cameras and the hazards you want to monitor."
             required
             value={fields.message}
           />
-          <p
-            className="mt-2 text-xs leading-5 text-ink-muted"
-            id="message-help"
-          >
-            Please do not send passwords or other sensitive information.
-          </p>
         </Field>
       </div>
 
@@ -313,7 +285,7 @@ export function ContactForm({
       </Button>
       <p className="mt-3 max-w-md text-xs leading-5 text-ink-muted">
         We use your details to respond to this enquiry. Read our{" "}
-        <Link className="underline underline-offset-3" href="/privacy">
+        <Link className="underline underline-offset-3" href="/privacy-policy">
           Privacy Policy
         </Link>
         .

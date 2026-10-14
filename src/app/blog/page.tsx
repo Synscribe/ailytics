@@ -63,13 +63,9 @@ async function BlogResults({ searchParams }: BlogPageProps) {
   if (!isWispConfigured) {
     return (
       <div className="brand-card px-6 py-10 sm:px-10">
-        <h2 className="text-2xl font-medium tracking-tight">
-          Connect the publication
-        </h2>
+        <h2 className="text-2xl font-medium tracking-tight">No articles yet</h2>
         <p className="mt-3 max-w-2xl leading-7 text-ink-muted">
-          Set <code>WISP_BLOG_ID</code> to load articles from Wisp. The blog is
-          included by default and can be deleted when a project does not need
-          it.
+          Articles will appear here once the blog is published.
         </p>
       </div>
     );
@@ -243,10 +239,14 @@ async function BlogResults({ searchParams }: BlogPageProps) {
       ) : (
         <div className="brand-card px-6 py-10 sm:px-10">
           <h2 className="text-2xl font-medium tracking-tight">
-            No articles found
+            {query || category !== "all"
+              ? "No articles found"
+              : "No articles yet"}
           </h2>
           <p className="mt-3 text-ink-muted">
-            Try a shorter search or browse all articles.
+            {query || category !== "all"
+              ? "Try a shorter search or browse all articles."
+              : "Articles will appear here once the first one is published."}
           </p>
         </div>
       )}

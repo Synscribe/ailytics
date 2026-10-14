@@ -35,9 +35,9 @@ import { RevealGroup } from "@/components/reveal-group.client";
 import styles from "./home.module.css";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "AI Video Analytics for Heavy Industry Safety",
+  title: "AI Video Analytics for Construction & Heavy Industries",
   description:
-    "AI video analytics for heavy industry. Ailytics turns your existing CCTV into real-time alerts for safety, security and productivity, on the edge or in the cloud.",
+    "AI video analytics for construction & heavy industries. Ailytics turns your existing CCTV into real-time safety, security and productivity alerts.",
   path: "/",
 });
 
@@ -95,37 +95,37 @@ const USE_CASES: UseCaseTile[] = [
     id: "ppe-detection",
     title: "PPE detection",
     body: "Missing hard hats, vests and gloves, flagged in each work area.",
-    href: "/uses/ppe-detection",
+    href: "/use-cases/ppe-detection",
   },
   {
     id: "machinery-proximity",
     title: "Machinery proximity",
     body: "Real distance between workers and moving plant, from one camera.",
-    href: "/uses",
+    href: "/use-cases",
   },
   {
     id: "under-load-detection",
     title: "Under suspended loads",
     body: "Workers inside the drop zone of a lift, flagged for the lifting supervisor.",
-    href: "/uses",
+    href: "/use-cases",
   },
   {
     id: "fire-smoke-detection",
     title: "Smoke and fire",
     body: "Early smoke and flame detection, so teams can respond quickly.",
-    href: "/uses",
+    href: "/use-cases",
   },
   {
     id: "no-access-zones",
     title: "Restricted areas",
     body: "Unauthorized entry into barricaded or after-hours zones.",
-    href: "/uses",
+    href: "/use-cases",
   },
   {
     id: "machinery-usage",
     title: "Machinery utilization",
     body: "Working and idle hours for excavators, cranes and rigs.",
-    href: "/uses",
+    href: "/use-cases",
   },
 ];
 
@@ -286,21 +286,22 @@ export default function HomePage() {
         <div className={styles.heroDots} aria-hidden="true" />
         <div className={styles.heroStack}>
           <h1 id="hero-title" className={styles.h1}>
-            AI video analytics that turns your existing CCTV into a detection
-            layer
+            AI video monitoring for construction & heavy industries
           </h1>
+          <p className={styles.heroHeadline}>
+            Safety & Productivity Monitoring That Never Blinks
+          </p>
           <p className={styles.heroLead}>
             Ailytics connects to the cameras you already own and alerts your EHS
-            and site teams to PPE breaches, exclusion-zone entries, near misses,
-            struck-by risk and idle plant the moment they happen. Live in under
-            2 weeks on construction sites, plants, ports and yards — no
-            rip-and-replace.
+            and site teams to PPE breaches, exclusion-zone entries, near misses
+            and struck-by risk the moment they happen. Live in under 2 weeks on
+            construction sites, plants, ports and yards — no rip-and-replace.
           </p>
           <div className={styles.actions}>
             <Link href="/contact" className={styles.btnPrimary}>
               Request a demo
             </Link>
-            <Link href="/uses" className={styles.btnSecondary}>
+            <Link href="/use-cases" className={styles.btnSecondary}>
               See all use cases
             </Link>
           </div>
@@ -372,7 +373,7 @@ export default function HomePage() {
                 exclusion zones to idle machinery. 50+ ready to configure.
               </p>
             </div>
-            <Link href="/uses" className={styles.btnSecondary}>
+            <Link href="/use-cases" className={styles.btnSecondary}>
               See all use cases
             </Link>
           </div>

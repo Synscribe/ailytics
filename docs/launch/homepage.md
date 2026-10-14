@@ -13,11 +13,11 @@ Visual direction is still open: all dark, or light with dark "camera" panels (se
 
 ## Metadata
 
-| Field            | Copy                                                                                                                                                                 | Notes                                                          |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
-| Title            | `AI Video Analytics for Heavy Industry Safety \| Ailytics`                                                                                                           | 55 characters, keyword first                                   |
-| Meta description | `AI video analytics for heavy industry. Ailytics turns your existing CCTV into real-time alerts for safety, security and productivity, on the edge or in the cloud.` | About 160 characters                                           |
-| H1               | `AI video analytics that turns your existing CCTV into a 24/7 safety team`                                                                                           | Keyword first, keeps the "safety team" idea from the hero mock |
+| Field            | Copy                                                                                                                                                 | Notes                                                                                     |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| Title            | `AI Video Analytics for Construction & Heavy Industries \| Ailytics`                                                                                 | 65 characters, keyword first                                                              |
+| Meta description | `AI video analytics for construction & heavy industries. Ailytics turns your existing CCTV into real-time safety, security and productivity alerts.` | 146 characters                                                                            |
+| H1               | `AI video monitoring for construction & heavy industries`                                                                                            | Compact heading above the display line. "Monitoring" is allowed; "surveillance" stays out |
 
 "AI video surveillance" stays out of the H1. The onboarding call says it attracts retail and F&B enquiries. "Monitoring" can appear in body copy and the FAQ.
 
@@ -65,7 +65,8 @@ About us, Partner with us, Projects and Careers move to the footer.
 ## 2. Hero
 
 - **Eyebrow pill:** `New: ask your cameras questions in plain English →` (links to section 7)
-- **H1:** AI video analytics that turns your existing CCTV into a 24/7 safety team
+- **H1:** AI video monitoring for construction & heavy industries
+- **Display line:** Safety & Productivity Monitoring That Never Blinks
 - **Subhead (38 words):** Ailytics watches the cameras you already own and alerts your team to safety, security and productivity risks as they happen. Built for construction sites, plants, ports and yards. Runs on the edge, on-premise or in the cloud.
 - **Buttons:** `Request a demo` · `See use cases`
 - **Visual:** the camera wall catching hazards on its own, using client clips from `public/media/ailytics/`
@@ -167,19 +168,19 @@ Built on the canvas (Home-USP board, section 2), using only client assets.
 - **H2:** Hazards Ailytics detects
 - **Layout:** 8 tiles, each with a short clip or poster, a keyword label and a link to its own page.
 
-| Tile                          | Link                             | Visual                        |
-| ----------------------------- | -------------------------------- | ----------------------------- |
-| Machinery proximity detection | `/uses/machinery-proximity`      | detection-machinery-proximity |
-| Under suspended load          | `/uses/under-suspended-load`     | deck GIF S9                   |
-| Open edge detection           | `/uses/open-edge-detection`      | detection-open-edge           |
-| PPE detection                 | `/uses/ppe-detection`            | detection-low-light-ppe       |
-| Smoke and fire detection      | `/uses/smoke-and-fire-detection` | detection-smoke-fire          |
-| Vehicle reversing             | `/uses/vehicle-reversing`        | detection-vehicle-reversing   |
-| Ergonomics                    | `/uses/ergonomics`               | detection-ergonomics          |
-| Machinery utilisation         | `/uses/machinery-utilisation`    | deck GIF S20                  |
+| Tile                          | Link                                  | Visual                        |
+| ----------------------------- | ------------------------------------- | ----------------------------- |
+| Machinery proximity detection | `/use-cases/machinery-proximity`      | detection-machinery-proximity |
+| Under suspended load          | `/use-cases/under-suspended-load`     | deck GIF S9                   |
+| Open edge detection           | `/use-cases/open-edge-detection`      | detection-open-edge           |
+| PPE detection                 | `/use-cases/ppe-detection`            | detection-low-light-ppe       |
+| Smoke and fire detection      | `/use-cases/smoke-and-fire-detection` | detection-smoke-fire          |
+| Vehicle reversing             | `/use-cases/vehicle-reversing`        | detection-vehicle-reversing   |
+| Ergonomics                    | `/use-cases/ergonomics`               | detection-ergonomics          |
+| Machinery utilisation         | `/use-cases/machinery-utilisation`    | deck GIF S20                  |
 
-- **Link:** `See all 50+ use cases →` goes to `/uses`
-- **Fix from the live site:** every tile gets its own URL and keyword anchor text, instead of all pointing at `/uses`.
+- **Link:** `See all 50+ use cases →` goes to `/use-cases`
+- **Fix from the live site:** every tile gets its own URL and keyword anchor text, instead of all pointing at `/use-cases`.
 
 ## 9. Industries
 

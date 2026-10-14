@@ -14,6 +14,16 @@ import s from "./problem-story.module.css";
 
 const subscribe = () => () => {};
 
+/** Fade and settle for an overlay entering or leaving the camera view. */
+function overlayMotion(reduce: boolean | null) {
+  return {
+    initial: { opacity: reduce ? 1 : 0, y: reduce ? 0 : 8 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: reduce ? 1 : 0, y: reduce ? 0 : 8 },
+    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] as const },
+  };
+}
+
 const photos = [
   "ppe-detection",
   "machinery-proximity",
@@ -93,42 +103,60 @@ export function ProblemStory({
                 </motion.div>
               </AnimatePresence>
               <span className={s.cameraLabel}>Illustrative camera view</span>
-              {isPpe && active === 0 && (
-                <div className={s.target}>
-                  <span>Missing protection</span>
-                </div>
-              )}
-              {isPpe && active === 1 && (
-                <div className={s.timeline}>
-                  <Clock3 size={18} />
-                  <div>
-                    <strong>Found in the footage</strong>
-                    <span>After the shift</span>
-                  </div>
-                  <div className={s.track}>
-                    <i />
-                    <b />
-                  </div>
-                </div>
-              )}
-              {isPpe && active === 2 && (
-                <div className={s.record}>
-                  <FileText size={22} />
-                  <strong>An incomplete record</strong>
-                  <div>
-                    <span>Event frame</span>
-                    <b>Available</b>
-                  </div>
-                  <div>
-                    <span>Time and location</span>
-                    <b className={s.missing}>Not recorded</b>
-                  </div>
-                  <div>
-                    <span>Follow-up</span>
-                    <b className={s.missing}>Not recorded</b>
-                  </div>
-                  <small>Illustration of manual record gaps</small>
-                </div>
+              {/* The PPE story keeps one photo, so its overlays crossfade
+                  the way the construction photos do. */}
+              {isPpe && (
+                <AnimatePresence initial={false} mode="sync">
+                  {active === 0 && (
+                    <motion.div
+                      key="target"
+                      className={s.target}
+                      {...overlayMotion(reduce)}
+                    >
+                      <span>Missing protection</span>
+                    </motion.div>
+                  )}
+                  {active === 1 && (
+                    <motion.div
+                      key="timeline"
+                      className={s.timeline}
+                      {...overlayMotion(reduce)}
+                    >
+                      <Clock3 size={18} />
+                      <div>
+                        <strong>Found in the footage</strong>
+                        <span>After the shift</span>
+                      </div>
+                      <div className={s.track}>
+                        <i />
+                        <b />
+                      </div>
+                    </motion.div>
+                  )}
+                  {active === 2 && (
+                    <motion.div
+                      key="record"
+                      className={s.record}
+                      {...overlayMotion(reduce)}
+                    >
+                      <FileText size={22} />
+                      <strong>An incomplete record</strong>
+                      <div>
+                        <span>Event frame</span>
+                        <b>Available</b>
+                      </div>
+                      <div>
+                        <span>Time and location</span>
+                        <b className={s.missing}>Not recorded</b>
+                      </div>
+                      <div>
+                        <span>Follow-up</span>
+                        <b className={s.missing}>Not recorded</b>
+                      </div>
+                      <small>Illustration of manual record gaps</small>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               )}
             </div>
             <div className={s.caption}>

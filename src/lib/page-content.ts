@@ -23,7 +23,8 @@ export type PageFaqItem = {
 };
 
 export type PageContent = {
-  hero: ContentItem;
+  /** `seoTitle` overrides the metadata title when the H1 needs different wording. */
+  hero: ContentItem & { seoTitle?: string };
   problems: ContentItem & { items: ContentItem[] };
   solution: ContentItem;
   features: ContentItem & { items: PageFeature[] };
@@ -126,8 +127,15 @@ export function parsePageContent(
     fail(fileName, "features.items", "an array with unique ids");
   }
 
+  const hero = record(root.hero, fileName, "hero");
+
   return {
-    hero: contentItem(root.hero, fileName, "hero"),
+    hero: {
+      ...contentItem(hero, fileName, "hero"),
+      ...(hero.seoTitle !== undefined
+        ? { seoTitle: text(hero.seoTitle, fileName, "hero.seoTitle") }
+        : {}),
+    },
     problems: {
       ...contentItem(problems, fileName, "problems"),
       items: list(problems.items, fileName, "problems.items").map(
@@ -193,12 +201,14 @@ export function assertRouteCopy(
 ): void {
   const missing = slugs.filter((slug) => !Object.hasOwn(routeCopy, slug));
   if (missing.length > 0) {
+    // The "uses" content folder serves the /use-cases route.
+    const routeDirectory = kind === "uses" ? "use-cases" : kind;
     throw new Error(
       `Missing route copy for ${missing
         .map((slug) => `src/content/pages/${kind}/${slug}.json`)
         .join(", ")}. Add ${missing
         .map((slug) => `"${slug}"`)
-        .join(", ")} to src/app/${kind}/[slug]/_content.ts.`,
+        .join(", ")} to src/app/${routeDirectory}/[slug]/_content.ts.`,
     );
   }
 }

@@ -209,11 +209,11 @@ const visualSources: Record<VisualId, VisualSource> = {
   },
   "man-hour-tracking": {
     ...stagedComponent,
-    label: "Workforce hours by area",
-    motionPattern: "bars accrue against a clock",
+    label: "Worker working and idle time",
+    motionPattern: "worker rows fill working or idle as the shift clock steps",
     component: ManHourTrackingVisual,
     stage: {
-      alt: "Sample chart of workforce hours building up by work area through the day.",
+      alt: "A sample day shift for three workers in one zone, each row painted working or idle hour by hour, with working and idle totals for the zone.",
     },
   },
   "machinery-usage": {

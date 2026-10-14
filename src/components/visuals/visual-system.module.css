@@ -30,10 +30,12 @@
   border: 0 !important;
   background: transparent !important;
 }
-.system[data-visual-id="man-hour-tracking"] :global(.rounded-full) {
-  border-radius: 4px;
-}
-.system[data-visual-id="machinery-usage"] :global(.grid-cols-3) > div {
+.system:is(
+    [data-visual-id="man-hour-tracking"],
+    [data-visual-id="machinery-usage"]
+  )
+  :global(.grid-cols-3)
+  > div {
   background: transparent !important;
   padding-left: 0;
   border-radius: 0;

@@ -14,14 +14,17 @@ describe("page content", () => {
   it("loads the construction industry page and links to PPE detection", async () => {
     const content = await getPageContent("industries", "construction");
 
-    expect(content.hero.title).toBe(
+    expect(content.hero.title).toBe("Construction Safety & Productivity");
+    expect(content.hero.seoTitle).toBe(
       "AI Video Analytics for Construction Safety",
     );
     expect(content.features.items.map((item) => item.id)).toContain(
       "ppe-detection",
     );
     expect(
-      content.faq.some((item) => item.answer.includes("(/uses/ppe-detection)")),
+      content.faq.some((item) =>
+        item.answer.includes("(/use-cases/ppe-detection)"),
+      ),
     ).toBe(true);
   });
 
@@ -48,7 +51,7 @@ describe("page content", () => {
 
   it("names the missing slug and the file to edit when route copy is missing", () => {
     expect(() => assertRouteCopy("uses", ["new-page"], {})).toThrow(
-      'Missing route copy for src/content/pages/uses/new-page.json. Add "new-page" to src/app/uses/[slug]/_content.ts.',
+      'Missing route copy for src/content/pages/uses/new-page.json. Add "new-page" to src/app/use-cases/[slug]/_content.ts.',
     );
     expect(() =>
       assertRouteCopy("uses", ["ppe-detection"], { "ppe-detection": {} }),
@@ -69,11 +72,11 @@ describe("page content", () => {
   });
 
   it("splits and strips Markdown links", () => {
-    const value = "See the [PPE page](/uses/ppe-detection) for more.";
+    const value = "See the [PPE page](/use-cases/ppe-detection) for more.";
 
     expect(parseInlineLinks(value)).toEqual([
       { kind: "text", value: "See the " },
-      { kind: "link", value: "PPE page", href: "/uses/ppe-detection" },
+      { kind: "link", value: "PPE page", href: "/use-cases/ppe-detection" },
       { kind: "text", value: " for more." },
     ]);
     expect(stripInlineLinks(value)).toBe("See the PPE page for more.");

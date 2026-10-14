@@ -1,6 +1,7 @@
 {
   "hero": {
-    "title": "AI Video Analytics for Construction Safety",
+    "title": "Construction Safety & Productivity",
+    "seoTitle": "AI Video Analytics for Construction Safety",
     "description": "AI video analytics for construction adds site safety monitoring to existing CCTV, detecting hazards through rain, dust, and low light."
   },
   "problems": {
@@ -80,12 +81,12 @@
       {
         "id": "man-hour-tracking",
         "eyebrow": "Productivity",
-        "title": "Record Workforce Hours by Area",
-        "description": "Track workforce presence and hours in monitored areas. Give project teams camera-based records to support labour planning, billing reviews, and discussions about how crews use the site.",
+        "title": "Track Worker Productivity and Idle Time",
+        "description": "See how much of each shift the workers in a monitored area spend working and how much they spend idle. Give project teams camera-based working and idle totals to support labour planning, crew discussions, and billing reviews.",
         "highlights": [
-          "Workforce presence tracking",
-          "Hours by monitored area",
-          "Planning and billing records"
+          "Working and idle time per shift",
+          "Idle totals by work area",
+          "Records for planning and billing"
         ]
       },
       {
@@ -108,7 +109,7 @@
     },
     {
       "question": "What PPE can Ailytics detect on a construction site?",
-      "answer": "Ailytics detects missing hard hats, vests, and gloves in monitored camera views. Supervisors receive an event frame, time, and location to help them review the issue and respond. Camera placement and visibility matter, so discuss the PPE items and work areas you need covered. See the [PPE detection page](/uses/ppe-detection) for more detail."
+      "answer": "Ailytics detects missing hard hats, vests, and gloves in monitored camera views. Supervisors receive an event frame, time, and location to help them review the issue and respond. Camera placement and visibility matter, so discuss the PPE items and work areas you need covered. See the [PPE detection page](/use-cases/ppe-detection) for more detail."
     },
     {
       "question": "Does construction site monitoring work in rain, dust, and low light?",
@@ -120,7 +121,7 @@
     },
     {
       "question": "Can we monitor safety and productivity across multiple construction sites?",
-      "answer": "Yes. Ailytics provides a multi-camera, multi-site map dashboard. Construction teams can select relevant safety detections alongside man-hour tracking, machinery-usage tracking, and timelapse or spot-comparison progress views. This gives project and operations teams a shared place to review monitored activity. Each site's selected use cases should reflect its camera coverage, work areas, and operating risks."
+      "answer": "Yes. Ailytics provides a multi-camera, multi-site map dashboard. Construction teams can select relevant safety detections alongside worker idle-time tracking, machinery-usage tracking, and timelapse or spot-comparison progress views. This gives project and operations teams a shared place to review monitored activity. Each site's selected use cases should reflect its camera coverage, work areas, and operating risks."
     },
     {
       "question": "Can we configure detection for our construction site's hazards?",

@@ -197,6 +197,17 @@
 .h1 {
   margin: 0;
   max-width: 900px;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.heroHeadline {
+  margin: -8px 0 0;
+  max-width: 900px;
   font-size: clamp(2.5rem, 5.6vw, 4.25rem);
   line-height: 1.04;
   font-weight: 300;
@@ -2908,7 +2919,7 @@ tr[data-hz] .alertCount {
   }
 }
 
-.h1,
+.heroHeadline,
 .h2 {
   font-weight: 300;
 }
