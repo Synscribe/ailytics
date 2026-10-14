@@ -11,7 +11,6 @@ import {
   Frame,
   StatePill,
   Tag,
-  at,
   type Box,
 } from "./_camera";
 import { EASE, TONES, useLoop } from "./_kit";
@@ -85,7 +84,8 @@ export default function ConstructionHeroVisual() {
         className="absolute z-10 flex w-[178px] flex-col gap-1.5 rounded-xl p-2 shadow-md"
         initial={false}
         style={{
-          ...at(930, 110),
+          right: "3%",
+          top: "16%",
           background: "var(--paper)",
           color: "var(--ink)",
         }}

@@ -40,17 +40,17 @@ export type ContentHubProps = {
 function HubCard({ item }: { item: HubItem }) {
   return (
     <Link
-      className="brand-card brand-card-link group flex h-full flex-col overflow-hidden"
+      className="group flex h-full flex-col rounded-xl focus-visible:outline-2 focus-visible:outline-signal"
       href={item.href}
     >
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
+      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-muted">
         <ProjectVisual
           fill
           id={item.visualId}
           sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
         />
       </div>
-      <div className="flex flex-1 flex-col gap-2 p-6">
+      <div className="flex flex-1 flex-col gap-2 border-b border-ink/15 pt-5 pb-7">
         <h3 className="flex items-start justify-between gap-3 text-lg leading-7 font-semibold text-balance">
           {item.title}
           <ArrowRightIcon

@@ -1,3 +1,4 @@
+import { FaqAccordion } from "@/components/faq-accordion/faq-accordion";
 import { CustomerProof } from "@/components/customer-proof/customer-proof";
 import {
   ArrowRightIcon,
@@ -6,7 +7,6 @@ import {
   CloudIcon,
   FileTextIcon,
   MapPinnedIcon,
-  PlusIcon,
   ShieldCheckIcon,
   ServerIcon,
   ScanFaceIcon,
@@ -527,17 +527,7 @@ export default function HomePage() {
               The questions safety, operations and IT teams ask before a demo.
             </p>
           </div>
-          <div className={styles.faqList}>
-            {FAQS.map((f) => (
-              <details key={f.question} className={styles.faqItem}>
-                <summary>
-                  <h3>{f.question}</h3>
-                  <PlusIcon aria-hidden="true" strokeWidth={1.75} />
-                </summary>
-                <p>{f.answer}</p>
-              </details>
-            ))}
-          </div>
+          <FaqAccordion items={FAQS} />
         </div>
       </section>
 

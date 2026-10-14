@@ -280,7 +280,7 @@ export function Reports() {
           }}
         />
       </div>
-      <div className={s.reportBody}>
+      <div className={s.reportBody} data-report-open={step >= 3}>
         <div className={s.evidenceImage}>
           <Photo src="/media/ailytics/stills/ppe-detection.jpg" />
           <span className={s.evidenceLabel}>Camera 04 · Gate 2</span>

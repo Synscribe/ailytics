@@ -39,10 +39,7 @@
   --border: var(--line);
   --input: var(--line);
   --ring: var(--signal);
-  /* Brand primary is Avenir (licensed); Poppins is the brand's approved free alternate. */
-  --font-sans:
-    "Avenir Next", Avenir, var(--font-poppins), ui-sans-serif, system-ui,
-    -apple-system, "Segoe UI", sans-serif;
+  --font-sans: var(--font-switzer), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-sans);
 }
 
@@ -84,8 +81,8 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
-  --font-sans: var(--font-sans);
-  --font-display: var(--font-display);
+  --font-sans: var(--font-switzer), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-switzer), ui-sans-serif, system-ui, sans-serif;
 }
 
 * {
@@ -203,7 +200,7 @@ button {
   }
 
   .brand-h2 {
-    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-size: clamp(1.875rem, 3.2vw, 2.5rem);
     line-height: 1.08;
     font-weight: 500;
     letter-spacing: -0.03em;
@@ -302,29 +299,6 @@ button {
       var(--signal-strong) 62%
     );
   }
-
-  .brand-faq summary {
-    list-style: none;
-    cursor: pointer;
-    border-radius: 16px;
-  }
-
-  .brand-faq summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .brand-faq summary:focus-visible {
-    outline: 2px solid var(--signal);
-    outline-offset: 2px;
-  }
-
-  .brand-faq summary svg {
-    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-  }
-
-  .brand-faq[open] summary svg {
-    transform: rotate(45deg);
-  }
 }
 
 /* Detail pages: the incoming section owns the space between narrative beats. */
@@ -345,35 +319,5 @@ button {
   }
   .detail-page #problems {
     padding-top: 0;
-  }
-}
-
-/* Detail-page disclosures follow the same gentle timing as the homepage. */
-@media (prefers-reduced-motion: no-preference) {
-  .detail-page .brand-faq {
-    transition:
-      border-color 220ms ease,
-      box-shadow 220ms ease;
-  }
-  .detail-page .brand-faq:hover {
-    border-color: color-mix(in srgb, var(--signal) 40%, var(--line));
-  }
-  @supports (interpolate-size: allow-keywords) {
-    .detail-page .brand-faq {
-      interpolate-size: allow-keywords;
-    }
-    .detail-page .brand-faq::details-content {
-      block-size: 0;
-      opacity: 0;
-      overflow: clip;
-      transition:
-        block-size 350ms ease,
-        opacity 250ms ease,
-        content-visibility 350ms allow-discrete;
-    }
-    .detail-page .brand-faq[open]::details-content {
-      block-size: auto;
-      opacity: 1;
-    }
   }
 }

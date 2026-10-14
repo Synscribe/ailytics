@@ -9,130 +9,10 @@ import {
   useMotionValueEvent,
   useReducedMotion,
 } from "framer-motion";
-import { ArrowDown, Bell, FileText, Check } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { ProjectVisual } from "@/components/visuals/project-visual";
 import s from "./preview.module.css";
 const M = "/media/ailytics/stills/";
-const steps = [
-  {
-    title: "Spot missing protection.",
-    body: "The camera checks the PPE required in the work area. A missing hard hat becomes an event your team can review.",
-    label: "Detect",
-    status: "Missing hard hat detected",
-  },
-  {
-    title: "Give the supervisor the evidence.",
-    body: "The alert carries the camera frame, time and location. Your team has the context to follow up during the shift.",
-    label: "Alert",
-    status: "Event sent to the supervisor",
-  },
-  {
-    title: "Bring the event into your report.",
-    body: "Keep the evidence with the event record for safety reviews, toolbox talks and audit preparation.",
-    label: "Report",
-    status: "Evidence attached to the report",
-  },
-];
-function PpeStory() {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start center", "end center"],
-  });
-  const [step, setStep] = useState(0);
-  const reduce = useReducedMotion();
-  useMotionValueEvent(scrollYProgress, "change", (p) =>
-    setStep(Math.min(2, Math.floor(p * 3))),
-  );
-  const active = reduce ? 2 : step;
-  return (
-    <section id="ppe-direction" className={s.story} ref={ref}>
-      <div className={s.steps}>
-        {steps.map((item, i) => (
-          <article
-            className={s.step}
-            key={item.label}
-            data-active={active === i}
-          >
-            <span className={s.number}>
-              0{i + 1} / {item.label}
-            </span>
-            <h3>{item.title}</h3>
-            <p>{item.body}</p>
-          </article>
-        ))}
-      </div>
-      <div className={s.pinned}>
-        <div className={s.console}>
-          <div className={s.consoleHead}>
-            <span>
-              <i /> Camera 04
-            </span>
-            <span>Site entrance</span>
-          </div>
-          <div className={s.camera}>
-            <Image
-              src={`${M}ppe-detection.jpg`}
-              alt="Site entrance camera evidence showing a worker carrying a hard hat."
-              fill
-              sizes="(min-width: 900px) 46vw, 90vw"
-            />
-            <div className={s.box}>
-              <span>Missing hard hat</span>
-            </div>
-            <motion.div
-              className={s.alert}
-              initial={false}
-              animate={{
-                opacity: active >= 1 ? 1 : 0,
-                y: active >= 1 ? 0 : 12,
-              }}
-              transition={{ duration: reduce ? 0 : 0.45 }}
-            >
-              <Bell size={18} />
-              <div>
-                <strong>Missing PPE detected</strong>
-                <span>Site entrance · Camera 04</span>
-              </div>
-              <span className={s.sent}>Sent</span>
-            </motion.div>
-          </div>
-          <div className={s.event}>
-            <span className={s.small}>ILLUSTRATIVE EVENT</span>
-            <h4>{steps[active].status}</h4>
-            <div className={s.track}>
-              {steps.map((x, i) => (
-                <span key={x.label} data-done={i <= active}>
-                  {i < active ? <Check size={12} /> : <i />}
-                  {x.label}
-                </span>
-              ))}
-            </div>
-          </div>
-          <motion.div
-            className={s.report}
-            initial={false}
-            animate={{
-              height: active === 2 ? 72 : 0,
-              opacity: active === 2 ? 1 : 0,
-            }}
-            transition={{ duration: reduce ? 0 : 0.5 }}
-          >
-            <FileText size={22} />
-            <div>
-              <strong>PPE event report</strong>
-              <span>Frame, location and event details</span>
-            </div>
-            <Check size={18} />
-          </motion.div>
-        </div>
-        <p className={s.caption}>
-          One camera event, from detection to review. Scroll to follow it.
-        </p>
-      </div>
-    </section>
-  );
-}
 const feeds = [
   "open-edge-detection.jpg",
   "ppe-hero.jpg",
@@ -159,7 +39,7 @@ function Mosaic() {
     <section id="construction-direction" ref={ref} className={s.mosaicStory}>
       <div className={s.mosaicPin}>
         <div className={s.mosaicCopy}>
-          <span className={s.number}>02 / Construction</span>
+          <span className={s.number}>Construction</span>
           <h2>
             See the site.
             <br />
@@ -231,35 +111,15 @@ export default function Preview() {
           part of the scroll.
         </h1>
         <p>
-          Two directions using your existing footage, colours and type. The live
-          pages are unchanged.
+          Construction mosaic using your existing footage, colours and type. The
+          live pages are unchanged.
         </p>
         <nav>
-          <a href="#ppe-direction">
-            01 · PPE workflow <ArrowDown size={15} />
-          </a>
           <a href="#construction-direction">
-            02 · Construction mosaic <ArrowDown size={15} />
+            View Construction mosaic <ArrowDown size={15} />
           </a>
         </nav>
       </header>
-      <div className={s.sectionIntro}>
-        <span className={s.number}>01 / PPE detection</span>
-        <h2>
-          From a missing hard hat
-          <br />
-          to evidence your team can use.
-        </h2>
-        <p>
-          The camera stays in place while the explanation moves through
-          detection, alert and report.
-        </p>
-      </div>
-      <PpeStory />
-      <div className={s.divider}>
-        <span>Next direction</span>
-        <ArrowDown size={22} />
-      </div>
       <Mosaic />
       <footer className={s.end}>
         <h2>
@@ -267,8 +127,8 @@ export default function Preview() {
           <br />A clearer sequence.
         </h2>
         <p>
-          PPE uses a continuous event story. Construction moves from site
-          coverage to one hazard.
+          Construction moves from site coverage to one hazard, within a single
+          feature visual.
         </p>
         <a href="#">Back to the top ↑</a>
       </footer>

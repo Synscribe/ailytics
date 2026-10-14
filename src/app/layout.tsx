@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import localFont from "next/font/local";
 import { Suspense } from "react";
 
 import { VisitorContextTracker } from "@/app/contact/_components/visitor-context-tracker";
@@ -14,10 +14,13 @@ import {
 
 import "./globals.css";
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-poppins",
+const switzer = localFont({
+  src: [
+    { path: "./fonts/Switzer-400.woff2", weight: "400" },
+    { path: "./fonts/Switzer-500.woff2", weight: "500" },
+    { path: "./fonts/Switzer-600.woff2", weight: "600" },
+  ],
+  variable: "--font-switzer",
   display: "swap",
 });
 
@@ -37,7 +40,7 @@ export default function RootLayout({
   const websiteJsonLd = buildWebsiteJsonLd();
 
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={poppins.variable}>
+    <html lang="en" data-scroll-behavior="smooth" className={switzer.variable}>
       <body>
         <script
           type="application/ld+json"

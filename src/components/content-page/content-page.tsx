@@ -1,14 +1,12 @@
+import { ScrollSequence } from "./scroll-sequence.client";
+import { FaqAccordion } from "@/components/faq-accordion/faq-accordion";
 import { RevealGroup } from "@/components/reveal-group.client";
 import { CustomerProof } from "@/components/customer-proof/customer-proof";
-import { ArrowRightIcon, CheckIcon, PlusIcon } from "lucide-react";
+import { ArrowRightIcon, CheckIcon } from "lucide-react";
 import Link from "next/link";
 
 import { ProjectVisual } from "@/components/visuals/project-visual";
-import {
-  parseInlineLinks,
-  stripInlineLinks,
-  type PageContent,
-} from "@/lib/page-content";
+import { stripInlineLinks, type PageContent } from "@/lib/page-content";
 import {
   buildBreadcrumbJsonLd,
   buildFaqJsonLd,
@@ -50,22 +48,6 @@ export type ContentPageRouteCopy = Omit<
 > & {
   name: string;
 };
-
-function InlineCopy({ value }: { value: string }) {
-  return parseInlineLinks(value).map((segment, index) =>
-    segment.kind === "link" ? (
-      <Link
-        className="font-semibold text-ink underline decoration-ink/30 underline-offset-4 hover:decoration-ink"
-        href={segment.href}
-        key={index}
-      >
-        {segment.value}
-      </Link>
-    ) : (
-      <span key={index}>{segment.value}</span>
-    ),
-  );
-}
 
 const sectionHeading = "brand-h2 max-w-3xl";
 
@@ -154,20 +136,7 @@ export function ContentPage({
             </p>
           </div>
 
-          <RevealGroup
-            className={`mt-12 grid gap-4 sm:grid-cols-2 ${content.problems.items.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4"}`}
-          >
-            {content.problems.items.map((item) => (
-              <article data-reveal className="brand-card p-7" key={item.title}>
-                <h3 className="text-lg font-semibold tracking-tight text-balance">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-sm leading-6 text-pretty text-ink-muted">
-                  {item.description}
-                </p>
-              </article>
-            ))}
-          </RevealGroup>
+          <ScrollSequence items={content.problems.items} tone="alert" />
         </div>
       </section>
 
@@ -177,27 +146,7 @@ export function ContentPage({
           <p className="brand-lead mt-5 max-w-2xl">
             {content.solution.description}
           </p>
-          <RevealGroup>
-            <ol className="mt-12 grid gap-8 border-t border-ink/10 pt-8 sm:grid-cols-2 lg:grid-cols-4">
-              {howItWorks.steps.map((step, index) => (
-                <li
-                  data-reveal
-                  className="flex flex-col gap-3"
-                  key={step.title}
-                >
-                  <span className="text-sm font-semibold text-signal-strong">
-                    0{index + 1}
-                  </span>
-                  <h3 className="text-lg font-semibold tracking-tight">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm leading-6 text-pretty text-ink-muted">
-                    {step.description}
-                  </p>
-                </li>
-              ))}
-            </ol>
-          </RevealGroup>
+          <ScrollSequence items={howItWorks.steps} />
         </div>
       </section>
 
@@ -284,24 +233,7 @@ export function ContentPage({
         <div className="mx-auto grid w-full max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
           <h2 className="brand-h2 max-w-xl">Frequently asked questions</h2>
 
-          <div className="flex flex-col gap-3">
-            {content.faq.map((item) => (
-              <details className="brand-card brand-faq" key={item.question}>
-                <summary className="flex items-center justify-between gap-4 px-6 py-5">
-                  <h3 className="text-[1.0625rem] leading-snug font-semibold">
-                    {item.question}
-                  </h3>
-                  <PlusIcon
-                    className="size-5 shrink-0 text-ink-muted"
-                    aria-hidden="true"
-                  />
-                </summary>
-                <p className="max-w-[62ch] px-6 pb-6 text-[0.97rem] leading-7 text-pretty text-ink-muted">
-                  <InlineCopy value={item.answer} />
-                </p>
-              </details>
-            ))}
-          </div>
+          <FaqAccordion items={content.faq} />
         </div>
       </section>
 

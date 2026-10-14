@@ -634,7 +634,7 @@
 
 .payoff {
   margin: 0;
-  font-size: clamp(1.75rem, 3.4vw, 3rem);
+  font-size: clamp(1.75rem, 2.7vw, 2.5rem);
   line-height: 1.12;
   font-weight: 500;
   letter-spacing: -0.03em;
@@ -2625,67 +2625,6 @@ tr[data-hz] .alertCount {
   align-items: start;
 }
 
-.faqList {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.faqItem {
-  background: var(--paper);
-  border: var(--card-border);
-  border-radius: 16px;
-  box-shadow: var(--card-shadow);
-}
-
-.faqItem summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 20px 24px;
-  cursor: pointer;
-  list-style: none;
-  border-radius: 16px;
-}
-
-.faqItem summary::-webkit-details-marker {
-  display: none;
-}
-
-.faqItem summary:focus-visible {
-  outline: 2px solid var(--signal);
-  outline-offset: 2px;
-}
-
-.faqItem summary h3 {
-  margin: 0;
-  font-size: 1.0625rem;
-  line-height: 1.4;
-  font-weight: 600;
-}
-
-.faqItem summary svg {
-  width: 20px;
-  height: 20px;
-  flex: none;
-  color: var(--ink-muted);
-  transition: transform 0.3s var(--ease);
-}
-
-.faqItem[open] summary svg {
-  transform: rotate(45deg);
-}
-
-.faqItem p {
-  margin: 0;
-  padding: 0 24px 22px;
-  font-size: 0.97rem;
-  line-height: 1.7;
-  color: var(--ink-muted);
-  max-width: 62ch;
-}
-
 /* ---------------------------------------------------------------- Closing banner */
 
 .closing {
@@ -2992,4 +2931,15 @@ tr[data-hz] .alertCount {
 /* Offset the problem scene’s empty space so the proof gap stays at 120px. */
 .problem[data-mode="scroll"] {
   margin-top: calc(-1 * var(--leading-space, 0px));
+}
+
+.pstate span[data-wave],
+.payoff span[data-wave] {
+  color: var(--signal-strong);
+}
+@media (prefers-reduced-motion: reduce) {
+  .pstate span[data-wave],
+  .payoff span[data-wave] {
+    color: var(--ink);
+  }
 }

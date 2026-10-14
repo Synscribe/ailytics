@@ -38,7 +38,11 @@ function Words({ text, lit }: { text: string; lit: number }) {
   return (
     <>
       {words.map((w, i) => (
-        <span key={i} data-on={i < lit ? "true" : undefined}>
+        <span
+          key={i}
+          data-on={i < lit ? "true" : undefined}
+          data-wave={i < lit && i >= lit - 2 ? "true" : undefined}
+        >
           {w}
           {i < words.length - 1 ? " " : ""}
         </span>
