@@ -3,15 +3,17 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
 import { listJobSlugs } from "@/app/careers/_jobs";
 import { getAllBlogPosts, type BlogPostSummary } from "@/lib/blog";
+import { listNewsArticles } from "@/lib/news-content";
 import { listPageContent } from "@/lib/page-content";
 
 export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [useCases, industries, jobs] = await Promise.all([
+  const [useCases, industries, jobs, news] = await Promise.all([
     listPageContent("uses"),
     listPageContent("industries"),
     listJobSlugs(),
+    listNewsArticles(),
   ]);
   let blogPosts: BlogPostSummary[] = [];
 
@@ -28,6 +30,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/industries",
     ...industries.map((slug) => `/industries/${slug}`),
     "/blog",
+    "/news",
     "/about-us",
     "/partnerships",
     "/careers",
@@ -40,6 +43,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     ...routes.map((route) => ({ url: `${siteConfig.url}${route}` })),
+    ...news.map((article) => ({
+      url: `${siteConfig.url}/news/${article.slug}`,
+      lastModified: article.publishedAt,
+    })),
     ...blogPosts.map((post) => ({
       url: `${siteConfig.url}/blog/${post.slug}`,
       lastModified: post.updatedAt,
