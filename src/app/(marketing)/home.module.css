@@ -41,7 +41,7 @@
   margin: 0;
   font-size: clamp(2rem, 4vw, 2.75rem);
   line-height: 1.08;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: -0.03em;
 }
 
@@ -210,7 +210,7 @@
   max-width: 900px;
   font-size: clamp(2.5rem, 5.6vw, 4.25rem);
   line-height: 1.04;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: -0.035em;
 }
 
@@ -957,7 +957,7 @@
   margin: 0;
   font-size: clamp(2rem, 3.6vw, 3rem);
   line-height: 1.06;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: -0.03em;
 }
 
@@ -2621,7 +2621,7 @@ tr[data-hz] .alertCount {
   margin: 0;
   font-size: clamp(2rem, 4vw, 2.75rem);
   line-height: 1.08;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: -0.03em;
 }
 
@@ -2921,7 +2921,7 @@ tr[data-hz] .alertCount {
 
 .heroHeadline,
 .h2 {
-  font-weight: 300;
+  font-weight: 400;
 }
 .ucCard,
 .industryCard {

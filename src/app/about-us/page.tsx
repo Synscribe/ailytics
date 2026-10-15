@@ -218,7 +218,7 @@ export default function AboutPage() {
           </div>
           {STATS.map((stat) => (
             <div className="brand-card p-6 sm:p-8" key={stat.label}>
-              <p className="text-5xl leading-none font-light tracking-[-0.03em] text-signal">
+              <p className="text-5xl leading-none font-normal tracking-[-0.03em] text-signal">
                 {stat.value}
               </p>
               <h3 className="mt-5 text-base font-medium text-ink">

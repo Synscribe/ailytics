@@ -16,7 +16,7 @@
   font-size: clamp(40px, 5vw, 64px);
   line-height: 1.05;
   letter-spacing: -0.04em;
-  font-weight: 300;
+  font-weight: 400;
 }
 .intro > p {
   max-width: 500px;
@@ -49,7 +49,7 @@
   font-size: clamp(32px, 4vw, 48px);
   line-height: 1.08;
   letter-spacing: -0.035em;
-  font-weight: 300;
+  font-weight: 400;
 }
 .heading > p:last-child {
   color: var(--ink-muted);
@@ -328,7 +328,7 @@
 }
 .heading h2 {
   font-size: clamp(28px, 3vw, 40px);
-  font-weight: 300;
+  font-weight: 400;
 }
 .heading > p:last-child {
   font-size: 15px;
@@ -414,7 +414,7 @@
   font-size: clamp(30px, 3vw, 42px);
   line-height: 1.12;
   letter-spacing: -0.035em;
-  font-weight: 300;
+  font-weight: 400;
 }
 .heading > p:first-child {
   font-size: 12px;

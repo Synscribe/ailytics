@@ -194,7 +194,7 @@ button {
   .brand-h1 {
     font-size: clamp(2.5rem, 5vw, 3.75rem);
     line-height: 1.05;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: -0.035em;
     text-wrap: balance;
   }
@@ -202,7 +202,7 @@ button {
   .brand-h2 {
     font-size: clamp(1.875rem, 3.2vw, 2.5rem);
     line-height: 1.08;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: -0.03em;
     text-wrap: balance;
   }
@@ -323,7 +323,7 @@ button {
 /* Shared editorial hierarchy: size establishes rank, weight stays restrained. */
 main h1,
 main h2 {
-  font-weight: 300;
+  font-weight: 400;
 }
 main h3,
 main h4 {
