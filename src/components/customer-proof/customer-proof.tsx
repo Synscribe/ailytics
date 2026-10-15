@@ -62,9 +62,14 @@ const STATS = [
   { value: "<2 weeks", label: "to go live on the cameras you already own" },
 ];
 
-export function CustomerProof() {
+/** `spacious` adds 80px above and below, for the homepage. */
+export function CustomerProof({ spacious = false }: { spacious?: boolean }) {
   return (
-    <section className={styles.proof} aria-labelledby="proof-title">
+    <section
+      className={styles.proof}
+      data-spacious={spacious ? "true" : undefined}
+      aria-labelledby="proof-title"
+    >
       <h2 id="proof-title" className={styles.proofTitle}>
         Trusted on 400+ projects worldwide
       </h2>

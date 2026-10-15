@@ -134,7 +134,7 @@ function Tile({
       {feed.video ? (
         <video
           autoPlay
-          className={`absolute inset-0 size-full object-cover transition-[filter] duration-500 ${on ? "" : "[filter:grayscale(var(--hub-grey,1))]"}`}
+          className={`absolute inset-0 size-full object-cover transition-[filter,opacity] duration-500 ${on ? "" : "opacity-70 [filter:grayscale(var(--hub-grey,1))]"}`}
           loop
           muted
           playsInline
@@ -146,7 +146,7 @@ function Tile({
       ) : (
         <Image
           alt=""
-          className={`object-cover transition-[filter] duration-500 ${on ? "" : "[filter:grayscale(var(--hub-grey,1))]"}`}
+          className={`object-cover transition-[filter,opacity] duration-500 ${on ? "" : "opacity-70 [filter:grayscale(var(--hub-grey,1))]"}`}
           fill
           sizes="240px"
           src={feed.src}

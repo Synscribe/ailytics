@@ -8,6 +8,10 @@
   padding: 120px 24px;
 }
 
+.proof[data-spacious] {
+  padding-block: 200px;
+}
+
 .proofTitle {
   margin: 0;
   font-size: var(--text-title);
@@ -101,6 +105,9 @@
 @media (max-width: 720px) {
   .proof {
     padding: 80px 16px;
+  }
+  .proof[data-spacious] {
+    padding-block: 160px;
   }
   .stats {
     grid-template-columns: 1fr;

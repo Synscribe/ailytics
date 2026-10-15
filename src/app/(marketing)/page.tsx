@@ -310,7 +310,7 @@ export default function HomePage() {
       </section>
 
       {/* 2. Customers and results */}
-      <CustomerProof />
+      <CustomerProof spacious />
 
       {/* 3. Problem */}
       <ProblemScene />
