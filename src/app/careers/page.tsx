@@ -35,7 +35,7 @@ const FEELS = [
 const REASONS = [
   {
     title: "Real-life Impact",
-    body: "We specialize in empowering high risk workspaces, such as construction and manufacturing sites, with the most advanced vision AI solutions. Our work increases efficiency, minimizes risk, and reduce accidents.",
+    body: "We build vision AI for high-risk workplaces such as construction and manufacturing sites. Our work helps them prevent accidents and run more efficiently.",
     image: "/media/careers/real-life-impact.webp",
     alt: "Ailytics engineers in hard hats reviewing a camera setup on site",
   },

@@ -49,15 +49,15 @@ const PARTNER_TYPES = [
 const REASONS = [
   {
     title: "Rapid 24/7 Coverage",
-    body: "Whether you're in Asia or the Americas, we've got you covered. Our support team is built for timely responses and global support whenever you need it.",
+    body: "Our support team covers Asia and the Americas around the clock, so partners get fast answers in their own time zone.",
   },
   {
     title: "Designed For Flexibility First",
     body: "Available to deploy as a standalone solution, or integrate with existing platforms as part of a larger ecosystem. Training provided as well, of course.",
   },
   {
-    title: "Constant Innovation",
-    body: "“Good enough” isn't good enough for us. 50+ pre-built use cases and we're still constantly researching, developing, and expanding our capabilities.",
+    title: "New detections every year",
+    body: "“Good enough” isn't good enough for us. We offer 50+ pre-built use cases and keep adding more.",
   },
 ] as const;
 

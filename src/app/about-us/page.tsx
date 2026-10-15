@@ -161,9 +161,9 @@ export default function AboutPage() {
             <span className="text-signal">smarter</span>
           </h1>
           <p className="brand-lead mt-6 max-w-2xl">
-            Ailytics is purpose-built for real-world industrial operations. We
-            empower workplaces with 24/7 monitoring, real-time actionable
-            insights, and better outcomes.
+            Ailytics is purpose-built for real-world industrial operations. It
+            watches sites around the clock and alerts teams to hazards as they
+            happen.
           </p>
         </div>
       </section>
@@ -201,7 +201,7 @@ export default function AboutPage() {
         <div className="mx-auto grid w-full max-w-7xl gap-5 px-5 sm:grid-cols-2 sm:px-8 lg:grid-cols-3">
           <div className="flex flex-col items-center justify-center p-6 text-center sm:p-8">
             <h2 className="brand-h2 text-signal-strong" id="journey-title">
-              Our Journey In Progress
+              Our story so far
             </h2>
             <Link
               className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-signal-strong"
@@ -248,8 +248,7 @@ export default function AboutPage() {
           </h2>
           <p className="brand-lead mx-auto mt-5 max-w-3xl">
             Our team is made up of engineers, operators, and industry experts
-            that understand not just AI but also the real nuances of heavy
-            industries.
+            who understand AI and how heavy industry really works.
           </p>
         </div>
         <div className="mt-12">

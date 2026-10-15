@@ -16,7 +16,7 @@ const STATEMENTS = [
 ];
 
 const PAYOFF =
-  "With Ailytics, every camera is watched all shift, and your team is alerted while there's still time to act — not after the accident report.";
+  "With Ailytics, every camera is watched all shift, and your team is alerted while there's still time to act, not after the accident report.";
 
 const WALL = [
   { src: `${M}/detection-machinery-proximity-poster.jpg` },
