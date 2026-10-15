@@ -9,7 +9,7 @@ The blog is ordinary, deletable application code. It connects directly to Wisp o
 3. Confirm the Wisp publication belongs to the client and contains only content approved for the production domain.
 4. Keep article links absolute or relative to this website. Root-relative links remain on the current domain.
 5. In Wisp, add the real tags that the index should use. The demo source includes `tips-and-tricks`; do not assume a client publication uses it.
-6. Edit `src/app/blog/blog.config.ts`. Add only filters backed by maintained Wisp tags. Set the optional lead article slug and featured tag, or use `null` to omit either featured surface. Remove a filter entry to hide it; there are no runtime feature flags.
+6. Edit `src/app/blog/blog.config.ts`. Add only filters backed by maintained Wisp tags. Set the optional lead article slug (the newest article leads when it is `null`) and featured tag (`null` omits the featured row). Remove a filter entry to hide it; there are no runtime feature flags.
 7. Review the first page, every configured filter, an empty result, a search result, a middle and final pagination page, an article with an image, an article without an image, a long and short table of contents, every share destination, related articles, `/feed.xml`, and `/sitemap.xml`.
 8. Confirm titles, descriptions, H1s, opening copy, visible date treatment, canonical URLs, share images, and Article JSON-LD against `SEO-02`, `SEO-03`, `SEO-05`, `SEO-06`, `SEO-08`, `SOCIAL-01`, and `CONTENT-01` in the canonical checklist. The default article hero shows “Last updated”; JSON-LD retains both source dates when available.
 9. Run the blog-related checks and update their statuses in `docs/launch/checklist.json`.
@@ -18,10 +18,10 @@ Implementation:
 
 - `src/lib/blog.ts` calls the Wisp client directly and provides safe empty results only when no blog ID is configured.
 - `src/app/blog/blog.config.ts` owns the small route-specific list of optional tag filters, the pinned lead slug, and the featured tag.
-- `src/app/blog/page.tsx` server-renders featured articles, filters, search, pagination, and article links.
+- `src/app/blog/page.tsx` server-renders the hero with the lead article, featured articles, filters, search, pagination, article links, customer proof, and the demo banner.
 - `src/app/blog/_components/blog-pagination.tsx` builds crawlable previous, next, first, last, and nearby page links while preserving the active filter/search.
-- `src/app/blog/[slug]/page.tsx` renders the two-column article hero, sanitized Wisp HTML, visible source dates, metadata, and Article JSON-LD.
-- `src/app/blog/[slug]/_components/article-sidebar.tsx` renders a server-built contents list, canonical LinkedIn/X/Facebook share links, and the return link. Mobile uses native `<details>` rather than a client boundary.
+- `src/app/blog/[slug]/page.tsx` renders the two-column article hero (breadcrumb, dates, reading time, and the Wisp cover image), sanitized Wisp HTML, metadata, Article JSON-LD, related articles, and the demo banner.
+- `src/app/blog/[slug]/_components/article-sidebar.tsx` renders the contents list, a demo prompt, and canonical LinkedIn/X/Facebook share links. Mobile uses native `<details>`. On desktop, `article-contents.client.tsx` server-renders every section link and opens the subheadings of the section being read.
 - `src/lib/blog-content.ts` owns sanitization, stable heading IDs, table-of-contents extraction, description fallback, date formatting, and reading-time calculation.
 - `src/app/feed.xml/route.ts` serves the latest articles as RSS.
 - `src/app/sitemap.ts` lists the blog index and every article returned by Wisp.
