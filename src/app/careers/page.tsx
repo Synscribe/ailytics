@@ -105,9 +105,7 @@ export default async function CareersPage() {
                 <div
                   className={`mx-auto max-w-md text-center lg:text-left ${index % 2 ? "lg:order-1 lg:ml-auto lg:mr-0" : "lg:mr-auto lg:ml-0"}`}
                 >
-                  <h3 className="text-3xl leading-tight font-medium tracking-[-0.025em] text-signal-strong">
-                    {reason.title}
-                  </h3>
+                  <h3 className="text-h3 text-signal-strong">{reason.title}</h3>
                   <p className="mt-5 leading-7 text-ink-muted">{reason.body}</p>
                 </div>
               </article>

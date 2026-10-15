@@ -16,7 +16,7 @@
   align-items: center;
   gap: 12px;
   padding: 20px 22px;
-  font-size: 12px;
+  font-size: var(--text-ui-sm);
   flex-shrink: 0;
 }
 .demo header {
@@ -28,7 +28,7 @@
   gap: 10px;
 }
 .demo header strong {
-  font-size: 16px;
+  font-size: var(--text-body);
 }
 .demo header span,
 .demo footer {
@@ -100,10 +100,10 @@
   color: white;
   display: flex;
   justify-content: space-between;
-  font-size: 11px;
+  font-size: var(--text-ui-xs);
 }
 .cameraGrid b {
-  font-size: 10px;
+  font-size: var(--text-ui-xs);
   font-weight: 500;
 }
 .cameraGrid i {
@@ -116,19 +116,19 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
+  font-size: var(--text-ui-md);
 }
 .wallFooter > div > span {
   margin-left: auto;
-  font-size: 11px;
+  font-size: var(--text-ui-xs);
   color: var(--ink-muted);
 }
 .wallFooter p {
   margin: 10px 0 3px;
-  font-size: 14px;
+  font-size: var(--text-small);
 }
 .wallFooter small {
-  font-size: 11px;
+  font-size: var(--text-ui-xs);
   color: var(--ink-muted);
 }
 .demo button:focus-visible {
@@ -151,7 +151,7 @@
   }
   .demo header {
     padding: 12px;
-    font-size: 10px;
+    font-size: var(--text-ui-xs);
   }
   .wallFooter > div {
     flex-wrap: wrap;

@@ -49,9 +49,7 @@ export function LegalDocument({
                 </li>
               </ol>
             </nav>
-            <h1 className="brand-h1 text-[clamp(2.25rem,4vw,3.25rem)]">
-              {document.title}
-            </h1>
+            <h1 className="brand-h1">{document.title}</h1>
             {document.effectiveDate ? (
               <p className="mt-4 text-sm font-medium text-ink-muted">
                 Effective date: {document.effectiveDate}

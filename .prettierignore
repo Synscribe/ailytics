@@ -3,3 +3,22 @@ node_modules
 coverage
 artifacts
 pnpm-lock.yaml
+
+# Third-party agent skills, kept as published
+.agents/skills/brandkit/
+.agents/skills/design-taste-frontend/
+.agents/skills/design-taste-frontend-v1/
+.agents/skills/full-output-enforcement/
+.agents/skills/gpt-taste/
+.agents/skills/hairline-create/
+.agents/skills/high-end-visual-design/
+.agents/skills/image-to-code/
+.agents/skills/imagegen-frontend-mobile/
+.agents/skills/imagegen-frontend-web/
+.agents/skills/industrial-brutalist-ui/
+.agents/skills/minimalist-ui/
+.agents/skills/redesign-existing-projects/
+.agents/skills/stitch-design-taste/
+.claude/skills/humanizer/
+.claude/skills/ui-ux-pro-max/
+.superpowers/

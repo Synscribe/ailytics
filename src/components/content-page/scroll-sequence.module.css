@@ -8,15 +8,15 @@
   padding: 0 0 16px;
 }
 .step h3 {
-  font-size: 21px;
-  line-height: 1.3;
-  font-weight: 500;
-  letter-spacing: -0.02em;
+  font-size: var(--text-title);
+  line-height: var(--text-title--line-height);
+  font-weight: var(--text-title--font-weight);
+  letter-spacing: var(--text-title--letter-spacing);
   text-wrap: balance;
 }
 .step p {
   color: var(--ink-muted);
-  font-size: 15px;
+  font-size: var(--text-body);
   line-height: 1.7;
   margin-top: 14px;
   max-width: 38ch;
@@ -44,7 +44,7 @@
   border-radius: 50%;
   background: var(--signal);
   color: var(--ink);
-  font-size: 14px;
+  font-size: var(--text-small);
   font-weight: 500;
   font-variant-numeric: tabular-nums;
   margin-bottom: 24px;

@@ -117,7 +117,7 @@ export default function PartnershipsPage() {
                   src={type.icon}
                   width={1600}
                 />
-                <h2 className="mt-5 text-lg font-medium text-signal-strong">
+                <h2 className="mt-5 text-title text-signal-strong">
                   {type.title}
                 </h2>
                 <p className="mt-2 text-sm leading-6 text-ink-muted">

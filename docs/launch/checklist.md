@@ -90,7 +90,7 @@ Check:
 ### HOME-01 — the homepage keeps one primary action within reach
 
 - [ ] **Todo**
-- Recipe: [docs/recipes/homepage.md](..\recipes\homepage.md)
+- Recipe: [docs/recipes/homepage.md](../recipes/homepage.md)
 - Files:
   - `src/components/site-header.tsx`
   - `src/app/(marketing)/page.tsx`
@@ -110,7 +110,7 @@ This check covers reaching the conversion path. `FORM-01` separately covers whet
 ### HOME-02 — homepage proof is real, sourced, and approved
 
 - [ ] **Todo**
-- Recipe: [docs/recipes/homepage.md](..\recipes\homepage.md)
+- Recipe: [docs/recipes/homepage.md](../recipes/homepage.md)
 - Files:
   - `src/app/(marketing)/page.tsx`
   - `public/media`
@@ -402,7 +402,7 @@ Verify old and new Search Console properties and host variants. Use Search Conso
 ### FORM-01 — the primary conversion path works end to end
 
 - [ ] **Todo**
-- Recipe: [docs/recipes/contact.md](..\recipes\contact.md)
+- Recipe: [docs/recipes/contact.md](../recipes/contact.md)
 - Files:
   - `src/app/contact/page.tsx`
   - `src/app/contact/_components/contact-form.tsx`
@@ -415,7 +415,7 @@ Test production delivery, the actual recipient or CRM, confirmation, failure han
 ### FORM-02 — form input and output are bounded
 
 - [ ] **Todo**
-- Recipe: [docs/recipes/contact.md](..\recipes\contact.md)
+- Recipe: [docs/recipes/contact.md](../recipes/contact.md)
 - Files:
   - `src/lib/contact.ts`
   - `src/lib/contact-delivery.ts`
@@ -426,7 +426,7 @@ Validate types and sensible lengths server-side, escape output, reject unexpecte
 ### FORM-03 — abuse and retention match the risk
 
 - [ ] **Todo**
-- Recipe: [docs/recipes/contact.md](..\recipes\contact.md)
+- Recipe: [docs/recipes/contact.md](../recipes/contact.md)
 - Files:
   - `src/app/api/contact/route.ts`
   - `src/app/api/contact/_lib/rate-limit.ts`
@@ -443,7 +443,7 @@ The included honeypot, completion-time check, same-origin check, and in-memory p
 ### FORM-04 — attribution is minimized
 
 - [ ] **Todo**
-- Recipe: [docs/recipes/contact.md](..\recipes\contact.md)
+- Recipe: [docs/recipes/contact.md](../recipes/contact.md)
 - Files:
   - `src/lib/visitor-context.ts`
   - `src/app/contact/_components/visitor-context-tracker.tsx`
@@ -459,7 +459,7 @@ The default keeps first-touch UTM fields, an external referrer without its query
 ### LLM-03 — public pages negotiate a useful Markdown representation
 
 - [ ] **Todo**
-- Recipe: [docs/recipes/markdown-negotiation.md](..\recipes\markdown-negotiation.md)
+- Recipe: [docs/recipes/markdown-negotiation.md](../recipes/markdown-negotiation.md)
 - Files:
   - `src/proxy.ts`
   - `src/app/api/agent-markdown/route.ts`
@@ -488,7 +488,7 @@ The live launch audit checks both homepage representations, quality-value select
 ### PRIVACY-02 — the client approves analytics and session replay before launch
 
 - [ ] **Todo**
-- Recipe: [docs/recipes/posthog.md](..\recipes\posthog.md)
+- Recipe: [docs/recipes/posthog.md](../recipes/posthog.md)
 
 PostHog (US cloud) records pageviews, autocapture, heatmaps, session replay with masked inputs, and the `cta_clicked`, `contact_form_submitted` and `job_application_submitted` events. There is no consent banner.
 Before launch, the client confirms whether session replay stays on and whether a consent banner is needed, and approves privacy-policy wording that covers analytics cookies, session replay, the US data location, and the PostHog retention period.
@@ -498,7 +498,7 @@ Before launch, the client confirms whether session replay stays on and whether a
 ### HOME-03 — the homepage defines the offer once and consistently
 
 - [ ] **Todo**
-- Recipe: [docs/recipes/homepage.md](..\recipes\homepage.md)
+- Recipe: [docs/recipes/homepage.md](../recipes/homepage.md)
 - Files:
   - `src/config/site.ts`
   - `src/app/(marketing)/page.tsx`
@@ -578,7 +578,7 @@ For launch assets, inspect the exact reduced-motion PNGs emitted by `pnpm launch
 ### ANALYTICS-01 — analytics is configured and privacy-aware
 
 - [ ] **Todo**
-- Recipe: [docs/recipes/posthog.md](..\recipes\posthog.md)
+- Recipe: [docs/recipes/posthog.md](../recipes/posthog.md)
 
 PostHog is included by default but inactive without a token. Verify the production project, pageviews and named conversion events, internal/staff exclusions, consent behavior where required, session-replay policy, retention, and that sensitive form values are not captured. Delete `src/instrumentation-client.ts` and `posthog-js` if analytics is unused.
 
@@ -603,7 +603,7 @@ Set the mail values, submit a test application with a PDF and a Word file, and c
 ### LLM-01 — `llms.txt` is client-specific, useful, and current
 
 - [ ] **Automated**
-- Recipe: [docs/recipes/llms-txt.md](..\recipes\llms-txt.md)
+- Recipe: [docs/recipes/llms-txt.md](../recipes/llms-txt.md)
 - Automated check: `llms-txt-ready`
 - Files:
   - `public/llms.txt`
@@ -630,7 +630,7 @@ Check:
 ### LLM-02 — explicit `.md` URLs match negotiated Markdown
 
 - [ ] **Todo**
-- Recipe: [docs/recipes/markdown-negotiation.md](..\recipes\markdown-negotiation.md)
+- Recipe: [docs/recipes/markdown-negotiation.md](../recipes/markdown-negotiation.md)
 - Files:
   - `src/proxy.ts`
   - `src/app/api/agent-markdown/route.ts`
@@ -653,7 +653,7 @@ The live launch audit compares exact bodies for top-level and nested aliases, ve
 ### INDEX-01 — IndexNow ownership key is unique and verifiable
 
 - [ ] **Todo**
-- Recipe: [docs/recipes/indexnow.md](..\recipes\indexnow.md)
+- Recipe: [docs/recipes/indexnow.md](../recipes/indexnow.md)
 - Files:
   - `scripts/generate-indexnow-key.mjs`
   - `indexnow-key.json`
@@ -664,7 +664,7 @@ Add URL submission automation only when publishing frequency and target search e
 ### CONTENT-01 — richer publishing tools
 
 - [ ] **Todo**
-- Recipe: [docs/recipes/blog.md](..\recipes\blog.md)
+- Recipe: [docs/recipes/blog.md](../recipes/blog.md)
 - Files:
   - `src/app/blog/blog.config.ts`
   - `src/app/blog/page.tsx`

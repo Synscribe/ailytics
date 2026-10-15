@@ -10,8 +10,10 @@
 
 .proofTitle {
   margin: 0;
-  font-size: 1.25rem;
-  font-weight: 500;
+  font-size: var(--text-title);
+  line-height: var(--text-title--line-height);
+  font-weight: var(--text-title--font-weight);
+  letter-spacing: var(--text-title--letter-spacing);
   text-align: center;
 }
 
@@ -87,7 +89,7 @@
 .statLabel {
   max-width: 32ch;
   text-wrap: balance;
-  font-size: 0.94rem;
+  font-size: var(--text-small);
   line-height: 1.5;
   font-weight: 500;
   color: var(--ink-muted);

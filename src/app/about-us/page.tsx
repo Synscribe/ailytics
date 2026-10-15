@@ -219,9 +219,7 @@ export default function AboutPage() {
               <p className="text-5xl leading-none font-normal tracking-[-0.03em] text-signal">
                 {stat.value}
               </p>
-              <h3 className="mt-5 text-base font-medium text-ink">
-                {stat.label}
-              </h3>
+              <h3 className="mt-5 text-title text-ink">{stat.label}</h3>
               <p className="mt-3 text-sm leading-6 text-ink-muted">
                 {stat.body}
               </p>

@@ -1,7 +1,7 @@
 .prose {
   max-width: 44rem;
   color: var(--ink-muted);
-  font-size: 1.0625rem;
+  font-size: var(--text-lead);
   line-height: 1.8;
 }
 
@@ -26,21 +26,26 @@
 
 .prose h2 {
   margin-top: 3.5rem;
-  font-weight: 400;
-  font-size: clamp(1.625rem, 2.6vw, 2rem);
-  line-height: 1.15;
+  font-size: var(--text-h3);
+  line-height: var(--text-h3--line-height);
+  font-weight: var(--text-h3--font-weight);
+  letter-spacing: var(--text-h3--letter-spacing);
 }
 
 .prose h3 {
   margin-top: 2.5rem;
-  font-size: 1.3125rem;
-  line-height: 1.3;
+  font-size: var(--text-title);
+  line-height: var(--text-title--line-height);
+  font-weight: var(--text-title--font-weight);
+  letter-spacing: var(--text-title--letter-spacing);
 }
 
 .prose h4 {
   margin-top: 2rem;
-  font-size: 1.125rem;
-  line-height: 1.35;
+  font-size: var(--text-title);
+  line-height: var(--text-title--line-height);
+  font-weight: var(--text-title--font-weight);
+  letter-spacing: var(--text-title--letter-spacing);
 }
 
 .prose h2 + *,
@@ -116,7 +121,7 @@
   background: var(--night);
   color: var(--paper);
   padding: 1.25rem;
-  font-size: 0.875rem;
+  font-size: var(--text-small);
   line-height: 1.7;
 }
 
@@ -130,8 +135,8 @@
 .prose figure figcaption {
   margin-top: 0.75rem;
   color: var(--ink-faint);
-  font-size: 0.8125rem;
-  line-height: 1.5;
+  font-size: var(--text-small);
+  line-height: var(--text-small--line-height);
   text-align: center;
 }
 
@@ -140,7 +145,7 @@
   width: 100%;
   overflow-x: auto;
   border-collapse: collapse;
-  font-size: 0.9375rem;
+  font-size: var(--text-small);
 }
 
 .prose th,

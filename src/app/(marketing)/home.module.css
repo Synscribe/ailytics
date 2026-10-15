@@ -39,16 +39,16 @@
 
 .h2 {
   margin: 0;
-  font-size: clamp(2rem, 4vw, 2.75rem);
-  line-height: 1.08;
-  font-weight: 400;
-  letter-spacing: -0.03em;
+  font-size: var(--text-h2);
+  line-height: var(--text-h2--line-height);
+  font-weight: var(--text-h2--font-weight);
+  letter-spacing: var(--text-h2--letter-spacing);
 }
 
 .lead {
   margin: 0;
-  font-size: 1.0625rem;
-  line-height: 1.7;
+  font-size: var(--text-lead);
+  line-height: var(--text-lead--line-height);
   color: var(--ink-muted);
   max-width: 42rem;
 }
@@ -197,9 +197,9 @@
 .h1 {
   margin: 0;
   max-width: 900px;
-  font-size: 0.9375rem;
-  line-height: 1.4;
-  font-weight: 600;
+  font-size: var(--text-small);
+  line-height: var(--text-small--line-height);
+  font-weight: 500;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--ink-muted);
@@ -208,17 +208,17 @@
 .heroHeadline {
   margin: -8px 0 0;
   max-width: 900px;
-  font-size: clamp(2.5rem, 5.6vw, 4.25rem);
-  line-height: 1.04;
-  font-weight: 400;
-  letter-spacing: -0.035em;
+  font-size: var(--text-display);
+  line-height: var(--text-display--line-height);
+  font-weight: var(--text-display--font-weight);
+  letter-spacing: var(--text-display--letter-spacing);
 }
 
 .heroLead {
   margin: 0;
   max-width: 640px;
-  font-size: 1.0625rem;
-  line-height: 1.7;
+  font-size: var(--text-lead);
+  line-height: var(--text-lead--line-height);
   color: var(--ink-muted);
 }
 
@@ -310,8 +310,8 @@
 
 .alertCam {
   flex: none;
-  font-size: 0.8125rem;
-  font-weight: 500;
+  font-size: var(--text-label);
+  font-weight: var(--text-label--font-weight);
   color: var(--ink-muted);
   white-space: nowrap;
 }
@@ -319,7 +319,7 @@
 .alertText {
   flex: 1;
   min-width: 0;
-  font-size: 0.97rem;
+  font-size: var(--text-body);
   font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
@@ -333,8 +333,8 @@
   flex: none;
   padding: 5px 11px;
   border-radius: 999px;
-  font-size: 0.8125rem;
-  font-weight: 500;
+  font-size: var(--text-label);
+  font-weight: var(--text-label--font-weight);
   background: color-mix(in srgb, var(--cat) 15%, transparent);
   transition: background-color 0.4s;
 }
@@ -349,7 +349,7 @@
 .storyAlert em {
   flex: none;
   font-style: normal;
-  font-size: 0.6875rem;
+  font-size: var(--text-ui-xs);
   font-weight: 500;
   color: var(--ink-muted);
   background: var(--track);
@@ -365,7 +365,7 @@
   list-style: none;
   border-radius: 999px;
   background: rgba(39, 64, 93, 0.06);
-  font-size: 0.875rem;
+  font-size: var(--text-small);
   font-weight: 500;
 }
 
@@ -527,7 +527,7 @@
   position: absolute;
   left: 8px;
   top: 7px;
-  font-size: 0.6875rem;
+  font-size: var(--text-ui-xs);
   font-weight: 500;
   font-variant-numeric: tabular-nums;
   color: rgba(249, 251, 253, 0.85);
@@ -544,7 +544,7 @@
   white-space: nowrap;
   padding: 3px 8px;
   border-radius: 4px;
-  font-size: 0.6875rem;
+  font-size: var(--text-ui-xs);
   font-weight: 500;
   color: #fff;
   background: var(--ink);
@@ -625,17 +625,17 @@
 
 .plabel {
   margin: 0;
-  font-size: 0.875rem;
+  font-size: var(--text-small);
   font-weight: 500;
   color: var(--ink-muted);
 }
 
 .pstate {
   margin: 0;
-  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
-  line-height: 1.15;
-  font-weight: 500;
-  letter-spacing: -0.025em;
+  font-size: var(--text-h2);
+  line-height: var(--text-h2--line-height);
+  font-weight: var(--text-h2--font-weight);
+  letter-spacing: var(--text-h2--letter-spacing);
   transition:
     opacity 0.4s,
     transform 0.5s var(--ease);
@@ -643,10 +643,10 @@
 
 .payoff {
   margin: 0;
-  font-size: clamp(1.75rem, 2.7vw, 2.5rem);
-  line-height: 1.12;
-  font-weight: 500;
-  letter-spacing: -0.03em;
+  font-size: var(--text-h2);
+  line-height: var(--text-h2--line-height);
+  font-weight: var(--text-h2--font-weight);
+  letter-spacing: var(--text-h2--letter-spacing);
   text-wrap: balance;
 }
 
@@ -714,7 +714,7 @@
   z-index: 1;
   padding: 2px 7px;
   border-radius: 4px;
-  font-size: 0.6875rem;
+  font-size: var(--text-ui-xs);
   font-weight: 500;
   background: var(--alert);
   color: var(--ink);
@@ -752,7 +752,7 @@
 }
 
 .prow b {
-  font-size: 0.875rem;
+  font-size: var(--text-small);
   font-weight: 500;
 }
 
@@ -842,7 +842,7 @@
   justify-content: space-between;
   gap: 12px;
   padding: 4px 16px 14px;
-  font-size: 0.78rem;
+  font-size: var(--text-ui-sm);
   font-weight: 500;
   color: var(--ink-muted);
 }
@@ -891,6 +891,7 @@
 
 .problem[data-mode="scroll"] .pgroup {
   grid-area: 1 / 1;
+  align-self: center;
 }
 
 .problem[data-mode="scroll"] .pgroup[data-hide] {
@@ -948,17 +949,17 @@
 
 .storyKicker {
   margin: 0;
-  font-size: 0.875rem;
+  font-size: var(--text-small);
   font-weight: 500;
   color: var(--ink-muted);
 }
 
 .storyTitle {
   margin: 0;
-  font-size: clamp(2rem, 3.6vw, 3rem);
-  line-height: 1.06;
-  font-weight: 400;
-  letter-spacing: -0.03em;
+  font-size: var(--text-h2);
+  line-height: var(--text-h2--line-height);
+  font-weight: var(--text-h2--font-weight);
+  letter-spacing: var(--text-h2--letter-spacing);
 }
 
 .captions {
@@ -980,15 +981,16 @@
 
 .captions h3 {
   margin: 0;
-  font-size: 1.125rem;
-  line-height: 1.3;
-  font-weight: 500;
+  font-size: var(--text-title);
+  line-height: var(--text-title--line-height);
+  font-weight: var(--text-title--font-weight);
+  letter-spacing: var(--text-title--letter-spacing);
 }
 
 .captions p {
   margin: 0;
-  font-size: 0.94rem;
-  line-height: 1.6;
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
   color: var(--ink-muted);
 }
 
@@ -1062,7 +1064,7 @@
   z-index: 2;
   padding: 5px 11px;
   border-radius: 999px;
-  font-size: 0.78rem;
+  font-size: var(--text-ui-sm);
   font-weight: 500;
   white-space: nowrap;
   transition:
@@ -1104,7 +1106,7 @@
   margin-top: 8px;
   padding: 3px 8px;
   border-radius: 4px;
-  font-size: 0.75rem;
+  font-size: var(--text-ui-sm);
   font-weight: 500;
   white-space: nowrap;
   color: #fff;
@@ -1242,12 +1244,12 @@
 }
 
 .storyAlert b {
-  font-size: 0.875rem;
+  font-size: var(--text-small);
   font-weight: 500;
 }
 
 .storyAlert span {
-  font-size: 0.8125rem;
+  font-size: var(--text-ui-md);
   color: var(--ink-muted);
 }
 
@@ -1381,15 +1383,15 @@
 }
 
 .story[data-mode="scroll"] .captions h3 {
-  font-size: clamp(1.5rem, 2.3vw, 2rem);
-  line-height: 1.05;
-  font-weight: 500;
-  letter-spacing: -0.02em;
+  font-size: var(--text-h3);
+  line-height: var(--text-h3--line-height);
+  font-weight: var(--text-h3--font-weight);
+  letter-spacing: var(--text-h3--letter-spacing);
 }
 
 .story[data-mode="scroll"] .captions p {
-  font-size: clamp(0.95rem, 1.25vw, 1.125rem);
-  line-height: 1.5;
+  font-size: var(--text-lead);
+  line-height: var(--text-lead--line-height);
   color: rgba(255, 255, 255, 0.9);
 }
 
@@ -1472,7 +1474,7 @@
   border-radius: 999px;
   background: rgba(11, 27, 51, 0.62);
   color: rgba(255, 255, 255, 0.85);
-  font-size: 0.75rem;
+  font-size: var(--text-ui-sm);
   font-weight: 500;
 }
 
@@ -1556,16 +1558,16 @@
 
 .ftext h3 {
   margin: 0 0 10px;
-  font-size: clamp(1.5rem, 2.4vw, 1.875rem);
-  line-height: 1.15;
-  font-weight: 500;
-  letter-spacing: -0.02em;
+  font-size: var(--text-h3);
+  line-height: var(--text-h3--line-height);
+  font-weight: var(--text-h3--font-weight);
+  letter-spacing: var(--text-h3--letter-spacing);
 }
 
 .ftext p {
   margin: 0 0 12px;
-  font-size: 1.0625rem;
-  line-height: 1.6;
+  font-size: var(--text-lead);
+  line-height: var(--text-lead--line-height);
   color: var(--ink-muted);
   max-width: 44ch;
 }
@@ -1590,7 +1592,7 @@
   z-index: 2;
   padding: 4px 10px;
   border-radius: 999px;
-  font-size: 0.75rem;
+  font-size: var(--text-ui-sm);
   font-weight: 500;
   white-space: nowrap;
   background: rgba(255, 255, 255, 0.92);
@@ -1613,7 +1615,7 @@
   z-index: 5;
   padding: 4px 10px;
   border-radius: 999px;
-  font-size: 0.72rem;
+  font-size: var(--text-ui-sm);
   font-weight: 500;
   background: var(--ink);
   color: #fff;
@@ -1791,7 +1793,7 @@
   padding: 12px 14px;
   border: 1px solid rgba(39, 64, 93, 0.2);
   border-radius: 12px;
-  font-size: 0.94rem;
+  font-size: var(--text-small);
   font-weight: 500;
 }
 
@@ -1846,7 +1848,7 @@
 
 .sugg button {
   font: inherit;
-  font-size: 0.75rem;
+  font-size: var(--text-ui-sm);
   font-weight: 500;
   padding: 5px 10px;
   border: 1px solid transparent;
@@ -1891,8 +1893,8 @@
 .ans {
   min-height: 3em;
   margin: 0;
-  font-size: 0.9rem;
-  line-height: 1.5;
+  font-size: var(--text-small);
+  line-height: var(--text-small--line-height);
   font-weight: 500;
 }
 
@@ -1924,7 +1926,7 @@
   bottom: 6px;
   padding: 2px 7px;
   border-radius: 4px;
-  font-size: 0.6875rem;
+  font-size: var(--text-ui-xs);
   font-weight: 500;
   background: var(--ink);
   color: #fff;
@@ -1946,7 +1948,7 @@
   align-items: baseline;
   justify-content: space-between;
   gap: 12px;
-  font-size: 0.875rem;
+  font-size: var(--text-small);
 }
 
 .sitesHead b {
@@ -1955,14 +1957,14 @@
 
 .sitesHead span {
   color: var(--ink-muted);
-  font-size: 0.8rem;
+  font-size: var(--text-ui-md);
   font-weight: 500;
 }
 
 .siteTable {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.82rem;
+  font-size: var(--text-ui-md);
 }
 
 .siteTable th,
@@ -1974,7 +1976,7 @@
 
 .siteTable thead th {
   padding-top: 0;
-  font-size: 0.72rem;
+  font-size: var(--text-ui-sm);
   font-weight: 500;
   color: var(--ink-muted);
 }
@@ -2064,7 +2066,7 @@ tr[data-hz] .alertCount {
   border: 1px solid rgba(255, 122, 89, 0.45);
   border-radius: 10px;
   background: rgba(255, 122, 89, 0.07);
-  font-size: 0.82rem;
+  font-size: var(--text-ui-md);
 }
 
 .siteAlert span {
@@ -2157,7 +2159,7 @@ tr[data-hz] .alertCount {
   align-items: center;
   gap: 12px;
   min-height: 24px;
-  font-size: 0.8125rem;
+  font-size: var(--text-ui-md);
 }
 
 .setRow b {
@@ -2268,8 +2270,10 @@ tr[data-hz] .alertCount {
 /* Without JavaScript every group shows under its own heading. */
 .ucGroup {
   margin: 32px 0 16px;
-  font-size: 1.125rem;
-  font-weight: 500;
+  font-size: var(--text-title);
+  line-height: var(--text-title--line-height);
+  font-weight: var(--text-title--font-weight);
+  letter-spacing: var(--text-title--letter-spacing);
 }
 
 .ucTabs[data-ready] .ucGroup {
@@ -2326,16 +2330,17 @@ tr[data-hz] .alertCount {
 .ucCard h3 {
   margin: 0;
   padding: 0 8px;
-  font-size: 1.0625rem;
-  line-height: 1.3;
-  font-weight: 500;
+  font-size: var(--text-title);
+  line-height: var(--text-title--line-height);
+  font-weight: var(--text-title--font-weight);
+  letter-spacing: var(--text-title--letter-spacing);
 }
 
 .ucCard p {
   margin: 0;
   padding: 0 8px;
-  font-size: 0.92rem;
-  line-height: 1.55;
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
   color: var(--ink-muted);
 }
 
@@ -2409,15 +2414,16 @@ tr[data-hz] .alertCount {
 
 .industryCard h3 {
   margin: 0;
-  font-size: 1.125rem;
-  line-height: 1.3;
-  font-weight: 500;
+  font-size: var(--text-title);
+  line-height: var(--text-title--line-height);
+  font-weight: var(--text-title--font-weight);
+  letter-spacing: var(--text-title--letter-spacing);
 }
 
 .industryCard p {
   margin: 0;
-  font-size: 0.94rem;
-  line-height: 1.55;
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
   color: var(--ink-muted);
 }
 
@@ -2467,15 +2473,17 @@ tr[data-hz] .alertCount {
 .capGrid h3,
 .trustCard h3 {
   margin: 8px 0 0;
-  font-size: 1.125rem;
-  font-weight: 500;
+  font-size: var(--text-title);
+  line-height: var(--text-title--line-height);
+  font-weight: var(--text-title--font-weight);
+  letter-spacing: var(--text-title--letter-spacing);
 }
 
 .capGrid p,
 .trustCard p {
   margin: 0;
-  font-size: 0.97rem;
-  line-height: 1.6;
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
   color: var(--ink-muted);
 }
 
@@ -2535,8 +2543,8 @@ tr[data-hz] .alertCount {
   top: 12px;
   padding: 4px 11px;
   border-radius: 999px;
-  font-size: 0.8125rem;
-  font-weight: 500;
+  font-size: var(--text-label);
+  font-weight: var(--text-label--font-weight);
   background: rgba(255, 255, 255, 0.92);
   color: var(--ink);
 }
@@ -2544,10 +2552,10 @@ tr[data-hz] .alertCount {
 .caseCard h3 {
   margin: 0;
   padding: 24px 20px 20px;
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
-  line-height: 1.3;
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-size: var(--text-h3);
+  line-height: var(--text-h3--line-height);
+  font-weight: var(--text-h3--font-weight);
+  letter-spacing: var(--text-h3--letter-spacing);
 }
 
 /* ---------------------------------------------------------------- Security */
@@ -2619,16 +2627,16 @@ tr[data-hz] .alertCount {
 
 .banner h2 {
   margin: 0;
-  font-size: clamp(2rem, 4vw, 2.75rem);
-  line-height: 1.08;
-  font-weight: 400;
-  letter-spacing: -0.03em;
+  font-size: var(--text-h2);
+  line-height: var(--text-h2--line-height);
+  font-weight: var(--text-h2--font-weight);
+  letter-spacing: var(--text-h2--letter-spacing);
 }
 
 .banner p {
   margin: 12px 0 0;
-  font-size: 1.0625rem;
-  line-height: 1.6;
+  font-size: var(--text-lead);
+  line-height: var(--text-lead--line-height);
   color: rgba(255, 255, 255, 0.86);
   max-width: 46ch;
 }
@@ -2754,7 +2762,7 @@ tr[data-hz] .alertCount {
 
   .schip,
   .sbox span {
-    font-size: 0.625rem;
+    font-size: var(--text-ui-xs);
     padding: 2px 6px;
   }
 
@@ -2899,10 +2907,6 @@ tr[data-hz] .alertCount {
   }
 }
 
-.story[data-mode="scroll"] .storyTitle {
-  font-size: clamp(1.8rem, 2.8vw, 2.5rem);
-}
-
 /* Offset the problem scene’s empty space so the proof gap stays at 120px. */
 .problem[data-mode="scroll"] {
   margin-top: calc(-1 * var(--leading-space, 0px));
@@ -2919,10 +2923,6 @@ tr[data-hz] .alertCount {
   }
 }
 
-.heroHeadline,
-.h2 {
-  font-weight: 400;
-}
 .ucCard,
 .industryCard {
   gap: 12px;

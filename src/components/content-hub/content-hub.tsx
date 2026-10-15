@@ -1,6 +1,7 @@
 import { CustomerProof } from "@/components/customer-proof/customer-proof";
 import { ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
+import type { ReactNode } from "react";
 
 import { ProjectVisual } from "@/components/visuals/project-visual";
 import {
@@ -27,6 +28,8 @@ export type ContentHubProps = {
   breadcrumbs: BreadcrumbJsonLdItem[];
   title: string;
   introduction: string;
+  /** Shown in the hero's right column. */
+  heroVisual?: ReactNode;
   /** Only built pages; empty groups are dropped before they reach the hub. */
   groups: HubGroup[];
   cta: {
@@ -51,7 +54,7 @@ function HubCard({ item }: { item: HubItem }) {
         />
       </div>
       <div className="flex flex-1 flex-col gap-2 pt-5 pb-2">
-        <h3 className="flex items-start justify-between gap-3 text-lg leading-7 font-medium text-balance">
+        <h3 className="flex items-start justify-between gap-3 text-title text-balance">
           {item.title}
         </h3>
         <p className="text-sm leading-6 text-pretty text-ink-muted">
@@ -67,6 +70,7 @@ export function ContentHub({
   breadcrumbs,
   title,
   introduction,
+  heroVisual,
   groups,
   cta,
 }: ContentHubProps) {
@@ -82,7 +86,10 @@ export function ContentHub({
         }}
       />
 
-      <section className="brand-hero">
+      <section
+        className="brand-hero"
+        data-glow={heroVisual ? "visual" : undefined}
+      >
         <div className="mx-auto w-full max-w-7xl px-5 pt-10 pb-12 sm:px-8 sm:pt-12 sm:pb-16">
           <nav aria-label="Breadcrumb" className="mb-10 text-sm text-ink-muted">
             <ol className="flex flex-wrap gap-2">
@@ -99,8 +106,25 @@ export function ContentHub({
               </li>
             </ol>
           </nav>
-          <h1 className="brand-h1 max-w-3xl">{title}</h1>
-          <p className="brand-lead mt-5 max-w-2xl">{introduction}</p>
+          <div
+            className={
+              heroVisual
+                ? "grid items-center gap-12 lg:mt-[var(--hub-shift,-60px)] lg:gap-24 lg:[grid-template-columns:minmax(0,var(--hub-text-fr,1fr))_minmax(0,var(--hub-visual-fr,1fr))]"
+                : undefined
+            }
+          >
+            <div>
+              <h1 className="brand-h1 max-w-3xl">{title}</h1>
+              <p className="brand-lead mt-5 max-w-2xl">{introduction}</p>
+            </div>
+            {heroVisual ? (
+              // Bleeds past the right edge on large screens; the hero clips it.
+              <div className="relative lg:-mr-[var(--hub-bleed,166px)]">
+                <div aria-hidden className="brand-hero-glow" />
+                {heroVisual}
+              </div>
+            ) : null}
+          </div>
         </div>
       </section>
       <CustomerProof />
@@ -125,7 +149,7 @@ export function ContentHub({
           <div className="brand-banner flex flex-col gap-8 p-8 sm:p-12 lg:flex-row lg:items-center lg:justify-between lg:p-16">
             <div>
               <h2 className="brand-h2 max-w-3xl">{cta.title}</h2>
-              <p className="mt-3 max-w-[46ch] text-[1.0625rem] leading-relaxed text-white/85">
+              <p className="mt-3 max-w-[46ch] text-lead text-white/85">
                 {cta.description}
               </p>
             </div>

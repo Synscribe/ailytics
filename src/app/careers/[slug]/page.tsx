@@ -86,9 +86,7 @@ export default async function JobPage({ params }: JobPageProps) {
             <p className="text-sm font-medium text-ink-muted">
               {job.department}
             </p>
-            <h1 className="brand-h1 mt-3 max-w-3xl text-[clamp(2.25rem,4vw,3.25rem)]">
-              {job.title}
-            </h1>
+            <h1 className="brand-h1 mt-3 max-w-3xl">{job.title}</h1>
             <p className="mt-4 text-lg font-medium text-signal-strong">
               {job.location}
             </p>
