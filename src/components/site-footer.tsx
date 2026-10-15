@@ -13,6 +13,7 @@ const FOOTER_GROUPS = [
       { label: "Partner With Us", href: "/partnerships" },
       { label: "Careers", href: "/careers" },
       { label: "Projects", href: "/projects" },
+      { label: "News", href: "/news" },
     ],
   },
   {

@@ -697,7 +697,7 @@ Check:
 - [ ] **Todo**
 - Recipe: [docs/launch/clone-journal.md](./clone-journal.md)
 
-The rebuilt About, Partnerships, Careers and Projects pages leave out the old site's Talk-to-us popup form, footer office addresses and phone numbers, the News, EULA and LinkedIn footer links, and the Japanese locale.
+The rebuilt About, Partnerships, Careers and Projects pages leave out the old site's Talk-to-us popup form, footer office addresses and phone numbers, the LinkedIn footer link, and the Japanese locale. News and EULA are migrated and linked from the footer.
 Confirm with the client that these stay out, or supply the approved contact details and destinations.
 
 ### CAREERS-02 — job postings carry JobPosting structured data with real dates
