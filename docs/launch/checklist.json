@@ -858,6 +858,18 @@
         "Add datePosted and validThrough from the client's ATS before adding the schema."
       ],
       "recipe": "docs/launch/clone-journal.md"
+    },
+    {
+      "id": "PRIVACY-02",
+      "title": "the client approves analytics and session replay before launch",
+      "priority": "P0",
+      "group": "project-specific launch checks",
+      "status": "todo",
+      "details": [
+        "PostHog (US cloud) records pageviews, autocapture, heatmaps, session replay with masked inputs, and the `cta_clicked`, `contact_form_submitted` and `job_application_submitted` events. There is no consent banner.",
+        "Before launch, the client confirms whether session replay stays on and whether a consent banner is needed, and approves privacy-policy wording that covers analytics cookies, session replay, the US data location, and the PostHog retention period."
+      ],
+      "recipe": "docs/recipes/posthog.md"
     }
   ],
   "primaryReferences": [

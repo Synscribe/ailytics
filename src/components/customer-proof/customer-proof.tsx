@@ -92,14 +92,14 @@ export function CustomerProof() {
           )}
         </ul>
       </div>
-      <dl className={styles.stats}>
+      <ul className={styles.stats}>
         {STATS.map((s) => (
-          <div key={s.value} className={styles.stat}>
-            <dt>{s.label}</dt>
-            <dd>{s.value}</dd>
-          </div>
+          <li key={s.value} className={styles.stat}>
+            <strong className={styles.statValue}>{s.value}</strong>{" "}
+            <span className={styles.statLabel}>{s.label}</span>
+          </li>
         ))}
-      </dl>
+      </ul>
     </section>
   );
 }

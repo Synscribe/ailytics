@@ -483,6 +483,16 @@ Check:
 
 The live launch audit checks both homepage representations, quality-value selection, HTTP 406 behavior, linked-card structure, and Markdown 404 recovery. Repeat it against the production URL before launch.
 
+## P0 — project-specific launch checks
+
+### PRIVACY-02 — the client approves analytics and session replay before launch
+
+- [ ] **Todo**
+- Recipe: [docs/recipes/posthog.md](..\recipes\posthog.md)
+
+PostHog (US cloud) records pageviews, autocapture, heatmaps, session replay with masked inputs, and the `cta_clicked`, `contact_form_submitted` and `job_application_submitted` events. There is no consent banner.
+Before launch, the client confirms whether session replay stays on and whether a consent banner is needed, and approves privacy-policy wording that covers analytics cookies, session replay, the US data location, and the PostHog retention period.
+
 ## P1 — non-blocking quality and feature-dependent checks
 
 ### HOME-03 — the homepage defines the offer once and consistently
