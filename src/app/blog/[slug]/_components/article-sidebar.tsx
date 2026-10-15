@@ -1,6 +1,9 @@
+import { ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
 
 import type { BlogTableOfContentsItem } from "@/lib/blog-content";
+
+import { ArticleContents } from "./article-contents.client";
 
 function FacebookIcon() {
   return (
@@ -42,7 +45,7 @@ function ContentsLinks({ items }: { items: BlogTableOfContentsItem[] }) {
         {items.map((item) => (
           <li className={item.level === 3 ? "pl-4" : undefined} key={item.id}>
             <a
-              className="block text-sm leading-5 text-ink-muted transition-colors hover:text-signal-strong"
+              className="block text-sm leading-5 text-ink-muted transition-colors hover:text-ink"
               href={`#${item.id}`}
             >
               {item.text}
@@ -85,19 +88,19 @@ export function ArticleSidebar({
 
   return (
     <aside
-      className="order-1 lg:order-2 lg:col-span-4"
+      className="order-1 lg:order-2 lg:col-span-4 lg:pl-6 xl:pl-10"
       aria-label="Article tools"
     >
       <div className="lg:sticky lg:top-24">
         {items.length > 0 ? (
           <>
-            <details className="group rounded-2xl border border-ink/10 bg-canvas p-5 lg:hidden">
+            <details className="group rounded-2xl border border-ink/10 bg-paper p-5 lg:hidden">
               <summary className="cursor-pointer list-none text-sm font-medium text-ink marker:content-none">
                 <span className="flex items-center justify-between gap-4">
                   On this page
                   <span
                     aria-hidden="true"
-                    className="text-xl leading-none text-signal-strong group-open:rotate-45"
+                    className="text-xl leading-none text-mint-strong group-open:rotate-45"
                   >
                     +
                   </span>
@@ -109,26 +112,39 @@ export function ArticleSidebar({
             </details>
 
             <div className="hidden lg:block">
-              <h2 className="text-sm font-medium text-ink-muted">
-                On this page
-              </h2>
-              <div className="mt-5 max-h-[55vh] overflow-y-auto pr-4">
-                <ContentsLinks items={items} />
+              <h2 className="text-sm font-medium text-ink">On this page</h2>
+              <div className="mt-4 max-h-[calc(100vh-24rem)] overflow-y-auto overscroll-contain">
+                <ArticleContents items={items} />
               </div>
             </div>
           </>
         ) : null}
 
-        <div className="mt-7 border-t border-ink/10 pt-7">
-          <h2 className="text-sm font-medium text-ink-muted">
-            Share this article
-          </h2>
-          <ul className="mt-4 flex gap-2.5">
+        <div className="brand-card mt-8 hidden p-6 lg:block">
+          <p className="text-base leading-snug font-medium text-ink">
+            See these detections on your own cameras
+          </p>
+          <p className="mt-2 text-sm leading-6 text-ink-muted">
+            Ailytics connects to the CCTV you already have. Most sites are live
+            in under 2 weeks.
+          </p>
+          <Link
+            className="brand-btn-primary mt-5 px-[18px] py-[11px] text-sm"
+            href="/contact"
+          >
+            Request a demo
+            <ArrowRightIcon className="size-4" aria-hidden="true" />
+          </Link>
+        </div>
+
+        <div className="mt-8 flex items-center justify-between gap-4 border-t border-ink/10 pt-6">
+          <h2 className="text-sm font-medium text-ink-muted">Share</h2>
+          <ul className="flex gap-2">
             {shareLinks.map((shareLink) => (
               <li key={shareLink.label}>
                 <a
                   aria-label={shareLink.label}
-                  className="grid size-10 place-items-center rounded-full border border-ink/10 bg-canvas text-ink-muted transition-colors hover:border-ink hover:bg-ink hover:text-paper"
+                  className="grid size-9 place-items-center rounded-full border border-ink/10 bg-paper text-ink-muted transition-colors hover:border-ink hover:bg-ink hover:text-paper"
                   href={shareLink.href}
                   rel="noopener noreferrer"
                   target="_blank"
@@ -138,15 +154,6 @@ export function ArticleSidebar({
               </li>
             ))}
           </ul>
-        </div>
-
-        <div className="mt-7 border-t border-ink/10 pt-7">
-          <Link
-            className="text-sm font-medium text-signal-strong hover:underline"
-            href="/blog"
-          >
-            ← Back to all articles
-          </Link>
         </div>
       </div>
     </aside>

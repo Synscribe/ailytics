@@ -33,8 +33,11 @@ const DEPARTMENT_ORDER = [
 const contentDirectory = path.join(process.cwd(), "src/content/careers");
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
+// The source marks section headings as paragraphs holding only bold text.
+const boldOnlyParagraph = /<p>\s*<(strong|b)>([^<]+)<\/\1>\s*<\/p>/g;
+
 function sanitizeJobHtml(html: string): string {
-  return sanitizeHtml(html, {
+  const clean = sanitizeHtml(html, {
     allowedTags: [
       "p",
       "br",
@@ -54,6 +57,7 @@ function sanitizeJobHtml(html: string): string {
     allowedAttributes: { a: ["href", "rel", "target"] },
     allowedSchemes: ["http", "https", "mailto"],
   });
+  return clean.replace(boldOnlyParagraph, "<h2>$2</h2>");
 }
 
 function text(value: unknown, fileName: string, field: string): string {

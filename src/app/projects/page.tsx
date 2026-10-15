@@ -176,7 +176,14 @@ const PROJECTS: readonly Project[] = [
   },
 ];
 
-const COUNTRIES = [...new Set(PROJECTS.map((project) => project.country))];
+// Shorter heading names keep every country on one line on a phone.
+const HEADING_NAMES: Record<string, string> = {
+  "United States of America": "the United States",
+};
+
+const COUNTRIES = [
+  ...new Set(PROJECTS.map(({ country }) => HEADING_NAMES[country] ?? country)),
+];
 
 export default function ProjectsPage() {
   const breadcrumbJsonLd = buildBreadcrumbJsonLd([
@@ -217,11 +224,11 @@ export default function ProjectsPage() {
           >
             Born in Singapore. Made for the world.
           </h2>
-          <figure className="relative mt-12">
-            <figcaption className="absolute top-0 left-0 z-10 rounded-tl-xl rounded-br-xl bg-ink px-4 py-2 text-sm font-medium text-paper">
-              360+ Active Projects
+          <figure className="mt-12">
+            <figcaption className="inline-block rounded-t-xl bg-ink px-5 py-2.5 text-sm font-medium text-paper">
+              400+ Active Projects
             </figcaption>
-            <div className="overflow-hidden rounded-xl border-[6px] border-ink bg-paper">
+            <div className="overflow-hidden rounded-xl rounded-tl-none border-[6px] border-ink bg-paper">
               <Image
                 alt="World map highlighting in teal the countries where Ailytics is deployed: United States, Italy, Saudi Arabia, Japan, Thailand, Malaysia, Indonesia, Papua New Guinea, and Australia."
                 className="h-auto w-full"

@@ -8,8 +8,9 @@ export type BlogFilter = {
 // when the publication does not use it; "All" is added by the page itself.
 export const BLOG_FILTERS: readonly BlogFilter[] = [];
 
-// The hero is pinned by slug. The smaller cards are selected by a Wisp tag.
-// Either value can be null when a project does not want that surface.
+// The index hero leads with `heroSlug` when it is set, and with the newest
+// article otherwise. The smaller cards are selected by a Wisp tag, or omitted
+// when `tag` is null.
 export const BLOG_FEATURED = {
   heroSlug: null,
   tag: null,

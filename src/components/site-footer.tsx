@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { usesDefaultSiteUrl } from "@/config/env";
 import { siteConfig } from "@/config/site";
 import { defaultOrganizationLogoPath } from "@/lib/seo";
 
@@ -33,6 +32,17 @@ const FOOTER_GROUPS = [
     ],
   },
 ] as const;
+
+function LinkedInIcon() {
+  return (
+    <svg aria-hidden="true" className="size-4" viewBox="0 0 24 24">
+      <path
+        d="M6.5 8.3H3V21h3.5V8.3ZM4.8 3A2.1 2.1 0 1 0 4.8 7.2 2.1 2.1 0 0 0 4.8 3ZM21 13.7c0-3.8-2-5.6-4.7-5.6-2.2 0-3.2 1.2-3.7 2V8.3H9.1V21h3.5v-6.3c0-1.7.3-3.3 2.4-3.3 2 0 2.1 1.9 2.1 3.4V21H21v-7.3Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
 
 export function SiteFooter() {
   return (
@@ -77,12 +87,28 @@ export function SiteFooter() {
           ))}
         </nav>
 
-        <p className="text-xs text-ink-faint md:col-span-2">
-          © {new Date().getFullYear()} {siteConfig.name}.
-          {usesDefaultSiteUrl
-            ? " Replace this identity before production."
-            : ""}
-        </p>
+        <div className="flex flex-wrap items-center justify-between gap-4 md:col-span-2">
+          <p className="text-xs text-ink-faint">
+            © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+          </p>
+          {siteConfig.social.length > 0 ? (
+            <ul className="flex gap-2">
+              {siteConfig.social.map((profile) => (
+                <li key={profile.href}>
+                  <a
+                    aria-label={`${siteConfig.name} on ${profile.label}`}
+                    className="grid size-9 place-items-center rounded-full border border-ink/10 text-ink-muted transition-colors hover:border-ink hover:bg-ink hover:text-paper"
+                    href={profile.href}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <LinkedInIcon />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
       </div>
     </footer>
   );

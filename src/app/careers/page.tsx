@@ -1,3 +1,4 @@
+import { ArrowUpRightIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,6 +11,10 @@ import {
 } from "@/lib/seo";
 
 import { getJobs, groupJobsByDepartment } from "./_jobs";
+
+function departmentId(name: string): string {
+  return `dept-${name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+}
 
 export const metadata: Metadata = createPageMetadata({
   title: "Careers at a Real Start-Up",
@@ -127,27 +132,35 @@ export default async function CareersPage() {
           <div className="mt-14 flex flex-col gap-12">
             {departments.map((department) => (
               <section
-                aria-labelledby={`dept-${department.name}`}
+                aria-labelledby={departmentId(department.name)}
                 key={department.name}
               >
                 <h3
-                  className="text-base font-medium text-signal-strong"
-                  id={`dept-${department.name}`}
+                  className="flex items-center gap-3 text-xl font-medium tracking-[-0.015em] text-ink"
+                  id={departmentId(department.name)}
                 >
+                  <span
+                    aria-hidden="true"
+                    className="h-5 w-1 rounded-full bg-mint-strong"
+                  />
                   {department.name}
                 </h3>
-                <ul className="mt-3 divide-y divide-ink/10 border-y border-ink/10">
+                <ul className="mt-4 divide-y divide-ink/10 border-y border-ink/10">
                   {department.jobs.map((job) => (
                     <li key={job.slug}>
                       <Link
-                        className="group flex items-center justify-between gap-6 py-4 transition-colors hover:text-signal-strong"
+                        className="group -mx-3 flex items-center justify-between gap-6 rounded-lg px-3 py-4 transition-colors hover:bg-paper"
                         href={`/careers/${job.slug}`}
                       >
-                        <span className="text-base font-medium text-ink group-hover:text-signal-strong">
+                        <span className="text-base font-medium text-ink">
                           {job.title}
                         </span>
-                        <span className="shrink-0 text-sm text-ink-muted">
+                        <span className="flex shrink-0 items-center gap-3 text-sm text-ink-muted">
                           {job.location}
+                          <ArrowUpRightIcon
+                            aria-hidden="true"
+                            className="size-4 text-mint-strong transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
+                          />
                         </span>
                       </Link>
                     </li>

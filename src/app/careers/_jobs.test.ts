@@ -47,6 +47,15 @@ describe("careers content", () => {
     expect(summary).not.toMatch(/<[^>]+>/);
   });
 
+  it("turns bold-only paragraphs into headings and keeps inline bold", async () => {
+    const job = await getJob("backend-engineer");
+
+    expect(job!.html).toContain("<h2>What You Will Be Doing</h2>");
+    expect(job!.html).toContain(
+      "comfortable <strong>leading projects</strong>",
+    );
+  });
+
   it("returns null for unknown or unsafe slugs", async () => {
     expect(await getJob("not-a-role")).toBeNull();
     expect(await getJob("../package")).toBeNull();

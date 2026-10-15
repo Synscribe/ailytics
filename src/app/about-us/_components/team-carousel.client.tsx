@@ -2,16 +2,42 @@
 
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export type TeamPhoto = { src: string; alt: string };
 
+const arrowClass =
+  "absolute top-1/2 grid size-10 -translate-y-1/2 place-items-center rounded-full bg-ink text-paper shadow-md transition hover:bg-signal-strong focus-visible:outline-2 focus-visible:outline-signal disabled:pointer-events-none disabled:opacity-0";
+
 /**
  * A horizontal strip of team photos. The strip scrolls natively, so it works
- * without JavaScript; the buttons only nudge it along.
+ * without JavaScript; the buttons only nudge it along and hide at each end.
  */
 export function TeamCarousel({ photos }: { photos: readonly TeamPhoto[] }) {
   const track = useRef<HTMLUListElement>(null);
+  const [edges, setEdges] = useState({ start: true, end: false });
+
+  useEffect(() => {
+    const node = track.current;
+    if (!node) return;
+
+    function update() {
+      if (!node) return;
+      const max = node.scrollWidth - node.clientWidth;
+      setEdges({
+        start: node.scrollLeft <= 4,
+        end: node.scrollLeft >= max - 4,
+      });
+    }
+
+    update();
+    node.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      node.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
 
   function nudge(direction: -1 | 1) {
     const node = track.current;
@@ -46,7 +72,8 @@ export function TeamCarousel({ photos }: { photos: readonly TeamPhoto[] }) {
       </ul>
       <button
         aria-label="Previous photos"
-        className="absolute top-1/2 left-3 grid size-10 -translate-y-1/2 place-items-center rounded-full bg-ink text-paper shadow-md transition hover:bg-signal-strong focus-visible:outline-2 focus-visible:outline-signal sm:left-6"
+        className={`${arrowClass} left-3 sm:left-6`}
+        disabled={edges.start}
         onClick={() => nudge(-1)}
         type="button"
       >
@@ -54,7 +81,8 @@ export function TeamCarousel({ photos }: { photos: readonly TeamPhoto[] }) {
       </button>
       <button
         aria-label="Next photos"
-        className="absolute top-1/2 right-3 grid size-10 -translate-y-1/2 place-items-center rounded-full bg-ink text-paper shadow-md transition hover:bg-signal-strong focus-visible:outline-2 focus-visible:outline-signal sm:right-6"
+        className={`${arrowClass} right-3 sm:right-6`}
+        disabled={edges.end}
         onClick={() => nudge(1)}
         type="button"
       >
