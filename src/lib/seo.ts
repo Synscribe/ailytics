@@ -130,6 +130,47 @@ export function buildArticleJsonLd({
   } as const;
 }
 
+export type SoftwareApplicationJsonLdInput = {
+  name: string;
+  description: string;
+  path: string;
+  applicationCategory: string;
+  operatingSystem: string;
+  audienceType: string;
+  featureList: readonly string[];
+  screenshots: readonly { path: string; caption: string }[];
+};
+
+export function buildSoftwareApplicationJsonLd({
+  name,
+  description,
+  path,
+  applicationCategory,
+  operatingSystem,
+  audienceType,
+  featureList,
+  screenshots,
+}: SoftwareApplicationJsonLdInput) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name,
+    description,
+    url: absoluteUrl(path),
+    applicationCategory,
+    operatingSystem,
+    inLanguage: siteConfig.locale,
+    provider: { "@id": organizationJsonLdId },
+    audience: { "@type": "Audience", audienceType },
+    featureList,
+    screenshot: screenshots.map((screenshot) => ({
+      "@type": "ImageObject",
+      url: absoluteUrl(screenshot.path),
+      caption: screenshot.caption,
+    })),
+  } as const;
+}
+
 export type FaqJsonLdItem = {
   question: string;
   answer: string;
