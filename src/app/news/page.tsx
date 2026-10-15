@@ -36,7 +36,7 @@ export default async function NewsPage() {
         <div className="mx-auto w-full max-w-6xl px-5 pt-14 pb-10 sm:px-8 sm:pt-20 sm:pb-12">
           <h1 className="brand-h1">News</h1>
           <p className="brand-lead mt-4 max-w-2xl">
-            The latest updates, achievements, and milestones from Ailytics.
+            Company news, awards and product updates from Ailytics.
           </p>
         </div>
       </header>

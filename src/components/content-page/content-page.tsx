@@ -171,9 +171,7 @@ export function ContentPage({
                       <p className="text-sm font-medium text-ink-muted">
                         {item.eyebrow}
                       </p>
-                      <h3 className="text-balance text-3xl leading-[1.12] font-medium tracking-[-0.025em]">
-                        {item.title}
-                      </h3>
+                      <h3 className="text-h3 text-balance">{item.title}</h3>
                       <p className="text-base leading-7 text-pretty text-ink-muted">
                         {link ? (
                           <AnchorPhrase link={link} text={item.description} />
@@ -243,9 +241,7 @@ export function ContentPage({
                   href={item.href}
                   key={item.href}
                 >
-                  <h3 className="text-xl font-medium tracking-tight">
-                    {item.title}
-                  </h3>
+                  <h3 className="text-title">{item.title}</h3>
                   <p className="text-base leading-7 text-pretty text-ink-muted">
                     {item.description}
                   </p>
@@ -264,7 +260,7 @@ export function ContentPage({
           <div className="brand-banner flex flex-col gap-8 p-8 sm:p-12 lg:flex-row lg:items-center lg:justify-between lg:p-16">
             <div>
               <h2 className="brand-h2 max-w-3xl">{content.cta.title}</h2>
-              <p className="mt-3 max-w-[46ch] text-[1.0625rem] leading-relaxed text-white/85">
+              <p className="mt-3 max-w-[46ch] text-lead text-white/85">
                 {content.cta.description}
               </p>
             </div>

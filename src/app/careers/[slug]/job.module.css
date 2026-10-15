@@ -1,7 +1,7 @@
 /* The migrated job description: paragraphs, bold run-in headings and lists. */
 .prose {
   color: var(--ink-muted);
-  font-size: 1rem;
+  font-size: var(--text-body);
   line-height: 1.75;
 }
 
@@ -21,9 +21,10 @@
 .prose h2 {
   margin-top: 2.5rem;
   color: var(--ink);
-  font-size: 1.25rem;
-  font-weight: 500;
-  letter-spacing: -0.015em;
+  font-size: var(--text-title);
+  line-height: var(--text-title--line-height);
+  font-weight: var(--text-title--font-weight);
+  letter-spacing: var(--text-title--letter-spacing);
 }
 
 .prose h3,
@@ -32,9 +33,10 @@
 .prose h6 {
   margin-top: 2rem;
   color: var(--ink);
-  font-size: 1.0625rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-size: var(--text-title);
+  line-height: var(--text-title--line-height);
+  font-weight: var(--text-title--font-weight);
+  letter-spacing: var(--text-title--letter-spacing);
 }
 
 .prose ul,

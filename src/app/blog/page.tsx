@@ -71,7 +71,7 @@ function filterHref(category: string, query: string): string {
 function EmptyState({ title, body }: { title: string; body: string }) {
   return (
     <div className="brand-card px-6 py-10 sm:px-10">
-      <h2 className="text-2xl font-medium tracking-tight">{title}</h2>
+      <h2 className="text-h3">{title}</h2>
       <p className="mt-3 max-w-2xl leading-7 text-ink-muted">{body}</p>
     </div>
   );

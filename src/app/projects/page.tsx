@@ -23,7 +23,7 @@ export const metadata: Metadata = createPageMetadata({
 const PROJECTS: readonly Project[] = [
   {
     statement:
-      "Empowering over 1,400 cameras at the best airport in the world.",
+      "AI video analytics on over 1,400 cameras at the best airport in the world.",
     site: "Changi Terminal 5",
     country: "Singapore",
     image: {

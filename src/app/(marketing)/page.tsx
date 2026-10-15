@@ -295,7 +295,8 @@ export default function HomePage() {
             Ailytics connects to the cameras you already own and alerts your EHS
             and site teams to PPE breaches, exclusion-zone entries, near misses
             and struck-by risk the moment they happen. Live in under 2 weeks on
-            construction sites, plants, ports and yards — no rip-and-replace.
+            construction sites, plants, ports and yards, with no
+            rip-and-replace.
           </p>
           <div className={styles.actions}>
             <Link href="/contact" className={styles.btnPrimary}>
@@ -310,7 +311,7 @@ export default function HomePage() {
       </section>
 
       {/* 2. Customers and results */}
-      <CustomerProof />
+      <CustomerProof spacious />
 
       {/* 3. Problem */}
       <ProblemScene />

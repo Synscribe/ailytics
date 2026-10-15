@@ -73,9 +73,7 @@ export function ProjectCarousel({
               />
             </div>
             <div className="flex flex-col justify-center p-7 sm:p-10">
-              <h3 className="text-2xl leading-snug font-medium tracking-[-0.02em] text-balance sm:text-3xl">
-                {project.statement}
-              </h3>
+              <h3 className="text-h3 text-balance">{project.statement}</h3>
               <div className="mt-8 flex items-end justify-between gap-6">
                 <p className="text-sm leading-6">
                   <span className="block font-medium text-ink">

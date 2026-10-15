@@ -1,4 +1,9 @@
-import { ArrowRightIcon, ImagesIcon, PanelsTopLeftIcon } from "lucide-react";
+import {
+  ArrowRightIcon,
+  ImagesIcon,
+  PaletteIcon,
+  PanelsTopLeftIcon,
+} from "lucide-react";
 import Link from "next/link";
 
 import { VISUAL_IDS } from "@/lib/visuals";
@@ -6,6 +11,14 @@ import { VISUAL_IDS } from "@/lib/visuals";
 import { LAUNCH_ASSETS } from "./launch-assets/_lib/launch-assets";
 
 const tools = [
+  {
+    href: "/dev/design-system",
+    icon: PaletteIcon,
+    eyebrow: "Type, colour, spacing, components",
+    title: "Design system",
+    description:
+      "The rules every page follows, with live examples and the decisions behind them. Doubles as the client guide.",
+  },
   {
     href: "/dev/visuals",
     icon: PanelsTopLeftIcon,
@@ -42,7 +55,7 @@ export default function DevPage() {
           </p>
         </header>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-2">
+        <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {tools.map((tool) => {
             const Icon = tool.icon;
             return (

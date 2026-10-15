@@ -35,7 +35,7 @@ const FEELS = [
 const REASONS = [
   {
     title: "Real-life Impact",
-    body: "We specialize in empowering high risk workspaces, such as construction and manufacturing sites, with the most advanced vision AI solutions. Our work increases efficiency, minimizes risk, and reduce accidents.",
+    body: "We build vision AI for high-risk workplaces such as construction and manufacturing sites. Our work helps them prevent accidents and run more efficiently.",
     image: "/media/careers/real-life-impact.webp",
     alt: "Ailytics engineers in hard hats reviewing a camera setup on site",
   },
@@ -105,9 +105,7 @@ export default async function CareersPage() {
                 <div
                   className={`mx-auto max-w-md text-center lg:text-left ${index % 2 ? "lg:order-1 lg:ml-auto lg:mr-0" : "lg:mr-auto lg:ml-0"}`}
                 >
-                  <h3 className="text-3xl leading-tight font-medium tracking-[-0.025em] text-signal-strong">
-                    {reason.title}
-                  </h3>
+                  <h3 className="text-h3 text-signal-strong">{reason.title}</h3>
                   <p className="mt-5 leading-7 text-ink-muted">{reason.body}</p>
                 </div>
               </article>

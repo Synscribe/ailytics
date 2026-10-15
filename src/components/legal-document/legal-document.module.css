@@ -1,7 +1,7 @@
 /* Migrated legal copy: numbered clause headings, paragraphs and lists. */
 .prose {
   color: var(--ink-muted);
-  font-size: 1rem;
+  font-size: var(--text-body);
   line-height: 1.75;
 }
 
@@ -33,20 +33,26 @@
 }
 
 .prose h2 {
-  font-size: 1.5rem;
+  font-size: var(--text-h3);
+  line-height: var(--text-h3--line-height);
+  font-weight: var(--text-h3--font-weight);
+  letter-spacing: var(--text-h3--letter-spacing);
 }
 
 .prose h3,
 .prose h4,
 .prose h5,
 .prose h6 {
-  font-size: 1.125rem;
+  font-size: var(--text-title);
+  line-height: var(--text-title--line-height);
+  font-weight: var(--text-title--font-weight);
+  letter-spacing: var(--text-title--letter-spacing);
 }
 
 /* The source marks clause headings as a bold-only paragraph. */
 .prose p:has(> strong:only-child) {
   margin-top: 2.5rem;
-  font-size: 1.125rem;
+  font-size: var(--text-lead);
 }
 
 .prose ul,
@@ -77,7 +83,7 @@
 .prose table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.9375rem;
+  font-size: var(--text-small);
 }
 
 .prose th,

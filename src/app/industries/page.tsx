@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { MultiSiteWall } from "@/components/hub-hero/hub-hero-visuals.client";
 import { ContentHub } from "@/components/content-hub/content-hub";
 import { listPageContent } from "@/lib/page-content";
 import { createPageMetadata } from "@/lib/seo";
@@ -25,6 +26,7 @@ export default async function IndustriesPage() {
       ]}
       title="Industries"
       introduction="AI video analytics for heavy industry and critical infrastructure, with detections chosen for the hazards of each industry."
+      heroVisual={<MultiSiteWall />}
       groups={INDUSTRY_GROUPS.map((group) => ({
         title: group.title,
         items: group.items

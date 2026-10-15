@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { ControlRoomWall } from "@/components/hub-hero/hub-hero-visuals.client";
 import { ContentHub } from "@/components/content-hub/content-hub";
 import { listPageContent } from "@/lib/page-content";
 import { createPageMetadata } from "@/lib/seo";
@@ -25,6 +26,7 @@ export default async function UsesPage() {
       ]}
       title="Use cases"
       introduction="50+ ready-made detections that run on the cameras you already have, grouped by what they help you manage."
+      heroVisual={<ControlRoomWall />}
       groups={USE_CASE_GROUPS.map((group) => ({
         title: group.title,
         items: group.items

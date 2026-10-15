@@ -125,9 +125,7 @@ async function Article({ params }: BlogPostPageProps) {
                 </ol>
               </nav>
 
-              <h1 className="brand-h1 text-[clamp(2.25rem,3.6vw,3.25rem)]">
-                {post.title}
-              </h1>
+              <h1 className="brand-h1">{post.title}</h1>
 
               <p className="brand-lead mt-6 max-w-2xl">{description}</p>
 

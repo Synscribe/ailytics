@@ -31,7 +31,7 @@ export function NewsCard({
         <Badge className="h-auto bg-mint/55 px-3 py-1 text-ink hover:bg-mint/55">
           {article.category}
         </Badge>
-        <h2 className="mt-4 text-xl leading-snug font-medium tracking-[-0.015em] text-balance sm:text-2xl">
+        <h2 className="mt-4 text-title text-balance">
           <Link
             className="outline-none after:absolute after:inset-0 focus-visible:underline"
             href={href}

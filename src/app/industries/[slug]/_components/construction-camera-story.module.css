@@ -16,20 +16,20 @@
   gap: 72px;
 }
 .copy h2 {
-  font-size: clamp(32px, 3.5vw, 48px);
-  font-weight: 400;
-  letter-spacing: -0.035em;
-  line-height: 1.12;
+  font-size: var(--text-h2);
+  line-height: var(--text-h2--line-height);
+  font-weight: var(--text-h2--font-weight);
+  letter-spacing: var(--text-h2--letter-spacing);
   margin: 22px 0;
 }
 .copy > p:not(.eyebrow):not(.note) {
   max-width: 38ch;
-  font-size: 16px;
-  line-height: 1.65;
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
   color: var(--ink-muted);
 }
 .eyebrow {
-  font-size: 12px;
+  font-size: var(--text-ui-sm);
   color: var(--ink-muted);
 }
 .status {
@@ -37,7 +37,7 @@
   align-items: center;
   gap: 10px;
   margin-top: 32px;
-  font-size: 13px;
+  font-size: var(--text-ui-md);
 }
 .status i {
   height: 6px;
@@ -47,12 +47,12 @@
   background: var(--signal);
 }
 .note {
-  font-size: 10px;
+  font-size: var(--text-ui-xs);
   color: var(--ink-muted);
   margin-top: 12px;
 }
 .control {
-  font-size: 12px;
+  font-size: var(--text-ui-sm);
   color: var(--ink);
   margin-top: 18px;
   text-decoration: underline;
@@ -133,7 +133,10 @@
     width: min(100%, 600px);
   }
   .copy h2 {
-    font-size: 30px;
+    font-size: var(--text-h2);
+    line-height: var(--text-h2--line-height);
+    font-weight: var(--text-h2--font-weight);
+    letter-spacing: var(--text-h2--letter-spacing);
     margin: 8px 0 12px;
   }
   .copy h2 br {
@@ -143,12 +146,12 @@
     content: " ";
   }
   .copy > p:not(.eyebrow):not(.note) {
-    font-size: 14px;
+    font-size: var(--text-body);
     max-width: 52ch;
   }
   .status {
     margin-top: 14px;
-    font-size: 12px;
+    font-size: var(--text-ui-sm);
   }
   .control {
     margin-top: 10px;

@@ -71,7 +71,7 @@ export function WhyPartner({
               {String(index + 1).padStart(2, "0")}
             </span>
             <div>
-              <h3 className="text-xl font-medium text-ink">{reason.title}</h3>
+              <h3 className="text-title text-ink">{reason.title}</h3>
               <p className="mt-2 max-w-lg leading-7 text-ink-muted">
                 {reason.body}
               </p>

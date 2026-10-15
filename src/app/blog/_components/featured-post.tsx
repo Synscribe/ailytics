@@ -42,9 +42,7 @@ export function FeaturedPost({
             </time>
           ) : null}
         </p>
-        <h2 className="mt-4 text-2xl leading-tight font-medium tracking-[-0.02em] text-balance lg:text-[1.75rem]">
-          {post.title}
-        </h2>
+        <h2 className="mt-4 text-h3 text-balance">{post.title}</h2>
         {post.description ? (
           <p className="mt-3 line-clamp-3 text-base leading-7 text-pretty text-ink-muted">
             {post.description}

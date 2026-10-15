@@ -92,9 +92,7 @@ export default async function NewsArticlePage({
             >
               News
             </Link>
-            <h1 className="brand-h1 mx-auto mt-4 max-w-4xl text-[clamp(2rem,3.6vw,3rem)]">
-              {article.title}
-            </h1>
+            <h1 className="brand-h1 mx-auto mt-4 max-w-4xl">{article.title}</h1>
             <p className="mt-5 text-sm text-ink-muted">
               {article.category}
               <span aria-hidden="true" className="mx-2 text-ink-faint">
