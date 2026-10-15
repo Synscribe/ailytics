@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
 
-import { usesDefaultSiteUrl } from "@/config/env";
 import { siteConfig } from "@/config/site";
 import { listJobSlugs } from "@/app/careers/_jobs";
 import { getAllBlogPosts, type BlogPostSummary } from "@/lib/blog";
@@ -35,9 +34,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...jobs.map((slug) => `/careers/${slug}`),
     "/projects",
     "/contact",
+    "/privacy-policy",
+    "/eula",
   ];
-
-  if (!usesDefaultSiteUrl) routes.push("/privacy-policy", "/eula");
 
   return [
     ...routes.map((route) => ({ url: `${siteConfig.url}${route}` })),

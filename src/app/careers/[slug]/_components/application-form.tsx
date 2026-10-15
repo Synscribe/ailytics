@@ -2,6 +2,7 @@
 
 import { ArrowRightIcon, UploadCloudIcon } from "lucide-react";
 import Link from "next/link";
+import posthog from "posthog-js";
 import {
   type ChangeEvent,
   type FormEvent,
@@ -122,6 +123,9 @@ export function ApplicationForm({
         throw new Error(result.error || "Your application could not be sent.");
       }
       resetTurnstile();
+      if (process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN) {
+        posthog.capture("job_application_submitted", { job: jobSlug });
+      }
       setFields(initialFields);
       setResume(null);
       if (fileInput.current) fileInput.current.value = "";

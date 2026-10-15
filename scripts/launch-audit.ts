@@ -540,7 +540,7 @@ async function auditExplicitMarkdownRoutes(enabled: boolean): Promise<void> {
   const linkedCardsPassed =
     alias.status === 200 &&
     /^text\/markdown(?:;|$)/i.test(alias.contentType) &&
-    /#{1,6}[ \t]+\[[^\]\n]+\]\(\/uses\/[^)\s]+\)/.test(alias.html) &&
+    /#{1,6}[ \t]+\[[^\]\n]+\]\(\/use-cases\/[^)\s]+\)/.test(alias.html) &&
     !/\[\s*#{1,6}[ \t]+/.test(alias.html) &&
     !/!\[\]\(/.test(alias.html);
   record(
@@ -972,7 +972,10 @@ async function liveAudit(checklist: LaunchChecklist): Promise<void> {
     record("SEO-04", "FAIL", "/robots.txt", `HTTP ${robots.status}`);
   } else if (mode === "production") {
     const blocked = /disallow:\s*\/\s*$/im.test(robots.html);
-    const sitemapLine = /sitemap:\s*https?:\/\//i.test(robots.html);
+    const sitemapLine = robots.html.match(
+      /^sitemap:\s*(https?:\/\/\S+)/im,
+    )?.[1];
+    const sitemapOrigin = sitemapLine ? new URL(sitemapLine).origin : undefined;
     record(
       "SEO-01",
       blocked ? "FAIL" : "PASS",
@@ -983,11 +986,13 @@ async function liveAudit(checklist: LaunchChecklist): Promise<void> {
     );
     record(
       "SEO-04",
-      sitemapLine ? "PASS" : "FAIL",
+      sitemapOrigin === new URL(baseUrl).origin ? "PASS" : "FAIL",
       "/robots.txt",
-      sitemapLine
-        ? "Absolute sitemap directive present"
-        : "Missing absolute sitemap directive",
+      !sitemapLine
+        ? "Missing absolute sitemap directive"
+        : sitemapOrigin === new URL(baseUrl).origin
+          ? `Sitemap directive: ${sitemapLine}`
+          : `Sitemap directive uses another origin: ${sitemapLine}. Set NEXT_PUBLIC_SITE_URL to the production URL.`,
     );
   } else {
     const blocked = /disallow:\s*\/\s*$/im.test(robots.html);
