@@ -340,7 +340,7 @@ export default function ChildSafeVisionPage() {
                   width={IMAGES.hero.width}
                 />
               </div>
-              <div className="brand-card absolute top-12 right-3 hidden px-4 py-3 sm:block">
+              <div className="brand-card absolute top-12 right-3 hidden px-4 py-3 shadow-[0_12px_32px_-12px_rgba(39,64,93,0.3)] sm:block lg:top-16 lg:-right-8">
                 <p className="text-xs font-medium text-ink-faint">
                   Live monitoring
                 </p>
@@ -352,7 +352,7 @@ export default function ChildSafeVisionPage() {
                   All cameras connected
                 </p>
               </div>
-              <div className="brand-card absolute bottom-16 left-3 hidden items-center gap-3 px-4 py-3 sm:flex">
+              <div className="brand-card absolute bottom-16 left-3 hidden items-center gap-3 px-4 py-3 shadow-[0_12px_32px_-12px_rgba(39,64,93,0.3)] sm:flex lg:bottom-20 lg:-left-10">
                 <span
                   aria-hidden="true"
                   className="grid size-8 place-items-center rounded-full bg-alert/15 text-sm font-medium text-alert"
@@ -484,7 +484,7 @@ export default function ChildSafeVisionPage() {
                   </p>
                   <Image
                     alt={item.image.alt}
-                    className="h-auto w-full rounded-lg"
+                    className="aspect-[16/10] w-full rounded-lg object-cover object-top"
                     height={item.image.height}
                     sizes="(min-width: 1024px) 45vw, 100vw"
                     src={item.image.src}
@@ -560,7 +560,7 @@ export default function ChildSafeVisionPage() {
                     {step.body}
                   </p>
                   <p
-                    className={`mt-6 border-t pt-4 text-xs font-medium ${"featured" in step ? "border-ink/10 text-ink" : "border-paper/15 text-paper/85"}`}
+                    className={`mt-6 border-t pt-4 text-xs font-medium ${"featured" in step ? "border-ink/10 text-ink" : "border-paper/25 text-paper/85"}`}
                   >
                     {step.note}
                   </p>

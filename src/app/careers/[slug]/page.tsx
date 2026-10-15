@@ -1,8 +1,8 @@
+import { ArrowDownIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { isApplicationDeliveryConfigured } from "@/lib/careers-delivery";
 import {
   buildBreadcrumbJsonLd,
   createPageMetadata,
@@ -44,7 +44,6 @@ export default async function JobPage({ params }: JobPageProps) {
   const job = await getJob(slug);
   if (!job) notFound();
 
-  const deliveryConfigured = isApplicationDeliveryConfigured();
   const turnstile = turnstileConfiguration();
   const breadcrumbJsonLd = buildBreadcrumbJsonLd([
     { name: "Home", path: "/" },
@@ -93,6 +92,10 @@ export default async function JobPage({ params }: JobPageProps) {
             <p className="mt-4 text-lg font-medium text-signal-strong">
               {job.location}
             </p>
+            <a className="brand-btn-primary mt-8" href="#apply">
+              Apply for this role
+              <ArrowDownIcon className="size-4" aria-hidden="true" />
+            </a>
           </div>
         </header>
 
@@ -106,13 +109,12 @@ export default async function JobPage({ params }: JobPageProps) {
 
       <section
         aria-labelledby="apply-title"
-        className="pb-24 sm:pb-28"
+        className="scroll-mt-24 pb-24 sm:pb-28"
         id="apply"
       >
         <div className="mx-auto grid w-full max-w-5xl gap-12 px-5 sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:gap-16">
           <div className="brand-card relative overflow-hidden p-5 sm:p-8">
             <ApplicationForm
-              deliveryConfigured={deliveryConfigured}
               jobSlug={job.slug}
               jobTitle={job.title}
               turnstileAction={

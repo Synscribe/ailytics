@@ -85,8 +85,11 @@
   --font-display: var(--font-switzer), ui-sans-serif, system-ui, sans-serif;
 }
 
-* {
-  border-color: var(--line);
+/* Layered so border-colour utilities such as border-ink still win. */
+@layer base {
+  * {
+    border-color: var(--line);
+  }
 }
 
 html {

@@ -23,7 +23,6 @@ import { getVisitorContext } from "@/lib/visitor-context";
 import { useTurnstile } from "./turnstile";
 
 type ContactFormProps = {
-  deliveryConfigured: boolean;
   turnstileAction?: string;
   turnstileSiteKey?: string;
 };
@@ -42,7 +41,6 @@ const fieldClassName =
   "mt-2 w-full rounded-xl border border-ink/15 bg-paper px-4 py-3 text-base text-ink outline-none transition placeholder:text-ink-faint focus:border-signal focus:ring-3 focus:ring-signal/15 aria-invalid:border-signal";
 
 export function ContactForm({
-  deliveryConfigured,
   turnstileAction,
   turnstileSiteKey,
 }: ContactFormProps) {
@@ -74,7 +72,7 @@ export function ContactForm({
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!deliveryConfigured || state === "sending") return;
+    if (state === "sending") return;
 
     const validation = validateContactFields(fields);
     if (!validation.data) {
@@ -161,15 +159,6 @@ export function ContactForm({
 
   return (
     <form noValidate onSubmit={submit}>
-      {!deliveryConfigured ? (
-        <div
-          className="mb-6 rounded-xl border border-signal/25 bg-signal/8 px-4 py-3 text-sm leading-6 text-ink"
-          role="status"
-        >
-          This form is not live yet.
-        </div>
-      ) : null}
-
       <div className="grid gap-5 sm:grid-cols-2">
         <Field id="name" label="Name" error={fieldErrors.name} required>
           <input
@@ -271,11 +260,7 @@ export function ContactForm({
 
       <Button
         className="mt-7 h-auto w-full rounded-full bg-signal px-6 py-3.5 text-base font-medium text-white shadow-[0_8px_28px_rgba(52,193,196,0.2)] hover:bg-signal-strong sm:w-auto"
-        disabled={
-          !deliveryConfigured ||
-          state === "sending" ||
-          (turnstileEnabled && !turnstileToken)
-        }
+        disabled={state === "sending" || (turnstileEnabled && !turnstileToken)}
         type="submit"
       >
         {state === "sending" ? "Sending…" : "Send message"}

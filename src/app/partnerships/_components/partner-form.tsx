@@ -21,7 +21,6 @@ import {
 import { getVisitorContext } from "@/lib/visitor-context";
 
 type PartnerFormProps = {
-  deliveryConfigured: boolean;
   turnstileAction?: string;
   turnstileSiteKey?: string;
 };
@@ -50,7 +49,6 @@ const fieldClassName =
  * as the message, prefixed so the inbox can tell it apart from demo requests.
  */
 export function PartnerForm({
-  deliveryConfigured,
   turnstileAction,
   turnstileSiteKey,
 }: PartnerFormProps) {
@@ -80,7 +78,7 @@ export function PartnerForm({
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!deliveryConfigured || state === "sending") return;
+    if (state === "sending") return;
 
     const contactFields = {
       name: fields.name,
@@ -171,15 +169,6 @@ export function PartnerForm({
 
   return (
     <form noValidate onSubmit={submit}>
-      {!deliveryConfigured ? (
-        <div
-          className="mb-6 rounded-xl border border-signal/25 bg-signal/8 px-4 py-3 text-sm leading-6 text-ink"
-          role="status"
-        >
-          This form is not live yet.
-        </div>
-      ) : null}
-
       <div className="flex flex-col gap-5">
         <Field id="partner-name" label="Name" error={fieldErrors.name} required>
           <input
@@ -298,11 +287,7 @@ export function PartnerForm({
 
       <Button
         className="mt-7 h-auto w-full rounded-full bg-ink px-6 py-3.5 text-base font-medium text-paper hover:bg-ink/90"
-        disabled={
-          !deliveryConfigured ||
-          state === "sending" ||
-          (turnstileEnabled && !turnstileToken)
-        }
+        disabled={state === "sending" || (turnstileEnabled && !turnstileToken)}
         type="submit"
       >
         {state === "sending" ? "Sending…" : "Submit"}

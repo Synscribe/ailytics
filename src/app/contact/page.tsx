@@ -68,7 +68,6 @@ export default function ContactPage() {
 
           <div className="brand-card self-start overflow-hidden p-5 sm:p-8 lg:p-10">
             <ContactForm
-              deliveryConfigured={deliveryConfigured}
               turnstileAction={
                 turnstile.enabled ? TURNSTILE_CONTACT_ACTION : undefined
               }

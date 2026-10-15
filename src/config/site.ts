@@ -16,6 +16,10 @@ export const siteConfig = Object.freeze({
     { label: "Industries", href: "/industries" },
     { label: "Blog", href: "/blog" },
   ] satisfies NavigationItem[],
+  // Published profiles only; the footer omits the row when this is empty.
+  social: [
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/ailytics" },
+  ] satisfies NavigationItem[],
 });
 
 export type SiteConfig = typeof siteConfig;

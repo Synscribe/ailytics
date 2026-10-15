@@ -28,7 +28,8 @@ const PRESS = [
     src: "/brand/press/tech-in-asia.png",
     width: 301,
     height: 300,
-    className: "h-12",
+    // The source image has wide padding around the mark.
+    className: "h-20",
   },
   {
     name: "The Business Times",
@@ -36,7 +37,7 @@ const PRESS = [
     src: "/brand/press/business-times.jpg",
     width: 200,
     height: 200,
-    className: "h-11",
+    className: "h-14",
   },
   {
     name: "Infocomm Media Development Authority",
@@ -44,7 +45,7 @@ const PRESS = [
     src: "/brand/press/imda.webp",
     width: 277,
     height: 70,
-    className: "h-9",
+    className: "h-11",
   },
   {
     name: "The Straits Times",
@@ -52,7 +53,7 @@ const PRESS = [
     src: "/brand/press/straits-times.png",
     width: 512,
     height: 512,
-    className: "h-12",
+    className: "h-14",
   },
   {
     name: "BeAmp",
@@ -60,7 +61,7 @@ const PRESS = [
     src: "/brand/press/beamp.png",
     width: 1848,
     height: 895,
-    className: "h-10",
+    className: "h-16",
   },
 ] as const;
 
@@ -167,26 +168,23 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section aria-labelledby="press-title" className="py-8">
-        <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-8 px-5 sm:px-8 md:flex-row md:justify-between">
-          <h2
-            className="shrink-0 text-sm font-medium text-ink-muted"
-            id="press-title"
-          >
+      <section aria-labelledby="press-title" className="py-10">
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-7 px-5 sm:px-8">
+          <h2 className="text-sm font-medium text-ink-muted" id="press-title">
             Featured On
           </h2>
-          <ul className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
+          <ul className="grid w-full grid-cols-3 items-center justify-items-center gap-x-8 gap-y-8 sm:grid-cols-5">
             {PRESS.map((item) => (
               <li key={item.name}>
                 <a
-                  className="inline-flex items-center opacity-80 transition hover:opacity-100"
+                  className="inline-flex items-center transition hover:-translate-y-0.5 motion-reduce:transition-none"
                   href={item.href}
                   rel="noopener noreferrer"
                   target="_blank"
                 >
                   <Image
                     alt={`${item.name} logo`}
-                    className={`${item.className} w-auto`}
+                    className={`${item.className} w-auto mix-blend-multiply`}
                     height={item.height}
                     src={item.src}
                     width={item.width}

@@ -129,7 +129,7 @@ export async function POST(request: Request) {
 
   if (!isApplicationDeliveryConfigured()) {
     return safeError(
-      "Applications are not being delivered yet. Please try again later.",
+      "We couldn't send your application right now. Please try again later.",
       503,
     );
   }

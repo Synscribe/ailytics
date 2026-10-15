@@ -60,7 +60,7 @@ export function ProjectCarousel({
       >
         {projects.map((project) => (
           <li
-            className="brand-card grid w-full flex-none snap-start overflow-hidden lg:grid-cols-[1.25fr_1fr]"
+            className="brand-card grid w-full flex-none snap-start grid-cols-[minmax(0,1fr)] overflow-hidden lg:grid-cols-[1.25fr_1fr]"
             key={project.site}
           >
             <div className="relative aspect-[4/3] bg-muted lg:aspect-auto lg:min-h-[26rem]">

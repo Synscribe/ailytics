@@ -28,7 +28,7 @@ export function NewsCard({
       </div>
 
       <div className="flex flex-col justify-center px-6 py-7 sm:px-9 sm:py-9">
-        <Badge className="bg-mint/55 px-3 py-1 text-ink hover:bg-mint/55">
+        <Badge className="h-auto bg-mint/55 px-3 py-1 text-ink hover:bg-mint/55">
           {article.category}
         </Badge>
         <h2 className="mt-4 text-xl leading-snug font-medium tracking-[-0.015em] text-balance sm:text-2xl">

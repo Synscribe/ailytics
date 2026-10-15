@@ -26,7 +26,6 @@ import {
 type ApplicationFormProps = {
   jobSlug: string;
   jobTitle: string;
-  deliveryConfigured: boolean;
   turnstileAction?: string;
   turnstileSiteKey?: string;
 };
@@ -41,7 +40,6 @@ const fieldClassName =
 export function ApplicationForm({
   jobSlug,
   jobTitle,
-  deliveryConfigured,
   turnstileAction,
   turnstileSiteKey,
 }: ApplicationFormProps) {
@@ -81,7 +79,7 @@ export function ApplicationForm({
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!deliveryConfigured || state === "sending") return;
+    if (state === "sending") return;
 
     const validation = validateApplicationFields(fields);
     const resumeError = validateResume(resume);
@@ -162,15 +160,6 @@ export function ApplicationForm({
 
   return (
     <form noValidate onSubmit={submit}>
-      {!deliveryConfigured ? (
-        <div
-          className="mb-6 rounded-xl border border-signal/25 bg-signal/8 px-4 py-3 text-sm leading-6 text-ink"
-          role="status"
-        >
-          This form is not live yet.
-        </div>
-      ) : null}
-
       <div className="flex flex-col gap-5">
         <Field id="name" label="Name" error={fieldErrors.name} required>
           <input
@@ -294,11 +283,7 @@ export function ApplicationForm({
 
       <Button
         className="mt-7 h-auto w-full rounded-full bg-ink px-6 py-3.5 text-base font-medium text-paper hover:bg-ink/90"
-        disabled={
-          !deliveryConfigured ||
-          state === "sending" ||
-          (turnstileEnabled && !turnstileToken)
-        }
+        disabled={state === "sending" || (turnstileEnabled && !turnstileToken)}
         type="submit"
       >
         {state === "sending" ? "Sending…" : "Apply Now!"}

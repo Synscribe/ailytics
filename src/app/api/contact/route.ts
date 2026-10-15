@@ -118,7 +118,7 @@ export async function POST(request: Request) {
 
   if (!isContactDeliveryConfigured()) {
     return safeError(
-      "Form delivery is not configured yet. Please try another contact method.",
+      "We couldn't send your message right now. Please try again later.",
       503,
     );
   }

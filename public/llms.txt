@@ -1,23 +1,30 @@
-# Launch Template
+# Ailytics
 
-<!-- TEMPLATE_LLMS_TXT: Replace this Launch Template example with the client's reviewed content before launch. -->
+> Ailytics adds AI video analytics to the CCTV cameras a site already owns, detecting safety, security and productivity risks on construction sites, plants, ports, airports and yards, with real-time alerts and compliance reporting.
+> Born in Singapore in 2019, Ailytics runs on 400+ projects worldwide, deploys on the edge, on-premise or in the cloud, and goes live in under 2 weeks.
+> Last reviewed: 2026-10-15.
 
-> Launch Template is a production-minded Next.js foundation for developers and business owners launching, rebuilding, or migrating a website with an AI coding agent.
-> It combines explicit App Router pages, technical SEO, migration safety, deletable content features, and automated launch checks without imposing a page-builder runtime or design system.
-> Last reviewed: 2026-08-25.
+## Product
 
-## Explore Launch Template
+- [AI video analytics for construction and heavy industries](https://www.ailytics.ai/): Learn what Ailytics detects, how it measures 3D distance from one camera, and how alerts reach site teams.
+- [Use cases](https://www.ailytics.ai/use-cases): Browse 50+ detections for safety, security and productivity that run on existing cameras.
+- [PPE detection](https://www.ailytics.ai/use-cases/ppe-detection): See how missing hard hats, vests and gloves are flagged with evidence for supervisors.
+- [Industries](https://www.ailytics.ai/industries): Find the hazards Ailytics monitors in construction, manufacturing, oil and gas, logistics, ports, airports and data centers.
+- [Construction](https://www.ailytics.ai/industries/construction): Understand how construction sites use AI video analytics for struck-by, lifting, open-edge and PPE risks.
+- [ChildSafe Vision](https://www.ailytics.ai/childsafe-vision): Learn how preschools use AI on existing CCTV to detect supervision gaps and review incidents.
 
-- [Launch Template](https://agenticwebsite.io/): See how the template combines bespoke design freedom with practical routing, technical SEO, migration, analytics, and launch safeguards.
-- [Website launch use cases](https://agenticwebsite.io/uses): Compare the template's approaches to migrations, SaaS rebuilds, startup launches, and search-focused landing pages.
+## Research and company news
 
-## Choose a launch path
+- [Blog](https://www.ailytics.ai/blog): Read AI video analytics software comparisons, detection use cases and rollout advice.
+- [News](https://www.ailytics.ai/news): Read Ailytics press releases, partnerships and awards.
+- [Projects](https://www.ailytics.ai/projects): See airports, hospitals, shipyards, bridges and residential projects that use Ailytics.
 
-- [Website migrations](https://agenticwebsite.io/uses/website-migrations): Plan URL inventory, direct redirects, page-signal preservation, release gates, and post-launch monitoring.
-- [SaaS website rebuilds](https://agenticwebsite.io/uses/saas-website-rebuilds): Rebuild a SaaS site around buyer journeys, clearer information architecture, reusable pages, and safer launches.
-- [Startup website launches](https://agenticwebsite.io/uses/startup-launches): Launch with a clear offer, focused conversion path, approved proof, measurement, and production checks.
-- [SEO landing pages](https://agenticwebsite.io/uses/seo-landing-pages): Build landing pages around real search intent, useful copy, internal links, technical defaults, and reviewable quality gates.
+## Company
 
-## Start a website project
+- [About Ailytics](https://www.ailytics.ai/about-us): Learn the company history, team and milestones.
+- [Partner with Ailytics](https://www.ailytics.ai/partnerships): Explore reseller, integration and technology partnerships.
+- [Careers](https://www.ailytics.ai/careers): Browse open roles across business, operations and technology.
 
-- [Launch a website](https://agenticwebsite.io/contact): Share the website you want to launch, rebuild, or migrate and the constraints the project must protect.
+## Get in touch
+
+- [Request a demo](https://www.ailytics.ai/contact): Share your sites and cameras to see which detections fit and how alerts reach your team.
