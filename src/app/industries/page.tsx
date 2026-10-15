@@ -28,12 +28,12 @@ export default async function IndustriesPage() {
       groups={INDUSTRY_GROUPS.map((group) => ({
         title: group.title,
         items: group.items
-          .filter(({ slug }) => pages.has(slug))
-          .map(({ slug, title, description }) => ({
+          .filter(({ slug, page }) => page || pages.has(slug))
+          .map(({ slug, title, description, page }) => ({
             title,
             description,
-            href: `/industries/${slug}`,
-            visualId: INDUSTRY_ROUTE_COPY[slug].heroVisualId,
+            href: page?.href ?? `/industries/${slug}`,
+            visualId: page?.visualId ?? INDUSTRY_ROUTE_COPY[slug].heroVisualId,
           })),
       })).filter((group) => group.items.length > 0)}
       cta={{

@@ -81,6 +81,14 @@ const visualSources: Record<VisualId, VisualSource> = {
       alt: "A basement site camera finds three workers and checks the front worker's hard hat, vest and gloves, then confirms all three are wearing PPE.",
     },
   },
+  "childsafe-vision-hero": {
+    kind: "image",
+    status: "project",
+    label: "ChildSafe Vision unsupervised-child alert",
+    motionPattern: null,
+    src: "/media/childsafe-vision/unsupervised-child-alert.webp",
+    alt: "ChildSafe Vision unsupervised-child alert with CCTV playback and automated analysis.",
+  },
   "hardware-agnostic": {
     ...stagedComponent,
     label: "Existing cameras connecting",

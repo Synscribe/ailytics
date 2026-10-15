@@ -1,12 +1,16 @@
+import type { VisualId } from "@/lib/visuals";
+
 /**
  * The industries listed on the /industries hub. `slug` names the page in
  * src/content/pages/industries; the hub lists it only once that JSON page exists.
+ * An entry with `page` links to its own route instead and is always listed.
  * Never add retail, food and beverage, or hospitality.
  */
 export type HubEntry = {
   slug: string;
   title: string;
   description: string;
+  page?: { href: string; visualId: VisualId };
 };
 
 export const INDUSTRY_GROUPS: { title: string; items: HubEntry[] }[] = [
@@ -89,6 +93,13 @@ export const INDUSTRY_GROUPS: { title: string; items: HubEntry[] }[] = [
         title: "Childcare",
         description:
           "Restricted areas and water hazards around preschools and play areas.",
+      },
+      {
+        slug: "childsafe-vision",
+        title: "ChildSafe Vision",
+        description:
+          "Real-time AI safety monitoring and faster incident investigation for preschools, built on existing CCTV.",
+        page: { href: "/childsafe-vision", visualId: "childsafe-vision-hero" },
       },
       {
         slug: "correctional-facilities",

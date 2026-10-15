@@ -29,6 +29,7 @@ export const FEATURE_VISUAL_IDS = [
 export const VISUAL_IDS = [
   "construction-hero",
   "ppe-hero",
+  "childsafe-vision-hero",
   ...FEATURE_VISUAL_IDS,
 ] as const;
 

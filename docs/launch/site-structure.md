@@ -78,6 +78,7 @@ Items marked **(launch)** are needed for 26 Oct. Everything else follows in the 
                                      ports-and-maritime; then airports, mining, energy-and-utilities, data-centers)
 /industries/[tier-2]                Later, not in main nav: education, healthcare, elderly-care, childcare,
                                      correctional-facilities, dormitories
+/childsafe-vision                   (launch) Old slug kept; listed under "Other industries" on the hub
 
 /case-studies                       (launch) Hub: case studies filtered by industry
 /case-studies/[slug]                (launch: the approved case studies) Numbers-first titles
