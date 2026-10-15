@@ -17,7 +17,7 @@
 }
 .copy h2 {
   font-size: clamp(32px, 3.5vw, 48px);
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: -0.035em;
   line-height: 1.12;
   margin: 22px 0;

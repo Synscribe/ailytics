@@ -379,7 +379,7 @@ export default function ChildSafeVisionPage() {
         <ul className="mx-auto grid w-full max-w-7xl gap-8 px-5 py-10 sm:grid-cols-2 sm:px-8 lg:grid-cols-4">
           {TRUST.map((item) => (
             <li key={item.label}>
-              <p className="text-2xl font-light tracking-[-0.02em]">
+              <p className="text-2xl font-normal tracking-[-0.02em]">
                 {item.value}
               </p>
               <p className="mt-1 text-sm text-paper/70">{item.label}</p>
