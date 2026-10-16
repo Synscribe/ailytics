@@ -27,7 +27,7 @@ export type TypeVariant = {
 };
 
 const home = "app/(marketing)/home.module.css";
-const problemStory = "components/content-page/problem-story.module.css";
+const problemStory = "components/content-page/scroll-switcher.module.css";
 const cameraStory =
   "app/industries/[slug]/_components/construction-camera-story.module.css";
 
@@ -210,7 +210,7 @@ export const TYPE_TODAY: TypeVariant[] = [
       { page: "Use case problem rows", file: problemStory },
       {
         page: "Scroll steps",
-        file: "components/content-page/scroll-sequence.module.css",
+        file: "components/content-page/step-scene.module.css",
       },
     ],
   },

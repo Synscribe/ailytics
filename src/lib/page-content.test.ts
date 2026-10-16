@@ -14,7 +14,7 @@ describe("page content", () => {
   it("loads the construction industry page and links to PPE detection", async () => {
     const content = await getPageContent("industries", "construction");
 
-    expect(content.hero.title).toBe("Construction Safety & Productivity");
+    expect(content.hero.title).toBe("Construction safety and productivity");
     expect(content.hero.seoTitle).toBe(
       "AI Video Analytics for Construction Safety",
     );
@@ -32,7 +32,7 @@ describe("page content", () => {
     const content = await getPageContent("uses", "ppe-detection");
 
     expect(content.hero.title).toBe(
-      "PPE Detection for Construction Site Safety",
+      "PPE detection for construction site safety",
     );
     expect(
       content.faq.some((item) =>

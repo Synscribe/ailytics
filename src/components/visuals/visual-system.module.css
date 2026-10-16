@@ -1,7 +1,7 @@
 .system {
-  --visual-radius-frame: 16px;
-  --visual-radius-panel: 12px;
-  --visual-radius-control: 8px;
+  --visual-radius-frame: 8px;
+  --visual-radius-panel: 8px;
+  --visual-radius-control: 4px;
   font-family: var(--font-sans);
   color: var(--ink);
 }

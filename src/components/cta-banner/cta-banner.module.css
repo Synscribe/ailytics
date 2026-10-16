@@ -1,0 +1,103 @@
+.banner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  overflow: hidden;
+  padding: 32px;
+  border-radius: 8px;
+  color: var(--ink);
+  background: var(--paper);
+  box-shadow: inset 0 0 0 1px rgba(39, 64, 93, 0.08);
+  isolation: isolate;
+}
+
+.copy,
+.action {
+  position: relative;
+  z-index: 1;
+}
+
+.action {
+  align-self: flex-start;
+}
+
+.copy p {
+  margin: 12px 0 0;
+  max-width: 46ch;
+  font-size: var(--text-lead);
+  line-height: var(--text-lead--line-height);
+  color: var(--ink-muted);
+}
+
+.footage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  mask-image: linear-gradient(to bottom, transparent 30%, #000 100%);
+}
+
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 60% 55%;
+  /* Crops the burned-in timestamp at the frame edges. */
+  transform: scale(1.12);
+  filter: grayscale(1) contrast(1.15) brightness(1.05);
+  opacity: 0.4;
+}
+
+/* Teal grade and a fine dot screen, as on the blog hero. */
+.footage::before,
+.footage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.footage::before {
+  background: linear-gradient(120deg, var(--signal), var(--signal-strong));
+  mix-blend-mode: color;
+  opacity: 0.85;
+}
+
+.footage::after {
+  background-image: radial-gradient(
+    rgba(39, 64, 93, 0.18) 1px,
+    transparent 1px
+  );
+  background-size: 6px 6px;
+}
+
+@media (min-width: 640px) {
+  .banner {
+    padding: 48px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .banner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 72px 64px;
+  }
+
+  .action {
+    align-self: auto;
+  }
+
+  .footage {
+    mask-image: linear-gradient(
+      to right,
+      transparent 24%,
+      rgba(0, 0, 0, 0.55) 50%,
+      #000 80%
+    );
+  }
+}

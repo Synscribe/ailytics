@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { CountUp } from "@/components/count-up.client";
+
 import styles from "./customer-proof.module.css";
 const LOGOS = [
   {
@@ -100,7 +102,9 @@ export function CustomerProof({ spacious = false }: { spacious?: boolean }) {
       <ul className={styles.stats}>
         {STATS.map((s) => (
           <li key={s.value} className={styles.stat}>
-            <strong className={styles.statValue}>{s.value}</strong>{" "}
+            <strong className={styles.statValue}>
+              <CountUp value={s.value} />
+            </strong>{" "}
             <span className={styles.statLabel}>{s.label}</span>
           </li>
         ))}

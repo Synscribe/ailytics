@@ -92,7 +92,7 @@
   height: auto;
   margin-inline: auto;
   border: 1px solid var(--line);
-  border-radius: 1rem;
+  border-radius: 8px;
 }
 
 .prose figcaption {

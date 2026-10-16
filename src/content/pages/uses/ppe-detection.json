@@ -1,6 +1,6 @@
 {
   "hero": {
-    "title": "PPE Detection for Construction Site Safety",
+    "title": "PPE detection for construction site safety",
     "description": "PPE detection adds construction safety monitoring to your existing CCTV. Spot missing hard hats, vests, and gloves and alert supervisors with evidence."
   },
   "problems": {
@@ -8,31 +8,31 @@
     "description": "Crews move between work areas throughout the shift. Supervisors cannot check every worker on every camera continuously.",
     "items": [
       {
-        "title": "Workers Enter Without Protection",
+        "title": "Workers enter without protection",
         "description": "Missing hard hats, vests, or gloves can go unnoticed as crews enter monitored work areas."
       },
       {
-        "title": "Supervisors Find Violations Too Late",
+        "title": "Supervisors find violations too late",
         "description": "Footage reviewed after a shift cannot help supervisors address missing PPE while workers are exposed."
       },
       {
-        "title": "Compliance Records Have Gaps",
+        "title": "Compliance records have gaps",
         "description": "Scattered notes and manual checks leave safety teams without consistent evidence of when and where PPE violations occurred."
       }
     ]
   },
   "solution": {
-    "title": "Detect Missing PPE Across Existing Cameras",
+    "title": "Detect missing PPE across existing cameras",
     "description": "Ailytics adds PPE detection to existing CCTV, with models built for rain, dust, and low light. Supervisors receive event evidence to review missing protection and respond during the shift."
   },
   "features": {
-    "title": "PPE Checks Your Team Can Act On",
+    "title": "PPE checks your team can act on",
     "description": "Connect your cameras, select the PPE checks your site needs, and give supervisors alerts and reports that support daily safety work.",
     "items": [
       {
         "id": "ppe-detection",
         "eyebrow": "Safety",
-        "title": "Spot Missing Protection During Work",
+        "title": "Spot missing protection during work",
         "description": "Detect missing hard hats, vests, and gloves in monitored construction work areas. Configure the checks around your site's PPE requirements and assess camera visibility for each item.",
         "highlights": [
           "Hard hat checks",
@@ -43,7 +43,7 @@
       {
         "id": "hardware-agnostic",
         "eyebrow": "Camera connection",
-        "title": "Use Cameras You Already Own",
+        "title": "Use cameras you already own",
         "description": "Connect existing IP cameras and compatible recording systems through RTSP or ONVIF. Add PPE monitoring to your CCTV network without replacing cameras, with coverage assessed against your work areas and camera views.",
         "highlights": [
           "Existing IP cameras",
@@ -54,7 +54,7 @@
       {
         "id": "real-time-alerts",
         "eyebrow": "Response",
-        "title": "Give Supervisors Evidence to Respond",
+        "title": "Give supervisors evidence to respond",
         "description": "Notify the right people when a missing-PPE event is detected. Include the event frame, time, and location so supervisors can review what happened and address the issue with the crew.",
         "highlights": [
           "Missing PPE notifications",
@@ -65,7 +65,7 @@
       {
         "id": "unlimited-reporting",
         "eyebrow": "Compliance",
-        "title": "Bring PPE Evidence Into Reviews",
+        "title": "Bring PPE evidence into reviews",
         "description": "Generate safety and compliance reports on demand. Use recorded PPE events to support site reviews, toolbox discussions, and audit preparation alongside your existing inspection records.",
         "highlights": [
           "Reports on demand",
@@ -106,8 +106,8 @@
     }
   ],
   "cta": {
-    "title": "See PPE Detection on Your Site",
+    "title": "See PPE detection on your site",
     "description": "Bring your CCTV views and PPE requirements. See how Ailytics can help your supervisors detect, review, and respond to missing protection.",
-    "buttonText": "Book a PPE Detection Demo"
+    "buttonText": "Request a demo"
   }
 }

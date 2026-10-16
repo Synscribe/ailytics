@@ -1,0 +1,124 @@
+.track {
+  position: relative;
+}
+
+/* Fills the screen under the header and centres its content. */
+.pinned {
+  position: sticky;
+  top: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+  height: calc(100vh - 64px);
+}
+
+/* Keeps the 4:3 visual short enough to fit beside the pinned heading. */
+.pinned .stage {
+  width: min(100%, calc((100vh - 360px) * 4 / 3));
+  justify-self: end;
+}
+
+.static {
+  display: grid;
+  gap: 40px;
+}
+
+/* No fill: the list sits on the page, the visual beside it. */
+.card {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 56px;
+  align-items: center;
+}
+
+.text {
+  display: grid;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.text li {
+  display: grid;
+  grid-template-columns: 3px minmax(0, 1fr);
+  gap: 18px;
+}
+
+.bar {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  background: rgba(39, 64, 93, 0.12);
+}
+
+.bar span {
+  position: absolute;
+  inset: 0;
+  background: var(--signal);
+  transform-origin: top;
+  transition: transform 0.4s ease;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  line-height: 1.25;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: rgba(39, 64, 93, 0.32);
+  transition: color 0.3s;
+}
+
+.body {
+  max-width: 46ch;
+  max-height: 0;
+  margin: 0;
+  overflow: hidden;
+  color: var(--ink-muted);
+  opacity: 0;
+  transition:
+    max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.3s;
+}
+
+.text li[data-active] .title,
+.static .title {
+  color: var(--ink);
+}
+
+.text li[data-active] .body,
+.static .body {
+  max-height: 8em;
+  margin-top: 6px;
+  opacity: 1;
+}
+
+.stage {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--muted);
+}
+
+.stage img,
+.stage video {
+  filter: grayscale(1) contrast(1.06);
+}
+
+@media (max-width: 1023px) {
+  .card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title,
+  .body,
+  .bar span {
+    transition: none;
+  }
+}

@@ -1,15 +1,15 @@
 import { CustomerProof } from "@/components/customer-proof/customer-proof";
-import { ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-import { ProjectVisual } from "@/components/visuals/project-visual";
+import { PictureCard } from "@/components/picture-card/picture-card";
 import {
   buildBreadcrumbJsonLd,
   serializeJsonLd,
   type BreadcrumbJsonLdItem,
 } from "@/lib/seo";
 import type { VisualId } from "@/lib/visuals";
+import { CtaBanner } from "@/components/cta-banner/cta-banner";
 
 export type HubItem = {
   title: string;
@@ -42,26 +42,13 @@ export type ContentHubProps = {
 
 function HubCard({ item }: { item: HubItem }) {
   return (
-    <Link
-      className="group flex h-full flex-col rounded-xl focus-visible:outline-2 focus-visible:outline-signal"
+    <PictureCard
+      body={item.description}
       href={item.href}
-    >
-      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-muted">
-        <ProjectVisual
-          fill
-          id={item.visualId}
-          sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
-        />
-      </div>
-      <div className="flex flex-1 flex-col gap-2 pt-5 pb-2">
-        <h3 className="flex items-start justify-between gap-3 text-title text-balance">
-          {item.title}
-        </h3>
-        <p className="text-sm leading-6 text-pretty text-ink-muted">
-          {item.description}
-        </p>
-      </div>
-    </Link>
+      sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
+      title={item.title}
+      visualId={item.visualId}
+    />
   );
 }
 
@@ -133,9 +120,9 @@ export function ContentHub({
         <section className="pt-8 pb-8 sm:pt-12" key={group.title}>
           <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
             <h2 className="brand-h2">{group.title}</h2>
-            <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="mt-8 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
               {group.items.map((item) => (
-                <li key={item.href}>
+                <li className="flex aspect-[4/3]" key={item.href}>
                   <HubCard item={item} />
                 </li>
               ))}
@@ -146,21 +133,12 @@ export function ContentHub({
 
       <section className="pt-20 pb-28 sm:pb-32">
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-          <div className="brand-banner flex flex-col gap-8 p-8 sm:p-12 lg:flex-row lg:items-center lg:justify-between lg:p-16">
-            <div>
-              <h2 className="brand-h2 max-w-3xl">{cta.title}</h2>
-              <p className="mt-3 max-w-[46ch] text-lead text-white/85">
-                {cta.description}
-              </p>
-            </div>
-            <Link
-              className="brand-btn-light self-start lg:self-auto"
-              href={cta.href}
-            >
-              {cta.buttonText}
-              <ArrowRightIcon className="size-4" aria-hidden="true" />
-            </Link>
-          </div>
+          <CtaBanner
+            buttonText={cta.buttonText}
+            description={cta.description}
+            href={cta.href}
+            title={cta.title}
+          />
         </div>
       </section>
     </main>

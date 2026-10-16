@@ -1,6 +1,6 @@
 {
   "hero": {
-    "title": "Construction Safety & Productivity",
+    "title": "Construction safety and productivity",
     "seoTitle": "AI Video Analytics for Construction Safety",
     "description": "AI video analytics for construction adds site safety monitoring to existing CCTV, detecting hazards through rain, dust, and low light."
   },
@@ -27,17 +27,17 @@
     ]
   },
   "solution": {
-    "title": "Monitor Construction Risks Across Existing Cameras",
+    "title": "Monitor construction risks across existing cameras",
     "description": "Ailytics connects to existing CCTV and detects hazards through rain, dust, and low light. Combine safety warnings, restricted-area alerts, workforce tracking, and progress views, with edge, on-premise, or cloud deployment."
   },
   "features": {
-    "title": "Coverage for Your Construction Site",
+    "title": "Coverage for your construction site",
     "description": "Choose detections that match your crews, lifting operations, and work areas. Use the same camera network for safety monitoring and site records.",
     "items": [
       {
         "id": "ppe-detection",
         "eyebrow": "Safety",
-        "title": "Catch Missing PPE During Work",
+        "title": "Catch missing PPE during work",
         "description": "Detect missing hard hats, vests, and gloves across monitored work areas. Give supervisors evidence of non-compliance while work is happening, with an event frame, time, and location.",
         "highlights": [
           "Hard hat detection",
@@ -48,7 +48,7 @@
       {
         "id": "machinery-proximity",
         "eyebrow": "Safety",
-        "title": "Warn Before Workers Approach Machinery",
+        "title": "Warn before workers approach machinery",
         "description": "Watch for workers moving too close to active machinery and vehicles. Help supervisors identify struck-by risks around excavators, delivery routes, and shared work areas.",
         "highlights": [
           "Worker proximity warnings",
@@ -59,7 +59,7 @@
       {
         "id": "under-load-detection",
         "eyebrow": "Safety",
-        "title": "Spot Workers Beneath Suspended Loads",
+        "title": "Spot workers beneath suspended loads",
         "description": "Detect people beneath suspended crane loads during lifting operations. Alert the site team with the event evidence so they can intervene and review unsafe access.",
         "highlights": [
           "Suspended load detection",
@@ -70,7 +70,7 @@
       {
         "id": "no-access-zones",
         "eyebrow": "Security",
-        "title": "Catch Entry Into Restricted Areas",
+        "title": "Catch entry into restricted areas",
         "description": "Monitor restricted areas around hazardous work, equipment, and site access points. Alert supervisors when someone enters a defined zone so they can check the event and respond.",
         "highlights": [
           "Configurable restricted zones",
@@ -81,7 +81,7 @@
       {
         "id": "man-hour-tracking",
         "eyebrow": "Productivity",
-        "title": "Track Worker Productivity and Idle Time",
+        "title": "Track worker productivity and idle time",
         "description": "See how much of each shift the workers in a monitored area spend working and how much they spend idle. Give project teams camera-based working and idle totals to support labour planning, crew discussions, and billing reviews.",
         "highlights": [
           "Working and idle time per shift",
@@ -92,7 +92,7 @@
       {
         "id": "timelapse-xray",
         "eyebrow": "Progress",
-        "title": "Review How Work Areas Change",
+        "title": "Review how work areas change",
         "description": "Use timelapse and spot-comparison X-ray views to review visible changes across construction work areas. Bring camera records into progress discussions alongside your existing project reporting.",
         "highlights": [
           "Construction timelapse views",
@@ -129,8 +129,8 @@
     }
   ],
   "cta": {
-    "title": "See Ailytics on Your Construction Site",
+    "title": "See Ailytics on your construction site",
     "description": "Show us your camera setup and priority hazards. Explore the detections, deployment options, and site records that fit your project.",
-    "buttonText": "Book a Demo"
+    "buttonText": "Request a demo"
   }
 }

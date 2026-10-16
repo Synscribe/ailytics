@@ -1,0 +1,99 @@
+/* One grey-teal card: the list on the left, the active item's visual on the
+   right. Same shade as the picture cards and the feature cards. */
+.switcher {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 40px;
+  align-items: center;
+  margin-top: 48px;
+  padding: 40px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #4a6c74 0%, #2f6a73 45%, #1d5561 100%);
+}
+
+.switcher ul {
+  display: grid;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.switcher button {
+  all: unset;
+  display: grid;
+  gap: 6px;
+  width: 100%;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.switcher button:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  line-height: 1.25;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.42);
+  transition: color 0.3s;
+}
+
+.body {
+  max-width: 46ch;
+  max-height: 0;
+  overflow: hidden;
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
+  color: rgba(255, 255, 255, 0.82);
+  opacity: 0;
+  transition:
+    max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.3s;
+}
+
+.switcher button[data-active] .title {
+  color: #fff;
+}
+
+.switcher button[data-active] .body {
+  max-height: 8em;
+  opacity: 1;
+}
+
+.stage {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 8px;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.stage img,
+.stage video {
+  filter: grayscale(1) contrast(1.06);
+}
+
+@media (max-width: 1023px) {
+  .switcher {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 24px;
+  }
+
+  .body {
+    max-height: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title,
+  .body {
+    transition: none;
+  }
+}

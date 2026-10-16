@@ -26,6 +26,7 @@ import {
   getBlogFilter,
   labelForBlogTags,
 } from "./blog.config";
+import { CtaBanner } from "@/components/cta-banner/cta-banner";
 
 type BlogPageProps = {
   searchParams: Promise<{
@@ -383,24 +384,12 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
       <section className="pt-20 pb-28 sm:pb-32">
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-          <div className="brand-banner flex flex-col gap-8 p-8 sm:p-12 lg:flex-row lg:items-center lg:justify-between lg:p-16">
-            <div>
-              <h2 className="brand-h2 max-w-3xl">
-                See AI video analytics on your own cameras
-              </h2>
-              <p className="mt-3 max-w-[46ch] text-[1.0625rem] leading-relaxed text-white/85">
-                Tell us about your sites and cameras. We will show you which
-                detections fit and how alerts reach your team.
-              </p>
-            </div>
-            <Link
-              className="brand-btn-light self-start lg:self-auto"
-              href="/contact"
-            >
-              Request a demo
-              <ArrowRightIcon className="size-4" aria-hidden="true" />
-            </Link>
-          </div>
+          <CtaBanner
+            buttonText="Request a demo"
+            description="Tell us about your sites and cameras. We will show you which detections fit and how alerts reach your team."
+            href="/contact"
+            title="See AI video analytics on your own cameras"
+          />
         </div>
       </section>
     </main>

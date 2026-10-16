@@ -1,13 +1,12 @@
+/* Soft grey rows with small gaps; the open one turns a little teal. */
 .accordion {
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 6px;
 }
 .item {
-  border-bottom: 1px solid var(--line);
+  border-radius: 8px;
+  background: #eef2f5;
   transition: background 0.25s ease;
-}
-.item:last-child {
-  border-bottom: 0;
 }
 .item summary {
   list-style: none;
@@ -17,7 +16,7 @@
   justify-content: space-between;
   gap: 24px;
   padding: 25px 20px;
-  border-radius: 4px;
+  border-radius: 8px;
 }
 .item summary::-webkit-details-marker {
   display: none;
@@ -27,7 +26,7 @@
   outline-offset: 3px;
 }
 .item summary:hover {
-  background: color-mix(in srgb, var(--signal) 5%, transparent);
+  background: rgba(39, 64, 93, 0.03);
 }
 .item h3 {
   font-size: var(--text-title);
@@ -61,7 +60,7 @@
   transform: rotate(90deg);
 }
 .item[open] {
-  background: color-mix(in srgb, var(--signal) 4%, transparent);
+  background: rgba(52, 193, 196, 0.12);
 }
 .item[open] .icon::after {
   transform: rotate(0);

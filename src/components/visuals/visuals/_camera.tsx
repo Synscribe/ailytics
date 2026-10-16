@@ -217,7 +217,7 @@ export function Tag({
       transition={instant ? { duration: 0 } : { duration: 0.4, ease: EASE }}
     >
       <span
-        className="inline-flex items-center gap-1 rounded-[5px] px-1.5 py-[3px] text-[10px] leading-none font-medium whitespace-nowrap shadow-sm"
+        className="inline-flex items-center gap-1 rounded-[4px] px-1.5 py-[3px] text-[10px] leading-none font-medium whitespace-nowrap shadow-sm"
         style={style}
       >
         {tone === "detect" ? (
