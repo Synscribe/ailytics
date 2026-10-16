@@ -1,5 +1,6 @@
-import { ProblemStory } from "./problem-story.client";
-import { ScrollSequence } from "./scroll-sequence.client";
+import { DETAIL_SCENES } from "./scenes";
+import { ScrollSwitcher } from "./scroll-switcher.client";
+import { StepScene } from "./step-scene.client";
 import { FaqAccordion } from "@/components/faq-accordion/faq-accordion";
 import { RevealGroup } from "@/components/reveal-group.client";
 import { CustomerProof } from "@/components/customer-proof/customer-proof";
@@ -15,6 +16,7 @@ import {
   type BreadcrumbJsonLdItem,
 } from "@/lib/seo";
 import type { VisualId } from "@/lib/visuals";
+import { CtaBanner } from "@/components/cta-banner/cta-banner";
 
 type Block = {
   title: string;
@@ -68,6 +70,10 @@ export function ContentPage({
       answer: stripInlineLinks(item.answer),
     })),
   );
+  const scene =
+    DETAIL_SCENES[
+      heroVisualId === "construction-hero" ? "construction" : "ppe"
+    ];
   const trail = breadcrumbs.slice(0, -1);
   const current = breadcrumbs[breadcrumbs.length - 1];
 
@@ -121,19 +127,32 @@ export function ContentPage({
             </p>
           </div>
 
-          <div className="min-w-0">
+          <div className="detail-hero-visual min-w-0">
             <ProjectVisual id={heroVisualId} priority />
           </div>
         </div>
       </section>
       <CustomerProof />
 
-      <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-        <ProblemStory
-          kind={heroVisualId === "construction-hero" ? "construction" : "ppe"}
-          content={content.problems}
-        />
-      </div>
+      <section id="problems" className="detail-section">
+        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
+          <ScrollSwitcher
+            heading={
+              <div>
+                <h2 className={sectionHeading}>{content.problems.title}</h2>
+                <p className="brand-lead mt-5 max-w-2xl">
+                  {content.problems.description}
+                </p>
+              </div>
+            }
+            items={content.problems.items.map((item, i) => ({
+              title: item.title,
+              body: item.description,
+              visualId: scene.problemVisuals[i] ?? scene.problemVisuals[0],
+            }))}
+          />
+        </div>
+      </section>
 
       <section id="how-it-works" className="detail-section">
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
@@ -141,7 +160,7 @@ export function ContentPage({
           <p className="brand-lead mt-5 max-w-2xl">
             {content.solution.description}
           </p>
-          <ScrollSequence items={howItWorks.steps} />
+          <StepScene scene={scene.howItWorks} steps={howItWorks.steps} />
         </div>
       </section>
 
@@ -205,7 +224,7 @@ export function ContentPage({
                       }
                     >
                       <div
-                        className={`relative w-full overflow-hidden ${item.id === "real-time-alerts" ? "h-[440px] lg:aspect-[4/3] lg:h-auto" : "aspect-[4/3] rounded-2xl border border-ink/10 bg-muted"}`}
+                        className={`relative w-full overflow-hidden ${item.id === "real-time-alerts" ? "h-[440px] lg:aspect-[4/3] lg:h-auto" : "detail-feature-visual aspect-[4/3] rounded-lg bg-muted"}`}
                       >
                         <ProjectVisual
                           fill
@@ -257,21 +276,12 @@ export function ContentPage({
 
       <section className="pt-12 pb-28 sm:pb-32">
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-          <div className="brand-banner flex flex-col gap-8 p-8 sm:p-12 lg:flex-row lg:items-center lg:justify-between lg:p-16">
-            <div>
-              <h2 className="brand-h2 max-w-3xl">{content.cta.title}</h2>
-              <p className="mt-3 max-w-[46ch] text-lead text-white/85">
-                {content.cta.description}
-              </p>
-            </div>
-            <Link
-              className="brand-btn-light self-start lg:self-auto"
-              href={ctaHref}
-            >
-              {content.cta.buttonText}
-              <ArrowRightIcon className="size-4" aria-hidden="true" />
-            </Link>
-          </div>
+          <CtaBanner
+            buttonText={content.cta.buttonText}
+            description={content.cta.description}
+            href={ctaHref}
+            title={content.cta.title}
+          />
         </div>
       </section>
     </main>

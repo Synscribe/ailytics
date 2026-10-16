@@ -15,6 +15,7 @@ import {
   createPageMetadata,
   serializeJsonLd,
 } from "@/lib/seo";
+import { CtaBanner } from "@/components/cta-banner/cta-banner";
 
 const PATH = "/childsafe-vision";
 
@@ -714,22 +715,13 @@ export default function ChildSafeVisionPage() {
 
       <section className="pb-28 sm:pb-32">
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-          <div className="brand-banner flex flex-col gap-8 p-8 sm:p-12 lg:flex-row lg:items-center lg:justify-between lg:p-16">
-            <div>
-              <h2 className="brand-h2 max-w-3xl">Talk to us</h2>
-              <p className="mt-3 max-w-[46ch] text-[1.0625rem] leading-relaxed text-white/85">
-                Tell us a little about what you&apos;re looking for and
-                we&apos;ll get back to you shortly.
-              </p>
-            </div>
-            <Link
-              className="brand-btn-light self-start lg:self-auto"
-              href="/contact"
-            >
-              Request a centre assessment
-              <ArrowRightIcon className="size-4" aria-hidden="true" />
-            </Link>
-          </div>
+          <CtaBanner
+            buttonText="Request a centre assessment"
+            description="Tell us a little about what you're looking for and we'll get back to you shortly."
+            footage={null}
+            href="/contact"
+            title="Talk to us"
+          />
         </div>
       </section>
     </main>

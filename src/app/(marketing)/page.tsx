@@ -1,20 +1,8 @@
 import { FaqAccordion } from "@/components/faq-accordion/faq-accordion";
 import { CustomerProof } from "@/components/customer-proof/customer-proof";
-import {
-  BellRingIcon,
-  CctvIcon,
-  CloudIcon,
-  FileTextIcon,
-  MapPinnedIcon,
-  ShieldCheckIcon,
-  ServerIcon,
-  ScanFaceIcon,
-  WorkflowIcon,
-} from "lucide-react";
+import { ShieldCheckIcon, ServerIcon, ScanFaceIcon } from "lucide-react";
 import type { Metadata } from "next";
 
-import { ProjectVisual } from "@/components/visuals/project-visual";
-import type { VisualId } from "@/lib/visuals";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -31,8 +19,18 @@ import {
 } from "./_components/feature-visuals.client";
 import { HeroWall } from "./_components/hero-wall.client";
 import { ProblemScene } from "./_components/problem-scene.client";
-import { RevealGroup } from "@/components/reveal-group.client";
 import styles from "./home.module.css";
+import { CtaBanner } from "@/components/cta-banner/cta-banner";
+import { type UseCaseTile, UseCaseBento } from "./_components/use-case-bento";
+import {
+  type Industry,
+  IndustryList,
+} from "./_components/industry-list.client";
+import { CountUp } from "@/components/count-up.client";
+import {
+  type Capability,
+  CapabilitySwitcher,
+} from "./_components/capability-switcher.client";
 
 export const metadata: Metadata = createPageMetadata({
   title: "AI Video Analytics for Construction & Heavy Industries",
@@ -83,13 +81,6 @@ const FEATURES: Feature[] = [
   },
 ];
 
-type UseCaseTile = {
-  id: VisualId;
-  title: string;
-  body: string;
-  href: string;
-};
-
 const USE_CASES: UseCaseTile[] = [
   {
     id: "ppe-detection",
@@ -122,74 +113,81 @@ const USE_CASES: UseCaseTile[] = [
     href: "/use-cases",
   },
   {
-    id: "machinery-usage",
-    title: "Machinery utilization",
-    body: "Working and idle hours for excavators, cranes and rigs.",
+    id: "open-edge-detection",
+    title: "Open edges",
+    body: "Workers near unguarded edges and openings, flagged before a fall.",
     href: "/use-cases",
   },
 ];
 
-const INDUSTRIES = [
+const INDUSTRIES: Industry[] = [
   {
     label: "Construction",
     hazards: "Struck-by machinery, suspended loads, open edges, PPE",
     href: "/industries/construction",
+    src: "/media/ailytics/stills/construction-hero.jpg",
   },
   {
     label: "Manufacturing",
     hazards: "Machine areas, forklifts, PPE, smoke and fire",
     href: "/industries",
+    src: "/media/ailytics/stills/crowding.jpg",
   },
   {
     label: "Oil and gas",
     hazards: "Exclusion zones, PPE, smoke and fire",
     href: "/industries",
+    src: "/media/projects/paxocean-shipyard.webp",
   },
   {
     label: "Logistics and warehousing",
     hazards: "Forklifts, reversing vehicles, restricted areas",
     href: "/industries",
+    src: "/media/ailytics/stills/machinery-proximity.jpg",
   },
   {
     label: "Ports and airports",
     hazards: "Lifting, quayside and airside vehicles, restricted areas",
     href: "/industries",
+    src: "/media/projects/changi-terminal-5.webp",
   },
   {
     label: "Data centers",
     hazards: "Restricted areas, contractor safety, smoke and fire",
     href: "/industries",
+    // Stand-in: no data center photo from the client yet.
+    src: "/media/ailytics/stills/no-access-zones.jpg",
   },
 ];
 
-const CAPABILITIES = [
+const CAPABILITIES: Capability[] = [
   {
-    icon: BellRingIcon,
+    visualId: "real-time-alerts",
     title: "Real-time alerts",
     body: "Each alert carries the event frame, time and location, and goes straight to the supervisor's phone and dashboard.",
   },
   {
-    icon: FileTextIcon,
+    visualId: "unlimited-reporting",
     title: "Compliance reporting",
     body: "Automated weekly reports show alert trends by site, zone and hazard, ready for safety meetings and audits.",
   },
   {
-    icon: MapPinnedIcon,
+    visualId: "multi-site-dashboard",
     title: "Multi-site view",
     body: "Every project and plant on one map, with open alerts and trends for each site.",
   },
   {
-    icon: CloudIcon,
+    visualId: "edge-engine",
     title: "Deployment that meets data-residency rules",
     body: "Run detection on the edge, on-premise or in the cloud, with regional hosting so video stays where your policies require.",
   },
   {
-    icon: WorkflowIcon,
+    visualId: "custom-use-cases",
     title: "Custom scenarios, two ways",
     body: "Train a dedicated detection model for a site-specific hazard, or describe the scenario in plain language and let the vision language model check for it.",
   },
   {
-    icon: CctvIcon,
+    visualId: "hardware-agnostic",
     title: "Works with the cameras you own",
     body: "Any IP camera from 2MP up, connected over RTSP. No new hardware.",
   },
@@ -198,13 +196,15 @@ const CAPABILITIES = [
 const CASES = [
   {
     industry: "Construction",
-    title: "69.1% fewer non-compliances on a construction site in 16 months",
+    value: "69.1%",
+    claim: "fewer non-compliances on a construction site in 16 months",
     src: "/media/ailytics/stills/open-edge-detection.jpg",
     alt: "Camera view over a building under construction, with workers on an upper floor.",
   },
   {
     industry: "Manufacturing",
-    title: "77% fewer non-compliances at a manufacturing site",
+    value: "77%",
+    claim: "fewer non-compliances at a manufacturing site",
     src: "/media/ailytics/stills/crowding.jpg",
     alt: "Camera view of workers in high-visibility clothing on a factory floor.",
   },
@@ -378,23 +378,7 @@ export default function HomePage() {
               See all use cases
             </Link>
           </div>
-          <ul className={styles.ucGrid}>
-            {USE_CASES.map((uc) => (
-              <li key={uc.id}>
-                <Link href={uc.href} className={styles.ucCard}>
-                  <div className={styles.ucVis}>
-                    <ProjectVisual
-                      fill
-                      id={uc.id}
-                      sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 92vw"
-                    />
-                  </div>
-                  <h3>{uc.title}</h3>
-                  <p>{uc.body}</p>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <UseCaseBento items={USE_CASES} />
         </div>
       </section>
 
@@ -415,18 +399,7 @@ export default function HomePage() {
               See all industries
             </Link>
           </div>
-          <RevealGroup>
-            <ul className={styles.industryGrid}>
-              {INDUSTRIES.map((ind) => (
-                <li key={ind.label} data-reveal>
-                  <Link href={ind.href} className={styles.industryCard}>
-                    <h3>{ind.label}</h3>
-                    <p>{ind.hazards}</p>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </RevealGroup>
+          <IndustryList items={INDUSTRIES} />
         </div>
       </section>
 
@@ -438,17 +411,7 @@ export default function HomePage() {
               Built for EHS reporting, compliance and IT
             </h2>
           </div>
-          <ul className={styles.capGrid}>
-            {CAPABILITIES.map(({ icon: Icon, title, body }) => (
-              <li key={title}>
-                <span className={styles.capIcon}>
-                  <Icon aria-hidden="true" strokeWidth={1.75} />
-                </span>
-                <h3>{title}</h3>
-                <p>{body}</p>
-              </li>
-            ))}
-          </ul>
+          <CapabilitySwitcher items={CAPABILITIES} />
         </div>
       </section>
 
@@ -467,17 +430,20 @@ export default function HomePage() {
           </div>
           <div className={styles.caseGrid}>
             {CASES.map((c) => (
-              <article key={c.title} className={styles.caseCard}>
-                <div className={styles.caseMedia}>
-                  <Image
-                    alt={c.alt}
-                    fill
-                    sizes="(min-width: 1024px) 600px, 92vw"
-                    src={c.src}
-                  />
-                  <span className={styles.caseChip}>{c.industry}</span>
+              <article key={c.value} className={styles.caseCard}>
+                <Image
+                  alt={c.alt}
+                  fill
+                  sizes="(min-width: 1024px) 600px, 92vw"
+                  src={c.src}
+                />
+                <div className={styles.caseText}>
+                  <span className={styles.caseIndustry}>{c.industry}</span>
+                  <strong className={styles.caseValue}>
+                    <CountUp value={c.value} />
+                  </strong>
+                  <h3>{c.claim}</h3>
                 </div>
-                <h3>{c.title}</h3>
               </article>
             ))}
           </div>
@@ -502,9 +468,7 @@ export default function HomePage() {
           <ul className={styles.trustList}>
             {TRUST.map(({ icon: Icon, title, body }) => (
               <li key={title} className={styles.trustCard}>
-                <span className={styles.capIcon}>
-                  <Icon aria-hidden="true" strokeWidth={1.75} />
-                </span>
+                <Icon aria-hidden="true" strokeWidth={1.6} />
                 <div>
                   <h3>{title}</h3>
                   <p>{body}</p>
@@ -531,20 +495,14 @@ export default function HomePage() {
       </section>
 
       {/* 11. Closing banner */}
-      <section className={styles.closing} aria-labelledby="closing-title">
+      <section className={styles.closing}>
         <div className={styles.container}>
-          <div className={styles.banner}>
-            <div>
-              <h2 id="closing-title">See Ailytics on a site like yours</h2>
-              <p>
-                Book a demo and we’ll show you how Ailytics would work on your
-                cameras.
-              </p>
-            </div>
-            <Link href="/contact" className={styles.btnLight}>
-              Request a demo
-            </Link>
-          </div>
+          <CtaBanner
+            buttonText="Request a demo"
+            description="Book a demo and we’ll show you how Ailytics would work on your cameras."
+            href="/contact"
+            title="See Ailytics on a site like yours"
+          />
         </div>
       </section>
     </main>

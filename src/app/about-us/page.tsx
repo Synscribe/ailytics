@@ -13,6 +13,7 @@ import {
   TeamCarousel,
   type TeamPhoto,
 } from "./_components/team-carousel.client";
+import { CountUp } from "@/components/count-up.client";
 
 export const metadata: Metadata = createPageMetadata({
   title: "About Ailytics, Our Growth and Team",
@@ -217,7 +218,7 @@ export default function AboutPage() {
           {STATS.map((stat) => (
             <div className="brand-card p-6 sm:p-8" key={stat.label}>
               <p className="text-5xl leading-none font-normal tracking-[-0.03em] text-signal">
-                {stat.value}
+                <CountUp value={stat.value} />
               </p>
               <h3 className="mt-5 text-title text-ink">{stat.label}</h3>
               <p className="mt-3 text-sm leading-6 text-ink-muted">

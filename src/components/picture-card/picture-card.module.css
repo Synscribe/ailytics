@@ -1,0 +1,115 @@
+.card {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--night);
+  color: #fff;
+  text-decoration: none;
+  isolation: isolate;
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+}
+
+/* The camera stage is 4:3 with overlays placed in percent, so it is sized to
+   cover the tile at its own ratio and centred, never stretched. */
+.vis {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  container-type: size;
+}
+
+.vis > * {
+  inset: auto !important;
+  left: 50% !important;
+  top: 50% !important;
+  width: max(100cqw, 133.34cqh);
+  height: max(75cqw, 100cqh);
+  translate: -50% -50%;
+  transition: scale 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Grey world: the photo is greyscale, the AI's marks keep their colour. */
+.vis img {
+  filter: grayscale(1) contrast(1.06) brightness(1.02);
+  transition: filter 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover .vis img,
+.card:focus-visible .vis img {
+  filter: none;
+}
+
+.card:hover .vis > * {
+  scale: 1.03;
+}
+
+/* Only boxes, zones and their one-word labels show at card size. */
+.vis :global(.camera-badge),
+.vis :global(.camera-detail),
+.vis :global(.camera-event) {
+  display: none !important;
+}
+
+/* A light blur and a teal shade under the text keep it readable. */
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.card::before {
+  backdrop-filter: blur(6px);
+  mask-image: linear-gradient(to top, #000 22%, transparent 44%);
+}
+
+.card::after {
+  background: linear-gradient(
+    to top,
+    rgba(14, 74, 86, 0.78) 0%,
+    rgba(24, 112, 122, 0.42) 26%,
+    rgba(52, 193, 196, 0) 50%
+  );
+}
+
+.text {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 6px;
+  align-self: flex-end;
+  max-width: 44ch;
+  padding: 24px;
+  text-shadow: 0 1px 12px rgba(10, 16, 24, 0.45);
+}
+
+.text h3 {
+  margin: 0;
+  font-size: var(--text-title);
+  line-height: var(--text-title--line-height);
+  font-weight: 600;
+  letter-spacing: var(--text-title--letter-spacing);
+}
+
+.text p {
+  margin: 0;
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
+  color: rgba(255, 255, 255, 0.86);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vis > *,
+  .vis img {
+    transition: none;
+  }
+}

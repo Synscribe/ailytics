@@ -119,6 +119,17 @@ export function DepthStory() {
           ))}
         </ol>
 
+        {/* A dark, blurred copy of Cam 14 fills the screen around the frame
+            as it grows, so wide screens never show white beside the photo. */}
+        <div className={styles.ambient} aria-hidden="true">
+          <Image
+            alt=""
+            fill
+            sizes="50vw"
+            src="/media/ailytics/stills/suspended-load-safe.jpg"
+          />
+        </div>
+
         <div className={styles.viewport}>
           {/* The other feeds on the monitoring wall. They recede and fade as
               Cam 14 grows to full width, before the 3D steps begin. */}

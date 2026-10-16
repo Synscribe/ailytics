@@ -294,7 +294,7 @@ export function getVisualSource(id: VisualId): VisualSource {
 }
 
 const heroFrame =
-  "relative aspect-[4/3] min-w-0 overflow-hidden rounded-[1.75rem] border border-ink/10 bg-paper shadow-[0_24px_70px_rgba(29,41,38,0.07)]";
+  "relative aspect-[4/3] min-w-0 overflow-hidden rounded-lg border border-ink/10 bg-paper shadow-[0_24px_70px_rgba(29,41,38,0.07)]";
 
 /**
  * Renders one validated visual. By default it draws its own hero frame.

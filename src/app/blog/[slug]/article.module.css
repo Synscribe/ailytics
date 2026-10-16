@@ -108,7 +108,7 @@
 }
 
 .prose :not(pre) > code {
-  border-radius: 0.35rem;
+  border-radius: 4px;
   background: var(--muted);
   color: var(--ink);
   padding: 0.12rem 0.35rem;
@@ -117,7 +117,7 @@
 
 .prose pre {
   overflow-x: auto;
-  border-radius: 1rem;
+  border-radius: 8px;
   background: var(--night);
   color: var(--paper);
   padding: 1.25rem;
@@ -129,7 +129,7 @@
   width: 100%;
   height: auto;
   border: 1px solid var(--line);
-  border-radius: 1rem;
+  border-radius: 8px;
 }
 
 .prose figure figcaption {
@@ -166,5 +166,5 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   border: 0;
-  border-radius: 1rem;
+  border-radius: 8px;
 }

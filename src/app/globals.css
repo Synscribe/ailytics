@@ -18,7 +18,7 @@
   --night: #1f3349;
   --alert: #ff7a59;
   --caution: #fbc02d;
-  --radius-card: 1.5rem;
+  --radius-card: 8px;
   --shadow-card: 0 2px 8px rgba(39, 64, 93, 0.035);
   --radius: 0.75rem;
   --background: var(--canvas);
@@ -74,13 +74,15 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  /* One corner rule: 8px for cards, panels and pictures, 4px for small
+     labels and chips. Buttons and pills stay fully round. */
+  --radius-sm: 4px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 8px;
+  --radius-2xl: 8px;
+  --radius-3xl: 8px;
+  --radius-4xl: 8px;
   --font-sans: var(--font-switzer), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-switzer), ui-sans-serif, system-ui, sans-serif;
 }
@@ -343,7 +345,7 @@ button {
   .brand-card {
     background: var(--paper);
     border: 1px solid rgba(39, 64, 93, 0.1);
-    border-radius: 16px;
+    border-radius: 8px;
     box-shadow: 0 2px 8px rgba(39, 64, 93, 0.035);
   }
 
@@ -359,7 +361,7 @@ button {
   }
 
   .brand-banner {
-    border-radius: 16px;
+    border-radius: 8px;
     color: #fff;
     background: linear-gradient(
       225deg,
@@ -368,6 +370,14 @@ button {
       var(--signal-strong) 62%
     );
   }
+}
+
+/* Detail pages: camera views are grey; the AI's marks and screens keep colour. */
+.detail-hero-visual img,
+.detail-hero-visual video,
+.detail-feature-visual img,
+.detail-feature-visual video {
+  filter: grayscale(1) contrast(1.06);
 }
 
 /* Detail pages: the incoming section owns the space between narrative beats. */

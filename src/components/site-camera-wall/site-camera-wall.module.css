@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   border: 1px solid #dce3e8;
-  border-radius: 20px;
+  border-radius: 8px;
   background: white;
   overflow: hidden;
   box-shadow: 0 20px 55px -40px #31455f55;
@@ -55,7 +55,7 @@
   border: 0;
   background: #eef4f6;
   padding: 7px 12px;
-  border-radius: 20px;
+  border-radius: 8px;
   cursor: pointer;
   color: var(--ink);
 }
@@ -78,7 +78,7 @@
   position: relative;
   overflow: hidden;
   border: 0;
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
   padding: 0;
   min-height: 0;
@@ -115,7 +115,7 @@
   position: absolute;
   inset: 0;
   border: 3px solid var(--signal);
-  border-radius: 10px;
+  border-radius: 8px;
 }
 .wallFooter > div {
   display: flex;
@@ -145,7 +145,7 @@
   width: 100%;
   min-height: 0;
   aspect-ratio: 4/3;
-  border-radius: 14px;
+  border-radius: 8px;
   box-shadow: none;
 }
 @media (max-width: 720px) {
