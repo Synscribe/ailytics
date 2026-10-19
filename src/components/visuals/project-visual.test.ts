@@ -55,7 +55,20 @@ describe("project visual inventory", () => {
       expect(VISUAL_IDS).toContain(id);
       const source = getVisualSource(id as (typeof FEATURE_VISUAL_IDS)[number]);
       expect(source.status).toBe("project");
-      expect(source.kind).toBe("component");
+      // Feature visuals are live components, except approved screen
+      // recordings, which must swap to a still frame for reduced motion.
+      if (source.kind === "image") {
+        expect(source.still).toBeTruthy();
+        expect(
+          renderToStaticMarkup(
+            createElement(ProjectVisual, {
+              id: id as (typeof FEATURE_VISUAL_IDS)[number],
+            }),
+          ),
+        ).toContain('media="(prefers-reduced-motion: reduce)"');
+      } else {
+        expect(source.kind).toBe("component");
+      }
       expect(source.motionPattern).toBeTruthy();
     }
   });

@@ -1,7 +1,16 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { BellRingIcon, ClockIcon, MapPinIcon } from "lucide-react";
+import {
+  ChevronDownIcon,
+  ChevronLeftIcon,
+  ClockIcon,
+  EllipsisVerticalIcon,
+  ListChecksIcon,
+  MapPinIcon,
+  PlayIcon,
+  VideoIcon,
+} from "lucide-react";
 import Image from "next/image";
 import styles from "./phone.module.css";
 
@@ -18,17 +27,37 @@ import {
 } from "./_kit";
 import { CamOverlay, Frame } from "./_camera";
 
+/** Earlier notifications already in the list, modelled on the mobile app. */
+const EARLIER = [
+  {
+    title: "Unknown truck entry",
+    body: "An unknown truck entered Gate 1.",
+    time: "8:51 pm",
+  },
+  {
+    title: "New alert",
+    body: "Near heavy machinery at Zone C.",
+    time: "8:51 pm",
+  },
+  {
+    title: "PPE Check generated",
+    body: "Captured at Camera 02.",
+    time: "8:49 pm",
+  },
+];
+
 /**
- * A supervisor's phone: a missing-PPE notification drops in, then opens into
- * the evidence view with the real event frame, time and location. The status
- * stamps reviewed once the supervisor has seen it.
+ * The supervisor's phone, laid out like the mobile app: a PPE Check
+ * notification lands at the top of the list, opens into the record with the
+ * event frame, camera and time, and the record is assigned so it shows in the
+ * activity log.
  */
 export default function RealTimeAlertsVisual() {
   const { ref, phase, cycle, reduce } = useLoop(7, 1150);
-  const banner = phase >= 1 && phase < 3;
+  const arrived = phase >= 1;
   const detail = phase >= 3;
-  const reviewed = phase >= 5;
-  const alert = TONES.human;
+  const assigned = phase >= 5;
+  const brand = TONES.positive;
 
   return (
     <VisualFrame innerRef={ref}>
@@ -41,109 +70,89 @@ export default function RealTimeAlertsVisual() {
         }}
       >
         <div className={styles.status}>
-          <span>9:41</span>
+          <span>8:53</span>
           <i />
           <span>▮▮▮ ▰</span>
         </div>
         <div className={styles.screen}>
-          <div
-            className="flex items-center justify-between border-b px-3 py-2"
-            style={{ borderColor: LINE }}
-          >
-            <span className="text-[12px] font-medium">Alerts</span>
-            <BellRingIcon
+          {/* Notifications list */}
+          <div className="flex items-center gap-1.5 px-2.5 pt-1 pb-1.5">
+            <ChevronLeftIcon aria-hidden="true" className="size-3.5" />
+            <span className="text-[12.5px] font-medium">Notifications</span>
+            <ListChecksIcon
               aria-hidden="true"
-              className="size-3.5"
+              className="ml-auto size-3.5"
               style={{ color: MUTED }}
             />
           </div>
-
-          {/* Older, already-reviewed items sit behind the new alert. */}
-          <div className="flex flex-col gap-1.5 p-2.5">
-            {["Zone A · Camera 02", "Zone C · Camera 07"].map((where) => (
-              <div
-                className="flex items-center gap-2 rounded-lg px-2 py-1.5"
-                key={where}
-                style={{ background: INSET }}
-              >
-                <span
-                  className="size-6 flex-none rounded-md"
-                  style={{ background: LINE }}
-                />
-                <span className="min-w-0 flex-1">
-                  <span
-                    className="block h-1.5 w-3/4 rounded-full"
-                    style={{ background: LINE }}
+          <div
+            className="flex gap-3 border-b px-2.5 text-[10px] font-medium whitespace-nowrap"
+            style={{ borderColor: LINE }}
+          >
+            <span
+              className="border-b-2 pb-1"
+              style={{ borderColor: brand.fg, color: brand.fg }}
+            >
+              All
+            </span>
+            <span style={{ color: MUTED }}>Guardian</span>
+            <span style={{ color: MUTED }}>Insight Vault</span>
+          </div>
+          <div
+            className="flex flex-col gap-1.5 px-2 pt-2"
+            style={{ background: INSET, minHeight: "100%" }}
+          >
+            <AnimatePresence initial={false}>
+              {arrived ? (
+                <motion.div
+                  key={`new-${cycle}`}
+                  animate={{ height: "auto", opacity: 1, y: 0 }}
+                  className="overflow-hidden"
+                  initial={reduce ? false : { height: 0, opacity: 0, y: -12 }}
+                  transition={reduce ? { duration: 0 } : SPRING}
+                >
+                  <Notice
+                    body="Captured at Camera 04."
+                    fresh
+                    time="now"
+                    title="PPE Check generated"
                   />
-                  <span
-                    className="mt-1 block truncate text-[9.5px] font-medium"
-                    style={{ color: MUTED }}
-                  >
-                    {where}
-                  </span>
-                </span>
-              </div>
+                </motion.div>
+              ) : null}
+            </AnimatePresence>
+            {EARLIER.map((n) => (
+              <Notice key={n.title + n.time} {...n} />
             ))}
           </div>
 
-          <AnimatePresence initial={false}>
-            {banner ? (
-              <motion.div
-                key={`banner-${cycle}`}
-                animate={{ y: 0, opacity: 1 }}
-                className="absolute inset-x-2 top-2 flex items-center gap-2 rounded-xl px-2.5 py-2 shadow-md"
-                exit={{ opacity: 0, transition: { duration: 0.2 } }}
-                initial={{ y: -60, opacity: 0 }}
-                style={{
-                  background: BRAND.surface,
-                  border: `1px solid ${LINE}`,
-                }}
-                transition={SPRING}
-              >
-                <span
-                  className="grid size-6 flex-none place-items-center rounded-full"
-                  style={{ background: alert.tint, color: alert.fg }}
-                >
-                  <BellRingIcon aria-hidden="true" className="size-3" />
-                </span>
-                <span className="min-w-0">
-                  <span className="block truncate text-[11.5px] font-medium">
-                    Missing PPE detected
-                  </span>
-                  <span
-                    className="block truncate text-[10px] font-medium"
-                    style={{ color: MUTED }}
-                  >
-                    Gate 2 · Camera 04 · now
-                  </span>
-                </span>
-              </motion.div>
-            ) : null}
-          </AnimatePresence>
-
+          {/* The record the notification opens */}
           <AnimatePresence initial={false}>
             {detail ? (
               <motion.div
                 key={`detail-${cycle}`}
-                animate={{ y: 0, opacity: 1 }}
-                className="absolute inset-x-0 top-0 bottom-0 flex flex-col"
+                animate={{ x: 0, opacity: 1 }}
+                className="absolute inset-0 flex flex-col"
                 exit={{ opacity: 0, transition: { duration: 0.25 } }}
-                initial={reduce ? false : { y: 24, opacity: 0 }}
+                initial={reduce ? false : { x: 40, opacity: 0 }}
                 style={{ background: BRAND.surface }}
-                transition={{ duration: 0.55, ease: EASE }}
+                transition={{ duration: 0.5, ease: EASE }}
               >
-                <div className="px-3 pt-2.5 pb-2">
-                  <span className="block text-[12.5px] font-medium">
-                    No vest, no hard hat
-                  </span>
-                  <span
-                    className="block text-[10px] font-medium"
+                <div className="flex items-center gap-1.5 px-2.5 pt-1 pb-1.5">
+                  <ChevronLeftIcon aria-hidden="true" className="size-3.5" />
+                  <span className="text-[12.5px] font-medium">PPE Check</span>
+                  <EllipsisVerticalIcon
+                    aria-hidden="true"
+                    className="ml-auto size-3.5"
                     style={{ color: MUTED }}
-                  >
-                    Missing PPE
-                  </span>
+                  />
                 </div>
-                <div className="relative min-h-[72px] w-full flex-1">
+                <div className="flex flex-col gap-0.5 px-2.5 pb-2 text-[10px] font-medium">
+                  <span className="text-[11.5px]">Tower site</span>
+                  <Meta icon={MapPinIcon}>Gate 2</Meta>
+                  <Meta icon={VideoIcon}>Camera 04</Meta>
+                  <Meta icon={ClockIcon}>8:53 pm, today</Meta>
+                </div>
+                <div className="relative mx-2 min-h-[70px] flex-1 overflow-hidden rounded-lg">
                   <Image
                     alt=""
                     className="object-cover"
@@ -155,49 +164,73 @@ export default function RealTimeAlertsVisual() {
                     <Frame box={[421, 285, 231, 544]} instant tone="hazard" />
                   </CamOverlay>
                 </div>
-                <div className="flex flex-none flex-col gap-1.5 px-3 py-2.5 text-[10.5px] font-medium">
-                  <span className="flex items-center gap-1.5">
-                    <ClockIcon
-                      aria-hidden="true"
-                      className="size-3"
-                      style={{ color: MUTED }}
-                    />
-                    Just now
+                <div className="flex flex-none items-center gap-1.5 px-2 pt-2">
+                  <span
+                    className="grid size-[24px] flex-none place-items-center rounded-md text-white"
+                    style={{ background: brand.fg }}
+                  >
+                    <PlayIcon aria-hidden="true" className="size-3" />
                   </span>
-                  <span className="flex items-center gap-1.5">
-                    <MapPinIcon
-                      aria-hidden="true"
-                      className="size-3"
-                      style={{ color: MUTED }}
-                    />
-                    Gate 2 · Camera 04
+                  <Select fit>Pending</Select>
+                  <Select>
+                    <span className="relative inline-grid">
+                      <motion.span
+                        animate={{ opacity: assigned ? 0 : 1 }}
+                        className="col-start-1 row-start-1"
+                        initial={false}
+                        transition={{ duration: reduce ? 0 : 0.2 }}
+                      >
+                        Unassigned
+                      </motion.span>
+                      <motion.span
+                        animate={{
+                          opacity: assigned ? 1 : 0,
+                          y: assigned ? 0 : 4,
+                        }}
+                        className="col-start-1 row-start-1"
+                        initial={false}
+                        transition={reduce ? { duration: 0 } : SPRING}
+                      >
+                        Supervisor
+                      </motion.span>
+                    </span>
+                  </Select>
+                </div>
+                <div className="flex-none px-2.5 pt-2 pb-2.5">
+                  <span className="block text-[11px] font-medium">
+                    Activity logs
                   </span>
-                  <span className="relative mt-0.5 h-[20px]">
+                  <div className="relative mt-1 h-[30px]">
                     <motion.span
-                      animate={{ opacity: reviewed ? 0 : 1 }}
-                      className="absolute inset-y-0 left-0 inline-flex items-center rounded-full px-2 text-[10px] font-medium"
+                      animate={{ opacity: assigned ? 0 : 1 }}
+                      className="absolute inset-0 grid place-items-center text-center text-[9.5px] font-medium"
                       initial={false}
-                      style={{ background: alert.tint, color: alert.fg }}
-                      transition={{ duration: 0.3 }}
+                      style={{ color: MUTED }}
+                      transition={{ duration: reduce ? 0 : 0.2 }}
                     >
-                      New
+                      No activity yet
                     </motion.span>
                     <motion.span
                       animate={{
-                        opacity: reviewed ? 1 : 0,
-                        scale: reviewed ? 1 : 0.6,
+                        opacity: assigned ? 1 : 0,
+                        y: assigned ? 0 : 6,
+                        filter: assigned ? "blur(0px)" : "blur(6px)",
                       }}
-                      className="absolute inset-y-0 left-0 inline-flex items-center rounded-full px-2 text-[10px] font-medium"
+                      className="absolute inset-0 flex items-center gap-1.5 rounded-md px-2 text-[9.5px] font-medium"
                       initial={false}
-                      style={{
-                        background: TONES.positive.tint,
-                        color: TONES.positive.fg,
-                      }}
-                      transition={reduce ? { duration: 0 } : SPRING}
+                      style={{ background: INSET }}
+                      transition={{ duration: reduce ? 0 : 0.5, ease: EASE }}
                     >
-                      Reviewed
+                      <i
+                        className="size-1.5 flex-none rounded-full"
+                        style={{ background: brand.solid }}
+                      />
+                      Assigned to Supervisor
+                      <span className="ml-auto" style={{ color: MUTED }}>
+                        now
+                      </span>
                     </motion.span>
-                  </span>
+                  </div>
                 </div>
               </motion.div>
             ) : null}
@@ -206,5 +239,90 @@ export default function RealTimeAlertsVisual() {
         <div className={styles.homeIndicator} />
       </div>
     </VisualFrame>
+  );
+}
+
+function Notice({
+  title,
+  body,
+  time,
+  fresh = false,
+}: {
+  title: string;
+  body: string;
+  time: string;
+  fresh?: boolean;
+}) {
+  return (
+    <div
+      className="rounded-lg px-2.5 py-2"
+      style={{
+        background: BRAND.surface,
+        boxShadow: fresh
+          ? `0 0 0 1px color-mix(in srgb, ${TONES.positive.solid} 55%, transparent)`
+          : undefined,
+      }}
+    >
+      <span className="flex items-center gap-1.5">
+        <span className="truncate text-[11px] font-medium">{title}</span>
+        <span
+          className="ml-auto flex-none text-[9px] font-medium"
+          style={{ color: MUTED }}
+        >
+          {time}
+        </span>
+        <i
+          className="size-1.5 flex-none rounded-full"
+          style={{ background: TONES.positive.solid }}
+        />
+      </span>
+      <span
+        className="mt-0.5 block truncate text-[9.5px] font-medium"
+        style={{ color: MUTED }}
+      >
+        {body}
+      </span>
+    </div>
+  );
+}
+
+function Meta({
+  icon: Icon,
+  children,
+}: {
+  icon: React.ComponentType<{
+    className?: string;
+    style?: React.CSSProperties;
+  }>;
+  children: string;
+}) {
+  return (
+    <span className="flex items-center gap-1.5">
+      <Icon className="size-3 flex-none" style={{ color: MUTED }} />
+      {children}
+    </span>
+  );
+}
+
+function Select({
+  fit = false,
+  children,
+}: {
+  /** Size to the label instead of sharing the row. */
+  fit?: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <span
+      className={`flex h-[24px] min-w-0 items-center justify-between gap-0.5 rounded-md border px-1 text-[9px] font-medium ${fit ? "flex-none" : "flex-1"}`}
+      style={{ borderColor: LINE }}
+    >
+      <span className="truncate">{children}</span>
+      <ChevronDownIcon
+        aria-hidden="true"
+        className="size-2.5 flex-none"
+        style={{ color: MUTED }}
+      />
+    </span>
   );
 }

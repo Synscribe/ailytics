@@ -1771,11 +1771,6 @@
   animation: wipe 6s ease-in-out infinite;
 }
 
-/* Night footage stays black and white; the daylight half keeps its colour. */
-.night img {
-  filter: grayscale(1) contrast(1.06);
-}
-
 .splitLine {
   position: absolute;
   top: 0;
