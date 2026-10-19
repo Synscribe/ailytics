@@ -107,9 +107,11 @@ describe("Markdown representations", () => {
   it("maps canonical paths to optional nested Markdown overrides", () => {
     const root = "/tmp/example-markdown-root";
 
-    expect(markdownOverridePath("/", root)).toBe(path.join(root, "index.md"));
+    expect(markdownOverridePath("/", root)).toBe(
+      path.resolve(root, "index.md"),
+    );
     expect(markdownOverridePath("/use-cases/example/", root)).toBe(
-      path.join(root, "use-cases/example.md"),
+      path.resolve(root, "use-cases/example.md"),
     );
     expect(() => markdownOverridePath("/%2e%2e/private", root)).toThrow(
       /Unsafe pathname/,

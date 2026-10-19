@@ -10,7 +10,7 @@
   top: 64px;
   height: calc(100vh - 64px);
   overflow: hidden;
-  background: #3d636c;
+  background: var(--panel);
 }
 
 .pinned .stage {
@@ -20,7 +20,7 @@
   border-radius: 0;
 }
 
-/* Teal shade behind the copy, the same tone as the picture cards. It sits
+/* Slate shade behind the copy, the same tone as the picture cards. It sits
    over the photo but under the AI's marks, so the marks stay bright. */
 .pinned .canvas::after {
   content: "";
@@ -29,10 +29,10 @@
   z-index: 1;
   background: linear-gradient(
     100deg,
-    rgba(14, 74, 86, 0.92) 0%,
-    rgba(18, 88, 99, 0.78) 30%,
-    rgba(24, 112, 122, 0.25) 55%,
-    rgba(24, 112, 122, 0) 72%
+    rgba(39, 64, 93, 0.92) 0%,
+    rgba(38, 81, 124, 0.78) 30%,
+    rgba(62, 115, 158, 0.25) 55%,
+    rgba(62, 115, 158, 0) 72%
   );
   pointer-events: none;
 }
@@ -43,7 +43,7 @@
   margin-top: 40px;
   padding: 10px;
   border-radius: 8px;
-  background: linear-gradient(135deg, #4a6c74 0%, #2f6a73 45%, #1d5561 100%);
+  background: var(--panel-gradient);
 }
 
 .stage {
@@ -73,7 +73,6 @@
 .canvas img {
   z-index: 0;
   object-fit: cover;
-  filter: grayscale(1) contrast(1.06);
 }
 
 .svg {

@@ -1,0 +1,2 @@
+# Check out LF on every OS so Prettier and generated files match the repo.
+* text=auto eol=lf

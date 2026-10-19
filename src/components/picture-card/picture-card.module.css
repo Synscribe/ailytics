@@ -57,7 +57,7 @@
   display: none !important;
 }
 
-/* A light blur and a teal shade under the text keep it readable. */
+/* A light blur and a slate shade under the text keep it readable. */
 .card::before,
 .card::after {
   content: "";
@@ -75,8 +75,8 @@
 .card::after {
   background: linear-gradient(
     to top,
-    rgba(14, 74, 86, 0.78) 0%,
-    rgba(24, 112, 122, 0.42) 26%,
+    rgba(39, 64, 93, 0.78) 0%,
+    rgba(62, 115, 158, 0.42) 26%,
     rgba(52, 193, 196, 0) 50%
   );
 }

@@ -6,6 +6,7 @@ import { siteConfig } from "@/config/site";
 import { defaultOrganizationLogoPath } from "@/lib/seo";
 
 import { MobileNav } from "./mobile-nav";
+import { NavDropdown } from "./nav-dropdown";
 
 const primaryAction = {
   href: "/contact",
@@ -27,20 +28,24 @@ export function SiteHeader() {
             height={32}
             priority
             src={defaultOrganizationLogoPath}
-            width={100}
+            width={120}
           />
         </Link>
 
         <nav aria-label="Primary navigation" className="hidden md:block">
           <ul className="flex items-center gap-7 text-sm text-ink-muted">
             {siteConfig.navigation.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="transition-colors hover:text-ink"
-                >
-                  {item.label}
-                </Link>
+              <li key={item.label}>
+                {"links" in item ? (
+                  <NavDropdown group={item} />
+                ) : (
+                  <Link
+                    href={item.href}
+                    className="transition-colors hover:text-ink"
+                  >
+                    {item.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>

@@ -97,17 +97,38 @@ export function MobileNav({ navigation, primaryAction }: MobileNavProps) {
           >
             <nav aria-label="Mobile navigation">
               <ul className="space-y-1">
-                {navigation.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      className="block rounded-xl px-3 py-2.5 text-sm font-medium text-ink-muted hover:bg-canvas hover:text-ink"
-                      href={item.href}
-                      onClick={() => setOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
+                {navigation.map((item) =>
+                  "links" in item ? (
+                    <li key={item.label}>
+                      <p className="px-3 pt-2.5 pb-1 text-xs font-medium text-ink-faint">
+                        {item.label}
+                      </p>
+                      <ul className="space-y-1">
+                        {item.links.map((link) => (
+                          <li key={link.href}>
+                            <Link
+                              className="block rounded-xl py-2 pr-3 pl-6 text-sm font-medium text-ink-muted hover:bg-canvas hover:text-ink"
+                              href={link.href}
+                              onClick={() => setOpen(false)}
+                            >
+                              {link.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </li>
+                  ) : (
+                    <li key={item.href}>
+                      <Link
+                        className="block rounded-xl px-3 py-2.5 text-sm font-medium text-ink-muted hover:bg-canvas hover:text-ink"
+                        href={item.href}
+                        onClick={() => setOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  ),
+                )}
               </ul>
             </nav>
             <Link

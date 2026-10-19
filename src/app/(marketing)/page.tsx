@@ -58,7 +58,7 @@ const FEATURES: Feature[] = [
   {
     id: "harsh-conditions",
     title: "Accurate in rain, dust and low light",
-    body: "Built for live outdoor sites: night shifts, rain, dust and long-range cameras, with 80–95% detection accuracy in the field.",
+    body: "Built for live outdoor sites: night shifts, rain, dust and long-range cameras, with 85–99% detection accuracy in the field.",
     visual: <HarshVisual />,
   },
   {
@@ -184,7 +184,7 @@ const CAPABILITIES: Capability[] = [
   {
     visualId: "custom-use-cases",
     title: "Custom scenarios, two ways",
-    body: "Train a dedicated detection model for a site-specific hazard, or describe the scenario in plain language and let the vision language model check for it.",
+    body: "Build your own custom use case, or describe the scenario in plain language and let the vision language model check for it.",
   },
   {
     visualId: "hardware-agnostic",
@@ -252,7 +252,7 @@ const FAQS = [
   {
     question: "How accurate is it?",
     answer:
-      "Ailytics maintains 80–95% detection accuracy across its projects in the field, and each use case can be tuned to your site.",
+      "Up to 99% detection accuracy in the field, depending on the scenario. Each use case can be tuned to your site.",
   },
   {
     question: "How long does it take to go live?",
@@ -320,7 +320,10 @@ export default function HomePage() {
       <DepthStory />
 
       {/* 5. Features */}
-      <section className={styles.features} aria-labelledby="features-title">
+      <section
+        className={`${styles.features} band-alt`}
+        aria-labelledby="features-title"
+      >
         <div className={styles.container}>
           <div className={styles.headRow}>
             <div className={styles.secHead}>
@@ -345,7 +348,7 @@ export default function HomePage() {
                 style={{ "--i": i } as never}
                 aria-labelledby={`${f.id}-title`}
               >
-                <div className={styles.fvis}>{f.visual}</div>
+                <div className={`${styles.fvis} surface-light`}>{f.visual}</div>
                 <div className={styles.ftext}>
                   <h3 id={`${f.id}-title`}>{f.title}</h3>
                   <p>{f.body}</p>
@@ -383,7 +386,10 @@ export default function HomePage() {
       </section>
 
       {/* 7. Industries */}
-      <section className={styles.industries} aria-labelledby="industries-title">
+      <section
+        className={`${styles.industries} band-alt`}
+        aria-labelledby="industries-title"
+      >
         <div className={styles.container}>
           <div className={styles.headRow}>
             <div className={styles.secHead}>
@@ -416,7 +422,10 @@ export default function HomePage() {
       </section>
 
       {/* 8. Case studies */}
-      <section className={styles.cases} aria-labelledby="cases-title">
+      <section
+        className={`${styles.cases} band-alt`}
+        aria-labelledby="cases-title"
+      >
         <div className={styles.container}>
           <div className={styles.headRow}>
             <div className={styles.secHead}>
@@ -480,7 +489,7 @@ export default function HomePage() {
       </section>
 
       {/* 10. FAQ */}
-      <section className={styles.faq} aria-labelledby="faq-title">
+      <section className={`${styles.faq} band-alt`} aria-labelledby="faq-title">
         <div className={`${styles.container} ${styles.faqGrid}`}>
           <div className={styles.secHead}>
             <h2 id="faq-title" className={styles.h2}>

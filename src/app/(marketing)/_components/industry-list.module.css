@@ -28,7 +28,7 @@
   line-height: 1.1;
   font-weight: 400;
   letter-spacing: -0.03em;
-  color: rgba(39, 64, 93, 0.3);
+  color: var(--ink-dim);
   transition: color 0.3s;
 }
 
@@ -64,7 +64,6 @@
 
 .stage img {
   object-fit: cover;
-  filter: grayscale(1) contrast(1.06);
   opacity: 0;
   scale: 1.04;
   transition:
@@ -82,7 +81,7 @@
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(14, 74, 86, 0.5),
+    rgba(39, 64, 93, 0.5),
     rgba(52, 193, 196, 0) 50%
   );
 }

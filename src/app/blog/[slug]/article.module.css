@@ -20,7 +20,8 @@
   font-family: var(--font-display);
   font-weight: 500;
   letter-spacing: -0.02em;
-  text-wrap: balance;
+  /* Fill each line before wrapping; balance broke long headings early. */
+  text-wrap: pretty;
   scroll-margin-top: 6rem;
 }
 

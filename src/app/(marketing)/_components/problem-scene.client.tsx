@@ -118,7 +118,7 @@ export function ProblemScene() {
       ref={ref}
       id="problem"
       aria-labelledby="problem-title"
-      className={styles.problem}
+      className={`${styles.problem} band-alt`}
       data-mode={live ? "scroll" : "static"}
     >
       <div className={styles.problemPin}>
@@ -161,7 +161,7 @@ export function ProblemScene() {
         </div>
 
         <div
-          className={styles.pcard}
+          className={`${styles.pcard} surface-light`}
           data-on={cardOn ? "true" : undefined}
           data-solved={solved ? "true" : undefined}
           role="img"

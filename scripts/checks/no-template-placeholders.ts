@@ -54,7 +54,7 @@ export async function checkNoTemplatePlaceholders(
   const findings: AutomatedCheckFinding[] = [];
 
   for (const file of await referencedFiles(item, cwd)) {
-    const relativeFile = path.relative(cwd, file);
+    const relativeFile = path.relative(cwd, file).split(path.sep).join("/");
     const placeholderFilename = path
       .basename(file)
       .toLowerCase()

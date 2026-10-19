@@ -4,18 +4,54 @@
 
 @custom-variant dark (&:is(.dark *));
 
-:root {
-  --canvas: #f9fbfd;
-  --paper: #ffffff;
+/* Text tokens. A grey section band darkens them for contrast; .surface-light
+   puts them back on light cards inside a band. */
+:root,
+.surface-light {
   --ink: #27405d;
   --ink-muted: #52667d;
   --ink-faint: #7d8c9e;
+  /* Unselected items in scroll lists, faded so the active one stands out. */
+  --ink-dim: rgba(39, 64, 93, 0.32);
   --line: rgba(39, 64, 93, 0.12);
+}
+
+.surface-light {
+  color: var(--ink);
+}
+
+/* Sections alternate between the light canvas and this brand grey. Text
+   steps one shade darker so body copy keeps 4.5:1 contrast on the grey. */
+.band-alt {
+  --ink: #1f3349;
+  --ink-muted: #27405d;
+  --ink-faint: #2e4560;
+  /* A light fade disappears on the grey, so unselected items stay stronger. */
+  --ink-dim: rgba(31, 51, 73, 0.72);
+  --line: rgba(39, 64, 93, 0.18);
+  background: var(--band-alt);
+  color: var(--ink);
+}
+
+:root {
+  --canvas: #f9fbfd;
+  --paper: #ffffff;
+  --band-alt: #a9b3be;
   --signal: #34c1c4;
   --signal-strong: #27405d;
   --mint: #aee6e7;
   --mint-strong: #34c1c4;
   --night: #1f3349;
+  /* Brand slate panels: feature cards, the capability switcher and pinned scenes. */
+  --slate-light: #3e739e;
+  --slate-mid: #26517c;
+  --panel: var(--slate-mid);
+  --panel-gradient: linear-gradient(
+    135deg,
+    var(--slate-light) 0%,
+    var(--slate-mid) 45%,
+    var(--ink) 100%
+  );
   --alert: #ff7a59;
   --caution: #fbc02d;
   --radius-card: 8px;
@@ -372,32 +408,30 @@ button {
   }
 }
 
-/* Detail pages: camera views are grey; the AI's marks and screens keep colour. */
-.detail-hero-visual img,
-.detail-hero-visual video,
-.detail-feature-visual img,
-.detail-feature-visual video {
-  filter: grayscale(1) contrast(1.06);
+/* Blog and news article headers sit on the brand slate texture with white
+   text. The article body below stays on the light page for easy reading. */
+.slate-hero {
+  --ink: #fff;
+  --ink-muted: rgba(255, 255, 255, 0.84);
+  --ink-faint: rgba(255, 255, 255, 0.6);
+  background: #27405d url("/media/ailytics/article-slate.webp") center / cover;
+  color: var(--ink);
 }
 
-/* Detail pages: the incoming section owns the space between narrative beats. */
+/* Full-bleed scenes use 100vw, which includes the scrollbar; clip sideways so
+   the page never scrolls horizontally. */
+.detail-page {
+  overflow-x: clip;
+}
+
+/* Detail pages: even padding so alternating section bands look balanced. */
 .detail-page .detail-section {
   scroll-margin-top: 6rem;
-  padding: 160px 0 0;
-}
-.detail-page #problems {
-  padding-top: 40px;
-}
-.detail-page > section:last-child {
-  padding-top: 160px;
+  padding: 120px 0;
 }
 @media (max-width: 720px) {
-  .detail-page .detail-section,
-  .detail-page > section:last-child {
-    padding-top: 80px;
-  }
-  .detail-page #problems {
-    padding-top: 0;
+  .detail-page .detail-section {
+    padding: 80px 0;
   }
 }
 

@@ -103,7 +103,7 @@ export function DepthStory() {
         <div className={styles.storyIntro}>
           <p className={styles.storyKicker}>How it works</p>
           <h2 id="how-title" className={styles.storyTitle}>
-            From one camera to real distance
+            Understand depth from a single camera
           </h2>
         </div>
 

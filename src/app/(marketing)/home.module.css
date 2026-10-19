@@ -13,6 +13,19 @@
   color: var(--ink);
 }
 
+/* Home-only tokens follow the section band too. */
+.page :global(.band-alt) {
+  --faint: rgba(31, 51, 73, 0.72);
+  --past: rgba(31, 51, 73, 0.86);
+  --card-border: 1px solid rgba(39, 64, 93, 0.14);
+}
+
+.page :global(.surface-light) {
+  --faint: #c7cfd8;
+  --past: #9aa7b5;
+  --card-border: 1px solid rgba(39, 64, 93, 0.1);
+}
+
 .page h1,
 .page h2,
 .page h3 {
@@ -863,7 +876,7 @@
 
 /* Scroll mode: the scene pins while scroll drives it. */
 .problem[data-mode="scroll"] {
-  height: 520vh;
+  height: 340vh; /* 240vh of scroll drives the scene. */
   padding: 0;
 }
 
@@ -1266,7 +1279,7 @@
 
 /* Scroll mode: uncropped footage with soft edges and captions over a scrim. */
 .story[data-mode="scroll"] {
-  height: 640vh;
+  height: 532vh; /* 432vh of scroll drives the story. */
   padding: 0;
 }
 
@@ -1316,7 +1329,7 @@
   inset: 0;
   z-index: 0;
   overflow: hidden;
-  background: #3d636c;
+  background: var(--panel);
   opacity: var(--e);
   pointer-events: none;
 }
@@ -1327,15 +1340,15 @@
   filter: blur(36px) grayscale(1) brightness(0.8);
 }
 
-/* The same grey-and-teal shade as the picture cards. */
+/* The same slate shade as the picture cards. */
 .story[data-mode="scroll"] .ambient::after {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(14, 74, 86, 0.82),
-    rgba(24, 112, 122, 0.55)
+    rgba(39, 64, 93, 0.82),
+    rgba(62, 115, 158, 0.55)
   );
 }
 
@@ -1504,7 +1517,7 @@
 /* ---------------------------------------------------------------- Features */
 
 .features {
-  padding: 160px 0 0;
+  padding: 120px 0;
 }
 
 .fstack {
@@ -1524,17 +1537,10 @@
   align-items: center;
   padding: 10px;
   scroll-margin-top: calc(var(--header) + 24px);
-  /* The grey-teal of the picture cards; the page around it stays light. */
-  background: linear-gradient(135deg, #4a6c74 0%, #2f6a73 45%, #1d5561 100%);
+  /* The slate of the picture cards; the page around it stays light. */
+  background: var(--panel-gradient);
   border-radius: 8px;
-  box-shadow: 0 -10px 40px -24px rgba(29, 85, 97, 0.45);
-}
-
-/* Grey world: footage and photos lose their colour, the AI's marks and the
-   interface keep theirs. */
-.fvis img,
-.fvis video {
-  filter: grayscale(1) contrast(1.06);
+  box-shadow: 0 -10px 40px -24px rgba(39, 64, 93, 0.45);
 }
 
 .fvis {
@@ -1765,6 +1771,11 @@
   animation: wipe 6s ease-in-out infinite;
 }
 
+/* Night footage stays black and white; the daylight half keeps its colour. */
+.night img {
+  filter: grayscale(1) contrast(1.06);
+}
+
 .splitLine {
   position: absolute;
   top: 0;
@@ -1959,6 +1970,38 @@
   font-weight: 500;
   background: var(--ink);
   color: #fff;
+}
+
+/* The model's reasoning, styled after its own report: verdict, finding, fix. */
+.reason {
+  display: grid;
+  gap: 4px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: var(--text-ui-sm);
+  line-height: 1.45;
+  background: var(--night);
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.reason p {
+  margin: 0;
+}
+
+.verdict {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--alert);
+}
+
+.reason b {
+  font-weight: 600;
+  color: var(--alert);
+}
+
+.reason .fix b {
+  color: var(--caution);
 }
 
 /* 4. Every site */
@@ -2280,7 +2323,7 @@ tr[data-hz] .alertCount {
 /* ---------------------------------------------------------------- Use cases */
 
 .useCases {
-  padding: 160px 0 0;
+  padding: 120px 0;
 }
 
 .ucTabs {
@@ -2315,7 +2358,7 @@ tr[data-hz] .alertCount {
 }
 
 .industries {
-  padding: 160px 0 0;
+  padding: 120px 0;
 }
 
 .headRow {
@@ -2332,7 +2375,7 @@ tr[data-hz] .alertCount {
 /* ---------------------------------------------------------------- Capabilities */
 
 .capabilities {
-  padding: 160px 0 0;
+  padding: 120px 0;
 }
 
 .trustCard h3 {
@@ -2353,7 +2396,7 @@ tr[data-hz] .alertCount {
 /* ---------------------------------------------------------------- Case studies */
 
 .cases {
-  padding: 160px 0 0;
+  padding: 120px 0;
 }
 
 .caseGrid {
@@ -2363,7 +2406,7 @@ tr[data-hz] .alertCount {
   margin-top: 48px;
 }
 
-/* Picture cards: grey site photo, teal shade, the result first. */
+/* Picture cards: grey site photo, slate shade, the result first. */
 .caseCard {
   position: relative;
   display: flex;
@@ -2392,8 +2435,8 @@ tr[data-hz] .alertCount {
   z-index: 1;
   background: linear-gradient(
     to top,
-    rgba(14, 74, 86, 0.82) 0%,
-    rgba(24, 112, 122, 0.46) 32%,
+    rgba(39, 64, 93, 0.82) 0%,
+    rgba(62, 115, 158, 0.46) 32%,
     rgba(52, 193, 196, 0) 60%
   );
 }
@@ -2432,7 +2475,7 @@ tr[data-hz] .alertCount {
 /* ---------------------------------------------------------------- Security */
 
 .trust {
-  padding: 160px 0 96px;
+  padding: 120px 0;
 }
 
 .trustGrid {
@@ -2480,7 +2523,7 @@ tr[data-hz] .alertCount {
 /* ---------------------------------------------------------------- FAQ */
 
 .faq {
-  padding: 96px 0;
+  padding: 120px 0;
 }
 
 .faqGrid {
@@ -2493,7 +2536,7 @@ tr[data-hz] .alertCount {
 /* ---------------------------------------------------------------- Closing banner */
 
 .closing {
-  padding: 48px 0 120px;
+  padding: 120px 0;
 }
 
 /* ---------------------------------------------------------------- Responsive */
@@ -2640,6 +2683,7 @@ tr[data-hz] .alertCount {
   }
 
   .features,
+  .useCases,
   .industries {
     padding: 80px 0;
   }
@@ -2647,7 +2691,8 @@ tr[data-hz] .alertCount {
   .capabilities,
   .cases,
   .trust,
-  .faq {
+  .faq,
+  .closing {
     padding: 72px 0;
   }
 

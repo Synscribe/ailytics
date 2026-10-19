@@ -50,7 +50,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 2px;
-  background: rgba(39, 64, 93, 0.12);
+  background: var(--line);
 }
 
 .bar span {
@@ -67,7 +67,7 @@
   line-height: 1.25;
   font-weight: 400;
   letter-spacing: -0.02em;
-  color: rgba(39, 64, 93, 0.32);
+  color: var(--ink-dim);
   transition: color 0.3s;
 }
 
@@ -101,11 +101,6 @@
   overflow: hidden;
   border-radius: 8px;
   background: var(--muted);
-}
-
-.stage img,
-.stage video {
-  filter: grayscale(1) contrast(1.06);
 }
 
 @media (max-width: 1023px) {

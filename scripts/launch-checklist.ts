@@ -233,7 +233,11 @@ function isResolved(status: ChecklistStatus): boolean {
 }
 
 function relativeRecipeLink(recipe: string): string {
-  const relative = path.relative(path.dirname(CHECKLIST_MARKDOWN_PATH), recipe);
+  // Markdown links need forward slashes on every OS.
+  const relative = path.posix.relative(
+    path.posix.dirname(CHECKLIST_MARKDOWN_PATH),
+    recipe,
+  );
   return relative.startsWith(".") ? relative : `./${relative}`;
 }
 

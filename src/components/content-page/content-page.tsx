@@ -127,14 +127,14 @@ export function ContentPage({
             </p>
           </div>
 
-          <div className="detail-hero-visual min-w-0">
+          <div className="min-w-0">
             <ProjectVisual id={heroVisualId} priority />
           </div>
         </div>
       </section>
       <CustomerProof />
 
-      <section id="problems" className="detail-section">
+      <section id="problems" className="detail-section band-alt">
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
           <ScrollSwitcher
             heading={
@@ -164,7 +164,7 @@ export function ContentPage({
         </div>
       </section>
 
-      <section id="features" className="detail-section">
+      <section id="features" className="detail-section band-alt">
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
           <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
             <h2 className={sectionHeading}>{content.features.title}</h2>
@@ -224,7 +224,7 @@ export function ContentPage({
                       }
                     >
                       <div
-                        className={`relative w-full overflow-hidden ${item.id === "real-time-alerts" ? "h-[440px] lg:aspect-[4/3] lg:h-auto" : "detail-feature-visual aspect-[4/3] rounded-lg bg-muted"}`}
+                        className={`relative w-full overflow-hidden ${item.id === "real-time-alerts" ? "h-[440px] lg:aspect-[4/3] lg:h-auto" : "aspect-[4/3] rounded-lg bg-muted"}`}
                       >
                         <ProjectVisual
                           fill
@@ -250,7 +250,7 @@ export function ContentPage({
       </section>
 
       {related ? (
-        <section id="related" className="detail-section">
+        <section id="related" className="detail-section band-alt">
           <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
             <h2 className={sectionHeading}>{related.title}</h2>
             <div className="mt-10 grid gap-4 md:grid-cols-2">
@@ -274,7 +274,9 @@ export function ContentPage({
         </section>
       ) : null}
 
-      <section className="pt-12 pb-28 sm:pb-32">
+      {/* Bands alternate after the hero, so the banner takes grey when there
+          is no related section above it. */}
+      <section className={`detail-section${related ? "" : " band-alt"}`}>
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
           <CtaBanner
             buttonText={content.cta.buttonText}
