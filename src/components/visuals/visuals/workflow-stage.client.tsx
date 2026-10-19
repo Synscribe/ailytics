@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { Rules, Reports, Sites } from "./workflows.client";
+import { Rules, Reports } from "./workflows.client";
 
 function Stage({ children }: { children: ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -48,13 +48,6 @@ export function ReportsVisual() {
   return (
     <Stage>
       <Reports />
-    </Stage>
-  );
-}
-export function SitesVisual() {
-  return (
-    <Stage>
-      <Sites />
     </Stage>
   );
 }

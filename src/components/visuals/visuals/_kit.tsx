@@ -147,7 +147,10 @@ export function Rise({
  * narrow card, so a plate never overflows and never looks lost. The server
  * render and no-JS view keep the natural size.
  */
-function useFitScale(node: React.RefObject<HTMLDivElement | null>) {
+function useFitScale(
+  node: React.RefObject<HTMLDivElement | null>,
+  minScale = 0.7,
+) {
   const [scale, setScale] = useState(1);
 
   useEffect(() => {
@@ -164,14 +167,14 @@ function useFitScale(node: React.RefObject<HTMLDivElement | null>) {
         (stage.clientWidth - padX) / el.offsetWidth,
         (stage.clientHeight - padY) / el.offsetHeight,
       );
-      setScale(Math.max(0.7, Math.min(1.45, room)));
+      setScale(Math.max(minScale, Math.min(1.45, room)));
     };
     fit();
     const observer = new ResizeObserver(fit);
     observer.observe(stage);
     observer.observe(el);
     return () => observer.disconnect();
-  }, [node]);
+  }, [node, minScale]);
 
   return scale;
 }
@@ -179,15 +182,21 @@ function useFitScale(node: React.RefObject<HTMLDivElement | null>) {
 export function Plate({
   className,
   maxWidth,
+  minScale,
   children,
 }: {
   className?: string;
   /** Override the standard plate width — the hero is wider than a feature card. */
   maxWidth?: string;
+  /**
+   * How far the plate may shrink to fit its stage. Lower it for a dense,
+   * fixed-width layout that should scale like a screenshot instead of wrapping.
+   */
+  minScale?: number;
   children: React.ReactNode;
 }) {
   const own = useRef<HTMLDivElement>(null);
-  const scale = useFitScale(own);
+  const scale = useFitScale(own, minScale);
   return (
     <div
       ref={own}

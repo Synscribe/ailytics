@@ -11,7 +11,7 @@
   background: var(--panel-gradient);
 }
 
-.switcher ul {
+.switcher > ul {
   display: grid;
   color: #fff;
   margin: 0;
@@ -19,7 +19,7 @@
   list-style: none;
 }
 
-.switcher button {
+.switcher > ul button {
   all: unset;
   display: grid;
   gap: 6px;
@@ -28,7 +28,7 @@
   cursor: pointer;
 }
 
-.switcher button:focus-visible {
+.switcher > ul button:focus-visible {
   outline: 2px solid var(--mint);
   outline-offset: 4px;
   border-radius: 4px;
@@ -57,11 +57,11 @@
     opacity 0.3s;
 }
 
-.switcher button[data-active] .title {
+.switcher > ul button[data-active] .title {
   color: #fff;
 }
 
-.switcher button[data-active] .body {
+.switcher > ul button[data-active] .body {
   max-height: 8em;
   opacity: 1;
 }

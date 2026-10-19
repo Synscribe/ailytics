@@ -1,11 +1,7 @@
-import {
-  RulesVisual,
-  ReportsVisual,
-  SitesVisual,
-} from "./visuals/workflow-stage.client";
+import { RulesVisual, ReportsVisual } from "./visuals/workflow-stage.client";
 import visualSystem from "./visual-system.module.css";
 import type { ComponentType } from "react";
-import Image, { type ImageProps } from "next/image";
+import Image, { getImageProps, type ImageProps } from "next/image";
 
 import { VISUAL_IDS, type VisualId } from "../../lib/visuals";
 
@@ -53,6 +49,13 @@ type ImageVisualSource = VisualMetadata & {
   kind: "image";
   src: ImageProps["src"];
   alt: string;
+  /**
+   * For an animated image: a still frame shown instead when the visitor
+   * prefers reduced motion. Animated files are served as-is, unoptimized.
+   */
+  still?: string;
+  /** "contain" letterboxes a screen recording instead of cropping it. */
+  fit?: "cover" | "contain";
 };
 
 export type VisualSource = ComponentVisualSource | ImageVisualSource;
@@ -218,10 +221,11 @@ const visualSources: Record<VisualId, VisualSource> = {
   "man-hour-tracking": {
     ...stagedComponent,
     label: "Worker working and idle time",
-    motionPattern: "worker rows fill working or idle as the shift clock steps",
+    motionPattern:
+      "summary cards count up, idle bars grow against the team average, rows stamp their status",
     component: ManHourTrackingVisual,
     stage: {
-      alt: "A sample day shift for three workers in one zone, each row painted working or idle hour by hour, with working and idle totals for the zone.",
+      alt: "A workload dashboard for a sample week: summary cards, then idle hours per worker against the dashed team average, with three workers marked high idle.",
     },
   },
   "machinery-usage": {
@@ -254,11 +258,12 @@ const visualSources: Record<VisualId, VisualSource> = {
   },
   "real-time-alerts": {
     ...stagedComponent,
-    label: "Missing PPE alert on a phone",
-    motionPattern: "notification drops in and expands",
+    label: "PPE Check alert on a phone",
+    motionPattern:
+      "notification lands in the list, opens the record, and the record is assigned",
     component: RealTimeAlertsVisual,
     stage: {
-      alt: "A phone receives a missing PPE alert and opens it to show the event frame, time and location.",
+      alt: "A phone's notification list receives a PPE Check, which opens to show the event frame, camera, time, and an assignment in the activity log.",
     },
   },
   "unlimited-reporting": {
@@ -272,14 +277,14 @@ const visualSources: Record<VisualId, VisualSource> = {
     },
   },
   "multi-site-dashboard": {
-    ...stagedComponent,
+    kind: "image",
+    status: "project",
     label: "Every site on one map",
-    motionPattern: "selected site updates camera evidence and open alerts",
-    component: SitesVisual,
-    interactive: true,
-    stage: {
-      alt: "Interactive map of illustrative sites. Select a site to see its camera evidence and open alerts.",
-    },
+    motionPattern: "screen recording: sites are hovered, then opened",
+    src: "/media/ailytics/multi-site-global-view.webp",
+    still: "/media/ailytics/multi-site-global-view-still.webp",
+    fit: "contain",
+    alt: "The Ailytics Global View: sites on a map with an overall safety score, and a selected site opened to show its safety score, cameras and 30-day trend.",
   },
 };
 
@@ -341,11 +346,46 @@ export function ProjectVisual({
     );
   }
 
+  const fit = source.fit === "contain" ? "object-contain" : "object-cover";
+
+  if (source.still) {
+    // Art direction: the recording plays unless the visitor prefers reduced
+    // motion, in which case the browser picks the still frame instead.
+    const { props: still } = getImageProps({
+      alt: "",
+      fill: true,
+      sizes,
+      src: source.still,
+    });
+    const { props: animated } = getImageProps({
+      alt: source.alt,
+      fill: true,
+      priority,
+      src: source.src,
+      unoptimized: true,
+    });
+    return (
+      <figure
+        className={`${visualSystem.system} ${frame} bg-paper`}
+        data-visual-id={id}
+      >
+        <picture>
+          <source
+            media="(prefers-reduced-motion: reduce)"
+            sizes={still.sizes}
+            srcSet={still.srcSet}
+          />
+          <img {...animated} alt={source.alt} className={fit} />
+        </picture>
+      </figure>
+    );
+  }
+
   return (
     <figure className={`${visualSystem.system} ${frame}`} data-visual-id={id}>
       <Image
         alt={source.alt}
-        className="object-cover"
+        className={fit}
         fill
         priority={priority}
         sizes={sizes}
