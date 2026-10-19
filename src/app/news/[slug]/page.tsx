@@ -84,7 +84,7 @@ export default async function NewsArticlePage({
       />
 
       <article>
-        <header className="brand-hero">
+        <header className="slate-hero">
           <div className="mx-auto w-full max-w-5xl px-5 pt-12 pb-10 text-center sm:px-8 sm:pt-16 sm:pb-12">
             <Link
               className="text-sm font-medium text-mint-strong hover:text-ink"
@@ -103,7 +103,7 @@ export default async function NewsArticlePage({
               </time>
             </p>
           </div>
-          <div className="mx-auto w-full max-w-4xl px-5 sm:px-8">
+          <div className="mx-auto w-full max-w-4xl px-5 pb-12 sm:px-8 sm:pb-16">
             <div className="brand-card relative aspect-[16/9] overflow-hidden rounded-2xl bg-muted">
               <Image
                 alt=""

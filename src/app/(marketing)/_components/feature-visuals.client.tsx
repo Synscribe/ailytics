@@ -158,6 +158,12 @@ const QUESTIONS = [
       { src: `${M}/detection-smoke-fire-poster.jpg`, label: "Cam 06 · 14:05" },
       { src: `${M}/stills/fire-smoke-detection.jpg`, label: "Cam 07 · 14:06" },
     ],
+    reasoning: {
+      verdict: "Non-compliant · 1 issue",
+      issue: "Fire hazard (High)",
+      finding: "Smoke is rising above the roofline beside the generator yard.",
+      fix: "Send the fire warden to check the source and keep people clear until it is confirmed safe.",
+    },
   },
   {
     chip: "Idle machinery",
@@ -170,6 +176,13 @@ const QUESTIONS = [
         label: "Cam 03 · 09:55",
       },
     ],
+    reasoning: {
+      verdict: "Needs attention · 1 issue",
+      issue: "Idle machinery (Medium)",
+      finding:
+        "The excavator stayed parked with no work cycles for 2 h 15 min.",
+      fix: "Reassign it to another zone, or return it to cut hire and fuel costs.",
+    },
   },
   {
     chip: "Unauthorized entry",
@@ -179,6 +192,13 @@ const QUESTIONS = [
       { src: `${M}/stills/no-access-zones.jpg`, label: "Cam 10 · 23:14" },
       { src: `${M}/stills/loitering-unattended.jpg`, label: "Cam 11 · 23:16" },
     ],
+    reasoning: {
+      verdict: "Non-compliant · 1 issue",
+      issue: "Unauthorized entry (High)",
+      finding:
+        "A worker is opening the barrier past a STOP sign into a zone with an active excavator, outside permitted hours.",
+      fix: "Lock the barrier after hours and confirm the worker's access permit with the site supervisor.",
+    },
   },
 ];
 
@@ -272,6 +292,15 @@ export function AskVisual() {
               <span>{h.label}</span>
             </div>
           ))}
+        </div>
+        <div className={styles.reason}>
+          <p className={styles.verdict}>{result.reasoning.verdict}</p>
+          <p>
+            <b>{result.reasoning.issue}:</b> {result.reasoning.finding}
+          </p>
+          <p className={styles.fix}>
+            <b>Rectification:</b> {result.reasoning.fix}
+          </p>
         </div>
       </div>
       <Hint>Try it: pick a question</Hint>

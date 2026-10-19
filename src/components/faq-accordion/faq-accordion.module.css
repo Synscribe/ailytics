@@ -60,7 +60,8 @@
   transform: rotate(90deg);
 }
 .item[open] {
-  background: rgba(52, 193, 196, 0.12);
+  /* Solid, so the open item stays light on a grey band. */
+  background: #e1f4f6;
 }
 .item[open] .icon::after {
   transform: rotate(0);

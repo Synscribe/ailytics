@@ -1,4 +1,4 @@
-/* One grey-teal card: the list on the left, the active item's visual on the
+/* One slate card: the list on the left, the active item's visual on the
    right. Same shade as the picture cards and the feature cards. */
 .switcher {
   display: grid;
@@ -8,7 +8,7 @@
   margin-top: 48px;
   padding: 40px;
   border-radius: 8px;
-  background: linear-gradient(135deg, #4a6c74 0%, #2f6a73 45%, #1d5561 100%);
+  background: var(--panel-gradient);
 }
 
 .switcher ul {
@@ -73,11 +73,6 @@
   border-radius: 8px;
   color: var(--ink);
   background: rgba(255, 255, 255, 0.08);
-}
-
-.stage img,
-.stage video {
-  filter: grayscale(1) contrast(1.06);
 }
 
 @media (max-width: 1023px) {

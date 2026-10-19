@@ -11,7 +11,11 @@ export function FaqAccordion({
   return (
     <div className={styles.accordion}>
       {items.map((item) => (
-        <details className={styles.item} name="page-faq" key={item.question}>
+        <details
+          className={`${styles.item} surface-light`}
+          name="page-faq"
+          key={item.question}
+        >
           <summary>
             <h3>{item.question}</h3>
             <span className={styles.icon} aria-hidden="true" />

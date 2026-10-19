@@ -194,12 +194,12 @@ Built on the canvas (Home-USP board, section 2), using only client assets.
 
 - **H2:** Results from sites using Ailytics
 
-| Stat      | Label                                                     | Source                                      |
-| --------- | --------------------------------------------------------- | ------------------------------------------- |
-| 60 to 80% | fewer safety non-compliances, typical customer result     | Ledger #5                                   |
-| 69.1%     | fewer non-compliances on a construction site in 16 months | Ledger #12 (no customer name)               |
-| 80 to 95% | detection accuracy in the field                           | Ledger #17 (public news post, case studies) |
-| 400+      | projects worldwide                                        | Ledger #9                                   |
+| Stat      | Label                                                     | Source                                                |
+| --------- | --------------------------------------------------------- | ----------------------------------------------------- |
+| 60 to 80% | fewer safety non-compliances, typical customer result     | Ledger #5                                             |
+| 69.1%     | fewer non-compliances on a construction site in 16 months | Ledger #12 (no customer name)                         |
+| 85 to 99% | detection accuracy in the field                           | Client feedback, Oct 2026 (was 80 to 95%, ledger #17) |
+| 400+      | projects worldwide                                        | Ledger #9                                             |
 
 - **Optional, if the client confirms:**
   - `TODO_CLIENT_HAZARDS_DETECTED` (4.2M on the live site vs 3.4M in the case studies, ledger #6)

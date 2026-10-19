@@ -11,7 +11,6 @@ const FOOTER_GROUPS = [
       { label: "About Us", href: "/about-us" },
       { label: "Partner With Us", href: "/partnerships" },
       { label: "Careers", href: "/careers" },
-      { label: "Projects", href: "/projects" },
       { label: "News", href: "/news" },
     ],
   },
@@ -20,6 +19,7 @@ const FOOTER_GROUPS = [
     links: [
       { label: "Use cases", href: "/use-cases" },
       { label: "Industries", href: "/industries" },
+      { label: "Projects", href: "/projects" },
       { label: "Blog", href: "/blog" },
     ],
   },
@@ -59,7 +59,7 @@ export function SiteFooter() {
               className="h-8 w-auto"
               height={32}
               src={defaultOrganizationLogoPath}
-              width={100}
+              width={120}
             />
           </Link>
           <p className="mt-3 max-w-md text-sm leading-6 text-ink-muted">

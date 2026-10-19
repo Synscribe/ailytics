@@ -99,7 +99,7 @@ async function Article({ params }: BlogPostPageProps) {
       />
 
       <article>
-        <header className="brand-hero">
+        <header className="slate-hero">
           <div
             className={`mx-auto grid w-full max-w-7xl gap-12 px-5 pt-10 pb-16 sm:px-8 sm:pt-12 sm:pb-20 lg:gap-16 ${post.image ? "lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:items-center" : ""}`}
           >
