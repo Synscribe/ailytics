@@ -155,8 +155,8 @@ const INDUSTRIES: Industry[] = [
     label: "Data centers",
     hazards: "Restricted areas, contractor safety, smoke and fire",
     href: "/industries",
-    // Stand-in: no data center photo from the client yet.
-    src: "/media/ailytics/stills/no-access-zones.jpg",
+    // Stock photo until the client supplies one: Pexels 4508751, Pexels license.
+    src: "/media/stock/data-center-server-racks.webp",
   },
 ];
 
