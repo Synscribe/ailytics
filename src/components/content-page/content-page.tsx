@@ -1,3 +1,4 @@
+import { ScannedHighlight } from "@/components/scanned-highlight/scanned-highlight";
 import { DETAIL_SCENES } from "./scenes";
 import { ScrollSwitcher } from "./scroll-switcher.client";
 import { StepScene } from "./step-scene.client";
@@ -27,6 +28,7 @@ export type ContentPageProps = {
   content: PageContent;
   breadcrumbs: BreadcrumbJsonLdItem[];
   heroVisualId: VisualId;
+  heroEmphasis?: string;
   howItWorks: {
     title: string;
     introduction: string;
@@ -58,6 +60,7 @@ export function ContentPage({
   content,
   breadcrumbs,
   heroVisualId,
+  heroEmphasis,
   howItWorks,
   featureLinks = {},
   related,
@@ -109,7 +112,23 @@ export function ContentPage({
                 </li>
               </ol>
             </nav>
-            <h1 className="brand-h1">{content.hero.title}</h1>
+            <h1 className="brand-h1">
+              {heroEmphasis && content.hero.title.includes(heroEmphasis) ? (
+                <>
+                  {content.hero.title.slice(
+                    0,
+                    content.hero.title.indexOf(heroEmphasis),
+                  )}
+                  <ScannedHighlight>{heroEmphasis}</ScannedHighlight>
+                  {content.hero.title.slice(
+                    content.hero.title.indexOf(heroEmphasis) +
+                      heroEmphasis.length,
+                  )}
+                </>
+              ) : (
+                content.hero.title
+              )}
+            </h1>
             <p className="brand-lead mt-6 max-w-xl">
               {content.hero.description}
             </p>
@@ -134,7 +153,7 @@ export function ContentPage({
       </section>
       <CustomerProof />
 
-      <section id="problems" className="detail-section band-alt">
+      <section id="problems" className="detail-section">
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
           <ScrollSwitcher
             heading={
@@ -156,15 +175,18 @@ export function ContentPage({
 
       <section id="how-it-works" className="detail-section">
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-          <h2 className={sectionHeading}>{content.solution.title}</h2>
-          <p className="brand-lead mt-5 max-w-2xl">
-            {content.solution.description}
-          </p>
-          <StepScene scene={scene.howItWorks} steps={howItWorks.steps} />
+          <StepScene
+            scene={scene.howItWorks}
+            steps={howItWorks.steps}
+            introduction={{
+              title: content.solution.title,
+              description: content.solution.description,
+            }}
+          />
         </div>
       </section>
 
-      <section id="features" className="detail-section band-alt">
+      <section id="features" className="detail-section">
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
           <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
             <h2 className={sectionHeading}>{content.features.title}</h2>
@@ -241,7 +263,7 @@ export function ContentPage({
         </div>
       </section>
 
-      <section id="faq" className="detail-section">
+      <section id="faq" className="detail-section band-blue">
         <div className="mx-auto grid w-full max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
           <h2 className="brand-h2 max-w-xl">Frequently asked questions</h2>
 
@@ -250,7 +272,7 @@ export function ContentPage({
       </section>
 
       {related ? (
-        <section id="related" className="detail-section band-alt">
+        <section id="related" className="detail-section">
           <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
             <h2 className={sectionHeading}>{related.title}</h2>
             <div className="mt-10 grid gap-4 md:grid-cols-2">
@@ -274,9 +296,7 @@ export function ContentPage({
         </section>
       ) : null}
 
-      {/* Bands alternate after the hero, so the banner takes grey when there
-          is no related section above it. */}
-      <section className={`detail-section${related ? "" : " band-alt"}`}>
+      <section className="detail-section">
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
           <CtaBanner
             buttonText={content.cta.buttonText}

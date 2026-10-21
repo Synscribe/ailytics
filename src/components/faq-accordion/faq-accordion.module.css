@@ -1,4 +1,4 @@
-/* Soft grey rows with small gaps; the open one turns a little teal. */
+/* Light rows remain readable inside white and blue sections. */
 .accordion {
   display: grid;
   gap: 6px;
@@ -60,8 +60,8 @@
   transform: rotate(90deg);
 }
 .item[open] {
-  /* Solid, so the open item stays light on a grey band. */
-  background: #e1f4f6;
+  /* Solid, so the open item stays light on a blue section. */
+  background: #eaf0f6;
 }
 .item[open] .icon::after {
   transform: rotate(0);

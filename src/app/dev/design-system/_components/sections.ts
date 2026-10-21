@@ -24,7 +24,7 @@ export const GUIDE_SECTIONS: readonly GuideSectionEntry[] = [
     id: "colour",
     title: "Colour",
     summary:
-      "Slate for text, teal for actions, and coral and yellow only for live alerts.",
+      "Brand blue for text, actions and selected sections. White for contrast, with teal, coral and yellow for detections.",
   },
   {
     id: "spacing",

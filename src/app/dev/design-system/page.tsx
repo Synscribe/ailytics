@@ -1,3 +1,4 @@
+import { ScannedHighlight } from "@/components/scanned-highlight/scanned-highlight";
 import { ArrowLeftIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
 const FEEL = [
   {
     title: "Light and calm",
-    body: "A pale page, white cards and slate text. Darkness appears only inside camera footage.",
+    body: "White pages with selected dark blue sections. Keep existing cards, layouts and interactions.",
   },
   {
     title: "Real footage first",
@@ -22,7 +23,7 @@ const FEEL = [
   },
   {
     title: "One action colour",
-    body: "Teal marks what you can click and what the AI detects. Coral and yellow mean a live alert.",
+    body: "Blue buttons on white. White buttons on blue or photographic banners. Teal, coral and yellow remain detection colours.",
   },
   {
     title: "Plain words",
@@ -91,9 +92,66 @@ export default function DesignSystemPage() {
               <GuideSection key={section.id} {...section}>
                 {section.id === "type" ? (
                   <>
+                    <div className="mb-10 rounded-lg bg-paper p-6 ring-1 ring-ink/10">
+                      <h3 className="text-h2">
+                        Make workplaces{" "}
+                        <ScannedHighlight>safer and smarter</ScannedHighlight>
+                      </h3>
+                      <p className="mt-4 text-ink-muted">
+                        Heading emphasis uses a translucent teal scan, once on
+                        entering view. Keep the text colour and font unchanged.
+                        Highlight one short outcome or subject; leave
+                        navigation, FAQs, article titles and legal headings
+                        plain. Reduced motion shows the finished highlight.
+                      </p>
+                    </div>
                     <TypeScale />
                     <TypeToday />
                   </>
+                ) : section.id === "colour" ? (
+                  <div className="grid gap-6 sm:grid-cols-2">
+                    <div className="brand-card p-6">
+                      <h3 className="text-title">White canvas</h3>
+                      <p className="mt-3 text-ink-muted">
+                        Blue text #27405D, muted text #52667D. Choose section
+                        fills by content, never by alternating rows.
+                      </p>
+                    </div>
+                    <div className="band-blue rounded-lg p-6">
+                      <h3 className="text-title">Brand blue #27405D</h3>
+                      <p className="mt-3 text-ink-muted">
+                        White headings and #DCE8F3 body text. Keep product
+                        screens on their own light surfaces.
+                      </p>
+                    </div>
+                  </div>
+                ) : section.id === "buttons" ? (
+                  <div className="grid gap-6 sm:grid-cols-2">
+                    <div className="brand-card p-6">
+                      <Link href="/contact" className="brand-btn-primary">
+                        Request a demo
+                      </Link>
+                      <p className="mt-4 text-ink-muted">
+                        Primary action on white.
+                      </p>
+                    </div>
+                    <div className="band-blue rounded-lg p-6">
+                      <Link href="/contact" className="brand-btn-secondary">
+                        Request a demo
+                      </Link>
+                      <p className="mt-4 text-ink-muted">
+                        White action on blue. Photographic closing banners use
+                        the same button.
+                      </p>
+                    </div>
+                  </div>
+                ) : section.id === "cards" ? (
+                  <p className="text-ink-muted">
+                    Related items stay in white bordered cards. On blue
+                    sections, the capability list sits directly on the
+                    background, with a 6% white panel behind its visual. Avoid
+                    nested gradient containers.
+                  </p>
                 ) : undefined}
               </GuideSection>
             ))}

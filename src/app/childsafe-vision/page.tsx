@@ -1,3 +1,4 @@
+import { ScannedHighlight } from "@/components/scanned-highlight/scanned-highlight";
 import {
   ArrowDownIcon,
   ArrowRightIcon,
@@ -292,7 +293,7 @@ export default function ChildSafeVisionPage() {
               <Eyebrow>AI video safety for preschools</Eyebrow>
               <h1 className="brand-h1 mt-4 max-w-xl">
                 Real-time AI protection for{" "}
-                <span className="text-signal">every child</span> in your care.
+                <ScannedHighlight>every child</ScannedHighlight> in your care.
               </h1>
               <p className="brand-lead mt-6 max-w-xl">
                 ChildSafe Vision transforms your existing CCTV into a proactive
@@ -395,7 +396,7 @@ export default function ChildSafeVisionPage() {
             <Eyebrow>From reactive to proactive</Eyebrow>
             <h2 className="brand-h2 mt-4" id="proactive-title">
               See the moments that need attention,{" "}
-              <span className="text-signal">as they happen.</span>
+              <ScannedHighlight>as they happen.</ScannedHighlight>
             </h2>
             <p className="brand-lead mt-5">
               Staff cannot watch every camera every second. ChildSafe Vision
@@ -433,7 +434,7 @@ export default function ChildSafeVisionPage() {
             <Eyebrow>One safety layer. Six critical capabilities.</Eyebrow>
             <h2 className="brand-h2 mt-4" id="capabilities-title">
               Designed around the realities of{" "}
-              <span className="text-signal">early childhood care.</span>
+              <ScannedHighlight>early childhood care.</ScannedHighlight>
             </h2>
           </div>
           <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -469,7 +470,7 @@ export default function ChildSafeVisionPage() {
             <Eyebrow>Incidents become actionable</Eyebrow>
             <h2 className="brand-h2 mt-4" id="evidence-title">
               From a camera frame to a{" "}
-              <span className="text-signal">clear next step.</span>
+              <ScannedHighlight>clear next step.</ScannedHighlight>
             </h2>
             <p className="brand-lead mt-5">
               Each event combines visual evidence with an AI assessment,
@@ -519,7 +520,7 @@ export default function ChildSafeVisionPage() {
             <Eyebrow light>How it works</Eyebrow>
             <h2 className="brand-h2 mt-4" id="how-it-works-title">
               Your existing cameras.{" "}
-              <span className="text-signal">A smarter safety layer.</span>
+              <ScannedHighlight>A smarter safety layer.</ScannedHighlight>
             </h2>
             <p className="mt-5 text-[1.0625rem] leading-relaxed text-pretty text-paper/75">
               Analytics run on-site for low latency and data control, while
@@ -650,7 +651,7 @@ export default function ChildSafeVisionPage() {
             <Eyebrow>Privacy, security & compliance</Eyebrow>
             <h2 className="brand-h2 mt-4" id="privacy-title">
               Child safety without compromising{" "}
-              <span className="text-signal">data responsibility.</span>
+              <ScannedHighlight>data responsibility.</ScannedHighlight>
             </h2>
             <p className="brand-lead mt-5 max-w-xl">
               Designed for Singapore&apos;s early childhood environment with
@@ -688,7 +689,7 @@ export default function ChildSafeVisionPage() {
             <Eyebrow>Implementation & support</Eyebrow>
             <h2 className="brand-h2 mt-4" id="implementation-title">
               From site survey to{" "}
-              <span className="text-signal">ongoing operations.</span>
+              <ScannedHighlight>ongoing operations.</ScannedHighlight>
             </h2>
           </div>
           <ol className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-5">

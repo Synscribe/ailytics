@@ -72,7 +72,7 @@ export default async function CareersPage() {
           <p className="text-sm font-medium text-signal-strong">Careers</p>
           <h1 className="brand-h1 mt-4 max-w-4xl">
             Work that actually feels{" "}
-            <RotatingWords className="text-signal" words={FEELS} />
+            <RotatingWords className="text-ink" words={FEELS} />
           </h1>
         </div>
       </section>

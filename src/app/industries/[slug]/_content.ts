@@ -8,6 +8,7 @@ export const INDUSTRY_ROUTE_COPY: Record<string, ContentPageRouteCopy> = {
   construction: {
     name: "Construction",
     heroVisualId: "construction-hero",
+    heroEmphasis: "safety and productivity",
     howItWorks: {
       title: "How construction site monitoring works",
       introduction:

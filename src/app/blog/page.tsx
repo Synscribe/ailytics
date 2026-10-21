@@ -157,9 +157,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
       <section className="brand-hero">
         <HeroFootage />
-        <div
-          className={`mx-auto w-full max-w-7xl px-5 pt-10 sm:px-8 sm:pt-12 ${lead ? "pb-12 sm:pb-16 lg:pb-40" : "pb-16 sm:pb-20"}`}
-        >
+        <div className="mx-auto w-full max-w-7xl px-5 pt-10 pb-16 sm:px-8 sm:pt-12 sm:pb-20">
           <div className="flex min-w-0 flex-col items-start lg:max-w-xl">
             <nav
               aria-label="Breadcrumb"
@@ -207,6 +205,8 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
         </div>
       </section>
 
+      <CustomerProof />
+
       <section
         aria-labelledby="articles-title"
         className="scroll-mt-24 pt-6 pb-12 sm:pb-16"
@@ -214,8 +214,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
       >
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
           {lead ? (
-            // Pulled up over the faded bottom of the hero footage.
-            <div className="relative mb-16 sm:mb-20 lg:-mt-28">
+            <div className="relative mb-16 sm:mb-20">
               <FeaturedPost
                 label={labelForBlogTags(lead.tags) ?? "Latest article"}
                 post={lead}
@@ -379,8 +378,6 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           )}
         </div>
       </section>
-
-      <CustomerProof />
 
       <section className="pt-20 pb-28 sm:pb-32">
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">

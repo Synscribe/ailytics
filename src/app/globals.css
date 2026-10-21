@@ -4,39 +4,46 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Text tokens. A grey section band darkens them for contrast; .surface-light
-   puts them back on light cards inside a band. */
+/* Light surfaces reset text tokens inside blue sections. */
 :root,
-.surface-light {
+.surface-light,
+[data-visual-id] {
   --ink: #27405d;
   --ink-muted: #52667d;
   --ink-faint: #7d8c9e;
-  /* Unselected items in scroll lists, faded so the active one stands out. */
   --ink-dim: rgba(39, 64, 93, 0.32);
   --line: rgba(39, 64, 93, 0.12);
 }
-
 .surface-light {
   color: var(--ink);
 }
 
-/* Sections alternate between the light canvas and this brand grey. Text
-   steps one shade darker so body copy keeps 4.5:1 contrast on the grey. */
-.band-alt {
-  --ink: #1f3349;
-  --ink-muted: #27405d;
-  --ink-faint: #2e4560;
-  /* A light fade disappears on the grey, so unselected items stay stronger. */
-  --ink-dim: rgba(31, 51, 73, 0.72);
-  --line: rgba(39, 64, 93, 0.18);
-  background: var(--band-alt);
-  color: var(--ink);
+/* Colour is chosen per section, never by alternating position. */
+.band-blue {
+  --ink: #fff;
+  --ink-muted: #dce8f3;
+  --ink-faint: #c3d4e5;
+  --ink-dim: #b7cee2;
+  --faint: #b7cee2;
+  --past: #dce8f3;
+  --line: rgba(255, 255, 255, 0.23);
+  background: #27405d;
+  color: #fff;
+}
+.band-blue :is(.brand-btn-primary, .brand-btn-secondary, .brand-btn-light) {
+  background: #fff;
+  color: #27405d;
+}
+.band-blue
+  :is(.brand-btn-primary, .brand-btn-secondary, .brand-btn-light):hover {
+  background: #eaf0f6;
+  color: #27405d;
 }
 
 :root {
-  --canvas: #f9fbfd;
+  --canvas: #ffffff;
   --paper: #ffffff;
-  --band-alt: #a9b3be;
+  --brand-blue: #27405d;
   --signal: #34c1c4;
   --signal-strong: #27405d;
   --mint: #aee6e7;
@@ -50,7 +57,7 @@
     135deg,
     var(--slate-light) 0%,
     var(--slate-mid) 45%,
-    var(--ink) 100%
+    var(--brand-blue) 100%
   );
   --alert: #ff7a59;
   --caution: #fbc02d;
@@ -243,7 +250,7 @@ button {
     isolation: isolate;
   }
 
-  /* Dot grid fading out from the top, plus a soft teal glow. */
+  /* Dot grid fading out from the top, plus a soft blue glow. */
   .brand-hero::before,
   .brand-hero::after {
     content: "";
@@ -271,8 +278,8 @@ button {
     transform: translateX(-50%);
     background: radial-gradient(
       closest-side,
-      rgba(52, 193, 196, 0.16),
-      rgba(52, 193, 196, 0.06) 55%,
+      rgba(39, 64, 93, 0.1),
+      rgba(39, 64, 93, 0.03) 55%,
       transparent
     );
     filter: blur(20px);
@@ -343,7 +350,7 @@ button {
   }
 
   .brand-btn-primary {
-    background: var(--signal);
+    background: var(--brand-blue);
     color: var(--paper);
     box-shadow: 0 1px 3px rgba(39, 64, 93, 0.08);
   }
@@ -367,7 +374,7 @@ button {
 
   .brand-btn-light {
     background: var(--paper);
-    color: var(--ink);
+    color: var(--brand-blue);
   }
 
   .brand-btn-primary:focus-visible,
@@ -424,7 +431,7 @@ button {
   overflow-x: clip;
 }
 
-/* Detail pages: even padding so alternating section bands look balanced. */
+/* Detail pages keep equal section padding. */
 .detail-page .detail-section {
   scroll-margin-top: 6rem;
   padding: 120px 0;

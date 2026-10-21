@@ -1,0 +1,17 @@
+.preview .content {
+  background: #fff;
+}
+.content :is(h2, section[id], section[data-review-section]) {
+  scroll-margin-top: 130px;
+}
+/* Only section surfaces change. Original composition and interactions remain. */
+.preview :global(.band-alt) {
+  --ink: #27405d;
+  --ink-muted: #52667d;
+  --ink-faint: #7d8c9e;
+  --ink-dim: rgb(39 64 93 / 32%);
+  --faint: #c7cfd8;
+  --past: #9aa7b5;
+  --line: rgb(39 64 93 / 12%);
+  background: #fff;
+}

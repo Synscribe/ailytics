@@ -1,5 +1,7 @@
 "use client";
 
+import { ScannedHighlight } from "@/components/scanned-highlight/scanned-highlight";
+
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 
@@ -62,7 +64,7 @@ export function RotatingWords({
               ease: [0.22, 1, 0.36, 1],
             }}
           >
-            {words[index]}
+            <ScannedHighlight>{words[index]}</ScannedHighlight>
           </motion.span>
         </AnimatePresence>
       </span>

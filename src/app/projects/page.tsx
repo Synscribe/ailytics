@@ -204,7 +204,7 @@ export default function ProjectsPage() {
             <p className="text-sm font-medium text-signal-strong">Projects</p>
             <h1 className="brand-h1 mt-4 max-w-4xl">
               We&apos;re currently in{" "}
-              <RotatingWords className="text-signal" words={COUNTRIES} />
+              <RotatingWords className="text-ink" words={COUNTRIES} />
             </h1>
           </div>
           <div className="mt-12">

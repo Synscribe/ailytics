@@ -1,3 +1,4 @@
+import { ScannedHighlight } from "@/components/scanned-highlight/scanned-highlight";
 import { ArrowDownIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -126,7 +127,7 @@ export default async function JobPage({ params }: JobPageProps) {
           <div className="lg:order-first lg:pr-4">
             <h2 className="brand-h2" id="apply-title">
               Let&apos;s envision a safer world{" "}
-              <span className="text-signal">together.</span>
+              <ScannedHighlight>together.</ScannedHighlight>
             </h2>
             <p className="brand-lead mt-6">
               We&apos;re a team of builders, engineers, and scientists working

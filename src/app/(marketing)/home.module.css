@@ -1,5 +1,4 @@
-/* Ailytics homepage. Light only: canvas ground, slate ink, teal for actions
-   and detection frames, coral and citrus only on live detections. */
+/* White and selected brand-blue sections. Detection colours remain semantic. */
 
 .page {
   --header: 4rem;
@@ -11,13 +10,6 @@
   --card-border: 1px solid rgba(39, 64, 93, 0.1);
   overflow-x: clip;
   color: var(--ink);
-}
-
-/* Home-only tokens follow the section band too. */
-.page :global(.band-alt) {
-  --faint: rgba(31, 51, 73, 0.72);
-  --past: rgba(31, 51, 73, 0.86);
-  --card-border: 1px solid rgba(39, 64, 93, 0.14);
 }
 
 .page :global(.surface-light) {
@@ -101,7 +93,7 @@
 }
 
 .btnPrimary {
-  background: var(--signal);
+  background: var(--brand-blue);
   color: var(--paper);
   box-shadow: 0 1px 3px rgba(39, 64, 93, 0.08);
 }
@@ -164,8 +156,8 @@
   transform: translateX(-50%);
   background: radial-gradient(
     closest-side,
-    rgba(52, 193, 196, 0.16),
-    rgba(52, 193, 196, 0.06) 55%,
+    rgba(39, 64, 93, 0.1),
+    rgba(39, 64, 93, 0.03) 55%,
     transparent
   );
   filter: blur(20px);
@@ -2775,7 +2767,7 @@ tr[data-hz] .alertCount {
 
 /* Offset the problem scene’s empty space so the proof gap stays at 120px. */
 .problem[data-mode="scroll"] {
-  margin-top: calc(-1 * var(--leading-space, 0px));
+  margin-top: 0;
 }
 
 .pstate span[data-wave],
@@ -2792,4 +2784,30 @@ tr[data-hz] .alertCount {
 .ftext .textLink {
   color: #fff;
   text-decoration-color: var(--mint);
+}
+
+:global(.band-blue) :is(.btnPrimary, .btnSecondary) {
+  background: #fff;
+  color: #27405d;
+}
+:global(.band-blue) :is(.btnPrimary, .btnSecondary):hover {
+  background: #eaf0f6;
+  color: #27405d;
+}
+:global(.band-blue) .trustCard {
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.16);
+}
+:global(.band-blue) .trustCard h3 {
+  color: #fff;
+}
+:global(.band-blue) .trustCard p {
+  color: #dce8f3;
+}
+:global(.band-blue) :is(.pstate, .payoff) span {
+  color: rgba(183, 206, 226, 0.5);
+}
+:global(.band-blue) :is(.pstate, .payoff) span[data-on] {
+  color: #fff;
 }

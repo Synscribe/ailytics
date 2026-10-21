@@ -1,3 +1,4 @@
+import { ScannedHighlight } from "@/components/scanned-highlight/scanned-highlight";
 import { ArrowRightIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -159,7 +160,7 @@ export default function AboutPage() {
           <p className="text-sm font-medium text-signal-strong">About Us</p>
           <h1 className="brand-h1 mt-4 max-w-3xl">
             We&apos;re here to make workplaces safer and{" "}
-            <span className="text-signal">smarter</span>
+            <ScannedHighlight>smarter</ScannedHighlight>
           </h1>
           <p className="brand-lead mt-6 max-w-2xl">
             Ailytics is purpose-built for real-world industrial operations. It

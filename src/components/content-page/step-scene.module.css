@@ -1,6 +1,6 @@
 .track {
   position: relative;
-  margin-top: 48px;
+  margin-top: 0;
   margin-inline: calc(50% - 50vw);
 }
 
@@ -40,7 +40,7 @@
 .static {
   display: grid;
   gap: 16px;
-  margin-top: 40px;
+  margin-top: 0;
   padding: 10px;
   border-radius: 8px;
   background: var(--panel-gradient);
@@ -155,7 +155,9 @@
   grid-area: 1 / 1;
 }
 
-.copy h3 {
+.copy h2,
+.copy h3,
+.introduction h2 {
   margin: 0 0 16px;
   font-size: var(--text-h2);
   line-height: var(--text-h2--line-height);
@@ -266,4 +268,16 @@
   .static .cards {
     display: none;
   }
+}
+
+.introduction {
+  padding: 24px 14px 8px;
+  color: #fff;
+}
+.introduction p {
+  max-width: 65ch;
+  margin: 16px 0 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: var(--text-lead);
+  line-height: var(--text-lead--line-height);
 }
