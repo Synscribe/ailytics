@@ -8,6 +8,7 @@ export const USE_CASE_ROUTE_COPY: Record<string, ContentPageRouteCopy> = {
   "ppe-detection": {
     name: "PPE detection",
     heroVisualId: "ppe-hero",
+    heroEmphasis: "PPE detection",
     howItWorks: {
       title: "How PPE detection works",
       introduction:

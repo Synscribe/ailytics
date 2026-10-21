@@ -121,10 +121,13 @@ function Cards({
 export function StepScene({
   steps,
   scene,
+  introduction,
 }: {
+  introduction: Step;
   steps: Step[];
   scene: DetailScene["howItWorks"];
 }) {
+  const frames = [introduction, ...steps];
   const pinned = useScrollScene();
   const ref = useRef<HTMLDivElement>(null);
   const [step, setStep] = useState(0);
@@ -133,7 +136,7 @@ export function StepScene({
     offset: ["start start", "end end"],
   });
   useMotionValueEvent(scrollYProgress, "change", (v) =>
-    setStep(Math.min(steps.length - 1, Math.floor(v * steps.length))),
+    setStep(Math.min(frames.length - 1, Math.floor(v * frames.length))),
   );
 
   const view = (
@@ -143,13 +146,20 @@ export function StepScene({
         <Marks scene={scene} />
       </div>
       <span className={styles.camera}>{scene.camera}</span>
-      <Cards cards={scene.cards} step={pinned ? step : steps.length - 1} />
+      <Cards
+        cards={scene.cards}
+        step={pinned ? Math.max(0, step - 1) : steps.length - 1}
+      />
     </div>
   );
 
   if (!pinned) {
     return (
-      <div className={styles.static}>
+      <div className={styles.static} ref={ref}>
+        <div className={styles.introduction}>
+          <h2>{introduction.title}</h2>
+          <p>{introduction.description}</p>
+        </div>
         {view}
         <ol className={styles.list}>
           {steps.map((s) => (
@@ -172,6 +182,7 @@ export function StepScene({
       <div className={styles.pinned}>
         {view}
         <div className={styles.copy}>
+          {step > 0 && <h2 className="sr-only">{introduction.title}</h2>}
           {/* Old and new step crossfade in place, in step with the cards. */}
           <AnimatePresence initial={false}>
             <motion.div
@@ -181,8 +192,12 @@ export function StepScene({
               key={step}
               transition={{ duration: 0.3, ease: EASE }}
             >
-              <h3>{steps[step].title}</h3>
-              <p>{steps[step].description}</p>
+              {step === 0 ? (
+                <h2>{introduction.title}</h2>
+              ) : (
+                <h3>{frames[step].title}</h3>
+              )}
+              <p>{frames[step].description}</p>
             </motion.div>
           </AnimatePresence>
         </div>

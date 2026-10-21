@@ -1,3 +1,4 @@
+import { ScannedHighlight } from "@/components/scanned-highlight/scanned-highlight";
 import type { Metadata } from "next";
 import Image from "next/image";
 
@@ -96,7 +97,8 @@ export default function PartnershipsPage() {
             Partner With Us
           </p>
           <h1 className="brand-h1 mt-4 max-w-3xl">
-            Built for every part of the ecosystem
+            Built for every part of the{" "}
+            <ScannedHighlight>ecosystem</ScannedHighlight>
           </h1>
           <p className="brand-lead mt-6 max-w-2xl">
             Designed for system integrators, distributors, technology partners,

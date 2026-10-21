@@ -1,3 +1,4 @@
+import { ScannedHighlight } from "@/components/scanned-highlight/scanned-highlight";
 import { FaqAccordion } from "@/components/faq-accordion/faq-accordion";
 import { CustomerProof } from "@/components/customer-proof/customer-proof";
 import { ShieldCheckIcon, ServerIcon, ScanFaceIcon } from "lucide-react";
@@ -289,7 +290,8 @@ export default function HomePage() {
             AI video monitoring for construction & heavy industries
           </h1>
           <p className={styles.heroHeadline}>
-            Safety & Productivity Monitoring That Never Blinks
+            Safety & Productivity Monitoring{" "}
+            <ScannedHighlight>That Never Blinks</ScannedHighlight>
           </p>
           <p className={styles.heroLead}>
             Ailytics connects to the cameras you already own and alerts your EHS
@@ -321,7 +323,7 @@ export default function HomePage() {
 
       {/* 5. Features */}
       <section
-        className={`${styles.features} band-alt`}
+        className={`${styles.features}`}
         aria-labelledby="features-title"
       >
         <div className={styles.container}>
@@ -365,7 +367,10 @@ export default function HomePage() {
       </section>
 
       {/* 6. Use cases */}
-      <section className={styles.useCases} aria-labelledby="uses-title">
+      <section
+        className={`${styles.useCases} band-blue`}
+        aria-labelledby="uses-title"
+      >
         <div className={styles.container}>
           <div className={styles.headRow}>
             <div className={styles.secHead}>
@@ -387,7 +392,7 @@ export default function HomePage() {
 
       {/* 7. Industries */}
       <section
-        className={`${styles.industries} band-alt`}
+        className={`${styles.industries}`}
         aria-labelledby="industries-title"
       >
         <div className={styles.container}>
@@ -410,7 +415,10 @@ export default function HomePage() {
       </section>
 
       {/* 7. Platform capabilities */}
-      <section className={styles.capabilities} aria-labelledby="cap-title">
+      <section
+        className={`${styles.capabilities} band-blue`}
+        aria-labelledby="cap-title"
+      >
         <div className={styles.container}>
           <div className={styles.secHead}>
             <h2 id="cap-title" className={styles.h2}>
@@ -422,10 +430,7 @@ export default function HomePage() {
       </section>
 
       {/* 8. Case studies */}
-      <section
-        className={`${styles.cases} band-alt`}
-        aria-labelledby="cases-title"
-      >
+      <section className={`${styles.cases}`} aria-labelledby="cases-title">
         <div className={styles.container}>
           <div className={styles.headRow}>
             <div className={styles.secHead}>
@@ -460,7 +465,7 @@ export default function HomePage() {
       </section>
 
       <section
-        className={styles.trust}
+        className={`${styles.trust} band-blue`}
         id="security"
         aria-labelledby="trust-title"
       >
@@ -489,7 +494,7 @@ export default function HomePage() {
       </section>
 
       {/* 10. FAQ */}
-      <section className={`${styles.faq} band-alt`} aria-labelledby="faq-title">
+      <section className={`${styles.faq}`} aria-labelledby="faq-title">
         <div className={`${styles.container} ${styles.faqGrid}`}>
           <div className={styles.secHead}>
             <h2 id="faq-title" className={styles.h2}>

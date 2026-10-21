@@ -99,7 +99,7 @@ async function Article({ params }: BlogPostPageProps) {
       />
 
       <article>
-        <header className="slate-hero">
+        <header className="band-blue">
           <div
             className={`mx-auto grid w-full max-w-7xl gap-12 px-5 pt-10 pb-16 sm:px-8 sm:pt-12 sm:pb-20 lg:gap-16 ${post.image ? "lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:items-center" : ""}`}
           >
@@ -148,12 +148,13 @@ async function Article({ params }: BlogPostPageProps) {
             </div>
 
             {post.image ? (
-              <div className="brand-card relative aspect-[16/10] min-w-0 overflow-hidden bg-muted">
+              <div className="min-w-0 overflow-hidden rounded-lg">
                 <Image
-                  className="object-cover"
+                  className="block h-auto w-full"
                   src={post.image}
                   alt=""
-                  fill
+                  width={1280}
+                  height={720}
                   priority
                   sizes="(min-width: 1024px) 40vw, 100vw"
                 />

@@ -1,4 +1,6 @@
 .banner {
+  --ink: #27405d;
+  --ink-muted: #52667d;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -51,7 +53,7 @@
   opacity: 0.4;
 }
 
-/* Teal grade and a fine dot screen, as on the blog hero. */
+/* Blue grade and a fine dot screen, as on the blog hero. */
 .footage::before,
 .footage::after {
   content: "";
@@ -61,7 +63,7 @@
 }
 
 .footage::before {
-  background: linear-gradient(120deg, var(--signal), var(--signal-strong));
+  background: linear-gradient(120deg, #26517c, #27405d);
   mix-blend-mode: color;
   opacity: 0.85;
 }
@@ -100,4 +102,14 @@
       #000 80%
     );
   }
+}
+
+.banner .action {
+  background: #fff;
+  color: #27405d;
+  border: 1px solid #d4dce6;
+}
+.banner .action:hover {
+  background: #eaf0f6;
+  color: #27405d;
 }

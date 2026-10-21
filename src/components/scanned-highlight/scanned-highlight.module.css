@@ -1,0 +1,17 @@
+.highlight {
+  color: inherit;
+  background-image: linear-gradient(
+    transparent 12%,
+    rgba(52, 193, 196, 0.15) 12%,
+    rgba(52, 193, 196, 0.15) 94%,
+    transparent 94%
+  );
+  background-repeat: no-repeat;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+@media (prefers-reduced-motion: reduce) {
+  .highlight {
+    background-size: 100% 100% !important;
+  }
+}

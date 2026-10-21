@@ -118,7 +118,7 @@ export function ProblemScene() {
       ref={ref}
       id="problem"
       aria-labelledby="problem-title"
-      className={`${styles.problem} band-alt`}
+      className={`${styles.problem} band-blue`}
       data-mode={live ? "scroll" : "static"}
     >
       <div className={styles.problemPin}>

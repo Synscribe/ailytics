@@ -1,3 +1,4 @@
+import { ScannedHighlight } from "@/components/scanned-highlight/scanned-highlight";
 import { CheckIcon } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -40,7 +41,8 @@ export default function ContactPage() {
         <div className="mx-auto grid w-full max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20">
           <div>
             <h1 className="brand-h1 max-w-2xl">
-              Request a demo of AI video analytics
+              <ScannedHighlight>Request a demo</ScannedHighlight> of AI video
+              analytics
             </h1>
             <p className="brand-lead mt-6 max-w-xl">
               Tell us about your sites and cameras. We will show you which
