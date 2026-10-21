@@ -1,17 +1,51 @@
 .highlight {
-  color: inherit;
-  background-image: linear-gradient(
-    transparent 12%,
-    rgba(52, 193, 196, 0.15) 12%,
-    rgba(52, 193, 196, 0.15) 94%,
-    transparent 94%
-  );
-  background-repeat: no-repeat;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
+  --scan-ink: #1f9a9d;
+  isolation: isolate;
 }
+:global(:is(.band-blue, .bg-night)) .highlight {
+  --scan-ink: #34c1c4;
+}
+
+.word {
+  white-space: nowrap;
+}
+
+.letter {
+  position: relative;
+  display: inline-block;
+}
+
+/* Each letter's delay is set inline from where the beam crosses it. */
+.highlight[data-state="scanned"] .letter {
+  color: var(--scan-ink);
+  transition: color 0.25s ease-out;
+}
+
+/* One beam per rendered line: a bright edge with a fading tail. It starts
+   at the line's first letter; the component moves it by transform. */
+.beam {
+  position: absolute;
+  top: 0.12em;
+  bottom: 0.04em;
+  left: 0;
+  z-index: -1;
+  width: 0.8em;
+  background: linear-gradient(
+    90deg,
+    rgba(52, 193, 196, 0),
+    rgba(52, 193, 196, 0.28) calc(100% - 3px),
+    #34c1c4 calc(100% - 3px)
+  );
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .highlight {
-    background-size: 100% 100% !important;
+  .letter {
+    color: var(--scan-ink);
+  }
+  .beam {
+    display: none;
   }
 }

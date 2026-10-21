@@ -1,6 +1,6 @@
 import { ScannedHighlight } from "@/components/scanned-highlight/scanned-highlight";
 import { DETAIL_SCENES } from "./scenes";
-import { ScrollSwitcher } from "./scroll-switcher.client";
+import { ProblemSwitcher } from "./problem-switcher.client";
 import { StepScene } from "./step-scene.client";
 import { FaqAccordion } from "@/components/faq-accordion/faq-accordion";
 import { RevealGroup } from "@/components/reveal-group.client";
@@ -155,15 +155,11 @@ export function ContentPage({
 
       <section id="problems" className="detail-section">
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-          <ScrollSwitcher
-            heading={
-              <div>
-                <h2 className={sectionHeading}>{content.problems.title}</h2>
-                <p className="brand-lead mt-5 max-w-2xl">
-                  {content.problems.description}
-                </p>
-              </div>
-            }
+          <h2 className={sectionHeading}>{content.problems.title}</h2>
+          <p className="brand-lead mt-5 max-w-2xl">
+            {content.problems.description}
+          </p>
+          <ProblemSwitcher
             items={content.problems.items.map((item, i) => ({
               title: item.title,
               body: item.description,

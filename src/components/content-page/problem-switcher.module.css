@@ -1,64 +1,40 @@
-.track {
-  position: relative;
-}
-
-/* Fills the screen under the header and centres its content. */
-.pinned {
-  position: sticky;
-  top: 64px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 40px;
-  height: calc(100vh - 64px);
-}
-
-/* Keeps the 4:3 visual short enough to fit beside the pinned heading. */
-.pinned .stage {
-  width: min(100%, calc((100vh - 360px) * 4 / 3));
-  justify-self: end;
-}
-
-.static {
-  display: grid;
-  gap: 40px;
-}
-
 /* No fill: the list sits on the page, the visual beside it. */
-.card {
+.switcher {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
   gap: 56px;
   align-items: center;
+  margin-top: 48px;
 }
 
-.text {
+.switcher > ul {
   display: grid;
-  gap: 20px;
+  gap: 8px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.text li {
+.switcher > ul button {
+  all: unset;
   display: grid;
   grid-template-columns: 3px minmax(0, 1fr);
   gap: 18px;
+  width: 100%;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.switcher > ul button:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
 .bar {
-  position: relative;
-  overflow: hidden;
   border-radius: 2px;
   background: var(--line);
-}
-
-.bar span {
-  position: absolute;
-  inset: 0;
-  background: var(--signal);
-  transform-origin: top;
-  transition: transform 0.4s ease;
+  transition: background-color 0.3s;
 }
 
 .title {
@@ -72,24 +48,27 @@
 }
 
 .body {
+  display: block;
   max-width: 46ch;
   max-height: 0;
-  margin: 0;
   overflow: hidden;
   color: var(--ink-muted);
   opacity: 0;
   transition:
     max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    margin-top 0.4s cubic-bezier(0.22, 1, 0.36, 1),
     opacity 0.3s;
 }
 
-.text li[data-active] .title,
-.static .title {
+.switcher > ul button[data-active] .bar {
+  background: var(--signal);
+}
+
+.switcher > ul button[data-active] .title {
   color: var(--ink);
 }
 
-.text li[data-active] .body,
-.static .body {
+.switcher > ul button[data-active] .body {
   max-height: 8em;
   margin-top: 6px;
   opacity: 1;
@@ -103,17 +82,28 @@
   background: var(--muted);
 }
 
+/* Phones list every item open; tapping one shows its visual below. */
 @media (max-width: 1023px) {
-  .card {
+  .switcher {
     grid-template-columns: minmax(0, 1fr);
     gap: 20px;
+  }
+
+  .title {
+    color: var(--ink);
+  }
+
+  .body {
+    max-height: none;
+    margin-top: 6px;
+    opacity: 1;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .bar,
   .title,
-  .body,
-  .bar span {
+  .body {
     transition: none;
   }
 }

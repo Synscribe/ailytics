@@ -27,7 +27,7 @@ export type TypeVariant = {
 };
 
 const home = "app/(marketing)/home.module.css";
-const problemStory = "components/content-page/scroll-switcher.module.css";
+const problemStory = "components/content-page/problem-switcher.module.css";
 const cameraStory =
   "app/industries/[slug]/_components/construction-camera-story.module.css";
 
