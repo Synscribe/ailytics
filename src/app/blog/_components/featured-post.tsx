@@ -19,7 +19,7 @@ export function FeaturedPost({
       href={`/blog/${post.slug}`}
     >
       {post.image ? (
-        <div className="relative aspect-[16/9] overflow-hidden border-b border-ink/10 bg-muted md:border-r md:border-b-0">
+        <div className="relative aspect-[16/9] overflow-hidden border-b border-ink/10 bg-muted md:aspect-auto md:border-r md:border-b-0">
           <Image
             className="object-cover transition-transform duration-300 group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
             src={post.image}

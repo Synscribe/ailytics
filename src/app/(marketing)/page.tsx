@@ -290,8 +290,8 @@ export default function HomePage() {
             AI video monitoring for construction & heavy industries
           </h1>
           <p className={styles.heroHeadline}>
-            Safety & Productivity Monitoring{" "}
-            <ScannedHighlight>That Never Blinks</ScannedHighlight>
+            Safety & Productivity Monitoring:{" "}
+            <ScannedHighlight>See What Matters</ScannedHighlight>
           </p>
           <p className={styles.heroLead}>
             Ailytics connects to the cameras you already own and alerts your EHS
