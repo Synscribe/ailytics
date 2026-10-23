@@ -66,7 +66,7 @@ About us, Partner with us, Projects and Careers move to the footer.
 
 - **Eyebrow pill:** `New: ask your cameras questions in plain English →` (links to section 7)
 - **H1:** AI video monitoring for construction & heavy industries
-- **Display line:** Safety & Productivity Monitoring That Never Blinks
+- **Display line:** Safety & Productivity Monitoring: See What Matters
 - **Subhead (38 words):** Ailytics watches the cameras you already own and alerts your team to safety, security and productivity risks as they happen. Built for construction sites, plants, ports and yards. Runs on the edge, on-premise or in the cloud.
 - **Buttons:** `Request a demo` · `See use cases`
 - **Visual:** the camera wall catching hazards on its own, using client clips from `public/media/ailytics/`

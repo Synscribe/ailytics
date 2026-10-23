@@ -64,8 +64,7 @@ export default function OpenGraphImage() {
           AI video analytics for heavy industry safety
         </div>
         <div style={{ display: "flex", fontSize: 30, color: "#52667d" }}>
-          Safety, security and productivity alerts from the cameras you already
-          have.
+          See What Matters
         </div>
       </div>
     </div>,
