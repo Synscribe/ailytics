@@ -1,9 +1,10 @@
 import type { VisualId } from "@/lib/visuals";
 
-/** A box in the still's 1280×960 pixels, with its label and colour. */
+/** A box in the still's 1280×960 pixels, with its colour and optional label. */
 export type SceneMark = {
   box: readonly [x: number, y: number, w: number, h: number];
-  label: string;
+  /** Caption chip under the box. Omit to draw the box with no chip. */
+  label?: string;
   tone: "detect" | "hazard";
 };
 
@@ -36,35 +37,30 @@ export const DETAIL_SCENES: Record<"ppe" | "construction", DetailScene> = {
       "unlimited-reporting",
     ],
     howItWorks: {
-      src: "/media/ailytics/stills/crowding.jpg",
-      alt: "Factory-floor camera: workers in hard hats, vests and gloves, each boxed by Ailytics.",
-      camera: "Cam 03 · Mesh line",
+      src: "/media/ailytics/stills/ppe-walkway-view2.jpg",
+      alt: "Construction-site camera: a worker in a hi-vis vest but no hard hat flagged by Ailytics, next to a worker wearing both.",
+      camera: "Cam 07 · Walkway",
       marks: [
         {
-          box: [262, 185, 160, 365],
-          label: "Hard hat · vest · gloves",
-          tone: "detect",
+          box: [348, 224, 116, 312],
+          label: "Missing hard hat",
+          tone: "hazard",
         },
         {
-          box: [515, 0, 150, 245],
-          label: "Hard hat · vest · gloves",
-          tone: "detect",
-        },
-        {
-          box: [960, 190, 210, 405],
-          label: "Hard hat · vest · gloves",
+          box: [918, 210, 132, 148],
+          label: "Hard hat · vest",
           tone: "detect",
         },
       ],
       cards: [
         {
-          title: "Missing hard hat · Cam 06",
-          body: "Site entrance · sent to the site supervisor · 14:05",
+          title: "Missing hard hat · Cam 07",
+          body: "Walkway · sent to the site supervisor · 09:17",
           tone: "alert",
         },
         {
           title: "Resolved on site",
-          body: "Hard hat on · checked 14:09",
+          body: "Hard hat on · checked 09:21",
           tone: "ack",
         },
         {

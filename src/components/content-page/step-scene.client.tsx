@@ -61,13 +61,15 @@ function Marks({ scene }: { scene: DetailScene["howItWorks"] }) {
               height: `${(h / 960) * 100}%`,
             }}
           />
-          <span
-            className={styles.chip}
-            data-tone={tone}
-            style={pct(x, y + h + 26)}
-          >
-            {label}
-          </span>
+          {label ? (
+            <span
+              className={styles.chip}
+              data-tone={tone}
+              style={pct(x, y + h + 26)}
+            >
+              {label}
+            </span>
+          ) : null}
         </motion.span>
       ))}
     </>
