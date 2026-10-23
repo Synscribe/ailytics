@@ -15,6 +15,7 @@ describe("news content", () => {
     const articles = await listNewsArticles();
 
     expect(articles.map((article) => article.slug)).toEqual([
+      "ailytics-series-a-announcement",
       "industrial-video-intelligence-reimagined-ailytics-deploys-nvidia-cosmos-3-across-heavy-industry",
       "ailytics-and-safie",
       "winning-at-the-design-ai-and-tech-awards",
