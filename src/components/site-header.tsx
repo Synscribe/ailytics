@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { siteConfig } from "@/config/site";
-import { defaultOrganizationLogoPath } from "@/lib/seo";
 
 import { MobileNav } from "./mobile-nav";
 import { NavDropdown } from "./nav-dropdown";
@@ -24,11 +23,11 @@ export function SiteHeader() {
         >
           <Image
             alt=""
-            className="h-8 w-auto"
-            height={32}
+            className="h-10 w-auto"
+            height={434}
             priority
-            src={defaultOrganizationLogoPath}
-            width={120}
+            src="/brand/ailytics/ailytics-lockup-v1-on-light.png"
+            width={1441}
           />
         </Link>
 

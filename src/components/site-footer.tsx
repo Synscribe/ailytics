@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { siteConfig } from "@/config/site";
-import { defaultOrganizationLogoPath } from "@/lib/seo";
 
 const FOOTER_GROUPS = [
   {
@@ -56,10 +55,10 @@ export function SiteFooter() {
           >
             <Image
               alt=""
-              className="h-8 w-auto"
-              height={32}
-              src={defaultOrganizationLogoPath}
-              width={120}
+              className="h-10 w-auto"
+              height={434}
+              src="/brand/ailytics/ailytics-lockup-v1-on-light.png"
+              width={1441}
             />
           </Link>
           <p className="mt-3 max-w-md text-sm leading-6 text-ink-muted">
