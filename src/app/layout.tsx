@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { Suspense } from "react";
 
 import { VisitorContextTracker } from "@/app/contact/_components/visitor-context-tracker";
+import { AnnouncementBar } from "@/components/announcement-bar";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { siteConfig } from "@/config/site";
@@ -60,6 +61,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <div className="flex min-h-screen flex-col">
+          <AnnouncementBar />
           <SiteHeader />
           <div className="flex-1">{children}</div>
           <SiteFooter />
