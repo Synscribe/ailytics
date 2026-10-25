@@ -4,7 +4,6 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 
 import {
-  formatNewsDate,
   getNewsArticle,
   listNewsArticles,
   parseNewsArticle,
@@ -78,9 +77,5 @@ describe("news content", () => {
       '<h2>Section</h2><p>Body</p><p class="attribution">— Name</p><a href="https://example.com" target="_blank" rel="noopener noreferrer">Out</a>',
     );
     expect(article.externalUrl).toBeNull();
-  });
-
-  it("formats dates like the previous site", () => {
-    expect(formatNewsDate("2026-06-02")).toBe("June 2, 2026");
   });
 });

@@ -10,7 +10,7 @@ const FOOTER_GROUPS = [
       { label: "About Us", href: "/about-us" },
       { label: "Partner With Us", href: "/partnerships" },
       { label: "Careers", href: "/careers" },
-      { label: "News", href: "/news" },
+      { label: "News", href: "/blog?category=news" },
     ],
   },
   {

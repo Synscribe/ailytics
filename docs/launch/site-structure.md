@@ -14,7 +14,7 @@ Main nav:
 
 1. **Use cases** (URL `/use-cases`): hub plus dropdown grouped by Safety, Security, Productivity
 2. **Industries**: dropdown split into two groups. Working labels: "Core industries" (tier 1) and "Other industries" (tier 2, alternative label "Emerging verticals")
-3. **Blog**: blog posts and news. News keeps its own listing under the blog section
+3. **Blog**: blog posts and news. News is a tab on the blog hub (`/blog?category=news`)
 4. **Case studies**: own page
 5. **Request a demo**: button, replaces Contact
 
@@ -83,11 +83,12 @@ Items marked **(launch)** are needed for 26 Oct. Everything else follows in the 
 /case-studies                       (launch) Hub: case studies filtered by industry
 /case-studies/[slug]                (launch: the approved case studies) Numbers-first titles
 
-/blog                               (launch) Hub for articles and news
+/blog                               (launch) Hub for articles, with a News tab for the migrated news
+                                     articles and Wisp posts tagged `news`
 /blog/[slug]                        Articles answering informational searches, each linking to one money page
                                      (the 3 current root-level articles 301 here)
-/news                               (launch) News listing, linked from the blog section
-/news/[slug]                        Keep existing URLs
+/news                               301 to /blog?category=news
+/news/[slug]                        301 to /blog/[slug]
 /guides/[slug]                      Later: long pillar guides (e.g. OSHA construction camera monitoring guide)
 /glossary/[term]                    Later: only where the term has real search volume
 
