@@ -26,4 +26,15 @@ export const redirects: RedirectRule[] = [
     destination: `/blog/${slug}`,
     permanent: true,
   })),
+  // Retired job postings, replaced by updated roles.
+  {
+    source: "/careers/enterprise-sales-director-anz",
+    destination: "/careers/founding-enterprise-account-executive-anz",
+    permanent: true,
+  },
+  {
+    source: "/careers/marketing-and-partnerships-executive",
+    destination: "/careers/marketing-and-partnerships-lead",
+    permanent: true,
+  },
 ];
