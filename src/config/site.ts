@@ -20,7 +20,7 @@ const navigation: NavigationItem[] = [
       { label: "About us", href: "/about-us" },
       { label: "Partner with us", href: "/partnerships" },
       { label: "Careers", href: "/careers" },
-      { label: "News", href: "/news" },
+      { label: "News", href: "/blog?category=news" },
     ],
   },
   { label: "Use cases", href: "/use-cases" },

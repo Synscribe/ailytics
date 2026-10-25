@@ -36,7 +36,7 @@ export async function getBlogPosts({
   page?: number;
   query?: string | null;
   tag?: string | null;
-  limit?: number;
+  limit?: number | "all";
 } = {}): Promise<GetPostsResult> {
   if (!env.wispBlogId)
     return {

@@ -4,28 +4,19 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { buttonVariants } from "@/components/ui/button";
-import {
-  getBlogPost,
-  getBlogPosts,
-  isWispConfigured,
-  type BlogPostSummary,
-} from "@/lib/blog";
+import { BLOG_PAGE_SIZE, getBlogPost, getBlogPosts } from "@/lib/blog";
 import {
   buildBreadcrumbJsonLd,
   createPageMetadata,
   serializeJsonLd,
 } from "@/lib/seo";
 
+import { entryFromPost, listBlogEntries, type BlogEntry } from "./_entries";
 import { BlogPagination } from "./_components/blog-pagination";
 import { FeaturedPost } from "./_components/featured-post";
 import { HeroFootage } from "./_components/hero-footage.client";
 import { PostCard } from "./_components/post-card";
-import {
-  BLOG_FEATURED,
-  BLOG_FILTERS,
-  getBlogFilter,
-  labelForBlogTags,
-} from "./blog.config";
+import { BLOG_FEATURED, BLOG_FILTERS, getBlogFilter } from "./blog.config";
 import { CtaBanner } from "@/components/cta-banner/cta-banner";
 
 type BlogPageProps = {
@@ -40,7 +31,7 @@ export const metadata: Metadata = {
   ...createPageMetadata({
     title: "AI Video Analytics Blog: Comparisons and Use Cases",
     description:
-      "The Ailytics AI video analytics blog: software comparisons, detection use cases and advice on monitoring construction sites, plants and ports with CCTV.",
+      "The Ailytics AI video analytics blog: software comparisons, detection use cases, company news and advice on monitoring construction sites, plants and ports.",
     path: "/blog",
   }),
   alternates: {
@@ -90,45 +81,41 @@ async function loadBlogIndex({ searchParams }: BlogPageProps) {
   const showFeatured = page === 1 && category === "all" && !query;
   const request = { page, query, category, selectedFilter };
 
-  if (!isWispConfigured) return { ...request, status: "empty" as const };
+  const [listing, featuredOutcome, pinnedOutcome] = await Promise.all([
+    listBlogEntries({ query, filter: selectedFilter }),
+    showFeatured && BLOG_FEATURED.tag
+      ? getBlogPosts({
+          page: 1,
+          tag: BLOG_FEATURED.tag,
+          limit: BLOG_FEATURED.limit,
+        }).catch(() => null)
+      : Promise.resolve(null),
+    showFeatured && BLOG_FEATURED.heroSlug
+      ? getBlogPost(BLOG_FEATURED.heroSlug).catch(() => null)
+      : Promise.resolve(null),
+  ]);
+  const { entries } = listing;
 
-  const [gridOutcome, featuredOutcome, pinnedOutcome] =
-    await Promise.allSettled([
-      getBlogPosts({ page, query: query || null, tag }),
-      showFeatured && BLOG_FEATURED.tag
-        ? getBlogPosts({
-            page: 1,
-            tag: BLOG_FEATURED.tag,
-            limit: BLOG_FEATURED.limit,
-          })
-        : Promise.resolve(null),
-      showFeatured && BLOG_FEATURED.heroSlug
-        ? getBlogPost(BLOG_FEATURED.heroSlug)
-        : Promise.resolve(null),
-    ]);
-
-  if (gridOutcome.status === "rejected") {
+  if (entries.length === 0 && listing.cmsUnavailable) {
     return { ...request, status: "unavailable" as const };
   }
 
-  const result = gridOutcome.value;
-  const pinned =
-    pinnedOutcome.status === "fulfilled" ? pinnedOutcome.value?.post : null;
+  const pinned = pinnedOutcome?.post ? entryFromPost(pinnedOutcome.post) : null;
   // A pinned slug leads when it exists; otherwise the newest article does.
-  const lead: BlogPostSummary | null = showFeatured
-    ? (pinned ?? result.posts[0] ?? null)
+  const lead: BlogEntry | null = showFeatured
+    ? (pinned ?? entries[0] ?? null)
     : null;
-  const featuredPosts =
-    featuredOutcome.status === "fulfilled"
-      ? (featuredOutcome.value?.posts ?? [])
-          .filter((post) => post.slug !== lead?.slug)
-          .slice(0, BLOG_FEATURED.limit)
-      : [];
+  const featuredPosts = (featuredOutcome?.posts ?? [])
+    .map(entryFromPost)
+    .filter((post) => post.slug !== lead?.slug)
+    .slice(0, BLOG_FEATURED.limit);
   const pinnedSlugs = new Set([
     ...(lead ? [lead.slug] : []),
     ...featuredPosts.map((post) => post.slug),
   ]);
-  const posts = result.posts.filter((post) => !pinnedSlugs.has(post.slug));
+  const posts = entries
+    .slice((page - 1) * BLOG_PAGE_SIZE, page * BLOG_PAGE_SIZE)
+    .filter((post) => !pinnedSlugs.has(post.slug));
 
   return {
     ...request,
@@ -136,7 +123,11 @@ async function loadBlogIndex({ searchParams }: BlogPageProps) {
     lead,
     featuredPosts,
     posts,
-    pagination: result.pagination,
+    pagination: {
+      page,
+      totalPages: Math.ceil(entries.length / BLOG_PAGE_SIZE),
+      totalPosts: entries.length,
+    },
   };
 }
 
@@ -179,8 +170,9 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
             <p className="brand-lead mt-6 max-w-xl">
               The latest in AI video analytics and monitoring technology for
               construction sites, plants, ports and critical infrastructure.
-              Read software comparisons, new detection use cases and practical
-              advice on getting more from the CCTV you already have.
+              Read software comparisons, new detection use cases, company news
+              and practical advice on getting more from the CCTV you already
+              have.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link className="brand-btn-primary" href="/contact">
@@ -195,7 +187,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
               Company announcements and awards are in{" "}
               <Link
                 className="font-medium text-ink underline decoration-ink/25 underline-offset-[3px] hover:decoration-ink"
-                href="/news"
+                href="/blog?category=news#articles"
               >
                 News
               </Link>
@@ -216,7 +208,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           {lead ? (
             <div className="relative mb-16 sm:mb-20">
               <FeaturedPost
-                label={labelForBlogTags(lead.tags) ?? "Latest article"}
+                label={lead.label ?? "Latest article"}
                 post={lead}
               />
             </div>
@@ -229,8 +221,8 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                 {index.featuredPosts.map((post) => (
                   <PostCard
                     headingLevel={3}
-                    key={post.id}
-                    label={labelForBlogTags(post.tags)}
+                    key={post.slug}
+                    label={post.label}
                     post={post}
                   />
                 ))}
@@ -312,12 +304,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
             </form>
           </div>
 
-          {index.status === "empty" ? (
-            <EmptyState
-              title="No articles yet"
-              body="Articles will appear here once the blog is published."
-            />
-          ) : index.status === "unavailable" ? (
+          {index.status === "unavailable" ? (
             <EmptyState
               title="Articles are temporarily unavailable"
               body="Please check back in a little while."
@@ -351,8 +338,8 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                   {index.posts.map((post) => (
                     <PostCard
                       headingLevel={3}
-                      key={post.id}
-                      label={labelForBlogTags(post.tags)}
+                      key={post.slug}
+                      label={post.label}
                       post={post}
                     />
                   ))}

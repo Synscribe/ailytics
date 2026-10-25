@@ -1,5 +1,5 @@
+import { listBlogEntries } from "@/app/blog/_entries";
 import { siteConfig } from "@/config/site";
-import { getBlogPosts, type BlogPostSummary } from "@/lib/blog";
 import { absoluteUrl } from "@/lib/seo";
 
 function escapeXml(value: string): string {
@@ -12,13 +12,8 @@ function escapeXml(value: string): string {
 }
 
 export async function GET() {
-  let posts: BlogPostSummary[] = [];
-
-  try {
-    posts = (await getBlogPosts({ limit: 20 })).posts;
-  } catch {
-    // Keep the feed valid during a temporary CMS outage.
-  }
+  // Wisp posts and migrated news articles; a CMS outage still leaves the news.
+  const posts = (await listBlogEntries()).entries.slice(0, 20);
 
   const items = posts
     .map((post) => {

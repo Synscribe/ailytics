@@ -169,3 +169,24 @@
   border: 0;
   border-radius: 8px;
 }
+
+/* Migrated news copy keeps its figures at natural size and styles quote
+   attributions, which the previous site marked up as small headings. */
+.newsArchive figure {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.newsArchive img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+.newsArchive :global(.attribution) {
+  margin-top: 0.5rem;
+  color: var(--ink);
+  font-size: var(--text-small);
+  font-weight: 500;
+}

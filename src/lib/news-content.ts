@@ -5,7 +5,8 @@ import sanitizeHtml from "sanitize-html";
 
 /**
  * A news article migrated from the previous site, read from
- * src/content/news/<slug>.json and sanitized again before rendering.
+ * src/content/news/<slug>.json and sanitized again before rendering. These
+ * articles are served under /blog and listed in its News tab.
  */
 export type NewsArticle = {
   slug: string;
@@ -13,7 +14,7 @@ export type NewsArticle = {
   category: string;
   /** ISO date, YYYY-MM-DD. */
   publishedAt: string;
-  /** The short teaser shown on the /news hub. */
+  /** The short teaser from the previous site, matched by blog search. */
   summary: string;
   /** The meta description. */
   description: string;
@@ -168,14 +169,4 @@ export async function getNewsArticle(
     if ((error as NodeJS.ErrnoException).code === "ENOENT") return null;
     throw error;
   }
-}
-
-/** "June 2, 2026", matching the previous site. */
-export function formatNewsDate(isoDate: string): string {
-  return new Intl.DateTimeFormat("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    timeZone: "UTC",
-  }).format(new Date(`${isoDate}T00:00:00Z`));
 }

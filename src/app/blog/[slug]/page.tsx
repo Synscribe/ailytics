@@ -1,11 +1,11 @@
+import { ArrowUpRightIcon } from "lucide-react";
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import {
   getBlogPost,
   getRelatedBlogPosts,
+  type BlogPost,
   type RelatedBlogPost,
 } from "@/lib/blog";
 import {
@@ -16,31 +16,57 @@ import {
   sanitizeBlogContent,
 } from "@/lib/blog-content";
 import {
+  getNewsArticle,
+  listNewsArticles,
+  type NewsArticle,
+} from "@/lib/news-content";
+import {
   buildArticleJsonLd,
   buildBreadcrumbJsonLd,
   createPageMetadata,
-  absoluteUrl,
-  serializeJsonLd,
 } from "@/lib/seo";
 
-import { labelForBlogTags } from "../blog.config";
-import { PostCard } from "../_components/post-card";
-import { ArticleSidebar } from "./_components/article-sidebar";
+import { entryFromNewsArticle, newsPublishedAt } from "../_entries";
+import { BLOG_FILTERS, labelForBlogTags } from "../blog.config";
+import { ArticleLayout } from "./_components/article-layout";
 import styles from "./article.module.css";
-import { CtaBanner } from "@/components/cta-banner/cta-banner";
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
 };
 
+const NEWS_HREF = "/blog?category=news";
+
 function isoDate(value: Date | string | null): string | undefined {
   return value ? new Date(value).toISOString() : undefined;
+}
+
+function hostname(url: string): string {
+  return new URL(url).hostname.replace(/^www\./, "");
+}
+
+function breadcrumbJsonLd(title: string, path: string) {
+  return buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Blog", path: "/blog" },
+    { name: title, path },
+  ]);
 }
 
 export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
+  const article = await getNewsArticle(slug);
+  if (article) {
+    return createPageMetadata({
+      title: article.title,
+      description: article.description,
+      path: `/blog/${article.slug}`,
+      imagePath: article.image,
+    });
+  }
+
   const { post } = await getBlogPost(slug);
   if (!post) notFound();
 
@@ -52,33 +78,78 @@ export async function generateMetadata({
   });
 }
 
-async function Article({ params }: BlogPostPageProps) {
-  const { slug } = await params;
-  const { post } = await getBlogPost(slug);
-  if (!post) notFound();
+async function NewsArticlePage({ article }: { article: NewsArticle }) {
+  const path = `/blog/${article.slug}`;
+  const { html, tableOfContents } = addBlogHeadingAnchors(article.html);
+  const otherNews = (await listNewsArticles())
+    .filter(({ slug }) => slug !== article.slug)
+    .slice(0, 3)
+    .map(entryFromNewsArticle);
 
+  return (
+    <ArticleLayout
+      afterContent={
+        article.externalUrl ? (
+          <a
+            className="brand-btn-primary mt-10"
+            href={article.externalUrl}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Read the full story on {hostname(article.externalUrl)}
+            <ArrowUpRightIcon aria-hidden="true" className="size-4" />
+          </a>
+        ) : null
+      }
+      category={{ label: "News", href: NEWS_HREF }}
+      description={article.description}
+      details={
+        <>
+          <p>{article.category}</p>
+          <span aria-hidden="true" className="text-ink-faint">
+            •
+          </span>
+          <p>
+            <time dateTime={article.publishedAt}>
+              {formatBlogDate(newsPublishedAt(article))}
+            </time>
+          </p>
+          <span aria-hidden="true" className="text-ink-faint">
+            •
+          </span>
+          <p>{estimateReadingMinutes(article.html)} min read</p>
+        </>
+      }
+      html={html}
+      image={article.image}
+      jsonLd={[
+        buildArticleJsonLd({
+          headline: article.title,
+          description: article.description,
+          path,
+          publishedAt: article.publishedAt,
+          imagePath: article.image,
+        }),
+        breadcrumbJsonLd(article.title, path),
+      ]}
+      path={path}
+      proseClassName={styles.newsArchive}
+      related={{ posts: otherNews, href: NEWS_HREF, label: "All news" }}
+      tableOfContents={tableOfContents}
+      title={article.title}
+    />
+  );
+}
+
+async function WispArticlePage({ post }: { post: BlogPost }) {
   const path = `/blog/${post.slug}`;
   const description = descriptionFromPost(post.description, post.content);
   const publishedAt = isoDate(post.publishedAt);
   const updatedAt = isoDate(post.updatedAt);
   const sanitizedContent = sanitizeBlogContent(post.content, post.image);
-  const { html: content, tableOfContents } =
-    addBlogHeadingAnchors(sanitizedContent);
-  const category = labelForBlogTags(post.tags);
-  const articleJsonLd = buildArticleJsonLd({
-    headline: post.title,
-    description,
-    path,
-    authorName: post.author.name ?? undefined,
-    publishedAt,
-    updatedAt,
-    imagePath: post.image ?? undefined,
-  });
-  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
-    { name: "Home", path: "/" },
-    { name: "Blog", path: "/blog" },
-    { name: post.title, path },
-  ]);
+  const { html, tableOfContents } = addBlogHeadingAnchors(sanitizedContent);
+  const label = labelForBlogTags(post.tags);
+  const filter = BLOG_FILTERS.find(({ tag }) => tag === post.tags[0]?.name);
 
   let relatedPosts: RelatedBlogPost[] = [];
   try {
@@ -88,135 +159,63 @@ async function Article({ params }: BlogPostPageProps) {
   }
 
   return (
-    <main id="main-content">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbJsonLd) }}
-      />
-
-      <article>
-        <header className="band-blue">
-          <div
-            className={`mx-auto grid w-full max-w-7xl gap-12 px-5 pt-10 pb-16 sm:px-8 sm:pt-12 sm:pb-20 lg:gap-16 ${post.image ? "lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:items-center" : ""}`}
-          >
-            <div className="flex min-w-0 flex-col items-start">
-              <nav
-                aria-label="Breadcrumb"
-                className="mb-10 text-sm text-ink-muted"
-              >
-                <ol className="flex flex-wrap gap-2">
-                  <li className="flex gap-2">
-                    <Link className="hover:text-ink" href="/">
-                      Home
-                    </Link>
-                    <span aria-hidden="true">/</span>
-                  </li>
-                  <li className="flex gap-2">
-                    <Link className="hover:text-ink" href="/blog">
-                      Blog
-                    </Link>
-                    {category ? <span aria-hidden="true">/</span> : null}
-                  </li>
-                  {category ? <li className="text-ink">{category}</li> : null}
-                </ol>
-              </nav>
-
-              <h1 className="brand-h1">{post.title}</h1>
-
-              <p className="brand-lead mt-6 max-w-2xl">{description}</p>
-
-              <div className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-ink-muted">
-                {updatedAt ? (
-                  <>
-                    <p>
-                      Last updated{" "}
-                      <time dateTime={updatedAt}>
-                        {formatBlogDate(post.updatedAt)}
-                      </time>
-                    </p>
-                    <span aria-hidden="true" className="text-ink-faint">
-                      •
-                    </span>
-                  </>
-                ) : null}
-                <p>{estimateReadingMinutes(post.content)} min read</p>
-              </div>
-            </div>
-
-            {post.image ? (
-              <div className="min-w-0 overflow-hidden rounded-lg">
-                <Image
-                  className="block h-auto w-full"
-                  src={post.image}
-                  alt=""
-                  width={1280}
-                  height={720}
-                  priority
-                  sizes="(min-width: 1024px) 40vw, 100vw"
-                />
-              </div>
-            ) : null}
-          </div>
-        </header>
-
-        <div className="pt-10 pb-20 sm:pt-14 lg:pt-16 lg:pb-24">
-          <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-5 sm:px-8 lg:grid-cols-12 lg:gap-8">
-            <ArticleSidebar
-              items={tableOfContents}
-              title={post.title}
-              url={absoluteUrl(path)}
-            />
-            <div
-              className={`${styles.prose} order-2 min-w-0 lg:order-1 lg:col-span-8`}
-              dangerouslySetInnerHTML={{ __html: content }}
-            />
-          </div>
-        </div>
-      </article>
-
-      {relatedPosts.length > 0 ? (
-        <section className="border-t border-ink/10 pt-16 sm:pt-20 lg:pt-24">
-          <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-            <div className="mb-9 flex items-end justify-between gap-6">
-              <h2 className="brand-h2">Keep reading</h2>
-              <Link
-                className="brand-btn-secondary hidden sm:inline-flex"
-                href="/blog"
-              >
-                All articles
-              </Link>
-            </div>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {relatedPosts.map((relatedPost) => (
-                <PostCard
-                  headingLevel={3}
-                  key={relatedPost.id}
-                  post={relatedPost}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-      ) : null}
-
-      <section className="pt-20 pb-28 sm:pt-24 sm:pb-32">
-        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-          <CtaBanner
-            buttonText="Request a demo"
-            description="Tell us about your sites and cameras. We will show you which detections fit and how alerts reach your team."
-            href="/contact"
-            title="Find out what your cameras could catch"
-          />
-        </div>
-      </section>
-    </main>
+    <ArticleLayout
+      category={
+        label
+          ? {
+              label,
+              href: filter ? `/blog?category=${filter.value}` : undefined,
+            }
+          : null
+      }
+      description={description}
+      details={
+        <>
+          {updatedAt ? (
+            <>
+              <p>
+                Last updated{" "}
+                <time dateTime={updatedAt}>
+                  {formatBlogDate(post.updatedAt)}
+                </time>
+              </p>
+              <span aria-hidden="true" className="text-ink-faint">
+                •
+              </span>
+            </>
+          ) : null}
+          <p>{estimateReadingMinutes(post.content)} min read</p>
+        </>
+      }
+      html={html}
+      image={post.image}
+      jsonLd={[
+        buildArticleJsonLd({
+          headline: post.title,
+          description,
+          path,
+          authorName: post.author.name ?? undefined,
+          publishedAt,
+          updatedAt,
+          imagePath: post.image ?? undefined,
+        }),
+        breadcrumbJsonLd(post.title, path),
+      ]}
+      path={path}
+      related={{ posts: relatedPosts, href: "/blog", label: "All articles" }}
+      tableOfContents={tableOfContents}
+      title={post.title}
+    />
   );
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  return Article({ params });
+  const { slug } = await params;
+  // Migrated news articles are local files, so they are checked first.
+  const article = await getNewsArticle(slug);
+  if (article) return NewsArticlePage({ article });
+
+  const { post } = await getBlogPost(slug);
+  if (!post) notFound();
+  return WispArticlePage({ post });
 }
