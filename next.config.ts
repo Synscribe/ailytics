@@ -3,6 +3,7 @@ import path from "node:path";
 
 import type { NextConfig } from "next";
 
+import { bookingHeaderRules, bookingRewrites } from "./src/config/booking";
 import { buildDiscoveryHeaderRules } from "./src/config/discovery";
 import { redirects } from "./src/config/redirects";
 
@@ -28,8 +29,12 @@ const nextConfig: NextConfig = {
   async redirects() {
     return redirects;
   },
+  async rewrites() {
+    return { beforeFiles: bookingRewrites, afterFiles: [], fallback: [] };
+  },
   async headers() {
     return [
+      ...bookingHeaderRules,
       ...buildDiscoveryHeaderRules(
         existsSync(path.join(process.cwd(), "public/llms.txt")),
       ),

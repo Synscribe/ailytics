@@ -425,6 +425,12 @@ button {
   color: var(--ink);
 }
 
+/* The booking page fills the window with the embedded calendar, so the site
+   header, footer and skip link are hidden there. */
+body:has([data-booking-page]) :is(.skip-link, header, footer) {
+  display: none;
+}
+
 /* Full-bleed scenes use 100vw, which includes the scrollbar; clip sideways so
    the page never scrolls horizontally. */
 .detail-page {
