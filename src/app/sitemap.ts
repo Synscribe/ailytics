@@ -31,7 +31,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...industries.map((slug) => `/industries/${slug}`),
     "/childsafe-vision",
     "/blog",
-    "/news",
     "/about-us",
     "/partnerships",
     "/careers",
@@ -42,15 +41,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/eula",
   ];
 
+  // A migrated news article takes precedence over a Wisp post with its slug.
+  const newsSlugs = new Set(news.map((article) => article.slug));
+
   return [
     ...routes.map((route) => ({ url: `${siteConfig.url}${route}` })),
     ...news.map((article) => ({
-      url: `${siteConfig.url}/news/${article.slug}`,
+      url: `${siteConfig.url}/blog/${article.slug}`,
       lastModified: article.publishedAt,
     })),
-    ...blogPosts.map((post) => ({
-      url: `${siteConfig.url}/blog/${post.slug}`,
-      lastModified: post.updatedAt,
-    })),
+    ...blogPosts
+      .filter((post) => !newsSlugs.has(post.slug))
+      .map((post) => ({
+        url: `${siteConfig.url}/blog/${post.slug}`,
+        lastModified: post.updatedAt,
+      })),
   ];
 }

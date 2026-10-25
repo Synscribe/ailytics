@@ -17,6 +17,15 @@ describe("blog index configuration", () => {
     );
   });
 
+  it("lists Wisp posts tagged news with the migrated news articles", () => {
+    expect(getBlogFilter("news")).toMatchObject({
+      label: "News",
+      tag: "news",
+      includesNewsArchive: true,
+    });
+    expect(labelForBlogTags([{ name: "news" }])).toBe("News");
+  });
+
   it("does not expose an unconfigured demo filter", () => {
     expect(getBlogFilter("tips-and-tricks")).toBeUndefined();
     expect(labelForBlogTags([{ name: "tips-and-tricks" }])).toBe(

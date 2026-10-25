@@ -2,15 +2,16 @@ import { ArrowRightIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import type { BlogPostSummary } from "@/lib/blog";
 import { formatBlogDate } from "@/lib/blog-content";
+
+import type { BlogCardPost } from "./post-card";
 
 /** The lead article at the top of the index: cover, title, summary and date. */
 export function FeaturedPost({
   post,
   label,
 }: {
-  post: BlogPostSummary;
+  post: BlogCardPost;
   label: string;
 }) {
   return (

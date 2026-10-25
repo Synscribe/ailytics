@@ -415,16 +415,6 @@ button {
   }
 }
 
-/* Blog and news article headers sit on the brand slate texture with white
-   text. The article body below stays on the light page for easy reading. */
-.slate-hero {
-  --ink: #fff;
-  --ink-muted: rgba(255, 255, 255, 0.84);
-  --ink-faint: rgba(255, 255, 255, 0.6);
-  background: #27405d url("/media/ailytics/article-slate.webp") center / cover;
-  color: var(--ink);
-}
-
 /* Full-bleed scenes use 100vw, which includes the scrollbar; clip sideways so
    the page never scrolls horizontally. */
 .detail-page {

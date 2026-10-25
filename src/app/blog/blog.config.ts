@@ -2,11 +2,15 @@ export type BlogFilter = {
   label: string;
   value: string;
   tag: string;
+  /** Also lists the migrated articles in src/content/news. */
+  includesNewsArchive?: boolean;
 };
 
 // Optional filters map a stable URL value to a real Wisp tag. Remove an entry
 // when the publication does not use it; "All" is added by the page itself.
-export const BLOG_FILTERS: readonly BlogFilter[] = [];
+export const BLOG_FILTERS: readonly BlogFilter[] = [
+  { label: "News", value: "news", tag: "news", includesNewsArchive: true },
+];
 
 // The index hero leads with `heroSlug` when it is set, and with the newest
 // article otherwise. The smaller cards are selected by a Wisp tag, or omitted

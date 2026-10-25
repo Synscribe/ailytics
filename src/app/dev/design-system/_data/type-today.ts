@@ -85,19 +85,11 @@ export const TYPE_TODAY: TypeVariant[] = [
         page: "Privacy and EULA",
         file: "components/legal-document/legal-document.tsx",
       },
-      { page: "Blog posts", file: "app/blog/[slug]/page.tsx" },
+      {
+        page: "Blog and news posts",
+        file: "app/blog/[slug]/_components/article-layout.tsx",
+      },
     ],
-  },
-  {
-    role: "h1",
-    label: "32 to 48px, light",
-    style: {
-      fontSize: "clamp(2rem, 3.6vw, 3rem)",
-      lineHeight: 1.08,
-      fontWeight: 300,
-      letterSpacing: "-0.03em",
-    },
-    usedIn: [{ page: "News articles", file: "app/news/[slug]/page.tsx" }],
   },
   {
     role: "h2",
