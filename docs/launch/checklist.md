@@ -490,7 +490,7 @@ The live launch audit checks both homepage representations, quality-value select
 - [ ] **Todo**
 - Recipe: [docs/recipes/posthog.md](../recipes/posthog.md)
 
-PostHog (US cloud) records pageviews, autocapture, heatmaps, session replay with masked inputs, and the `cta_clicked`, `contact_form_submitted` and `job_application_submitted` events. There is no consent banner.
+PostHog (US cloud) records pageviews, autocapture, heatmaps, session replay with masked inputs, and the `cta_clicked`, `contact_form_submitted`, `job_application_submitted` and `call_booked` events. There is no consent banner.
 Before launch, the client confirms whether session replay stays on and whether a consent banner is needed, and approves privacy-policy wording that covers analytics cookies, session replay, the US data location, and the PostHog retention period.
 Draft wording is in Section 14 of `src/content/legal/privacy-policy.json`, covering PostHog and the `visitor_context_v1` visit history. The site has no consent banner, so the policy explains how to block tracking. The stated retention (1 year for events, 30 days for recordings) matches the PostHog free plan; revise it if the plan changes. Update the effective date when the client approves the revised policy.
 
