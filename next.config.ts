@@ -3,7 +3,7 @@ import path from "node:path";
 
 import type { NextConfig } from "next";
 
-import { bookingHeaderRules, bookingRewrites } from "./src/config/booking";
+import { bookingHeaderRules, bookingRedirects } from "./src/config/booking";
 import { buildDiscoveryHeaderRules } from "./src/config/discovery";
 import { redirects } from "./src/config/redirects";
 
@@ -27,10 +27,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [{ protocol: "https", hostname: "imagedelivery.net" }],
   },
   async redirects() {
-    return redirects;
-  },
-  async rewrites() {
-    return { beforeFiles: bookingRewrites, afterFiles: [], fallback: [] };
+    return [...bookingRedirects, ...redirects];
   },
   async headers() {
     return [

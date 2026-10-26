@@ -1,19 +1,23 @@
 /**
- * Outreach emails link to this host. It serves the /book page at its root,
- * and every response on it tells search engines not to index it.
+ * The booking calendar lives at /book. Earlier outreach emails linked to
+ * book.ailytics.ai, so that host redirects there with its query string (and
+ * any UTM tags) intact. Search engines are told not to index either URL.
  */
-export const BOOKING_HOST = "book.ailytics.ai";
+export const BOOKING_PATH = "/book";
+export const BOOKING_URL = `https://www.ailytics.ai${BOOKING_PATH}`;
+export const LEGACY_BOOKING_HOST = "book.ailytics.ai";
 
-const onBookingHost = [{ type: "host" as const, value: BOOKING_HOST }];
+const noindex = [{ key: "X-Robots-Tag", value: "noindex, nofollow" }];
 
-export const bookingRewrites = [
-  { source: "/", has: onBookingHost, destination: "/book" },
-];
-
-export const bookingHeaderRules = [
+export const bookingRedirects = [
   {
     source: "/:path*",
-    has: onBookingHost,
-    headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+    has: [{ type: "host" as const, value: LEGACY_BOOKING_HOST }],
+    destination: BOOKING_URL,
+    permanent: true,
   },
 ];
+
+export const bookingHeaderRules = [BOOKING_PATH, `${BOOKING_PATH}.md`].map(
+  (source) => ({ source, headers: noindex }),
+);
