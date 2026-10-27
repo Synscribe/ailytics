@@ -51,3 +51,18 @@ export function ReportsVisual() {
     </Stage>
   );
 }
+export function UnderLoadReportsVisual() {
+  return (
+    <Stage>
+      <Reports
+        incident={{
+          title: "Worker under suspended load",
+          camera: "Camera 03 · Lifting area",
+          src: "/media/ailytics/stills/under-load-detection.jpg",
+          photoPosition: "center bottom",
+          box: { left: "62%", top: "62%", width: "8%", height: "33%" },
+        }}
+      />
+    </Stage>
+  );
+}

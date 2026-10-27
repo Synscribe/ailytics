@@ -69,7 +69,7 @@ Items marked **(launch)** are needed for 26 Oct. Everything else follows in the 
 
 /use-cases                          (launch) Hub: 50+ use cases grouped by Safety / Security / Productivity
 /use-cases/[slug]                   (launch: top 10, then all) One page per detection
-    e.g. machinery-proximity, open-edge-detection, under-suspended-load, ppe-detection,
+    e.g. machinery-proximity, open-edge-detection, suspended-load-safety, ppe-detection,
          smoke-and-fire-detection, vehicle-reversing, exclusion-zone, slip-trip-fall,
          ergonomics, loitering, wrong-way-detection, license-plate-recognition, idle-machinery
 

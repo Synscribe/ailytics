@@ -171,7 +171,7 @@ Built on the canvas (Home-USP board, section 2), using only client assets.
 | Tile                          | Link                                  | Visual                        |
 | ----------------------------- | ------------------------------------- | ----------------------------- |
 | Machinery proximity detection | `/use-cases/machinery-proximity`      | detection-machinery-proximity |
-| Under suspended load          | `/use-cases/under-suspended-load`     | deck GIF S9                   |
+| Under suspended load          | `/use-cases/suspended-load-safety`    | deck GIF S9                   |
 | Open edge detection           | `/use-cases/open-edge-detection`      | detection-open-edge           |
 | PPE detection                 | `/use-cases/ppe-detection`            | detection-low-light-ppe       |
 | Smoke and fire detection      | `/use-cases/smoke-and-fire-detection` | detection-smoke-fire          |

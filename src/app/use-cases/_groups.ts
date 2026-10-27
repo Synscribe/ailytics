@@ -25,8 +25,8 @@ export const USE_CASE_GROUPS: { title: string; items: HubEntry[] }[] = [
           "Measures the real distance between workers and moving machinery from one camera.",
       },
       {
-        slug: "under-suspended-load",
-        title: "Under suspended load",
+        slug: "suspended-load-safety",
+        title: "Suspended load safety",
         description:
           "Projects where a lifted load would fall and flags anyone inside that zone.",
       },

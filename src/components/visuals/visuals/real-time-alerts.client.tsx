@@ -46,13 +46,50 @@ const EARLIER = [
   },
 ];
 
+/** The alert that lands on the phone, and the record it opens. */
+type AlertEvent = {
+  notice: string;
+  record: string;
+  place: string;
+  camera: string;
+  src: string;
+  box: readonly [x: number, y: number, w: number, h: number];
+};
+
+const PPE_EVENT: AlertEvent = {
+  notice: "PPE Check generated",
+  record: "PPE Check",
+  place: "Gate 2",
+  camera: "Camera 04",
+  src: "/media/ailytics/stills/ppe-detection.jpg",
+  box: [421, 285, 231, 544],
+};
+
+const UNDER_LOAD_EVENT: AlertEvent = {
+  notice: "Worker under suspended load",
+  record: "Under load",
+  place: "Lifting area",
+  camera: "Camera 03",
+  src: "/media/ailytics/stills/under-load-detection.jpg",
+  box: [808, 700, 76, 216],
+};
+
+/** The same phone for the suspended load page, with an under-load alert. */
+export function UnderLoadAlertsVisual() {
+  return <RealTimeAlertsVisual event={UNDER_LOAD_EVENT} />;
+}
+
 /**
- * The supervisor's phone, laid out like the mobile app: a PPE Check
+ * The supervisor's phone, laid out like the mobile app: an alert
  * notification lands at the top of the list, opens into the record with the
  * event frame, camera and time, and the record is assigned so it shows in the
- * activity log.
+ * activity log. The alert is a PPE Check unless `event` says otherwise.
  */
-export default function RealTimeAlertsVisual() {
+export default function RealTimeAlertsVisual({
+  event = PPE_EVENT,
+}: {
+  event?: AlertEvent;
+}) {
   const { ref, phase, cycle, reduce } = useLoop(7, 1150);
   const arrived = phase >= 1;
   const detail = phase >= 3;
@@ -112,10 +149,10 @@ export default function RealTimeAlertsVisual() {
                   transition={reduce ? { duration: 0 } : SPRING}
                 >
                   <Notice
-                    body="Captured at Camera 04."
+                    body={`Captured at ${event.camera}.`}
                     fresh
                     time="now"
-                    title="PPE Check generated"
+                    title={event.notice}
                   />
                 </motion.div>
               ) : null}
@@ -139,7 +176,9 @@ export default function RealTimeAlertsVisual() {
               >
                 <div className="flex items-center gap-1.5 px-2.5 pt-1 pb-1.5">
                   <ChevronLeftIcon aria-hidden="true" className="size-3.5" />
-                  <span className="text-[12.5px] font-medium">PPE Check</span>
+                  <span className="text-[12.5px] font-medium">
+                    {event.record}
+                  </span>
                   <EllipsisVerticalIcon
                     aria-hidden="true"
                     className="ml-auto size-3.5"
@@ -148,8 +187,8 @@ export default function RealTimeAlertsVisual() {
                 </div>
                 <div className="flex flex-col gap-0.5 px-2.5 pb-2 text-[10px] font-medium">
                   <span className="text-[11.5px]">Tower site</span>
-                  <Meta icon={MapPinIcon}>Gate 2</Meta>
-                  <Meta icon={VideoIcon}>Camera 04</Meta>
+                  <Meta icon={MapPinIcon}>{event.place}</Meta>
+                  <Meta icon={VideoIcon}>{event.camera}</Meta>
                   <Meta icon={ClockIcon}>8:53 pm, today</Meta>
                 </div>
                 <div className="relative mx-2 min-h-[70px] flex-1 overflow-hidden rounded-lg">
@@ -158,10 +197,10 @@ export default function RealTimeAlertsVisual() {
                     className="object-cover"
                     fill
                     sizes="320px"
-                    src="/media/ailytics/stills/ppe-detection.jpg"
+                    src={event.src}
                   />
                   <CamOverlay>
-                    <Frame box={[421, 285, 231, 544]} instant tone="hazard" />
+                    <Frame box={event.box} instant tone="hazard" />
                   </CamOverlay>
                 </div>
                 <div className="flex flex-none items-center gap-1.5 px-2 pt-2">

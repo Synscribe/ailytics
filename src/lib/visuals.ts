@@ -29,6 +29,10 @@ export const FEATURE_VISUAL_IDS = [
 export const VISUAL_IDS = [
   "construction-hero",
   "ppe-hero",
+  "suspended-load-hero",
+  // Suspended load versions of the alert and report feature visuals.
+  "under-load-alerts",
+  "under-load-reporting",
   "childsafe-vision-hero",
   ...FEATURE_VISUAL_IDS,
 ] as const;

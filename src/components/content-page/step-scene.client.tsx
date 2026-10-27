@@ -142,7 +142,10 @@ export function StepScene({
   );
 
   const view = (
-    <div className={styles.stage}>
+    <div
+      className={styles.stage}
+      data-full-height={scene.fullHeight ? "true" : undefined}
+    >
       <div className={styles.canvas}>
         <Image alt={scene.alt} fill sizes="100vw" src={scene.src} />
         <Marks scene={scene} />

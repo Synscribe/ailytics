@@ -37,6 +37,39 @@
   pointer-events: none;
 }
 
+/* Full-height scenes fit the still's height and align it right; a stage
+   narrower than 4:3 centres the crop instead. The panel fills the space
+   behind the copy, and the shade starts solid so the edge does not show. */
+.pinned .stage[data-full-height] {
+  background: rgb(39, 64, 93);
+}
+
+.pinned .stage[data-full-height] .canvas {
+  left: max(100cqw - 133.34cqh, (100cqw - 133.34cqh) / 2);
+  width: 133.34cqh;
+  height: 100cqh;
+  translate: none;
+}
+
+.pinned .stage[data-full-height] .canvas::after {
+  background: linear-gradient(
+    90deg,
+    rgb(39, 64, 93) 0%,
+    rgba(38, 81, 124, 0.7) 22%,
+    rgba(62, 115, 158, 0.2) 42%,
+    rgba(62, 115, 158, 0) 55%
+  );
+}
+
+/* The load sits where the cards usually go, so they move under the copy. */
+.pinned .stage[data-full-height] .cards {
+  left: max(20px, calc(50vw - 600px));
+  right: auto;
+  top: auto;
+  bottom: 56px;
+  translate: none;
+}
+
 .static {
   display: grid;
   gap: 16px;

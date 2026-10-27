@@ -1,4 +1,8 @@
-import { RulesVisual, ReportsVisual } from "./visuals/workflow-stage.client";
+import {
+  RulesVisual,
+  ReportsVisual,
+  UnderLoadReportsVisual,
+} from "./visuals/workflow-stage.client";
 import visualSystem from "./visual-system.module.css";
 import type { ComponentType } from "react";
 import Image, { getImageProps, type ImageProps } from "next/image";
@@ -20,8 +24,11 @@ import OpenEdgeDetectionVisual from "./visuals/open-edge-detection.client";
 import PoorErgonomicsVisual from "./visuals/poor-ergonomics.client";
 import PpeDetectionVisual from "./visuals/ppe-detection.client";
 import PpeHeroVisual from "./visuals/ppe-hero.client";
-import RealTimeAlertsVisual from "./visuals/real-time-alerts.client";
+import RealTimeAlertsVisual, {
+  UnderLoadAlertsVisual,
+} from "./visuals/real-time-alerts.client";
 import SpeedingWrongWayVisual from "./visuals/speeding-wrong-way.client";
+import SuspendedLoadHeroVisual from "./visuals/suspended-load-hero.client";
 import TimelapseXrayVisual from "./visuals/timelapse-xray.client";
 import UnderLoadDetectionVisual from "./visuals/under-load-detection.client";
 import WaterHazardVisual from "./visuals/water-hazard.client";
@@ -82,6 +89,16 @@ const visualSources: Record<VisualId, VisualSource> = {
     component: PpeHeroVisual,
     stage: {
       alt: "A basement site camera finds three workers and checks the front worker's hard hat, vest and gloves, then confirms all three are wearing PPE.",
+    },
+  },
+  "suspended-load-hero": {
+    ...stagedComponent,
+    label: "Worker under a suspended load",
+    motionPattern:
+      "drop zone projects under the load, then one worker is flagged",
+    component: SuspendedLoadHeroVisual,
+    stage: {
+      alt: "A lifting-area camera finds a suspended formwork panel and two workers, projects the panel's drop zone onto the ground, flags the worker standing inside it, and sends an alert. The worker outside the zone is not flagged.",
     },
   },
   "childsafe-vision-hero": {
@@ -266,6 +283,16 @@ const visualSources: Record<VisualId, VisualSource> = {
       alt: "A phone's notification list receives a PPE Check, which opens to show the event frame, camera, time, and an assignment in the activity log.",
     },
   },
+  "under-load-alerts": {
+    ...stagedComponent,
+    label: "Under-load alert on a phone",
+    motionPattern:
+      "under-load alert lands in the list, opens its record, and is assigned",
+    component: UnderLoadAlertsVisual,
+    stage: {
+      alt: "A phone's notification list receives a worker under suspended load alert, which opens to show the event frame, lifting area, camera, time, and an assignment in the activity log.",
+    },
+  },
   "unlimited-reporting": {
     ...stagedComponent,
     label: "On-demand PPE report",
@@ -274,6 +301,16 @@ const visualSources: Record<VisualId, VisualSource> = {
     interactive: true,
     stage: {
       alt: "Interactive example: prepare a PPE incident report with event details, camera evidence and review history.",
+    },
+  },
+  "under-load-reporting": {
+    ...stagedComponent,
+    label: "On-demand under-load report",
+    motionPattern: "drop zone evidence becomes an incident report",
+    component: UnderLoadReportsVisual,
+    interactive: true,
+    stage: {
+      alt: "Interactive example: prepare an incident report for a worker under a suspended load, with event details, camera evidence and review history.",
     },
   },
   "multi-site-dashboard": {
@@ -298,6 +335,11 @@ export function getVisualSource(id: VisualId): VisualSource {
   return visualSources[id];
 }
 
+/** The phone visuals draw their own device instead of sitting in a frame. */
+export function isPhoneVisual(id: VisualId): boolean {
+  return id === "real-time-alerts" || id === "under-load-alerts";
+}
+
 const heroFrame =
   "relative aspect-[4/3] min-w-0 overflow-hidden rounded-lg border border-ink/10 bg-paper shadow-[0_24px_70px_rgba(29,41,38,0.07)]";
 
@@ -318,7 +360,7 @@ export function ProjectVisual({
   sizes?: string;
 }) {
   const source: VisualSource = visualSources[id];
-  const frameless = id === "real-time-alerts";
+  const frameless = isPhoneVisual(id);
   const frame = fill
     ? "absolute inset-0 overflow-hidden"
     : frameless

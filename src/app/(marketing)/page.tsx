@@ -99,7 +99,7 @@ const USE_CASES: UseCaseTile[] = [
     id: "under-load-detection",
     title: "Under suspended loads",
     body: "Workers inside the drop zone of a lift, flagged for the lifting supervisor.",
-    href: "/use-cases",
+    href: "/use-cases/suspended-load-safety",
   },
   {
     id: "fire-smoke-detection",

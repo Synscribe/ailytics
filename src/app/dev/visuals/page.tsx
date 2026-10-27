@@ -2,6 +2,7 @@ import { ArrowLeftIcon } from "lucide-react";
 import Link from "next/link";
 
 import {
+  isPhoneVisual,
   ProjectVisual,
   VISUAL_ENTRIES,
 } from "@/components/visuals/project-visual";
@@ -113,7 +114,7 @@ export default async function VisualInventoryPage() {
 
                 <div
                   className={
-                    entry.id === "real-time-alerts"
+                    isPhoneVisual(entry.id)
                       ? "p-5 sm:p-7"
                       : "rounded-[2rem] border border-ink/10 bg-paper/70 p-5 sm:p-7"
                   }
