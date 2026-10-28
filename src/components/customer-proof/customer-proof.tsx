@@ -55,7 +55,9 @@ const LOGOS = [
   },
 ];
 
-const STATS = [
+export type ProofStat = { value: string; label: string };
+
+const DEFAULT_STATS: ProofStat[] = [
   { value: "60–80%", label: "reduction in safety non-compliance" },
   {
     value: "50+",
@@ -64,8 +66,17 @@ const STATS = [
   { value: "<2 weeks", label: "to go live on the cameras you already own" },
 ];
 
-/** `spacious` adds 80px above and below, for the homepage. */
-export function CustomerProof({ spacious = false }: { spacious?: boolean }) {
+/**
+ * `spacious` adds 80px above and below, for the homepage. `stats` replaces
+ * the default stat row for a page that needs different figures.
+ */
+export function CustomerProof({
+  spacious = false,
+  stats = DEFAULT_STATS,
+}: {
+  spacious?: boolean;
+  stats?: ProofStat[];
+}) {
   return (
     <section
       className={styles.proof}
@@ -100,7 +111,7 @@ export function CustomerProof({ spacious = false }: { spacious?: boolean }) {
         </ul>
       </div>
       <ul className={styles.stats}>
-        {STATS.map((s) => (
+        {stats.map((s) => (
           <li key={s.value} className={styles.stat}>
             <strong className={styles.statValue}>
               <CountUp value={s.value} />

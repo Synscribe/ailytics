@@ -19,14 +19,14 @@ export const USE_CASE_GROUPS: { title: string; items: HubEntry[] }[] = [
           "Spots missing hard hats, vests and gloves in each work area.",
       },
       {
-        slug: "machinery-proximity",
-        title: "Machinery proximity",
+        slug: "pedestrian-detection-system",
+        title: "Pedestrian detection",
         description:
-          "Measures the real distance between workers and moving machinery from one camera.",
+          "Measures the real distance between people and moving forklifts or machinery from one camera.",
       },
       {
-        slug: "under-suspended-load",
-        title: "Under suspended load",
+        slug: "suspended-load-safety",
+        title: "Suspended load safety",
         description:
           "Projects where a lifted load would fall and flags anyone inside that zone.",
       },

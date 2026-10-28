@@ -17,7 +17,7 @@ export const INDUSTRY_ROUTE_COPY: Record<string, ContentPageRouteCopy> = {
         {
           title: "Detect the hazard",
           description:
-            "Watch configured camera views for missing PPE, workers near machinery and unsafe access beneath suspended loads.",
+            "Watch configured camera views for missing PPE, workers near machinery, open edges and unsafe access beneath suspended loads.",
         },
         {
           title: "Warn the site team",
@@ -41,6 +41,18 @@ export const INDUSTRY_ROUTE_COPY: Record<string, ContentPageRouteCopy> = {
         href: "/use-cases/ppe-detection",
         phrase: "missing hard hats, vests, and gloves",
       },
+      "under-load-detection": {
+        href: "/use-cases/suspended-load-safety",
+        phrase: "people beneath suspended crane loads",
+      },
+      "machinery-proximity": {
+        href: "/use-cases/pedestrian-detection-system",
+        phrase: "workers moving too close to active machinery and vehicles",
+      },
+      "no-access-zones": {
+        href: "/use-cases/open-edge-detection",
+        phrase: "open edge detection",
+      },
     },
     related: {
       title: "Construction use cases in detail",
@@ -51,6 +63,27 @@ export const INDUSTRY_ROUTE_COPY: Record<string, ContentPageRouteCopy> = {
             "Spot missing hard hats, vests and gloves on existing cameras and give supervisors evidence to act on.",
           href: "/use-cases/ppe-detection",
           label: "See PPE detection",
+        },
+        {
+          title: "Suspended load safety",
+          description:
+            "Project where a lifted load would fall from one camera and alert supervisors when a worker steps into the drop zone.",
+          href: "/use-cases/suspended-load-safety",
+          label: "See suspended load safety",
+        },
+        {
+          title: "Open edge detection",
+          description:
+            "Mark unprotected slab edges and openings, and alert supervisors when a worker steps inside the safety buffer.",
+          href: "/use-cases/open-edge-detection",
+          label: "See open edge detection",
+        },
+        {
+          title: "Pedestrian detection",
+          description:
+            "Measure the real distance between people and moving forklifts or excavators from one camera, and alert supervisors when someone gets too close.",
+          href: "/use-cases/pedestrian-detection-system",
+          label: "See pedestrian detection",
         },
       ],
     },

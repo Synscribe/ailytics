@@ -1,0 +1,113 @@
+{
+  "hero": {
+    "title": "Suspended Load Safety Detection",
+    "description": "Detect workers under suspended loads. Ailytics enhances suspended load safety by triggering alerts the moment a worker steps into the danger zone."
+  },
+  "problems": {
+    "title": "Where do manual lift checks fall short?",
+    "description": "Several cranes can lift at once while crews move between work areas. A lifting supervisor cannot watch every load and everyone beneath it.",
+    "items": [
+      {
+        "title": "Nobody on the ground is looking up",
+        "description": "Crews watch their own work, and barriers only mark where the lift started. Once the crane slews, catching a worker under the load takes a clear view of the load and the ground in the same second."
+      },
+      {
+        "title": "One operator, dozens of camera feeds",
+        "description": "A CCTV operator can be watching dozens of feeds across several lifts. A worker can step under a moving load and out again in seconds, on a screen nobody is looking at."
+      },
+      {
+        "title": "Manual checks miss most lift hazards",
+        "description": "Manual monitoring finds only 15 to 30% of hazards. A falling load causes some of the most serious injuries on site, and footage reviewed afterwards only explains what happened."
+      }
+    ]
+  },
+  "solution": {
+    "title": "Detect workers under suspended loads across existing cameras",
+    "description": "Ailytics works out depth from one standard camera and projects a drop zone on the ground beneath each suspended load, then alerts supervisors the moment a worker steps into it."
+  },
+  "features": {
+    "title": "Suspended load checks your team can act on",
+    "description": "Connect your cameras, set the drop zones each lift needs, and give supervisors alerts and reports that support daily lifting work.",
+    "items": [
+      {
+        "id": "under-load-detection",
+        "eyebrow": "Safety",
+        "title": "See where a load would fall",
+        "description": "Project a drop zone flat on the ground beneath each suspended load and flag workers whose feet enter it. Alerts fire only while the load is moving. Set the zone radius and dwell time for each lifting area, with a cooldown per person so one crossing raises one alert.",
+        "highlights": [
+          "Ground-level drop zone projection",
+          "Alerts only while the load moves",
+          "Configurable radius and dwell time"
+        ]
+      },
+      {
+        "id": "hardware-agnostic",
+        "eyebrow": "Camera connection",
+        "title": "Use cameras you already own",
+        "description": "Connect existing IP cameras and compatible recording systems through RTSP or ONVIF. Ailytics works out depth from a single standard camera, with no LiDAR, radar, or stereo rig, so you can add suspended load monitoring without replacing cameras. Coverage is assessed against your lifting areas and camera views.",
+        "highlights": [
+          "Existing IP cameras",
+          "RTSP and ONVIF connections",
+          "Depth from one standard camera"
+        ]
+      },
+      {
+        "id": "under-load-alerts",
+        "eyebrow": "Response",
+        "title": "Give supervisors evidence to respond",
+        "description": "Notify the right people when a worker enters the drop zone. Include the event frame, time, and location so the lifting supervisor can clear the area. Grace periods and cooldowns stop one event from sending repeat alerts.",
+        "highlights": [
+          "Drop zone notifications",
+          "Event frame, time, and location",
+          "Grace periods and cooldowns"
+        ]
+      },
+      {
+        "id": "under-load-reporting",
+        "eyebrow": "Compliance",
+        "title": "Bring lift evidence into reviews",
+        "description": "Generate safety and compliance reports on demand. Use logged suspended load events in audits, lift reviews, and toolbox talks, and track them alongside your total recordable incident rate (TRIR).",
+        "highlights": [
+          "Reports on demand",
+          "Logged event evidence",
+          "Support for audits and toolbox talks"
+        ]
+      }
+    ]
+  },
+  "faq": [
+    {
+      "question": "What is suspended load detection for construction sites?",
+      "answer": "Suspended load detection uses computer vision to keep workers out from under lifted loads. Ailytics works out depth from a single CCTV camera, projects the drop zone onto the ground beneath a load, and predicts where the load would fall. When a worker's feet enter that zone while the load is moving, it notifies supervisors with the frame, time, and location. This adds ongoing camera monitoring to your lifting plans and the checks your lifting team already does."
+    },
+    {
+      "question": "Can suspended load detection use our existing construction CCTV cameras?",
+      "answer": "Yes. Ailytics connects to existing IP cameras and compatible recording systems through RTSP or ONVIF, which are methods for accessing video feeds. Each view needs one standard camera, with no LiDAR, radar, or second camera. For lifting areas, cameras work best mounted 10 to 60 m high and tilted 45 to 60 degrees down, covering lifts 5 to 60 m away. Bring representative site footage to the demo for a coverage assessment."
+    },
+    {
+      "question": "How does Ailytics tell when a worker is under a suspended load?",
+      "answer": "A flat 2D check, where a person's box overlaps the load's box in the image, can fire for anyone who only looks close to the load from the camera's angle. Ailytics converts the 2D view into 3D, projects the drop zone flat on the ground beneath the load, and checks whether a worker's feet are inside it. It also checks whether the load is moving, so a crew working near a parked crane does not set off alerts."
+    },
+    {
+      "question": "Does suspended load detection work in rain, dust, and low light?",
+      "answer": "Ailytics' models are fine-tuned for heavy industries and conditioned for harsh site conditions, including rain, dust, and low light, with up to 99% detection accuracy depending on the scenario. Detection still depends on usable footage and a clear view of the load and the ground beneath it. Share examples from different shifts and weather conditions so the team can assess where your current cameras provide suitable coverage."
+    },
+    {
+      "question": "Can we reduce repeated suspended load alerts?",
+      "answer": "Set grace periods and cooldowns per camera and person to reduce repeat notifications from the same event. Alerts fire only while the load is moving, so a parked crane does not keep sending them. Match these settings to each lifting area and the way supervisors respond during a shift."
+    },
+    {
+      "question": "Can suspended load footage stay on our construction site's network?",
+      "answer": "Yes. The Ailyssa detection engine can run on edge, on-premise, or cloud infrastructure. On-premise deployment allows data to stay on-site. Your IT and safety teams can review the deployment approach together, including video access, storage, network requirements, and how supervisors receive alerts. Ailytics is ISO/IEC 27001 certified. Discuss your project's requirements during the demo."
+    },
+    {
+      "question": "Can we combine suspended load detection with other construction safety checks?",
+      "answer": "Yes. Suspended load detection can sit alongside [open edge detection](/use-cases/open-edge-detection), [PPE detection](/use-cases/ppe-detection), [pedestrian detection](/use-cases/pedestrian-detection-system) near machinery, and restricted-area alerts in the same platform. Pedestrian detection uses the same single-camera depth to measure the real distance between workers and moving machinery. Select the checks that fit each work area and its camera coverage. See the [construction industry page](/industries/construction) for how Ailytics combines safety monitoring with workforce tracking and visual progress records across a construction site."
+    }
+  ],
+  "cta": {
+    "title": "See suspended load detection on your site",
+    "description": "Bring your CCTV views and lifting plans. See how Ailytics can help your supervisors keep workers out of drop zones during every lift.",
+    "buttonText": "Request a demo"
+  }
+}

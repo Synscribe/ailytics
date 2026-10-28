@@ -1,0 +1,118 @@
+{
+  "hero": {
+    "title": "Pedestrian detection system for forklifts and heavy machinery",
+    "seoTitle": "Pedestrian detection system for forklifts",
+    "description": "A pedestrian detection system that alerts supervisors when people get too close to moving forklifts and heavy machinery, using the cameras you already have."
+  },
+  "problems": {
+    "title": "Where do walkways and spotters fall short?",
+    "description": "Forklifts and heavy machinery share space with people on foot. Marked walkways, mirrors and spotters help, but nobody can watch every aisle, loading bay and work area for a whole shift.",
+    "items": [
+      {
+        "title": "Operators lose sight of people",
+        "description": "A raised load, the end of a racking aisle or a reversing machine can hide a pedestrian from the operator until the two are close."
+      },
+      {
+        "title": "People cut across traffic routes",
+        "description": "Workers step off the marked walkway to reach stock, take a shortcut or talk to a driver, often right where machines turn."
+      },
+      {
+        "title": "Near misses go unreported",
+        "description": "Close calls between people and machines rarely reach a report, so safety teams cannot see which aisles, bays and shifts need attention."
+      }
+    ]
+  },
+  "solution": {
+    "title": "Detect pedestrians near moving machinery across existing cameras",
+    "description": "Ailytics works out depth from one standard camera, draws a danger area on the ground around each moving forklift or machine, and alerts supervisors when a pedestrian steps inside it."
+  },
+  "features": {
+    "title": "Pedestrian detection your team can act on",
+    "description": "Connect your cameras, set the danger areas each work area needs, and give supervisors alerts and reports that support daily traffic management.",
+    "items": [
+      {
+        "id": "machinery-proximity",
+        "eyebrow": "Safety",
+        "title": "Measure the real distance to moving machines",
+        "description": "Ailytics turns each camera view into 3D, draws a danger area on the ground around forklifts, excavators and other machines, and checks where each pedestrian's feet are. The danger area only applies while the machine is moving, so a parked forklift does not raise alerts. Set the danger area, grace period and cooldown for each camera and work area.",
+        "highlights": [
+          "Real distance from one camera",
+          "Danger area only while the machine moves",
+          "Configurable danger areas"
+        ]
+      },
+      {
+        "id": "hardware-agnostic",
+        "eyebrow": "Camera connection",
+        "title": "Use cameras you already own",
+        "description": "Connect existing IP cameras and compatible recording systems through RTSP or ONVIF. Ailytics works out depth from a single standard camera, so you can add pedestrian detection without fitting sensors to each forklift or handing out tags for people to wear. Coverage is assessed against your aisles, loading bays and camera views.",
+        "highlights": [
+          "Existing IP cameras",
+          "RTSP and ONVIF connections",
+          "No wearable tags or vehicle sensors"
+        ]
+      },
+      {
+        "id": "pedestrian-alerts",
+        "eyebrow": "Response",
+        "title": "Give supervisors evidence to respond",
+        "description": "Notify the right people when a pedestrian enters the danger area around a moving machine. Include the event frame, time, and location so the supervisor can clear the route and talk to the people involved. Grace periods and cooldowns stop one event from sending repeat alerts.",
+        "highlights": [
+          "Proximity notifications",
+          "Event frame, time, and location",
+          "Grace periods and cooldowns"
+        ]
+      },
+      {
+        "id": "pedestrian-reporting",
+        "eyebrow": "Compliance",
+        "title": "Find the routes that need changes",
+        "description": "Generate safety and compliance reports on demand. Use logged near misses to spot the aisles, crossings and shifts where people and machines meet most, and bring the evidence into traffic management reviews, audits, and toolbox talks.",
+        "highlights": [
+          "Reports on demand",
+          "Logged near-miss evidence",
+          "Support for traffic management reviews"
+        ]
+      }
+    ]
+  },
+  "faq": [
+    {
+      "question": "What is a pedestrian detection system?",
+      "answer": "A pedestrian detection system warns when people on foot get too close to forklifts and other moving machinery. Ailytics does this with computer vision on your existing CCTV. It works out depth from a single camera, draws a danger area on the ground around each moving machine, and notifies supervisors with the frame, time, and location when a pedestrian steps inside. This adds ongoing camera monitoring to the walkways, barriers, and traffic rules your site already uses."
+    },
+    {
+      "question": "Does pedestrian detection work for forklifts in warehouses and factories?",
+      "answer": "Yes. Forklifts are the most common use, in warehouses, distribution centers, manufacturing plants, and logistics yards. The same detection covers excavators and other heavy machinery on construction and industrial sites. Bring footage of your machines and traffic routes to the demo so the team can check which machine types your cameras cover."
+    },
+    {
+      "question": "Do pedestrians or forklifts need tags or sensors?",
+      "answer": "No. Ailytics works from the CCTV cameras already on site, so people carry no tags and machines need no sensors fitted. It connects to existing IP cameras and compatible recording systems through RTSP or ONVIF. Because detection runs on the camera view, it also covers visitors and contractors who would never be issued a tag. Each camera needs a clear view of the floor where people and machines meet."
+    },
+    {
+      "question": "How does Ailytics measure the distance between a pedestrian and a forklift?",
+      "answer": "A flat 2D check, where a person's box overlaps a machine's box in the image, can fire for anyone who only looks close from the camera's angle. Ailytics converts the 2D view into 3D, draws the danger area flat on the ground around the machine, and checks whether a pedestrian's feet are inside it. The danger area only applies while the machine is moving, so people working near a parked forklift do not set off alerts."
+    },
+    {
+      "question": "Does pedestrian detection work in low light, dust, and outdoor yards?",
+      "answer": "Ailytics' models are fine-tuned for heavy industries and conditioned for harsh site conditions, including rain, dust, and low light, with up to 99% detection accuracy depending on the scenario. Detection still depends on usable footage and a clear view of the floor around each machine. Share examples from different shifts, aisles, and yards so the team can assess where your current cameras provide suitable coverage."
+    },
+    {
+      "question": "Can we reduce repeated forklift alerts?",
+      "answer": "Set grace periods and cooldowns per camera and person to reduce repeat notifications from the same event. The danger area switches off when a machine stops, so a parked forklift does not keep sending alerts. Match these settings to each aisle, loading bay, and the way supervisors respond during a shift."
+    },
+    {
+      "question": "Can pedestrian detection footage stay on our site's network?",
+      "answer": "Yes. The Ailyssa detection engine can run on edge, on-premise, or cloud infrastructure. On-premise deployment allows data to stay on-site. Your IT and safety teams can review the deployment approach together, including video access, storage, network requirements, and how supervisors receive alerts. Ailytics is ISO/IEC 27001 certified. Discuss your site's requirements during the demo."
+    },
+    {
+      "question": "Can we combine pedestrian detection with other safety checks?",
+      "answer": "Yes. Pedestrian detection can sit alongside [PPE detection](/use-cases/ppe-detection), restricted-area alerts, and speeding and wrong-way driving checks in the same platform. On construction sites, add [suspended load detection](/use-cases/suspended-load-safety) and [open edge detection](/use-cases/open-edge-detection). Select the checks that fit each work area and its camera coverage. See the [construction industry page](/industries/construction) for how Ailytics combines safety monitoring across a construction site."
+    }
+  ],
+  "cta": {
+    "title": "See pedestrian detection on your site",
+    "description": "Bring your CCTV views and traffic management plan. See how Ailytics can help your supervisors keep people clear of moving forklifts and machinery.",
+    "buttonText": "Request a demo"
+  }
+}

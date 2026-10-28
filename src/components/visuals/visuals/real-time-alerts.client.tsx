@@ -12,6 +12,7 @@ import {
   VideoIcon,
 } from "lucide-react";
 import Image from "next/image";
+import { useEffect, useState, type RefObject } from "react";
 import styles from "./phone.module.css";
 
 import {
@@ -46,18 +47,120 @@ const EARLIER = [
   },
 ];
 
+/** The alert that lands on the phone, and the record it opens. */
+type AlertEvent = {
+  notice: string;
+  /** The site the camera belongs to. Defaults to the construction site. */
+  site?: string;
+  record: string;
+  place: string;
+  camera: string;
+  src: string;
+  box: readonly [x: number, y: number, w: number, h: number];
+};
+
+const PPE_EVENT: AlertEvent = {
+  notice: "PPE Check generated",
+  record: "PPE Check",
+  place: "Gate 2",
+  camera: "Camera 04",
+  src: "/media/ailytics/stills/ppe-detection.jpg",
+  box: [421, 285, 231, 544],
+};
+
+const UNDER_LOAD_EVENT: AlertEvent = {
+  notice: "Worker under suspended load",
+  record: "Under load",
+  place: "Lifting area",
+  camera: "Camera 03",
+  src: "/media/ailytics/stills/under-load-detection.jpg",
+  box: [808, 700, 76, 216],
+};
+
+const OPEN_EDGE_EVENT: AlertEvent = {
+  notice: "Worker near open edge",
+  record: "Open edge",
+  place: "Deck edge",
+  camera: "Camera 01",
+  src: "/media/ailytics/stills/open-edge-shaft.jpg",
+  box: [867, 53, 47, 187],
+};
+
+const PEDESTRIAN_EVENT: AlertEvent = {
+  notice: "Pedestrian near moving forklift",
+  record: "Near machinery",
+  site: "Distribution center",
+  place: "Warehouse floor",
+  camera: "Camera 05",
+  src: "/media/ailytics/stills/warehouse-forklift.jpg",
+  box: [608, 398, 132, 242],
+};
+
+/** The phone's drawn size. It scales down as one picture to fit its stage. */
+const PHONE_W = 220;
+const PHONE_H = 462;
+/** Room for the side buttons, which stick out past the phone's edge. */
+const PHONE_SIDES = 20;
+
 /**
- * The supervisor's phone, laid out like the mobile app: a PPE Check
+ * The scale that fits the phone inside its stage. It is null until the stage
+ * is measured, so the server render sizes the phone with CSS alone.
+ */
+function usePhoneScale(ref: RefObject<HTMLDivElement | null>) {
+  const [scale, setScale] = useState<number | null>(null);
+  useEffect(() => {
+    const stage = ref.current;
+    if (!stage) return;
+    const observer = new ResizeObserver(() => {
+      const style = getComputedStyle(stage);
+      const width =
+        stage.clientWidth -
+        parseFloat(style.paddingLeft) -
+        parseFloat(style.paddingRight);
+      const height =
+        stage.clientHeight -
+        parseFloat(style.paddingTop) -
+        parseFloat(style.paddingBottom);
+      setScale(Math.min(1, width / (PHONE_W + PHONE_SIDES), height / PHONE_H));
+    });
+    observer.observe(stage);
+    return () => observer.disconnect();
+  }, [ref]);
+  return scale;
+}
+
+/** The same phone for the suspended load page, with an under-load alert. */
+export function UnderLoadAlertsVisual() {
+  return <RealTimeAlertsVisual event={UNDER_LOAD_EVENT} />;
+}
+
+/** The same phone for the open edge page, with an open edge alert. */
+export function OpenEdgeAlertsVisual() {
+  return <RealTimeAlertsVisual event={OPEN_EDGE_EVENT} />;
+}
+
+/** The same phone for the pedestrian detection page, with a forklift alert. */
+export function PedestrianAlertsVisual() {
+  return <RealTimeAlertsVisual event={PEDESTRIAN_EVENT} />;
+}
+
+/**
+ * The supervisor's phone, laid out like the mobile app: an alert
  * notification lands at the top of the list, opens into the record with the
  * event frame, camera and time, and the record is assigned so it shows in the
- * activity log.
+ * activity log. The alert is a PPE Check unless `event` says otherwise.
  */
-export default function RealTimeAlertsVisual() {
+export default function RealTimeAlertsVisual({
+  event = PPE_EVENT,
+}: {
+  event?: AlertEvent;
+}) {
   const { ref, phase, cycle, reduce } = useLoop(7, 1150);
   const arrived = phase >= 1;
   const detail = phase >= 3;
   const assigned = phase >= 5;
   const brand = TONES.positive;
+  const scale = usePhoneScale(ref);
 
   return (
     <VisualFrame innerRef={ref}>
@@ -67,6 +170,15 @@ export default function RealTimeAlertsVisual() {
           borderColor: "var(--ink)",
           background: BRAND.surface,
           color: "var(--ink)",
+          ...(scale === null
+            ? {}
+            : {
+                width: PHONE_W,
+                height: PHONE_H,
+                maxHeight: "none",
+                flex: "none",
+                transform: `scale(${scale})`,
+              }),
         }}
       >
         <div className={styles.status}>
@@ -112,10 +224,10 @@ export default function RealTimeAlertsVisual() {
                   transition={reduce ? { duration: 0 } : SPRING}
                 >
                   <Notice
-                    body="Captured at Camera 04."
+                    body={`Captured at ${event.camera}.`}
                     fresh
                     time="now"
-                    title="PPE Check generated"
+                    title={event.notice}
                   />
                 </motion.div>
               ) : null}
@@ -139,7 +251,9 @@ export default function RealTimeAlertsVisual() {
               >
                 <div className="flex items-center gap-1.5 px-2.5 pt-1 pb-1.5">
                   <ChevronLeftIcon aria-hidden="true" className="size-3.5" />
-                  <span className="text-[12.5px] font-medium">PPE Check</span>
+                  <span className="text-[12.5px] font-medium">
+                    {event.record}
+                  </span>
                   <EllipsisVerticalIcon
                     aria-hidden="true"
                     className="ml-auto size-3.5"
@@ -147,9 +261,11 @@ export default function RealTimeAlertsVisual() {
                   />
                 </div>
                 <div className="flex flex-col gap-0.5 px-2.5 pb-2 text-[10px] font-medium">
-                  <span className="text-[11.5px]">Tower site</span>
-                  <Meta icon={MapPinIcon}>Gate 2</Meta>
-                  <Meta icon={VideoIcon}>Camera 04</Meta>
+                  <span className="text-[11.5px]">
+                    {event.site ?? "Tower site"}
+                  </span>
+                  <Meta icon={MapPinIcon}>{event.place}</Meta>
+                  <Meta icon={VideoIcon}>{event.camera}</Meta>
                   <Meta icon={ClockIcon}>8:53 pm, today</Meta>
                 </div>
                 <div className="relative mx-2 min-h-[70px] flex-1 overflow-hidden rounded-lg">
@@ -158,10 +274,10 @@ export default function RealTimeAlertsVisual() {
                     className="object-cover"
                     fill
                     sizes="320px"
-                    src="/media/ailytics/stills/ppe-detection.jpg"
+                    src={event.src}
                   />
                   <CamOverlay>
-                    <Frame box={[421, 285, 231, 544]} instant tone="hazard" />
+                    <Frame box={event.box} instant tone="hazard" />
                   </CamOverlay>
                 </div>
                 <div className="flex flex-none items-center gap-1.5 px-2 pt-2">

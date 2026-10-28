@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import Image from "next/image";
 import {
   User,
@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { useLoop } from "@/components/visuals/visuals/_kit";
 import s from "./workflows.module.css";
-function Photo({ src }: { src: string }) {
+function Photo({ src, position }: { src: string; position?: string }) {
   return (
     <Image
       src={src}
@@ -22,6 +22,7 @@ function Photo({ src }: { src: string }) {
       fill
       sizes="(max-width:760px) 90vw, 700px"
       className={s.photo}
+      style={position ? { objectPosition: position } : undefined}
     />
   );
 }
@@ -260,7 +261,27 @@ export function Sites() {
     </div>
   );
 }
-export function Reports() {
+/** The incident a report is prepared from. */
+export type ReportIncident = {
+  title: string;
+  camera: string;
+  src: string;
+  /** Hazard box over the photo, in percent. Omit to keep the PPE box. */
+  box?: CSSProperties;
+  photoPosition?: string;
+};
+
+const PPE_INCIDENT: ReportIncident = {
+  title: "Missing hard hat",
+  camera: "Camera 04 · Gate 2",
+  src: "/media/ailytics/stills/ppe-detection.jpg",
+};
+
+export function Reports({
+  incident = PPE_INCIDENT,
+}: {
+  incident?: ReportIncident;
+}) {
   const [paused, setPaused] = useState(false);
   const [manual, setManual] = useState<number | null>(null);
   const { ref, phase } = useLoop(8, 1000, !paused && manual === null);
@@ -282,14 +303,14 @@ export function Reports() {
       </div>
       <div className={s.reportBody} data-report-open={step >= 3}>
         <div className={s.evidenceImage}>
-          <Photo src="/media/ailytics/stills/ppe-detection.jpg" />
-          <span className={s.evidenceLabel}>Camera 04 · Gate 2</span>
-          <div className={s.evidenceBox} />
+          <Photo position={incident.photoPosition} src={incident.src} />
+          <span className={s.evidenceLabel}>{incident.camera}</span>
+          <div className={s.evidenceBox} style={incident.box} />
         </div>
         <div className={s.eventInfo}>
           <div>
             <small>ILLUSTRATIVE INCIDENT</small>
-            <h3>Missing hard hat</h3>
+            <h3>{incident.title}</h3>
             <p>Camera evidence and event details attached.</p>
           </div>
           <button

@@ -1,14 +1,20 @@
 import { ScannedHighlight } from "@/components/scanned-highlight/scanned-highlight";
-import { DETAIL_SCENES } from "./scenes";
+import { sceneFor } from "./scenes";
 import { ProblemSwitcher } from "./problem-switcher.client";
 import { StepScene } from "./step-scene.client";
 import { FaqAccordion } from "@/components/faq-accordion/faq-accordion";
 import { RevealGroup } from "@/components/reveal-group.client";
-import { CustomerProof } from "@/components/customer-proof/customer-proof";
+import {
+  CustomerProof,
+  type ProofStat,
+} from "@/components/customer-proof/customer-proof";
 import { ArrowRightIcon, CheckIcon } from "lucide-react";
 import Link from "next/link";
 
-import { ProjectVisual } from "@/components/visuals/project-visual";
+import {
+  isPhoneVisual,
+  ProjectVisual,
+} from "@/components/visuals/project-visual";
 import { stripInlineLinks, type PageContent } from "@/lib/page-content";
 import {
   buildBreadcrumbJsonLd,
@@ -40,6 +46,8 @@ export type ContentPageProps = {
     title: string;
     items: (Block & { href: string; label: string })[];
   };
+  /** Replaces the stat row under the customer logos. */
+  proofStats?: ProofStat[];
   ctaHref?: string;
 };
 
@@ -64,6 +72,7 @@ export function ContentPage({
   howItWorks,
   featureLinks = {},
   related,
+  proofStats,
   ctaHref = "/contact",
 }: ContentPageProps) {
   const breadcrumbJsonLd = buildBreadcrumbJsonLd(breadcrumbs);
@@ -73,10 +82,7 @@ export function ContentPage({
       answer: stripInlineLinks(item.answer),
     })),
   );
-  const scene =
-    DETAIL_SCENES[
-      heroVisualId === "construction-hero" ? "construction" : "ppe"
-    ];
+  const scene = sceneFor(heroVisualId);
   const trail = breadcrumbs.slice(0, -1);
   const current = breadcrumbs[breadcrumbs.length - 1];
 
@@ -151,7 +157,7 @@ export function ContentPage({
           </div>
         </div>
       </section>
-      <CustomerProof />
+      <CustomerProof stats={proofStats} />
 
       <section id="problems" className="detail-section">
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
@@ -236,13 +242,13 @@ export function ContentPage({
                     <div
                       data-reveal
                       className={
-                        item.id === "real-time-alerts"
+                        isPhoneVisual(item.id)
                           ? `order-1 min-w-0 p-3 ${index % 2 ? "lg:order-1" : "lg:order-2"}`
                           : `order-1 min-w-0 ${index % 2 ? "lg:order-1" : "lg:order-2"}`
                       }
                     >
                       <div
-                        className={`relative w-full overflow-hidden ${item.id === "real-time-alerts" ? "h-[440px] lg:aspect-[4/3] lg:h-auto" : "aspect-[4/3] rounded-lg bg-muted"}`}
+                        className={`relative w-full overflow-hidden ${isPhoneVisual(item.id) ? "h-[440px] lg:h-[500px]" : "aspect-[4/3] rounded-lg bg-muted"}`}
                       >
                         <ProjectVisual
                           fill
@@ -271,7 +277,9 @@ export function ContentPage({
         <section id="related" className="detail-section">
           <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
             <h2 className={sectionHeading}>{related.title}</h2>
-            <div className="mt-10 grid gap-4 md:grid-cols-2">
+            <div
+              className={`mt-10 grid gap-4 md:grid-cols-2 ${related.items.length === 3 ? "lg:grid-cols-3" : ""}`}
+            >
               {related.items.map((item) => (
                 <Link
                   className="brand-card brand-card-link group flex flex-col gap-3 p-7 sm:p-8"

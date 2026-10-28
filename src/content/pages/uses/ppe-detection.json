@@ -102,7 +102,7 @@
     },
     {
       "question": "Can we combine PPE detection with other construction safety checks?",
-      "answer": "Yes. PPE detection can sit alongside open-edge detection, under-load detection, machinery proximity warnings, and restricted-area alerts in the same platform. Select the checks that fit each work area and its camera coverage. See the [construction industry page](/industries/construction) for how Ailytics combines safety monitoring with workforce tracking and visual progress records across a construction site."
+      "answer": "Yes. PPE detection can sit alongside [open edge detection](/use-cases/open-edge-detection), [suspended load detection](/use-cases/suspended-load-safety), [pedestrian detection](/use-cases/pedestrian-detection-system) near machinery, and restricted-area alerts in the same platform. Select the checks that fit each work area and its camera coverage. See the [construction industry page](/industries/construction) for how Ailytics combines safety monitoring with workforce tracking and visual progress records across a construction site."
     }
   ],
   "cta": {

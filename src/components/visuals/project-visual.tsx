@@ -1,4 +1,10 @@
-import { RulesVisual, ReportsVisual } from "./visuals/workflow-stage.client";
+import {
+  OpenEdgeReportsVisual,
+  PedestrianReportsVisual,
+  RulesVisual,
+  ReportsVisual,
+  UnderLoadReportsVisual,
+} from "./visuals/workflow-stage.client";
 import visualSystem from "./visual-system.module.css";
 import type { ComponentType } from "react";
 import Image, { getImageProps, type ImageProps } from "next/image";
@@ -14,16 +20,32 @@ import HardwareAgnosticVisual from "./visuals/hardware-agnostic.client";
 import LoiteringUnattendedVisual from "./visuals/loitering-unattended.client";
 import MachineryProximityVisual from "./visuals/machinery-proximity.client";
 import MachineryUsageVisual from "./visuals/machinery-usage.client";
+import {
+  OpenEdgeMissedVisual,
+  UnderLoadMissedVisual,
+} from "./visuals/manual-checks.client";
 import ManHourTrackingVisual from "./visuals/man-hour-tracking.client";
 import NoAccessZonesVisual from "./visuals/no-access-zones.client";
 import OpenEdgeDetectionVisual from "./visuals/open-edge-detection.client";
+import OpenEdgeHeroVisual from "./visuals/open-edge-hero.client";
+import OpenEdgeSafetyWalkVisual from "./visuals/open-edge-safety-walk.client";
+import OpenEdgeWalkroundVisual from "./visuals/open-edge-walkround.client";
+import PedestrianCrossingVisual from "./visuals/pedestrian-crossing.client";
+import PedestrianHeroVisual from "./visuals/pedestrian-hero.client";
 import PoorErgonomicsVisual from "./visuals/poor-ergonomics.client";
 import PpeDetectionVisual from "./visuals/ppe-detection.client";
 import PpeHeroVisual from "./visuals/ppe-hero.client";
-import RealTimeAlertsVisual from "./visuals/real-time-alerts.client";
+import RealTimeAlertsVisual, {
+  OpenEdgeAlertsVisual,
+  PedestrianAlertsVisual,
+  UnderLoadAlertsVisual,
+} from "./visuals/real-time-alerts.client";
 import SpeedingWrongWayVisual from "./visuals/speeding-wrong-way.client";
+import SuspendedLoadHeroVisual from "./visuals/suspended-load-hero.client";
 import TimelapseXrayVisual from "./visuals/timelapse-xray.client";
+import UnderLoadCameraWallVisual from "./visuals/under-load-camera-wall.client";
 import UnderLoadDetectionVisual from "./visuals/under-load-detection.client";
+import UnderLoadOverheadVisual from "./visuals/under-load-overhead.client";
 import WaterHazardVisual from "./visuals/water-hazard.client";
 
 export type VisualStatus = "project" | "template-placeholder";
@@ -82,6 +104,105 @@ const visualSources: Record<VisualId, VisualSource> = {
     component: PpeHeroVisual,
     stage: {
       alt: "A basement site camera finds three workers and checks the front worker's hard hat, vest and gloves, then confirms all three are wearing PPE.",
+    },
+  },
+  "suspended-load-hero": {
+    ...stagedComponent,
+    label: "Worker under a suspended load",
+    motionPattern:
+      "drop zone projects under the load, then one worker is flagged",
+    component: SuspendedLoadHeroVisual,
+    stage: {
+      alt: "A lifting-area camera finds a suspended formwork panel and two workers, projects the panel's drop zone onto the ground, flags the worker standing inside it, and sends an alert. The worker outside the zone is not flagged.",
+    },
+  },
+  "open-edge-hero": {
+    ...stagedComponent,
+    label: "Worker near an open edge",
+    motionPattern: "edge traces, a buffer is set, then one worker is flagged",
+    component: OpenEdgeHeroVisual,
+    stage: {
+      alt: "A camera over a construction shaft finds four workers, traces the deck's unprotected edge with a safety buffer, flags the two workers standing at the edge inside the buffer, and sends an alert. The workers further back are not flagged.",
+    },
+  },
+  "pedestrian-hero": {
+    ...stagedComponent,
+    label: "Pedestrian too close to a forklift",
+    motionPattern:
+      "danger area switches on around a moving forklift, then the pedestrian is flagged",
+    component: PedestrianHeroVisual,
+    stage: {
+      alt: "A warehouse camera finds a forklift and a pedestrian. When the forklift moves, a danger area switches on around it, the pedestrian is measured 1.8 m away inside the area and flagged, and an alert is sent.",
+    },
+  },
+  "pedestrian-crossing": {
+    ...stagedComponent,
+    label: "Worker beside an excavator",
+    motionPattern:
+      "the detected worker beside the excavator triggers alert rings, then the alert card appears",
+    component: PedestrianCrossingVisual,
+    stage: {
+      alt: "An Ailytics site camera flags a worker standing inside the danger area beside an excavator. An alert sounds around the worker and is sent to the site team.",
+    },
+  },
+  "open-edge-walkround": {
+    ...stagedComponent,
+    label: "Walkround past a level's open edges",
+    motionPattern:
+      "a safety officer walks the level, lighting only the edges in view",
+    component: OpenEdgeWalkroundVisual,
+    stage: {
+      alt: "A plan of one level with twelve open edges. A safety officer walks the level and can see only one to three edges at a time. After they pass, a guardrail comes down on an edge nobody is watching.",
+    },
+  },
+  "open-edge-safety-walk": {
+    ...stagedComponent,
+    label: "Edge approaches through a shift",
+    motionPattern:
+      "a playhead runs the shift as edge approaches land around two safety walks",
+    component: OpenEdgeSafetyWalkVisual,
+    stage: {
+      alt: "A sample shift on one edge. Workers step inside the edge buffer eleven times through the day, but none during the two safety walks, so the walks see nothing while the camera records every approach.",
+    },
+  },
+  "open-edge-missed": {
+    ...stagedComponent,
+    label: "Open edge hazards found by manual checks",
+    motionPattern:
+      "a week of open edge hazards splits into found and missed, then the share found fills a bar",
+    component: OpenEdgeMissedVisual,
+    stage: {
+      alt: "A sample week of twenty open edge hazards. Manual checks find four, and sixteen are missed. The 20% found sits inside the 15 to 30% that manual monitoring finds.",
+    },
+  },
+  "under-load-overhead": {
+    ...stagedComponent,
+    label: "Crew below a load, eyes on the ground",
+    motionPattern:
+      "each worker's line of sight is drawn, then the unseen line up to the load",
+    component: UnderLoadOverheadVisual,
+    stage: {
+      alt: "A lifting-area camera shows a formwork panel hanging overhead while workers below look at the ground in front of them. One worker walks under the load without looking up, and nobody on the ground is watching it.",
+    },
+  },
+  "under-load-camera-wall": {
+    ...stagedComponent,
+    label: "Operator watching sixteen feeds",
+    motionPattern:
+      "the operator's focus moves across a camera wall while another feed flags and clears",
+    component: UnderLoadCameraWallVisual,
+    stage: {
+      alt: "A control room wall of sixteen camera feeds watched by one operator. A worker steps under a moving load on camera 15 for four seconds, and the operator is looking at other feeds the whole time, so the event is not seen.",
+    },
+  },
+  "under-load-missed": {
+    ...stagedComponent,
+    label: "Lift hazards found by manual checks",
+    motionPattern:
+      "a week of lift hazards splits into found and missed, then the share found fills a bar",
+    component: UnderLoadMissedVisual,
+    stage: {
+      alt: "A sample week of twenty lift hazards. Manual checks find four, and sixteen are missed. The 20% found sits inside the 15 to 30% that manual monitoring finds.",
     },
   },
   "childsafe-vision-hero": {
@@ -266,6 +387,36 @@ const visualSources: Record<VisualId, VisualSource> = {
       alt: "A phone's notification list receives a PPE Check, which opens to show the event frame, camera, time, and an assignment in the activity log.",
     },
   },
+  "under-load-alerts": {
+    ...stagedComponent,
+    label: "Under-load alert on a phone",
+    motionPattern:
+      "under-load alert lands in the list, opens its record, and is assigned",
+    component: UnderLoadAlertsVisual,
+    stage: {
+      alt: "A phone's notification list receives a worker under suspended load alert, which opens to show the event frame, lifting area, camera, time, and an assignment in the activity log.",
+    },
+  },
+  "open-edge-alerts": {
+    ...stagedComponent,
+    label: "Open edge alert on a phone",
+    motionPattern:
+      "open edge alert lands in the list, opens its record, and is assigned",
+    component: OpenEdgeAlertsVisual,
+    stage: {
+      alt: "A phone's notification list receives a worker near open edge alert, which opens to show the event frame, slab level, camera, time, and an assignment in the activity log.",
+    },
+  },
+  "pedestrian-alerts": {
+    ...stagedComponent,
+    label: "Forklift alert on a phone",
+    motionPattern:
+      "forklift alert lands in the list, opens its record, and is assigned",
+    component: PedestrianAlertsVisual,
+    stage: {
+      alt: "A phone's notification list receives a pedestrian near moving forklift alert, which opens to show the event frame, location, camera, time, and an assignment in the activity log.",
+    },
+  },
   "unlimited-reporting": {
     ...stagedComponent,
     label: "On-demand PPE report",
@@ -274,6 +425,36 @@ const visualSources: Record<VisualId, VisualSource> = {
     interactive: true,
     stage: {
       alt: "Interactive example: prepare a PPE incident report with event details, camera evidence and review history.",
+    },
+  },
+  "under-load-reporting": {
+    ...stagedComponent,
+    label: "On-demand under-load report",
+    motionPattern: "drop zone evidence becomes an incident report",
+    component: UnderLoadReportsVisual,
+    interactive: true,
+    stage: {
+      alt: "Interactive example: prepare an incident report for a worker under a suspended load, with event details, camera evidence and review history.",
+    },
+  },
+  "open-edge-reporting": {
+    ...stagedComponent,
+    label: "On-demand open edge report",
+    motionPattern: "edge buffer evidence becomes an incident report",
+    component: OpenEdgeReportsVisual,
+    interactive: true,
+    stage: {
+      alt: "Interactive example: prepare an incident report for a worker near an unprotected edge, with event details, camera evidence and review history.",
+    },
+  },
+  "pedestrian-reporting": {
+    ...stagedComponent,
+    label: "On-demand forklift proximity report",
+    motionPattern: "proximity evidence becomes an incident report",
+    component: PedestrianReportsVisual,
+    interactive: true,
+    stage: {
+      alt: "Interactive example: prepare an incident report for a pedestrian too close to a moving forklift, with event details, camera evidence and review history.",
     },
   },
   "multi-site-dashboard": {
@@ -298,6 +479,16 @@ export function getVisualSource(id: VisualId): VisualSource {
   return visualSources[id];
 }
 
+/** The phone visuals draw their own device instead of sitting in a frame. */
+export function isPhoneVisual(id: VisualId): boolean {
+  return (
+    id === "real-time-alerts" ||
+    id === "under-load-alerts" ||
+    id === "open-edge-alerts" ||
+    id === "pedestrian-alerts"
+  );
+}
+
 const heroFrame =
   "relative aspect-[4/3] min-w-0 overflow-hidden rounded-lg border border-ink/10 bg-paper shadow-[0_24px_70px_rgba(29,41,38,0.07)]";
 
@@ -318,7 +509,7 @@ export function ProjectVisual({
   sizes?: string;
 }) {
   const source: VisualSource = visualSources[id];
-  const frameless = id === "real-time-alerts";
+  const frameless = isPhoneVisual(id);
   const frame = fill
     ? "absolute inset-0 overflow-hidden"
     : frameless
