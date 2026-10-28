@@ -30,9 +30,24 @@ export const VISUAL_IDS = [
   "construction-hero",
   "ppe-hero",
   "suspended-load-hero",
-  // Suspended load versions of the alert and report feature visuals.
+  "open-edge-hero",
+  "pedestrian-hero",
+  "pedestrian-crossing",
+  // Suspended load, open edge and pedestrian versions of the alert and
+  // report visuals.
   "under-load-alerts",
   "under-load-reporting",
+  "open-edge-alerts",
+  "open-edge-reporting",
+  "pedestrian-alerts",
+  "pedestrian-reporting",
+  // Why manual checks fall short, on the open edge and suspended load pages.
+  "open-edge-walkround",
+  "open-edge-safety-walk",
+  "open-edge-missed",
+  "under-load-overhead",
+  "under-load-camera-wall",
+  "under-load-missed",
   "childsafe-vision-hero",
   ...FEATURE_VISUAL_IDS,
 ] as const;

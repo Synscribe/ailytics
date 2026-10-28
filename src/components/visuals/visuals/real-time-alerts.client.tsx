@@ -12,6 +12,7 @@ import {
   VideoIcon,
 } from "lucide-react";
 import Image from "next/image";
+import { useEffect, useState, type RefObject } from "react";
 import styles from "./phone.module.css";
 
 import {
@@ -49,6 +50,8 @@ const EARLIER = [
 /** The alert that lands on the phone, and the record it opens. */
 type AlertEvent = {
   notice: string;
+  /** The site the camera belongs to. Defaults to the construction site. */
+  site?: string;
   record: string;
   place: string;
   camera: string;
@@ -74,9 +77,71 @@ const UNDER_LOAD_EVENT: AlertEvent = {
   box: [808, 700, 76, 216],
 };
 
+const OPEN_EDGE_EVENT: AlertEvent = {
+  notice: "Worker near open edge",
+  record: "Open edge",
+  place: "Deck edge",
+  camera: "Camera 01",
+  src: "/media/ailytics/stills/open-edge-shaft.jpg",
+  box: [867, 53, 47, 187],
+};
+
+const PEDESTRIAN_EVENT: AlertEvent = {
+  notice: "Pedestrian near moving forklift",
+  record: "Near machinery",
+  site: "Distribution center",
+  place: "Warehouse floor",
+  camera: "Camera 05",
+  src: "/media/ailytics/stills/warehouse-forklift.jpg",
+  box: [608, 398, 132, 242],
+};
+
+/** The phone's drawn size. It scales down as one picture to fit its stage. */
+const PHONE_W = 220;
+const PHONE_H = 462;
+/** Room for the side buttons, which stick out past the phone's edge. */
+const PHONE_SIDES = 20;
+
+/**
+ * The scale that fits the phone inside its stage. It is null until the stage
+ * is measured, so the server render sizes the phone with CSS alone.
+ */
+function usePhoneScale(ref: RefObject<HTMLDivElement | null>) {
+  const [scale, setScale] = useState<number | null>(null);
+  useEffect(() => {
+    const stage = ref.current;
+    if (!stage) return;
+    const observer = new ResizeObserver(() => {
+      const style = getComputedStyle(stage);
+      const width =
+        stage.clientWidth -
+        parseFloat(style.paddingLeft) -
+        parseFloat(style.paddingRight);
+      const height =
+        stage.clientHeight -
+        parseFloat(style.paddingTop) -
+        parseFloat(style.paddingBottom);
+      setScale(Math.min(1, width / (PHONE_W + PHONE_SIDES), height / PHONE_H));
+    });
+    observer.observe(stage);
+    return () => observer.disconnect();
+  }, [ref]);
+  return scale;
+}
+
 /** The same phone for the suspended load page, with an under-load alert. */
 export function UnderLoadAlertsVisual() {
   return <RealTimeAlertsVisual event={UNDER_LOAD_EVENT} />;
+}
+
+/** The same phone for the open edge page, with an open edge alert. */
+export function OpenEdgeAlertsVisual() {
+  return <RealTimeAlertsVisual event={OPEN_EDGE_EVENT} />;
+}
+
+/** The same phone for the pedestrian detection page, with a forklift alert. */
+export function PedestrianAlertsVisual() {
+  return <RealTimeAlertsVisual event={PEDESTRIAN_EVENT} />;
 }
 
 /**
@@ -95,6 +160,7 @@ export default function RealTimeAlertsVisual({
   const detail = phase >= 3;
   const assigned = phase >= 5;
   const brand = TONES.positive;
+  const scale = usePhoneScale(ref);
 
   return (
     <VisualFrame innerRef={ref}>
@@ -104,6 +170,15 @@ export default function RealTimeAlertsVisual({
           borderColor: "var(--ink)",
           background: BRAND.surface,
           color: "var(--ink)",
+          ...(scale === null
+            ? {}
+            : {
+                width: PHONE_W,
+                height: PHONE_H,
+                maxHeight: "none",
+                flex: "none",
+                transform: `scale(${scale})`,
+              }),
         }}
       >
         <div className={styles.status}>
@@ -186,7 +261,9 @@ export default function RealTimeAlertsVisual({
                   />
                 </div>
                 <div className="flex flex-col gap-0.5 px-2.5 pb-2 text-[10px] font-medium">
-                  <span className="text-[11.5px]">Tower site</span>
+                  <span className="text-[11.5px]">
+                    {event.site ?? "Tower site"}
+                  </span>
                   <Meta icon={MapPinIcon}>{event.place}</Meta>
                   <Meta icon={VideoIcon}>{event.camera}</Meta>
                   <Meta icon={ClockIcon}>8:53 pm, today</Meta>

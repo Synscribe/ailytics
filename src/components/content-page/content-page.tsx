@@ -248,7 +248,7 @@ export function ContentPage({
                       }
                     >
                       <div
-                        className={`relative w-full overflow-hidden ${isPhoneVisual(item.id) ? "h-[440px] lg:aspect-[4/3] lg:h-auto" : "aspect-[4/3] rounded-lg bg-muted"}`}
+                        className={`relative w-full overflow-hidden ${isPhoneVisual(item.id) ? "h-[440px] lg:h-[500px]" : "aspect-[4/3] rounded-lg bg-muted"}`}
                       >
                         <ProjectVisual
                           fill
@@ -277,7 +277,9 @@ export function ContentPage({
         <section id="related" className="detail-section">
           <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
             <h2 className={sectionHeading}>{related.title}</h2>
-            <div className="mt-10 grid gap-4 md:grid-cols-2">
+            <div
+              className={`mt-10 grid gap-4 md:grid-cols-2 ${related.items.length === 3 ? "lg:grid-cols-3" : ""}`}
+            >
               {related.items.map((item) => (
                 <Link
                   className="brand-card brand-card-link group flex flex-col gap-3 p-7 sm:p-8"

@@ -1,0 +1,113 @@
+{
+  "hero": {
+    "title": "Open edge detection for construction site safety",
+    "description": "Open edge detection alerts supervisors when a worker steps too close to an unprotected slab edge or floor opening, using the CCTV cameras already on site."
+  },
+  "problems": {
+    "title": "Where do manual edge checks fall short?",
+    "description": "A step toward an unprotected edge takes seconds. Walkrounds and spot checks only catch the moments someone happens to be there.",
+    "items": [
+      {
+        "title": "One safety officer cannot cover every edge",
+        "description": "A high-rise can have dozens of open edges across its levels, and guardrails come down daily for deliveries, formwork, and pours. A safety officer on a walkround sees each edge for a few minutes a shift."
+      },
+      {
+        "title": "Crews step back while the inspector is watching",
+        "description": "Workers know when a safety walk is coming and keep clear of the edge while it passes. Spot checks record the safe version of the shift, and the risky moments happen after the inspector moves on."
+      },
+      {
+        "title": "Spot checks miss most edge hazards",
+        "description": "Manual monitoring finds only 15 to 30% of hazards. Close calls nobody saw never reach a report, so safety teams cannot tell which edges need attention."
+      }
+    ]
+  },
+  "solution": {
+    "title": "Detect workers near open edges across existing cameras",
+    "description": "Mark each unprotected edge on the camera view with a safety buffer set back from it. Ailytics alerts supervisors the moment a worker steps inside the buffer."
+  },
+  "features": {
+    "title": "Open edge checks your team can act on",
+    "description": "Connect your cameras, mark the edges each level needs watched, and give supervisors alerts and reports that support daily fall prevention.",
+    "items": [
+      {
+        "id": "open-edge-detection",
+        "eyebrow": "Safety",
+        "title": "Flag workers inside the edge buffer",
+        "description": "Mark unprotected slab edges and floor openings on each camera view, with a safety buffer set back from the edge. Ailytics flags any worker who steps inside the buffer. Update the marked edges as the building changes, and set grace periods and cooldowns so one approach raises one alert.",
+        "highlights": [
+          "Slab edges and floor openings",
+          "Safety buffer back from each edge",
+          "Grace periods and cooldowns"
+        ]
+      },
+      {
+        "id": "hardware-agnostic",
+        "eyebrow": "Camera connection",
+        "title": "Use cameras you already own",
+        "description": "Connect existing IP cameras and compatible recording systems through RTSP or ONVIF. Add open edge monitoring to the cameras that already overlook each level, with no sensors to fit along the edge. Coverage is assessed against your work areas and camera views.",
+        "highlights": [
+          "Existing IP cameras",
+          "RTSP and ONVIF connections",
+          "No camera replacement"
+        ]
+      },
+      {
+        "id": "open-edge-alerts",
+        "eyebrow": "Response",
+        "title": "Give supervisors evidence to respond",
+        "description": "Notify the right people when a worker enters the safety buffer at an open edge. Include the event frame, time, and location so the supervisor can move the worker back and check the edge protection. Grace periods and cooldowns stop one event from sending repeat alerts.",
+        "highlights": [
+          "Open edge notifications",
+          "Event frame, time, and location",
+          "Grace periods and cooldowns"
+        ]
+      },
+      {
+        "id": "open-edge-reporting",
+        "eyebrow": "Compliance",
+        "title": "Find the edges that need attention",
+        "description": "Generate safety and compliance reports on demand. Use logged open edge events to spot repeat locations, and bring the evidence into audits, toolbox talks, and edge protection reviews.",
+        "highlights": [
+          "Reports on demand",
+          "Logged event evidence",
+          "Support for audits and toolbox talks"
+        ]
+      }
+    ]
+  },
+  "faq": [
+    {
+      "question": "What is open edge detection for construction sites?",
+      "answer": "Open edge detection uses computer vision to help keep workers away from unprotected edges. Ailytics watches existing CCTV views of slab edges and floor openings, with a safety buffer set back from each edge. When a worker steps inside the buffer, it notifies supervisors with the frame, time, and location. This adds ongoing camera monitoring to the edge protection, inspections, and fall prevention procedures your team already uses."
+    },
+    {
+      "question": "Can open edge detection use our existing construction CCTV cameras?",
+      "answer": "Yes. Ailytics connects to existing IP cameras and compatible recording systems through RTSP or ONVIF, which are methods for accessing video feeds. You do not need to replace your cameras. Each camera needs a clear view of the edge and the slab around it, so bring representative site footage to the demo for a coverage assessment."
+    },
+    {
+      "question": "How does open edge detection keep up as the building goes up?",
+      "answer": "Edges move as each level is poured and edge protection is installed or taken down. Update the marked edges and safety buffers for each camera when the layout changes, so alerts follow the current work area. Bring camera views from different stages of your project to the demo to review the setup."
+    },
+    {
+      "question": "Does open edge detection work in rain, dust, and low light?",
+      "answer": "Ailytics' models are fine-tuned for heavy industries and conditioned for harsh site conditions, including rain, dust, and low light, with up to 99% detection accuracy depending on the scenario. Detection still depends on usable footage and a clear view of the worker and the edge. Share examples from different shifts and weather conditions so the team can assess where your current cameras provide suitable coverage."
+    },
+    {
+      "question": "Can we reduce repeated open edge alerts?",
+      "answer": "Set grace periods and cooldowns per camera and person to reduce repeat notifications from the same event. Match these settings to each level and the way supervisors respond during a shift."
+    },
+    {
+      "question": "Can open edge footage stay on our construction site's network?",
+      "answer": "Yes. The Ailyssa detection engine can run on edge, on-premise, or cloud infrastructure. On-premise deployment allows data to stay on-site. Your IT and safety teams can review the deployment approach together, including video access, storage, network requirements, and how supervisors receive alerts. Ailytics is ISO/IEC 27001 certified. Discuss your project's requirements during the demo."
+    },
+    {
+      "question": "Can we combine open edge detection with other construction safety checks?",
+      "answer": "Yes. Open edge detection can sit alongside [suspended load detection](/use-cases/suspended-load-safety), [PPE detection](/use-cases/ppe-detection), [pedestrian detection](/use-cases/pedestrian-detection-system) near machinery, and restricted-area alerts in the same platform. Select the checks that fit each work area and its camera coverage. See the [construction industry page](/industries/construction) for how Ailytics combines safety monitoring with workforce tracking and visual progress records across a construction site."
+    }
+  ],
+  "cta": {
+    "title": "See open edge detection on your site",
+    "description": "Bring your CCTV views and edge protection plans. See how Ailytics can help your supervisors keep workers away from unprotected edges on every level.",
+    "buttonText": "Request a demo"
+  }
+}

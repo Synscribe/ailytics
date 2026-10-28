@@ -66,3 +66,32 @@ export function UnderLoadReportsVisual() {
     </Stage>
   );
 }
+export function PedestrianReportsVisual() {
+  return (
+    <Stage>
+      <Reports
+        incident={{
+          title: "Pedestrian near moving forklift",
+          camera: "Camera 05 · Warehouse floor",
+          src: "/media/ailytics/stills/warehouse-forklift.jpg",
+          box: { left: "47%", top: "40.5%", width: "11%", height: "27.5%" },
+        }}
+      />
+    </Stage>
+  );
+}
+export function OpenEdgeReportsVisual() {
+  return (
+    <Stage>
+      <Reports
+        incident={{
+          title: "Worker near open edge",
+          camera: "Camera 01 · Deck edge",
+          src: "/media/ailytics/stills/open-edge-shaft.jpg",
+          photoPosition: "center top",
+          box: { left: "67.5%", top: "5.5%", width: "4%", height: "21.5%" },
+        }}
+      />
+    </Stage>
+  );
+}

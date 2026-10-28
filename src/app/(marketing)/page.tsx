@@ -93,7 +93,7 @@ const USE_CASES: UseCaseTile[] = [
     id: "machinery-proximity",
     title: "Machinery proximity",
     body: "Real distance between workers and moving plant, from one camera.",
-    href: "/use-cases",
+    href: "/use-cases/pedestrian-detection-system",
   },
   {
     id: "under-load-detection",
@@ -117,7 +117,7 @@ const USE_CASES: UseCaseTile[] = [
     id: "open-edge-detection",
     title: "Open edges",
     body: "Workers near unguarded edges and openings, flagged before a fall.",
-    href: "/use-cases",
+    href: "/use-cases/open-edge-detection",
   },
 ];
 

@@ -168,16 +168,16 @@ Built on the canvas (Home-USP board, section 2), using only client assets.
 - **H2:** Hazards Ailytics detects
 - **Layout:** 8 tiles, each with a short clip or poster, a keyword label and a link to its own page.
 
-| Tile                          | Link                                  | Visual                        |
-| ----------------------------- | ------------------------------------- | ----------------------------- |
-| Machinery proximity detection | `/use-cases/machinery-proximity`      | detection-machinery-proximity |
-| Under suspended load          | `/use-cases/suspended-load-safety`    | deck GIF S9                   |
-| Open edge detection           | `/use-cases/open-edge-detection`      | detection-open-edge           |
-| PPE detection                 | `/use-cases/ppe-detection`            | detection-low-light-ppe       |
-| Smoke and fire detection      | `/use-cases/smoke-and-fire-detection` | detection-smoke-fire          |
-| Vehicle reversing             | `/use-cases/vehicle-reversing`        | detection-vehicle-reversing   |
-| Ergonomics                    | `/use-cases/ergonomics`               | detection-ergonomics          |
-| Machinery utilisation         | `/use-cases/machinery-utilisation`    | deck GIF S20                  |
+| Tile                          | Link                                     | Visual                        |
+| ----------------------------- | ---------------------------------------- | ----------------------------- |
+| Machinery proximity detection | `/use-cases/pedestrian-detection-system` | detection-machinery-proximity |
+| Under suspended load          | `/use-cases/suspended-load-safety`       | deck GIF S9                   |
+| Open edge detection           | `/use-cases/open-edge-detection`         | detection-open-edge           |
+| PPE detection                 | `/use-cases/ppe-detection`               | detection-low-light-ppe       |
+| Smoke and fire detection      | `/use-cases/smoke-and-fire-detection`    | detection-smoke-fire          |
+| Vehicle reversing             | `/use-cases/vehicle-reversing`           | detection-vehicle-reversing   |
+| Ergonomics                    | `/use-cases/ergonomics`                  | detection-ergonomics          |
+| Machinery utilisation         | `/use-cases/machinery-utilisation`       | deck GIF S20                  |
 
 - **Link:** `See all 50+ use cases →` goes to `/use-cases`
 - **Fix from the live site:** every tile gets its own URL and keyword anchor text, instead of all pointing at `/use-cases`.

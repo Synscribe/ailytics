@@ -116,10 +116,11 @@ export default function SuspendedLoadHeroVisual() {
         {phase >= 6 ? "Worker 2 · Outside zone" : "Worker 2"}
       </Tag>
 
-      {/* The drop zone check for this lift. */}
+      {/* The drop zone check for this lift. Narrow stages leave it out so it
+          does not cover the load; the tags still show each worker's status. */}
       <motion.div
         animate={{ opacity: checking ? 1 : 0, x: checking ? 0 : 8 }}
-        className="camera-detail absolute z-10 flex w-[176px] flex-col gap-1.5 rounded-xl p-2 shadow-md"
+        className="camera-detail absolute z-10 flex w-[176px] flex-col gap-1.5 rounded-xl p-2 shadow-md @max-[420px]:hidden"
         initial={false}
         style={{
           right: "3%",

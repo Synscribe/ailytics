@@ -71,7 +71,7 @@
         "id": "no-access-zones",
         "eyebrow": "Security",
         "title": "Catch entry into restricted areas",
-        "description": "Monitor restricted areas around hazardous work, equipment, and site access points. Alert supervisors when someone enters a defined zone so they can check the event and respond.",
+        "description": "Monitor restricted areas around hazardous work, equipment, and site access points. Alert supervisors when someone enters a defined zone so they can check the event and respond. For unprotected slab edges and floor openings, open edge detection sets a safety buffer back from each edge and flags any worker who steps inside it.",
         "highlights": [
           "Configurable restricted zones",
           "Unauthorized access alerts",
@@ -125,7 +125,7 @@
     },
     {
       "question": "Can we configure detection for our construction site's hazards?",
-      "answer": "Ailytics offers 50+ configurable pre-built use cases and a custom use-case builder. Construction teams can select detections for missing PPE, open edges, suspended loads, machinery proximity, and restricted areas, among others. Bring your site rules and representative footage to the demo. The team can assess which existing detections fit and where a custom scenario needs further review."
+      "answer": "Ailytics offers 50+ configurable pre-built use cases and a custom use-case builder. Construction teams can select detections for [missing PPE](/use-cases/ppe-detection), [open edges](/use-cases/open-edge-detection), [suspended loads](/use-cases/suspended-load-safety), [pedestrians near moving machinery](/use-cases/pedestrian-detection-system), and restricted areas, among others. Bring your site rules and representative footage to the demo. The team can assess which existing detections fit and where a custom scenario needs further review."
     }
   ],
   "cta": {
