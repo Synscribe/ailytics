@@ -36,7 +36,13 @@ export type DetailScene = {
 };
 
 export const DETAIL_SCENES: Record<
-  "ppe" | "construction" | "suspendedLoad" | "openEdge" | "pedestrian",
+  | "ppe"
+  | "construction"
+  | "manufacturing"
+  | "warehouse"
+  | "suspendedLoad"
+  | "openEdge"
+  | "pedestrian",
   DetailScene
 > = {
   ppe: {
@@ -113,6 +119,89 @@ export const DETAIL_SCENES: Record<
         {
           title: "31 hazard events this week",
           body: "Across 4 work areas, in the weekly report",
+          tone: "report",
+        },
+      ],
+    },
+  },
+  manufacturing: {
+    problemVisuals: [
+      "machinery-proximity",
+      "poor-ergonomics",
+      "ppe-detection",
+      "machinery-usage",
+    ],
+    howItWorks: {
+      src: "/media/ailytics/stills/machinery-proximity.jpg",
+      alt: "Plant camera: a forklift with its forks lowered, and a worker in a hard hat and vest walking into its path flagged by Ailytics.",
+      camera: "Cam 03 · Assembly hall",
+      marks: [
+        // The forklift runs to the bottom of the frame, so it has no chip.
+        { box: [140, 18, 530, 622], tone: "detect" },
+        {
+          box: [745, 254, 105, 410],
+          label: "Worker in forklift path",
+          tone: "hazard",
+        },
+      ],
+      // The danger area on the floor in front of the forks.
+      hazardPath: "M90 720 A380 130 0 1 0 850 720 A380 130 0 1 0 90 720",
+      fullHeight: true,
+      cards: [
+        {
+          title: "Worker in forklift path · Cam 03",
+          body: "Assembly hall · 1.2 m from the forks · 07:40",
+          tone: "alert",
+        },
+        {
+          title: "Sent to the shift supervisor",
+          body: "Frame, time and location attached · 07:40",
+          tone: "ack",
+        },
+        {
+          title: "18 forklift events this week",
+          body: "Across 2 production halls, in the weekly report",
+          tone: "report",
+        },
+      ],
+    },
+  },
+  warehouse: {
+    problemVisuals: [
+      "machinery-proximity",
+      "poor-ergonomics",
+      "new-starter-events",
+      "machinery-usage",
+    ],
+    howItWorks: {
+      src: "/media/ailytics/stills/poor-ergonomics.jpg",
+      alt: "Warehouse camera: a worker bending at the waist with straight legs to lift a box off the floor, flagged by Ailytics for unsafe lifting posture.",
+      camera: "Cam 05 · Packing area",
+      marks: [
+        {
+          box: [508, 470, 258, 312],
+          label: "Unsafe lift · back bent 66°",
+          tone: "hazard",
+        },
+        { box: [496, 604, 102, 130], tone: "detect" },
+      ],
+      // The worker's back, from neck to hip, as the pose model reads it.
+      hazardPath: "M596 530 L722 586",
+      fullHeight: true,
+      cards: [
+        {
+          title: "Unsafe lift · Cam 05",
+          body: "Packing area · sent to the shift supervisor · 10:24",
+          tone: "alert",
+        },
+        {
+          title: "Worker coached on site",
+          body: "Safe lift shown · checked 10:31",
+          tone: "ack",
+        },
+        {
+          title: "41 risky lifts this week",
+          body: "Packing benches rank first, in the weekly report",
           tone: "report",
         },
       ],
@@ -247,6 +336,10 @@ export const DETAIL_SCENES: Record<
 /** The scene for a detail page, chosen by its hero visual. */
 export function sceneFor(heroVisualId: VisualId): DetailScene {
   if (heroVisualId === "construction-hero") return DETAIL_SCENES.construction;
+  if (heroVisualId === "manufacturing-hero") {
+    return DETAIL_SCENES.manufacturing;
+  }
+  if (heroVisualId === "warehouse-hero") return DETAIL_SCENES.warehouse;
   if (heroVisualId === "suspended-load-hero") {
     return DETAIL_SCENES.suspendedLoad;
   }

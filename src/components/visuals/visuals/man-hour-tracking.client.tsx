@@ -56,7 +56,11 @@ const SHIFTS = [
  * each worker's idle-hours bar grows against the dashed team average, and
  * every row stamps high idle, balanced or low idle.
  */
-export default function ManHourTrackingVisual() {
+export default function ManHourTrackingVisual({
+  site = "Tower site",
+}: {
+  site?: string;
+}) {
   const { ref, phase, cycle, reduce, running } = useLoop(6, 1300);
   const counted = phase >= 1;
   const grown = phase >= 2;
@@ -220,7 +224,7 @@ export default function ManHourTrackingVisual() {
                         className="block truncate text-[8.5px] font-medium"
                         style={{ color: MUTED }}
                       >
-                        Tower site · {w.zone}
+                        {site} · {w.zone}
                       </span>
                     </span>
                     <span
@@ -336,4 +340,14 @@ function Card({
       </span>
     </div>
   );
+}
+
+/** The same dashboard for a manufacturing plant. */
+export function PlantManHourTrackingVisual() {
+  return <ManHourTrackingVisual site="Plant 2" />;
+}
+
+/** The same dashboard for a warehouse. */
+export function WarehouseManHourTrackingVisual() {
+  return <ManHourTrackingVisual site="DC North" />;
 }

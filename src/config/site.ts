@@ -87,7 +87,31 @@ const navigation: NavigationItem[] = [
     ],
     footer: { label: "See all use cases", href: "/use-cases" },
   },
-  { label: "Industries", href: "/industries" },
+  {
+    label: "Industries",
+    href: "/industries",
+    links: [
+      {
+        label: "Construction",
+        href: "/industries/construction",
+        description: "Machinery, open edges and missing PPE",
+        image: "/media/ailytics/stills/construction-hero.jpg",
+      },
+      {
+        label: "Manufacturing",
+        href: "/industries/manufacturing",
+        description: "Forklifts, PPE and lifting on the plant floor",
+        image: "/media/ailytics/stills/machinery-proximity.jpg",
+      },
+      {
+        label: "Logistics and warehousing",
+        href: "/industries/logistics-and-warehousing",
+        description: "Forklift near misses and ergonomic risk",
+        image: "/media/ailytics/stills/poor-ergonomics.jpg",
+      },
+    ],
+    footer: { label: "See all industries", href: "/industries" },
+  },
   { label: "Blog", href: "/blog" },
 ];
 

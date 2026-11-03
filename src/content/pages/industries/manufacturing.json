@@ -1,0 +1,151 @@
+{
+  "hero": {
+    "title": "Manufacturing safety and productivity",
+    "seoTitle": "AI Video Analytics for Manufacturing Safety",
+    "description": "Ailytics video monitoring detects safety risks such as missing PPE, machinery proximity, forklift pedestrian detection, and tracks worker activity and equipment utilization in real time, with no new cameras and up to 99% accuracy."
+  },
+  "problems": {
+    "title": "What happens on the plant floor between safety walks?",
+    "description": "Serious incidents often start as small habits nobody sees: a shortcut past a machine, a glove taken off, a lift done the quick way. By the time a habit shows up in an incident report, someone is already hurt.",
+    "items": [
+      {
+        "title": "A forklift turns into a walkway at shift change",
+        "description": "Shift change puts the most people on the floor just as forklifts clear the lines. A near miss at a blind corner leaves no record, so the route stays the same until someone is hit."
+      },
+      {
+        "title": "Ergonomic injuries happen over time in silence",
+        "description": "Repetitive lifting and awkward posture don't announce themselves. A worker bends wrong for months, and by the time it surfaces, it's a worker's comp claim, and a workstation that's suddenly empty."
+      },
+      {
+        "title": "PPE comes off when the supervisor walks away",
+        "description": "Gloves come off for a fiddly task and hard hats get carried instead of worn. A walkround catches it for the minutes it lasts and misses the rest of the shift."
+      },
+      {
+        "title": "Forklifts sit idle in a busy week",
+        "description": "Without usage data, the answer to a busy week is another rental forklift or more overtime, while forklifts already on site wait for work."
+      }
+    ]
+  },
+  "solution": {
+    "title": "Safety alerts and productivity data from your plant's cameras",
+    "description": "Ailytics connects to the CCTV already in your plant. The same cameras flag forklift near misses, machine-zone entries and missing PPE while work is happening, measure ergonomic risk by work area, and record how much your machines and teams are working. Deploy on the edge, on-premise or in the cloud."
+  },
+  "features": {
+    "title": "Safety and productivity monitoring across your plants",
+    "description": "Choose the detections that match your lines, forklift routes and machine areas. The same cameras give you ergonomic risk, equipment usage and manpower data for planning.",
+    "items": [
+      {
+        "id": "machinery-proximity",
+        "eyebrow": "Safety",
+        "title": "Warn supervisors before a forklift reaches someone",
+        "description": "Measure the real distance between people and moving forklifts in aisles, at loading areas and on shared walkways. Supervisors get the distance, frame, time and location, and near misses that used to go unrecorded become a list of routes to fix.",
+        "highlights": [
+          "Real distance from one camera",
+          "Near-miss records by area",
+          "Frame, time and location evidence"
+        ]
+      },
+      {
+        "id": "machine-zone-entry",
+        "eyebrow": "Safety",
+        "title": "Catch people inside machine zones",
+        "description": "Draw keep-clear zones around conveyors, presses, robot cells and chemical stores. Alert the line supervisor when someone steps inside, so a jam-clearing shortcut is dealt with before it becomes an injury.",
+        "highlights": [
+          "Keep-clear zones you draw",
+          "Alert timing set by zone",
+          "Event frames for review"
+        ]
+      },
+      {
+        "id": "workshop-lift-posture",
+        "eyebrow": "Ergonomics",
+        "title": "Run ergonomic risk assessments from existing cameras",
+        "description": "Detect unsafe lifting posture, such as a bent back with straight knees, at every monitored workstation. Ailytics counts risky lifts by work area, so you can see which stations carry the most strain, change the set-up there first and check that the change worked.",
+        "highlights": [
+          "Unsafe lifting posture detection",
+          "Risky lifts ranked by work area",
+          "Trends to check each fix"
+        ]
+      },
+      {
+        "id": "ppe-detection",
+        "eyebrow": "Safety",
+        "title": "Catch missing PPE across the whole shift",
+        "description": "Detect missing hard hats, vests and gloves in monitored work areas, from the first hour of the shift to the last. Give supervisors the event frame, time and location to follow up, and see which areas slip most often.",
+        "highlights": [
+          "Hard hat, vest and glove checks",
+          "Evidence for shift follow-up",
+          "Trends by work area"
+        ]
+      },
+      {
+        "id": "plant-smoke-detection",
+        "eyebrow": "Safety",
+        "title": "Spot smoke and fire early",
+        "description": "Detect visible smoke and fire in monitored areas such as production halls, stores and loading areas. Send the alert with the camera frame so the team can check the area quickly.",
+        "highlights": [
+          "Smoke detection",
+          "Fire detection",
+          "Camera frame with every alert"
+        ]
+      },
+      {
+        "id": "machinery-usage",
+        "eyebrow": "Productivity",
+        "title": "See how much your forklifts and machines really work",
+        "description": "Track working and idle time for forklifts and other machines in view of your cameras. Use real utilisation to right-size the fleet, plan maintenance windows and question the next lease.",
+        "highlights": [
+          "Working and idle time per machine",
+          "Utilisation per day",
+          "Data for fleet and lease decisions"
+        ]
+      },
+      {
+        "id": "man-hour-plant",
+        "eyebrow": "Productivity",
+        "title": "Know where manpower and work hours go",
+        "description": "Total the hours people spend in each work area and see working and idle time by shift. Compare lines and zones to balance crews, plan overtime and spot where work is waiting on materials or equipment.",
+        "highlights": [
+          "Hours by work area",
+          "Working and idle time by shift",
+          "Data for crew planning"
+        ]
+      }
+    ]
+  },
+  "faq": [
+    {
+      "question": "Do we need new cameras for manufacturing safety AI?",
+      "answer": "Ailytics connects to existing IP cameras and compatible recording systems through RTSP or ONVIF, which are methods for connecting to video feeds. You can use your current CCTV rather than replace the camera network. Manufacturers including NatSteel in Singapore use Ailytics in their facilities. During a demo, discuss camera positions and the areas of the plant you want monitored so the team can assess coverage for your selected use cases."
+    },
+    {
+      "question": "How does ergonomic risk assessment work with CCTV?",
+      "answer": "Ailytics detects unsafe lifting posture, such as a bent back with straight knees, in monitored camera views. Each event is recorded with the frame, time and location, and risky lifts are totalled by work area. Safety and operations teams use this to find the workstations that need a better set-up, then check whether a change reduced risky lifts. The camera needs a clear view of the worker's body while lifting, so camera angle matters."
+    },
+    {
+      "question": "Can Ailytics track machine and manpower productivity?",
+      "answer": "Yes. Machinery utilisation shows when each forklift or machine is working or idle through the day. Manpower tracking totals the hours people spend in each work area, with working and idle time by shift. Both run on the same cameras as your safety detections, and the multi-site dashboard shows every plant in one view."
+    },
+    {
+      "question": "What PPE can Ailytics detect in a manufacturing plant?",
+      "answer": "Ailytics detects missing hard hats, vests, and gloves in monitored camera views. Supervisors receive an event frame, time, and location to help them review the issue and respond. If your plant requires other items, such as face shields or hairnets, discuss them during the demo so the team can assess whether an existing detection fits or a custom scenario needs further review. See the [PPE detection page](/use-cases/ppe-detection) for more detail."
+    },
+    {
+      "question": "Can Ailytics warn supervisors when people get too close to forklifts?",
+      "answer": "Yes. Pedestrian detection measures the real distance between people and moving forklifts from one camera, and alerts supervisors when someone gets too close. Each alert includes the camera frame, time, and location. Results depend on camera placement and what each view can see. See the [pedestrian detection page](/use-cases/pedestrian-detection-system) for more detail."
+    },
+    {
+      "question": "Can plant footage stay on our own network?",
+      "answer": "Yes. The Ailyssa detection engine supports edge, on-premise, and cloud deployment. An on-premise setup allows data to stay on-site, while the available deployment options help address your plant's data-residency and latency requirements. Ailytics is ISO/IEC 27001 certified. Your IT team can discuss video storage, access, and network requirements during the sales process."
+    },
+    {
+      "question": "Can we configure detection for our plant's rules?",
+      "answer": "Ailytics offers 50+ configurable pre-built use cases and a custom use-case builder that combines detections, zones and alert timing. Ailyssa can also check procedures that happen in sequence against your own standard operating procedures, and flag steps that are skipped or out of order for review. Bring your plant rules and representative footage to the demo. The team can assess which existing detections fit and where a custom scenario needs further review."
+    }
+  ],
+  "cta": {
+    "title": "See Ailytics in your plant",
+    "description": "Show us your camera setup, your priority hazards and the productivity questions you need answered. We will show you the detections and reports that fit your production floor.",
+    "buttonText": "Request a demo"
+  }
+}
