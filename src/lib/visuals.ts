@@ -28,6 +28,8 @@ export const FEATURE_VISUAL_IDS = [
 
 export const VISUAL_IDS = [
   "construction-hero",
+  "manufacturing-hero",
+  "warehouse-hero",
   "ppe-hero",
   "suspended-load-hero",
   "open-edge-hero",
@@ -48,6 +50,16 @@ export const VISUAL_IDS = [
   "under-load-overhead",
   "under-load-camera-wall",
   "under-load-missed",
+  // Plant and warehouse visuals for the manufacturing and logistics pages,
+  // and the manpower dashboard labelled for each.
+  "machine-zone-entry",
+  "warehouse-restricted-zone",
+  "ergonomic-risk-assessment",
+  "workshop-lift-posture",
+  "plant-smoke-detection",
+  "new-starter-events",
+  "man-hour-plant",
+  "man-hour-warehouse",
   "childsafe-vision-hero",
   ...FEATURE_VISUAL_IDS,
 ] as const;

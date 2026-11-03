@@ -24,7 +24,14 @@ import {
   OpenEdgeMissedVisual,
   UnderLoadMissedVisual,
 } from "./visuals/manual-checks.client";
-import ManHourTrackingVisual from "./visuals/man-hour-tracking.client";
+import ErgonomicRiskAssessmentVisual from "./visuals/ergonomic-risk-assessment.client";
+import MachineZoneEntryVisual from "./visuals/machine-zone-entry.client";
+import NewStarterEventsVisual from "./visuals/new-starter-events.client";
+import ManHourTrackingVisual, {
+  PlantManHourTrackingVisual,
+  WarehouseManHourTrackingVisual,
+} from "./visuals/man-hour-tracking.client";
+import ManufacturingHeroVisual from "./visuals/manufacturing-hero.client";
 import NoAccessZonesVisual from "./visuals/no-access-zones.client";
 import OpenEdgeDetectionVisual from "./visuals/open-edge-detection.client";
 import OpenEdgeHeroVisual from "./visuals/open-edge-hero.client";
@@ -32,7 +39,10 @@ import OpenEdgeSafetyWalkVisual from "./visuals/open-edge-safety-walk.client";
 import OpenEdgeWalkroundVisual from "./visuals/open-edge-walkround.client";
 import PedestrianCrossingVisual from "./visuals/pedestrian-crossing.client";
 import PedestrianHeroVisual from "./visuals/pedestrian-hero.client";
-import PoorErgonomicsVisual from "./visuals/poor-ergonomics.client";
+import PlantSmokeDetectionVisual from "./visuals/plant-smoke-detection.client";
+import PoorErgonomicsVisual, {
+  WorkshopLiftPostureVisual,
+} from "./visuals/poor-ergonomics.client";
 import PpeDetectionVisual from "./visuals/ppe-detection.client";
 import PpeHeroVisual from "./visuals/ppe-hero.client";
 import RealTimeAlertsVisual, {
@@ -46,6 +56,8 @@ import TimelapseXrayVisual from "./visuals/timelapse-xray.client";
 import UnderLoadCameraWallVisual from "./visuals/under-load-camera-wall.client";
 import UnderLoadDetectionVisual from "./visuals/under-load-detection.client";
 import UnderLoadOverheadVisual from "./visuals/under-load-overhead.client";
+import WarehouseHeroVisual from "./visuals/warehouse-hero.client";
+import WarehouseRestrictedZoneVisual from "./visuals/warehouse-restricted-zone.client";
 import WaterHazardVisual from "./visuals/water-hazard.client";
 
 export type VisualStatus = "project" | "template-placeholder";
@@ -95,6 +107,26 @@ const visualSources: Record<VisualId, VisualSource> = {
     component: ConstructionHeroVisual,
     stage: {
       alt: "A site entrance camera finds a worker and an excavator, confirms the worker's hard hat and vest, his distance from the machine and the closed gate, and reports no alerts.",
+    },
+  },
+  "manufacturing-hero": {
+    ...stagedComponent,
+    label: "Workshop floor checks",
+    motionPattern:
+      "one camera logs forklift idle time, distance and smoke, then flags missing PPE",
+    component: ManufacturingHeroVisual,
+    stage: {
+      alt: "A workshop floor camera finds a parked forklift and a worker, logs the forklift as idle for 18 minutes, confirms the worker is clear of it and there is no smoke or fire, then flags the worker for not wearing a hi-vis vest and sends an alert.",
+    },
+  },
+  "warehouse-hero": {
+    ...stagedComponent,
+    label: "Warehouse floor checks",
+    motionPattern:
+      "one camera logs forklift idle time, then flags an unsafe lift",
+    component: WarehouseHeroVisual,
+    stage: {
+      alt: "A warehouse camera finds a forklift that has been idle for 22 minutes and a worker lifting a carton, confirms the worker is clear of the forklift, flags the worker's back bent past the safe limit, and sends an alert.",
     },
   },
   "ppe-hero": {
@@ -276,6 +308,16 @@ const visualSources: Record<VisualId, VisualSource> = {
       alt: "Grid cells over a skyline light up where smoke appears, then merge into one smoke detection and an alert.",
     },
   },
+  "plant-smoke-detection": {
+    ...stagedComponent,
+    label: "Smoke above a plant roof",
+    motionPattern:
+      "roofline watch band appears, then a smoke wisp is framed and alerted",
+    component: PlantSmokeDetectionVisual,
+    stage: {
+      alt: "A camera over a steel plant watches the production hall roofs. A thin wisp of smoke above the roofline is framed and sent as a smoke alert.",
+    },
+  },
   "no-access-zones": {
     ...stagedComponent,
     label: "Restricted zone set-up",
@@ -285,6 +327,46 @@ const visualSources: Record<VisualId, VisualSource> = {
       alt: "A restricted zone drawn over a site camera view and saved with alerts on entry.",
     },
   },
+  "machine-zone-entry": {
+    ...stagedComponent,
+    label: "Worker inside a conveyor zone",
+    motionPattern:
+      "keep-clear zone appears along the conveyor, then two workers are flagged",
+    component: MachineZoneEntryVisual,
+    stage: {
+      alt: "A fabrication line camera shows a keep-clear zone along a roller conveyor. Four workers are found, and the two working beside the rollers inside the zone are flagged and reported to the line supervisor.",
+    },
+  },
+  "warehouse-restricted-zone": {
+    ...stagedComponent,
+    label: "Person in a forklift lane",
+    motionPattern:
+      "lane outline draws corner by corner along the forklift route, then a walker is flagged",
+    component: WarehouseRestrictedZoneVisual,
+    stage: {
+      alt: "A no-pedestrian lane is drawn over the main forklift route in a warehouse camera view, starting behind a parked forklift and running the way its forks point. A worker walking down the lane is flagged and the shift supervisor is alerted.",
+    },
+  },
+  "new-starter-events": {
+    ...stagedComponent,
+    label: "Safety events when new temps start",
+    motionPattern:
+      "weekly bars grow, peak intake weeks are shaded, top event types fill in, a briefing tip appears",
+    component: NewStarterEventsVisual,
+    stage: {
+      alt: "Sample warehouse dashboard of safety events by week. Events roughly triple in the three peak-season weeks when new temps start. Walking in forklift lanes is the most common event, so the dashboard suggests briefing new starters on forklift lanes first.",
+    },
+  },
+  "ergonomic-risk-assessment": {
+    ...stagedComponent,
+    label: "Ergonomic risk by work area",
+    motionPattern:
+      "summary counts up, bars of risky lifts grow, rows are rated, the top area is picked out",
+    component: ErgonomicRiskAssessmentVisual,
+    stage: {
+      alt: "An ergonomic risk assessment for a sample week: bent-back lifts counted for six work areas, two rated high risk, and Packing line 3 picked out for review because 40% of the week's risky lifts happen there.",
+    },
+  },
   "poor-ergonomics": {
     ...stagedComponent,
     label: "Poor lifting posture",
@@ -292,6 +374,16 @@ const visualSources: Record<VisualId, VisualSource> = {
     component: PoorErgonomicsVisual,
     stage: {
       alt: "Pose keypoints mark a worker lifting a box, and an angle gauge shows his back bent past the safe limit.",
+    },
+  },
+  "workshop-lift-posture": {
+    ...stagedComponent,
+    label: "Unsafe lift on a workshop camera",
+    motionPattern:
+      "pose skeleton joins on a wide shot, the back angle is measured, then an alert is sent",
+    component: WorkshopLiftPostureVisual,
+    stage: {
+      alt: "A wide workshop camera finds a worker lifting a box from the floor. Pose keypoints and a skeleton mark the body, an angle gauge shows the back bent past the safe limit, and an unsafe lift alert is sent.",
     },
   },
   "distracted-activity": {
@@ -347,6 +439,26 @@ const visualSources: Record<VisualId, VisualSource> = {
     component: ManHourTrackingVisual,
     stage: {
       alt: "A workload dashboard for a sample week: summary cards, then idle hours per worker against the dashed team average, with three workers marked high idle.",
+    },
+  },
+  "man-hour-plant": {
+    ...stagedComponent,
+    label: "Worker working and idle time in a plant",
+    motionPattern:
+      "plant workload dashboard: cards count up, idle bars grow, rows stamp",
+    component: PlantManHourTrackingVisual,
+    stage: {
+      alt: "A workload dashboard for a sample week in a plant: summary cards, then idle hours per worker against the dashed team average, with three workers marked high idle.",
+    },
+  },
+  "man-hour-warehouse": {
+    ...stagedComponent,
+    label: "Worker working and idle time in a warehouse",
+    motionPattern:
+      "warehouse workload dashboard: cards count up, idle bars grow, rows stamp",
+    component: WarehouseManHourTrackingVisual,
+    stage: {
+      alt: "A workload dashboard for a sample week in a warehouse: summary cards, then idle hours per worker against the dashed team average, with three workers marked high idle.",
     },
   },
   "machinery-usage": {

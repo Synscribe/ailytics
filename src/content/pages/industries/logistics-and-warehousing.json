@@ -1,0 +1,118 @@
+{
+  "hero": {
+    "title": "Logistics and Warehouses Video Monitoring",
+    "seoTitle": "AI Video Analytics for Warehouses and Logistics",
+    "description": "Detect risks and inefficiencies across your yard and warehouse on your existing CCTV infrastructure. Real-time video monitoring for vehicle-pedestrian proximity, fire & smoke, congestion, and worker activity."
+  },
+  "problems": {
+    "title": "What can go wrong on a busy warehouse shift?",
+    "description": "Peak season adds temporary staff, overtime and more forklifts to the same aisles. Supervisors are on the floor, but they cannot watch every aisle, dock and yard lane at once.",
+    "items": [
+      {
+        "title": "A picker steps out of the racking into a forklift's path",
+        "description": "Tall racking hides who is coming around the corner. A near miss at the end of an aisle leaves no record, so nothing changes until someone is hit."
+      },
+      {
+        "title": "Ergonomic injuries happen over time in silence",
+        "description": "Repetitive lifting and awkward posture don't announce themselves. A worker bends wrong for months, and by the time it surfaces, it's a worker's comp claim, and a workstation that's suddenly empty."
+      },
+      {
+        "title": "With a temp workforce, there's always a training gap",
+        "description": "Warehouse turnover runs as high as 85% a year. That means a steady stream of new temps moving through your floors, along with a training gap that never closes."
+      },
+      {
+        "title": "Forklifts sit idle in a busy week",
+        "description": "Without usage data, the answer to a busy week is another rental forklift or more overtime, while forklifts already on site wait for work."
+      }
+    ]
+  },
+  "solution": {
+    "title": "Safety alerts and productivity data from your warehouse cameras",
+    "description": "Ailytics connects to the CCTV already in your warehouse. The same cameras flag unsafe lifts and forklift near misses while work is happening, rank ergonomic risk by work area, and record how much your forklifts and teams are working. Deploy on the edge, on-premise or in the cloud."
+  },
+  "features": {
+    "title": "Safety and productivity monitoring across aisles, docks and yard",
+    "description": "Choose the detections that match your racking layout, loading bays and vehicle routes. The same cameras give you ergonomic risk, forklift usage and labour data for planning.",
+    "items": [
+      {
+        "id": "machinery-proximity",
+        "eyebrow": "Safety",
+        "title": "Warn supervisors before a forklift reaches a picker",
+        "description": "Measure the real distance between people and moving forklifts in aisles, at loading bays and across the yard. Every near miss is recorded with the distance, frame, time and location, so you can fix the aisle ends and crossings that keep coming up.",
+        "highlights": [
+          "Real distance from one camera",
+          "Near-miss records by camera",
+          "Frame, time and location evidence"
+        ]
+      },
+      {
+        "id": "workshop-lift-posture",
+        "eyebrow": "Ergonomics",
+        "title": "Run ergonomic risk assessments for picking and packing",
+        "description": "Detect unsafe lifting posture, such as a bent back with straight knees, at picking faces, packing benches and goods in. Ailytics counts risky lifts by work area, so you can see which stations carry the most strain, change the set-up there first and check that it worked.",
+        "highlights": [
+          "Unsafe lifting posture detection",
+          "Risky lifts ranked by work area",
+          "Trends to check each fix"
+        ]
+      },
+      {
+        "id": "machinery-usage",
+        "eyebrow": "Productivity",
+        "title": "See how much each forklift really works",
+        "description": "Track working and idle time for every forklift in view of your cameras. Use real utilisation to right-size the fleet before peak season, move idle forklifts to busy areas and question the next rental.",
+        "highlights": [
+          "Working and idle time per forklift",
+          "Utilisation per day",
+          "Data for fleet and rental decisions"
+        ]
+      },
+      {
+        "id": "man-hour-warehouse",
+        "eyebrow": "Productivity",
+        "title": "Know where labour hours go",
+        "description": "Total the hours people spend in each work area and see working and idle time by shift. Compare picking, packing and dock teams to balance crews, plan overtime and staff for peaks.",
+        "highlights": [
+          "Hours by work area",
+          "Working and idle time by shift",
+          "Data for labour planning"
+        ]
+      }
+    ]
+  },
+  "faq": [
+    {
+      "question": "Do we need new cameras for warehouse safety AI?",
+      "answer": "Ailytics connects to existing IP cameras and compatible recording systems through RTSP or ONVIF, which are methods for connecting to video feeds. You can use your current CCTV rather than replace the camera network. Logistics customers include DHL. During a demo, discuss camera positions and the aisles, docks, and yard areas you want monitored so the team can assess coverage for your selected use cases."
+    },
+    {
+      "question": "How does Ailytics detect pedestrians near forklifts?",
+      "answer": "Pedestrian detection measures the real distance between people and moving forklifts from one camera, and alerts supervisors when someone gets too close. Each alert includes the camera frame, time, and location. Racking and stacked goods can block a camera's view, so camera placement matters. See the [pedestrian detection page](/use-cases/pedestrian-detection-system) for more detail."
+    },
+    {
+      "question": "How does ergonomic risk assessment work in a warehouse?",
+      "answer": "Ailytics detects unsafe lifting posture, such as a bent back with straight knees, in monitored camera views of picking, packing and goods-in areas. Each event is recorded with the frame, time and location, and risky lifts are totalled by work area. Teams use this to find the stations that need a better set-up, such as raised pallets or a different pick face, then check whether risky lifts went down. The camera needs a clear view of the worker's body while lifting."
+    },
+    {
+      "question": "Can Ailytics track forklift and labour productivity?",
+      "answer": "Yes. Machinery utilisation shows when each forklift is working or idle through the day. Manpower tracking totals the hours people spend in each work area, with working and idle time by shift. Both run on the same cameras as your safety detections, and the multi-site dashboard shows every warehouse and distribution centre in one view."
+    },
+    {
+      "question": "Does warehouse monitoring work in dim aisles and outdoor yards?",
+      "answer": "Ailytics detection models are designed for harsh conditions, including low light, rain, and dust. Results still depend on what each camera can see, including obstructions and the size of people or vehicles in the frame. Share representative footage from your aisles, docks, and yard to assess conditions and coverage."
+    },
+    {
+      "question": "Can warehouse footage stay on our own network?",
+      "answer": "Yes. The Ailyssa detection engine supports edge, on-premise, and cloud deployment. An on-premise setup allows data to stay on-site, while the available deployment options help address your data-residency and latency requirements. Ailytics is ISO/IEC 27001 certified. Your IT team can discuss video storage, access, and network requirements during the sales process."
+    },
+    {
+      "question": "Can we configure detection for our warehouse rules?",
+      "answer": "Ailytics offers 50+ configurable pre-built use cases and a custom use-case builder that combines detections, zones and alert timing. Warehouse teams can select detections for [pedestrians near forklifts](/use-cases/pedestrian-detection-system), [missing hi-vis vests](/use-cases/ppe-detection), restricted areas, and lifting posture, among others. Bring your site rules and representative footage to the demo. The team can assess which existing detections fit and where a custom scenario needs further review."
+    }
+  ],
+  "cta": {
+    "title": "See Ailytics in your warehouse",
+    "description": "Show us your camera setup, your priority hazards and the productivity questions you need answered. We will show you the detections and reports that fit your aisles, docks and yard.",
+    "buttonText": "Request a demo"
+  }
+}

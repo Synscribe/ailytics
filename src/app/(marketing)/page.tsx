@@ -131,7 +131,7 @@ const INDUSTRIES: Industry[] = [
   {
     label: "Manufacturing",
     hazards: "Machine areas, forklifts, PPE, smoke and fire",
-    href: "/industries",
+    href: "/industries/manufacturing",
     src: "/media/ailytics/stills/crowding.jpg",
   },
   {
@@ -143,7 +143,7 @@ const INDUSTRIES: Industry[] = [
   {
     label: "Logistics and warehousing",
     hazards: "Forklifts, reversing vehicles, restricted areas",
-    href: "/industries",
+    href: "/industries/logistics-and-warehousing",
     src: "/media/ailytics/stills/machinery-proximity.jpg",
   },
   {

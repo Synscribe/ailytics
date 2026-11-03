@@ -88,4 +88,122 @@ export const INDUSTRY_ROUTE_COPY: Record<string, ContentPageRouteCopy> = {
       ],
     },
   },
+  "logistics-and-warehousing": {
+    name: "Logistics and warehousing",
+    heroVisualId: "warehouse-hero",
+    heroEmphasis: "safety and productivity",
+    howItWorks: {
+      title: "How Ailytics works in a warehouse",
+      introduction:
+        "Ailytics runs on the cameras already in your warehouse, and most sites go live in under 2 weeks.",
+      steps: [
+        {
+          title: "Detect the hazard",
+          description:
+            "Spot unsafe lifts, such as a bent back with straight knees, at picking and packing stations, and people too close to moving forklifts.",
+        },
+        {
+          title: "Warn the shift team",
+          description:
+            "Send supervisors the camera frame, time and location while the event is happening.",
+        },
+        {
+          title: "Act on the evidence",
+          description:
+            "The supervisor checks the frame, then coaches the worker or changes the set-up, such as raising the pallet.",
+        },
+        {
+          title: "Review and report",
+          description:
+            "Rank risky lifts by work area, and use them with forklift events and usage in shift briefings, ergonomic reviews and fleet planning.",
+        },
+      ],
+    },
+    featureLinks: {
+      "machinery-proximity": {
+        href: "/use-cases/pedestrian-detection-system",
+        phrase: "real distance between people and moving forklifts",
+      },
+    },
+    related: {
+      title: "Warehouse use cases in detail",
+      items: [
+        {
+          title: "Pedestrian detection",
+          description:
+            "Measure the real distance between people and moving forklifts from one camera, and alert supervisors when someone gets too close.",
+          href: "/use-cases/pedestrian-detection-system",
+          label: "See pedestrian detection",
+        },
+        {
+          title: "PPE detection",
+          description:
+            "Spot missing hi-vis vests, hard hats and gloves on existing cameras and give supervisors evidence to act on.",
+          href: "/use-cases/ppe-detection",
+          label: "See PPE detection",
+        },
+      ],
+    },
+  },
+  manufacturing: {
+    name: "Manufacturing",
+    heroVisualId: "manufacturing-hero",
+    heroEmphasis: "safety and productivity",
+    howItWorks: {
+      title: "How Ailytics works in a plant",
+      introduction:
+        "Ailytics runs on the cameras already in your plant, and most sites go live in under 2 weeks.",
+      steps: [
+        {
+          title: "Detect the hazard",
+          description:
+            "Watch configured camera views for people near forklifts, entry into machine zones, unsafe lifting and missing PPE.",
+        },
+        {
+          title: "Warn the shift team",
+          description:
+            "Send supervisors the camera frame, time and location while the event is happening.",
+        },
+        {
+          title: "Act on the evidence",
+          description:
+            "The supervisor reviews the alert and follows plant procedures to address the hazard.",
+        },
+        {
+          title: "Review and report",
+          description:
+            "Use recorded events, risky lifts and machine usage in shift briefings, ergonomic reviews and capacity planning across your plants.",
+        },
+      ],
+    },
+    featureLinks: {
+      "ppe-detection": {
+        href: "/use-cases/ppe-detection",
+        phrase: "missing hard hats, vests and gloves",
+      },
+      "machinery-proximity": {
+        href: "/use-cases/pedestrian-detection-system",
+        phrase: "real distance between people and moving forklifts",
+      },
+    },
+    related: {
+      title: "Manufacturing use cases in detail",
+      items: [
+        {
+          title: "PPE detection",
+          description:
+            "Spot missing hard hats, vests and gloves on existing cameras and give supervisors evidence to act on.",
+          href: "/use-cases/ppe-detection",
+          label: "See PPE detection",
+        },
+        {
+          title: "Pedestrian detection",
+          description:
+            "Measure the real distance between people and moving forklifts from one camera, and alert supervisors when someone gets too close.",
+          href: "/use-cases/pedestrian-detection-system",
+          label: "See pedestrian detection",
+        },
+      ],
+    },
+  },
 };

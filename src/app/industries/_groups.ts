@@ -27,7 +27,7 @@ export const INDUSTRY_GROUPS: { title: string; items: HubEntry[] }[] = [
         slug: "manufacturing",
         title: "Manufacturing",
         description:
-          "Forklift traffic, restricted zones, PPE and lifting posture in food, chemical and pharma plants.",
+          "Forklift near misses, machine zones, ergonomic risk and idle equipment on the plant floor.",
       },
       {
         slug: "oil-and-gas",
@@ -39,7 +39,7 @@ export const INDUSTRY_GROUPS: { title: string; items: HubEntry[] }[] = [
         slug: "logistics-and-warehousing",
         title: "Logistics and warehousing",
         description:
-          "Forklift and pedestrian traffic, loading bays and crowding in busy warehouses.",
+          "Forklift near misses, ergonomic risk and forklift usage in busy warehouses.",
       },
       {
         slug: "ports-and-airports",

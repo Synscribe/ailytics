@@ -2,7 +2,7 @@
 
 > Ailytics adds AI video analytics to the CCTV cameras a site already owns, detecting safety, security and productivity risks on construction sites, plants, ports, airports and yards, with real-time alerts and compliance reporting.
 > Born in Singapore in 2019, Ailytics runs on 400+ projects worldwide, deploys on the edge, on-premise or in the cloud, and goes live in under 2 weeks.
-> Last reviewed: 2026-10-26.
+> Last reviewed: 2026-10-30.
 
 ## Product
 
@@ -11,6 +11,8 @@
 - [PPE detection](https://www.ailytics.ai/use-cases/ppe-detection): See how missing hard hats, vests and gloves are flagged with evidence for supervisors.
 - [Industries](https://www.ailytics.ai/industries): Find the hazards Ailytics monitors in construction, manufacturing, oil and gas, logistics, ports, airports and data centers.
 - [Construction](https://www.ailytics.ai/industries/construction): Understand how construction sites use AI video analytics for struck-by, lifting, open-edge and PPE risks.
+- [Manufacturing](https://www.ailytics.ai/industries/manufacturing): See how plants use AI video analytics for forklift, machine-zone, PPE and smoke alerts, ergonomic risk assessment, and machine and manpower productivity.
+- [Logistics and warehousing](https://www.ailytics.ai/industries/logistics-and-warehousing): See how warehouses use AI video analytics for forklift near-miss alerts, ergonomic risk assessment, and forklift and labour productivity.
 - [ChildSafe Vision](https://www.ailytics.ai/childsafe-vision): Learn how preschools use AI on existing CCTV to detect supervision gaps and review incidents.
 
 ## Research and company news
