@@ -40,7 +40,7 @@ describe("blog index configuration", () => {
 
   it("keeps optional featured settings explicit", () => {
     expect(BLOG_FEATURED.limit).toBeGreaterThan(0);
-    expect(BLOG_FEATURED.heroSlug).toBeNull();
+    expect(BLOG_FEATURED.heroSlug).toBe("ailytics-series-a-announcement");
     expect(BLOG_FEATURED.tag).toBeNull();
   });
 });

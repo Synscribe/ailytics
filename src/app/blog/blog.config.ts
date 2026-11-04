@@ -16,7 +16,7 @@ export const BLOG_FILTERS: readonly BlogFilter[] = [
 // article otherwise. The smaller cards are selected by a Wisp tag, or omitted
 // when `tag` is null.
 export const BLOG_FEATURED = {
-  heroSlug: null,
+  heroSlug: "ailytics-series-a-announcement",
   tag: null,
   limit: 3,
 } satisfies {
