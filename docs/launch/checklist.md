@@ -487,12 +487,12 @@ The live launch audit checks both homepage representations, quality-value select
 
 ### PRIVACY-02 — the client approves analytics and session replay before launch
 
-- [ ] **Todo**
+- [x] **Done**
 - Recipe: [docs/recipes/posthog.md](../recipes/posthog.md)
 
-PostHog (US cloud) records pageviews, autocapture, heatmaps, session replay with masked inputs, and the `cta_clicked`, `contact_form_submitted`, `job_application_submitted` and `call_booked` events. There is no consent banner.
-Before launch, the client confirms whether session replay stays on and whether a consent banner is needed, and approves privacy-policy wording that covers analytics cookies, session replay, the US data location, and the PostHog retention period.
-Draft wording is in Section 14 of `src/content/legal/privacy-policy.json`, covering PostHog and the `visitor_context_v1` visit history. The site has no consent banner, so the policy explains how to block tracking. The stated retention (1 year for events, 30 days for recordings) matches the PostHog free plan; revise it if the plan changes. Update the effective date when the client approves the revised policy.
+PostHog (US cloud) records pageviews, autocapture, heatmaps, session replay with masked inputs, and the `cta_clicked`, `contact_form_submitted`, `job_application_submitted` and `call_booked` events. Contact and partnership form submissions call `posthog.identify` with the submitted email, which creates a person profile and links the lead to earlier anonymous visits. Those events, and `call_booked`, also carry `first_touch_*` and `last_touch_*` referring domain and UTM properties from the `visitor_context_v1` history, where the last touch is the most recent visit from another website or a campaign link. No other form contents are sent. There is no consent banner.
+Approved on 7 November 2026: session replay stays on, the site launches without a consent banner, and the Section 14 wording in `src/content/legal/privacy-policy.json` covers analytics cookies, session replay, sending the enquiry email to PostHog, the US data location, and the PostHog retention period. The policy's effective date is 7 November 2026.
+The stated retention (1 year for events, 30 days for recordings) matches the PostHog free plan. If the plan, the data sent to PostHog, or the replay settings change, revise Section 14, update the effective date, and reopen this item.
 
 ## P1 — non-blocking quality and feature-dependent checks
 

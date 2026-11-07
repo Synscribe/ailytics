@@ -18,7 +18,10 @@ import {
   type ContactFields,
   validateContactFields,
 } from "@/lib/contact";
-import { getVisitorContext } from "@/lib/visitor-context";
+import {
+  attributionProperties,
+  getVisitorContext,
+} from "@/lib/visitor-context";
 
 import { useTurnstile } from "./turnstile";
 
@@ -111,7 +114,19 @@ export function ContactForm({
 
       resetTurnstile();
       if (process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN) {
-        posthog.capture("contact_form_submitted", { source: "contact" });
+        // Link this lead's earlier anonymous visits to their email (disclosed
+        // in the privacy policy). First touch is set once; latest touch updates.
+        const { firstTouch, lastTouch } = attributionProperties();
+        posthog.identify(
+          validation.data.email,
+          { email: validation.data.email, ...lastTouch },
+          firstTouch,
+        );
+        posthog.capture("contact_form_submitted", {
+          source: "contact",
+          ...firstTouch,
+          ...lastTouch,
+        });
       }
       setFields(initialFields);
       setState("success");

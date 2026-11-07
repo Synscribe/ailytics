@@ -18,7 +18,10 @@ import {
   type ContactFieldErrors,
   validateContactFields,
 } from "@/lib/contact";
-import { getVisitorContext } from "@/lib/visitor-context";
+import {
+  attributionProperties,
+  getVisitorContext,
+} from "@/lib/visitor-context";
 
 type PartnerFormProps = {
   turnstileAction?: string;
@@ -125,7 +128,16 @@ export function PartnerForm({
       }
       resetTurnstile();
       if (process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN) {
-        posthog.capture("contact_form_submitted", { source: "partnerships" });
+        // Link this lead's earlier anonymous visits to their email (disclosed
+        // in the privacy policy). First touch is set once; latest touch updates.
+        const { firstTouch, lastTouch } = attributionProperties();
+        const email = validation.data?.email;
+        if (email) posthog.identify(email, { email, ...lastTouch }, firstTouch);
+        posthog.capture("contact_form_submitted", {
+          source: "partnerships",
+          ...firstTouch,
+          ...lastTouch,
+        });
       }
       setFields(initialFields);
       setState("success");
