@@ -52,10 +52,34 @@ function safeSubjectValue(value: string): string {
   return value.replace(/[\r\n\u0000-\u001f\u007f]+/g, " ").trim();
 }
 
+function latestTouchRows(
+  touch: ContactSubmission["attribution"]["lastTouch"],
+  firstVisitAt: string | null,
+): [string, string][] {
+  if (!touch)
+    return [
+      [
+        "Latest return visit",
+        "No later visit from another website or campaign",
+      ],
+    ];
+  if (touch.visitAt === firstVisitAt) {
+    return [["Latest return visit", "Same as first visit"]];
+  }
+  return [
+    ["Latest referrer", display(touch.referrerUrl)],
+    ["Latest landing page", display(touch.visitUrl)],
+    ["Latest visit", touch.visitAt],
+    ["Latest UTM source", display(touch.utm?.source)],
+    ["Latest UTM medium", display(touch.utm?.medium)],
+    ["Latest UTM campaign", display(touch.utm?.campaign)],
+  ];
+}
+
 function attributionRows(submission: ContactSubmission): [string, string][] {
   const { attribution } = submission;
   return [
-    ["External referrer", display(attribution.referrerUrl)],
+    ["First referrer", display(attribution.referrerUrl)],
     ["First landing page", display(attribution.firstVisitUrl)],
     ["First visit", display(attribution.firstVisitAt)],
     ["UTM source", display(attribution.firstUtm?.source)],
@@ -63,6 +87,7 @@ function attributionRows(submission: ContactSubmission): [string, string][] {
     ["UTM campaign", display(attribution.firstUtm?.campaign)],
     ["UTM term", display(attribution.firstUtm?.term)],
     ["UTM content", display(attribution.firstUtm?.content)],
+    ...latestTouchRows(attribution.lastTouch, attribution.firstVisitAt),
     [
       "Recent pages",
       attribution.recentPages.length > 0
