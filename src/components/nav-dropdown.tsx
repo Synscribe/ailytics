@@ -11,7 +11,14 @@ import type { NavigationGroup } from "@/config/site";
  * A top-nav label that opens its links on hover or click. The links stay in
  * the server HTML while closed, so crawlers and no-JS visitors still get them.
  */
-export function NavDropdown({ group }: { group: NavigationGroup }) {
+export function NavDropdown({
+  group,
+  showLabel,
+}: {
+  group: NavigationGroup;
+  /** The chevron's accessible name, such as "Show use cases". */
+  showLabel: string;
+}) {
   const [open, setOpen] = useState(false);
   const panelId = useId();
   const rootRef = useRef<HTMLDivElement>(null);
@@ -63,7 +70,7 @@ export function NavDropdown({ group }: { group: NavigationGroup }) {
           <button
             aria-controls={panelId}
             aria-expanded={open}
-            aria-label={`Show ${group.label.toLowerCase()}`}
+            aria-label={showLabel}
             className="-m-1 inline-grid place-items-center p-1 transition-colors hover:text-ink aria-expanded:text-ink"
             onClick={() => setOpen((current) => !current)}
             ref={triggerRef}

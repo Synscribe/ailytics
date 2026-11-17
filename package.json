@@ -14,14 +14,15 @@
     "format:check": "prettier --check .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "check": "pnpm format:check && pnpm launch:checklist --check && pnpm skills:check && pnpm lint && pnpm typecheck && pnpm test",
+    "check": "pnpm format:check && pnpm launch:checklist --check && pnpm i18n --check && pnpm skills:check && pnpm lint && pnpm typecheck && pnpm test",
     "launch:checklist": "tsx scripts/launch-checklist.ts",
     "launch:verify": "tsx scripts/launch-verify.ts",
     "launch:audit": "tsx scripts/launch-audit.ts",
     "launch:assets": "node scripts/launch-assets.mjs",
     "indexnow:key": "node scripts/generate-indexnow-key.mjs",
     "skills:check": "node --test .agents/skills/site-clone/scripts/inventory-sitemap.test.mjs",
-    "prepush": "pnpm check && pnpm build"
+    "prepush": "pnpm check && pnpm build",
+    "i18n": "tsx scripts/i18n.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

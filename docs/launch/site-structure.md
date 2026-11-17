@@ -75,7 +75,7 @@ Items marked **(launch)** are needed for 26 Oct. Everything else follows in the 
 
 /industries                         (launch) Hub: tier 1 industries
 /industries/[tier-1]                (launch: construction, manufacturing, oil-and-gas, logistics-and-warehousing,
-                                     ports-and-maritime; then airports, mining, energy-and-utilities, data-centers)
+                                     maritime, airports, data-centers; then mining, energy-and-utilities)
 /industries/[tier-2]                Later, not in main nav: education, healthcare, elderly-care, childcare,
                                      correctional-facilities, dormitories
 /childsafe-vision                   (launch) Old slug kept; listed under "Other industries" on the hub
@@ -105,7 +105,7 @@ Footer only:
 /us/weapon-detection                US only: gun detection landing pages. Not linked from homepage or main nav
 /us/weapon-detection/[industry]     Later: per industry, excluding schools unless the client approves
 
-/ja/...  /zh-tw/...  /ko/...        Month 3 onward: translated copies of the launch pages
+/ja-jp/...  /zh-tw/...  /ko-kr/...  Translated pages only; Japanese first (see docs/localisation/README.md)
 /privacy-policy-policy  /eula  /eula      Legal
 /llms.txt                           Plain-text summary for AI search tools
 ```
@@ -188,7 +188,7 @@ Modelled on viAct's industry page, with Intenseye's regulation section.
 
 ## Localisation
 
-- Subfolders: `/ja/`, `/zh-tw/`, `/ko/` (month 3 onward, in that order). UK and AU stay on the English site at launch; add `/en-gb/` or `/en-au/` only if the copy differs (spelling, regulations)
+- Subfolders: `/ja-jp/`, `/zh-tw/`, `/ko-kr/`, in that order. `/ja-jp` keeps the old site's Japanese URLs. The homepage shipped first; see `docs/localisation/README.md` for the page order. UK and AU stay on the English site at launch; add `/en-gb/` or `/en-au/` only if the copy differs (spelling, regulations)
 - hreflang on every translated page plus `x-default` pointing to US English
 - Each locale gets real translated titles and descriptions. The current `/ja-jp` pages have English titles and machine-translated bodies; they should not be kept as-is
 - No country-swap pages like viAct's 41 near-identical pages. A country page is built only if it has local proof, local regulations and local partners

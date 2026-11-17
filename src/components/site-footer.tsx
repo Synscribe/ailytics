@@ -1,36 +1,49 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import {
+  chromeCopy,
+  fillTemplate,
+  type ChromeCopy,
+} from "@/config/chrome-copy";
 import { siteConfig } from "@/config/site";
+import { localizedHref, type Locale } from "@/lib/i18n";
 
-const FOOTER_GROUPS = [
+import { LanguageSwitcher } from "./language-switcher.client";
+
+type FooterLinkKey = keyof ChromeCopy["footerLinks"];
+
+const FOOTER_GROUPS: {
+  title: keyof ChromeCopy["footerGroups"];
+  links: { key: FooterLinkKey; href: string }[];
+}[] = [
   {
-    title: "Company",
+    title: "company",
     links: [
-      { label: "About Us", href: "/about-us" },
-      { label: "Partner With Us", href: "/partnerships" },
-      { label: "Careers", href: "/careers" },
-      { label: "News", href: "/blog?category=news" },
+      { key: "aboutUs", href: "/about-us" },
+      { key: "partnerships", href: "/partnerships" },
+      { key: "careers", href: "/careers" },
+      { key: "news", href: "/blog?category=news" },
     ],
   },
   {
-    title: "Product",
+    title: "product",
     links: [
-      { label: "Use cases", href: "/use-cases" },
-      { label: "Industries", href: "/industries" },
-      { label: "Projects", href: "/projects" },
-      { label: "Blog", href: "/blog" },
+      { key: "useCases", href: "/use-cases" },
+      { key: "industries", href: "/industries" },
+      { key: "projects", href: "/projects" },
+      { key: "blog", href: "/blog" },
     ],
   },
   {
-    title: "Contact",
+    title: "contact",
     links: [
-      { label: "Request a demo", href: "/contact" },
-      { label: "Privacy Policy", href: "/privacy-policy" },
-      { label: "EULA", href: "/eula" },
+      { key: "demo", href: "/contact" },
+      { key: "privacy", href: "/privacy-policy" },
+      { key: "eula", href: "/eula" },
     ],
   },
-] as const;
+];
 
 function LinkedInIcon() {
   return (
@@ -43,15 +56,17 @@ function LinkedInIcon() {
   );
 }
 
-export function SiteFooter() {
+export function SiteFooter({ locale }: { locale: Locale }) {
+  const copy = chromeCopy(locale);
+
   return (
     <footer className="border-t border-ink/10 bg-paper">
       <div className="mx-auto grid w-full max-w-7xl gap-10 px-5 py-12 sm:px-8 md:grid-cols-[1.4fr_2fr] md:gap-16">
         <div>
           <Link
-            href="/"
+            href={localizedHref(locale, "/")}
             className="inline-flex"
-            aria-label={`${siteConfig.name} home`}
+            aria-label={copy.homeLabel}
           >
             <Image
               alt=""
@@ -62,22 +77,27 @@ export function SiteFooter() {
             />
           </Link>
           <p className="mt-3 max-w-md text-sm leading-6 text-ink-muted">
-            {siteConfig.description}
+            {copy.description}
           </p>
         </div>
 
         <nav
-          aria-label="Footer navigation"
+          aria-label={copy.footerNavLabel}
           className="grid grid-cols-2 gap-8 sm:grid-cols-3"
         >
           {FOOTER_GROUPS.map((group) => (
             <div key={group.title}>
-              <p className="text-sm font-medium text-ink">{group.title}</p>
+              <p className="text-sm font-medium text-ink">
+                {copy.footerGroups[group.title]}
+              </p>
               <ul className="mt-4 flex flex-col gap-2.5 text-sm text-ink-muted">
                 {group.links.map((link) => (
                   <li key={link.href}>
-                    <Link className="hover:text-ink" href={link.href}>
-                      {link.label}
+                    <Link
+                      className="hover:text-ink"
+                      href={localizedHref(locale, link.href)}
+                    >
+                      {copy.footerLinks[link.key]}
                     </Link>
                   </li>
                 ))}
@@ -87,15 +107,27 @@ export function SiteFooter() {
         </nav>
 
         <div className="flex flex-wrap items-center justify-between gap-4 md:col-span-2">
-          <p className="text-xs text-ink-faint">
-            © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
-          </p>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <p className="text-xs text-ink-faint">
+              © {new Date().getFullYear()} {siteConfig.name}.{" "}
+              {copy.rightsReserved}
+            </p>
+            <p className="text-xs text-ink-faint">
+              <span className="sr-only">{copy.languageLabel}: </span>
+              <LanguageSwitcher
+                className="underline-offset-4 hover:text-ink hover:underline"
+                locale={locale}
+              />
+            </p>
+          </div>
           {siteConfig.social.length > 0 ? (
             <ul className="flex gap-2">
               {siteConfig.social.map((profile) => (
                 <li key={profile.href}>
                   <a
-                    aria-label={`${siteConfig.name} on ${profile.label}`}
+                    aria-label={fillTemplate(copy.socialLabel, {
+                      profile: profile.label,
+                    })}
                     className="grid size-9 place-items-center rounded-full border border-ink/10 text-ink-muted transition-colors hover:border-ink hover:bg-ink hover:text-paper"
                     href={profile.href}
                     rel="noopener noreferrer"

@@ -6,12 +6,22 @@ export type UtmParams = {
   content: string | null;
 };
 
+/** The most recent visit that arrived from another website or a campaign link. */
+export type TouchPoint = {
+  referrerUrl: string | null;
+  referrerDomain: string | null;
+  visitUrl: string | null;
+  visitAt: string;
+  utm: UtmParams | null;
+};
+
 export type VisitorContext = {
   referrerUrl: string | null;
   referrerDomain: string | null;
   firstVisitUrl: string | null;
   firstVisitAt: string | null;
   firstUtm: UtmParams | null;
+  lastTouch: TouchPoint | null;
   recentPages: string[];
 };
 
@@ -28,6 +38,7 @@ const EMPTY_CONTEXT: VisitorContext = {
   firstVisitUrl: null,
   firstVisitAt: null,
   firstUtm: null,
+  lastTouch: null,
   recentPages: [],
 };
 
@@ -131,13 +142,27 @@ export function updateVisitorContext(
     recentPages: [...current.recentPages].slice(-MAX_RECENT_PAGES),
   };
 
+  const referrer = cleanExternalReferrer(referrerUrl, page.origin);
+  const utm = parseUtm(pageUrl);
+
   if (!next.firstVisitUrl) {
-    const referrer = cleanExternalReferrer(referrerUrl, page.origin);
     next.referrerUrl = referrer.url;
     next.referrerDomain = referrer.domain;
     next.firstVisitUrl = cleanPageUrl(pageUrl, true);
     next.firstVisitAt = visitedAt.toISOString();
-    next.firstUtm = parseUtm(pageUrl);
+    next.firstUtm = utm;
+  }
+
+  // Direct visits and internal navigation keep the last channel that brought
+  // the visitor back, so a later direct return does not erase a campaign.
+  if (referrer.domain || utm) {
+    next.lastTouch = {
+      referrerUrl: referrer.url,
+      referrerDomain: referrer.domain,
+      visitUrl: cleanPageUrl(pageUrl, true),
+      visitAt: visitedAt.toISOString(),
+      utm,
+    };
   }
 
   const recentPage = cleanPageUrl(pageUrl, false);
@@ -151,6 +176,24 @@ export function updateVisitorContext(
   }
 
   return next;
+}
+
+function storedTouch(value: unknown): TouchPoint | null {
+  if (!value || typeof value !== "object") return null;
+  const touch = value as Record<string, unknown>;
+  if (typeof touch.visitAt !== "string") return null;
+  const text = (key: string) =>
+    typeof touch[key] === "string" ? (touch[key] as string) : null;
+  return {
+    referrerUrl: text("referrerUrl"),
+    referrerDomain: text("referrerDomain"),
+    visitUrl: text("visitUrl"),
+    visitAt: touch.visitAt,
+    utm:
+      touch.utm && typeof touch.utm === "object"
+        ? (touch.utm as UtmParams)
+        : null,
+  };
 }
 
 function readContext(): VisitorContext {
@@ -179,6 +222,7 @@ function readContext(): VisitorContext {
       firstVisitAt:
         typeof parsed.firstVisitAt === "string" ? parsed.firstVisitAt : null,
       firstUtm: parsed.firstUtm ?? null,
+      lastTouch: storedTouch(parsed.lastTouch),
       recentPages: Array.isArray(parsed.recentPages)
         ? parsed.recentPages
             .filter((page): page is string => typeof page === "string")
@@ -190,13 +234,18 @@ function readContext(): VisitorContext {
   }
 }
 
+// document.referrer stays the same after client-side navigation, so only the
+// landing pageview of each page load may use it.
+let landingRecorded = false;
+
 export function recordPageview(pageUrl: string): void {
   if (typeof window === "undefined") return;
 
   const context = updateVisitorContext(readContext(), {
     pageUrl,
-    referrerUrl: document.referrer,
+    referrerUrl: landingRecorded ? "" : document.referrer,
   });
+  landingRecorded = true;
 
   try {
     window.localStorage.setItem(
@@ -210,4 +259,47 @@ export function recordPageview(pageUrl: string): void {
 
 export function getVisitorContext(): VisitorContext {
   return readContext();
+}
+
+type ChannelProperties = Record<string, string | null>;
+
+function channelProperties(
+  prefix: "first_touch" | "last_touch",
+  referrerDomain: string | null,
+  utm: UtmParams | null,
+): ChannelProperties {
+  return {
+    [`${prefix}_referring_domain`]: referrerDomain ?? "$direct",
+    [`${prefix}_utm_source`]: utm?.source ?? null,
+    [`${prefix}_utm_medium`]: utm?.medium ?? null,
+    [`${prefix}_utm_campaign`]: utm?.campaign ?? null,
+  };
+}
+
+/**
+ * PostHog properties for the channel that first brought the visitor and the
+ * most recent channel that brought them back. Values are referring domains
+ * and campaign tags only.
+ */
+export function attributionProperties(
+  context: VisitorContext = readContext(),
+): { firstTouch: ChannelProperties; lastTouch: ChannelProperties } {
+  if (!context.firstVisitUrl) return { firstTouch: {}, lastTouch: {} };
+  // Histories stored before lastTouch existed fall back to the first touch.
+  const latest = context.lastTouch ?? {
+    referrerDomain: context.referrerDomain,
+    utm: context.firstUtm,
+  };
+  return {
+    firstTouch: channelProperties(
+      "first_touch",
+      context.referrerDomain,
+      context.firstUtm,
+    ),
+    lastTouch: channelProperties(
+      "last_touch",
+      latest.referrerDomain,
+      latest.utm,
+    ),
+  };
 }

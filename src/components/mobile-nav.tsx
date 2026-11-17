@@ -12,9 +12,14 @@ type MobileNavProps = {
     href: string;
     label: string;
   };
+  labels: { open: string; close: string; dialog: string; nav: string };
 };
 
-export function MobileNav({ navigation, primaryAction }: MobileNavProps) {
+export function MobileNav({
+  navigation,
+  primaryAction,
+  labels,
+}: MobileNavProps) {
   const [open, setOpen] = useState(false);
   const menuId = useId();
   const panelRef = useRef<HTMLDivElement>(null);
@@ -62,7 +67,7 @@ export function MobileNav({ navigation, primaryAction }: MobileNavProps) {
       <button
         aria-controls={menuId}
         aria-expanded={open}
-        aria-label={open ? "Close navigation" : "Open navigation"}
+        aria-label={open ? labels.close : labels.open}
         className="relative z-[60] grid size-10 place-items-center rounded-full border border-ink/10 bg-paper text-ink"
         onClick={() => setOpen((current) => !current)}
         ref={triggerRef}
@@ -88,14 +93,14 @@ export function MobileNav({ navigation, primaryAction }: MobileNavProps) {
             type="button"
           />
           <div
-            aria-label="Site navigation"
+            aria-label={labels.dialog}
             aria-modal="true"
             className="absolute top-12 right-0 z-50 w-64 rounded-2xl border border-ink/10 bg-paper p-3 shadow-[var(--shadow-card)]"
             id={menuId}
             ref={panelRef}
             role="dialog"
           >
-            <nav aria-label="Mobile navigation">
+            <nav aria-label={labels.nav}>
               <ul className="space-y-1">
                 {navigation.map((item) =>
                   "links" in item ? (

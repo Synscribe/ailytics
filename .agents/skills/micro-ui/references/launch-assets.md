@@ -6,11 +6,11 @@ second illustration system.
 
 ## File map
 
-- Workspace access: `src/app/dev/layout.tsx`
-- Asset data: `src/app/dev/launch-assets/_lib/launch-assets.ts`
-- Frame composition: `src/app/dev/launch-assets/_components/launch-frame.tsx`
-- Gallery: `src/app/dev/launch-assets/_components/launch-asset-gallery.tsx`
-- Route: `src/app/dev/launch-assets/page.tsx`
+- Workspace access: `src/app/(en)/dev/layout.tsx`
+- Asset data: `src/app/(en)/dev/launch-assets/_lib/launch-assets.ts`
+- Frame composition: `src/app/(en)/dev/launch-assets/_components/launch-frame.tsx`
+- Gallery: `src/app/(en)/dev/launch-assets/_components/launch-asset-gallery.tsx`
+- Route: `src/app/(en)/dev/launch-assets/page.tsx`
 - Exporter: `scripts/launch-assets.mjs`
 - Generated output: `artifacts/launch-assets`
 - Long-form project workflow: `docs/recipes/launch-assets.md`

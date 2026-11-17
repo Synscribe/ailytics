@@ -8,9 +8,9 @@ Checklist item: `FORM-03`.
 
 - `src/lib/turnstile.ts`: paired-key configuration and server-side Siteverify client.
 - `src/lib/turnstile.test.ts`: configuration and verification contract tests.
-- `src/app/contact/_components/turnstile.tsx`: explicit-render browser widget and token/reset hook.
-- `src/app/contact/_components/contact-form.tsx`: token submission, disabled-button state, errors, and reset after each request.
-- `src/app/contact/page.tsx`: passes the public widget configuration from the server-rendered route.
+- `src/app/(en)/contact/_components/turnstile.tsx`: explicit-render browser widget and token/reset hook.
+- `src/app/(en)/contact/_components/contact-form.tsx`: token submission, disabled-button state, errors, and reset after each request.
+- `src/app/(en)/contact/page.tsx`: passes the public widget configuration from the server-rendered route.
 - `src/app/api/contact/route.ts`: verifies the token before the delivery side effect.
 - `src/lib/contact.ts`: permits the transport-only `turnstileToken` field without adding it to the delivered contact data.
 - `.env.example`: documents both keys without shipping a working credential.
@@ -51,7 +51,7 @@ The verifier sends the proxy-derived client IP when available, uses an idempoten
 
 Keep each form's orchestration and widget placement with that route:
 
-1. Reuse `src/app/contact/_components/turnstile.tsx` initially; promote it to a shared component only when the second use is real.
+1. Reuse `src/app/(en)/contact/_components/turnstile.tsx` initially; promote it to a shared component only when the second use is real.
 2. Define a short stable action for the new form and pass the same value to the widget and `verifyTurnstile` call.
 3. Allow `turnstileToken` in that endpoint's bounded transport payload, but do not persist it, email it, or send it to analytics.
 4. Call `verifyTurnstile` before the endpoint's email, CRM, download, or subscription side effect.
@@ -92,11 +92,11 @@ pnpm launch:audit --url "$PRODUCTION_URL" --mode production
 
 When the project does not want Turnstile but keeps the contact form:
 
-1. Remove the Turnstile props and configuration from `src/app/contact/page.tsx`.
-2. Remove the hook, widget, token field, reset calls, and token-dependent button state from `src/app/contact/_components/contact-form.tsx`.
+1. Remove the Turnstile props and configuration from `src/app/(en)/contact/page.tsx`.
+2. Remove the hook, widget, token field, reset calls, and token-dependent button state from `src/app/(en)/contact/_components/contact-form.tsx`.
 3. Remove the `verifyTurnstile` call and imports from `src/app/api/contact/route.ts`.
 4. Remove `turnstileToken` from the allowlist in `src/lib/contact.ts`.
-5. Delete `src/app/contact/_components/turnstile.tsx`, `src/lib/turnstile.ts`, and `src/lib/turnstile.test.ts` when no other form uses them.
+5. Delete `src/app/(en)/contact/_components/turnstile.tsx`, `src/lib/turnstile.ts`, and `src/lib/turnstile.test.ts` when no other form uses them.
 6. Remove both Turnstile values from `.env.example` and every deployment environment.
 7. Update `docs/features.md`, this recipe, the contact recipe, and the `FORM-03` files/details in `docs/launch/checklist.json`; regenerate the readable checklist.
 8. Run the complete checks and test the remaining abuse controls.

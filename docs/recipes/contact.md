@@ -62,11 +62,11 @@ The included rate limit is an in-memory, per-instance baseline. For high traffic
 
 When the project does not use a contact form:
 
-1. Delete `src/app/contact`, `src/app/api/contact`, `src/lib/contact.ts`, `src/lib/contact-delivery.ts`, `src/lib/visitor-context.ts`, and their tests.
-2. Remove `VisitorContextTracker` and its `Suspense` wrapper from `src/app/layout.tsx`.
+1. Delete `src/app/(en)/contact`, `src/app/api/contact`, `src/lib/contact.ts`, `src/lib/contact-delivery.ts`, `src/lib/visitor-context.ts`, and their tests.
+2. Remove `VisitorContextTracker` and its `Suspense` wrapper from `src/app/(en)/layout.tsx`.
 3. Remove `/contact` from the header CTA, footer, and `src/app/sitemap.ts`; replace the CTA with a real destination.
 4. Remove `nodemailer` and `@types/nodemailer`, then reinstall dependencies.
-5. Remove the six contact mail values and both Turnstile values from `.env.example` and every deployment. Delete `src/lib/turnstile.ts`, its test, and `src/app/contact/_components/turnstile.tsx` when no remaining form uses them.
+5. Remove the six contact mail values and both Turnstile values from `.env.example` and every deployment. Delete `src/lib/turnstile.ts`, its test, and `src/app/(en)/contact/_components/turnstile.tsx` when no remaining form uses them.
 6. Remove the contact-specific privacy text, update `docs/features.md`, and mark `FORM-01` through `FORM-04` as `not_applicable`.
 7. Run the complete checks and audit every remaining CTA.
 

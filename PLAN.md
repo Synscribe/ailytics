@@ -76,7 +76,7 @@ This is the repository map. Other agents and client repositories should be able 
 | `scripts/launch-*`           | Pnpm command entry points for checklist management, automatic verification, live auditing, and launch-asset export.                                                           | Keep helper modules and tests out of the scripts root.                     |
 | `src/lib/visuals.ts`         | Stable IDs for the current project's bounded visual system.                                                                                                                   | Content may reference IDs, never paths, components, classes, or props.     |
 | `src/components/visuals`     | One typed React/local-file source resolver shared by real visual consumers.                                                                                                   | Not a block registry or component catalog.                                 |
-| `src/app/dev`                | Explicitly gated, non-indexable visual inventory and launch-asset workshop.                                                                                                   | Enable only with server-only `VISUAL_REVIEW_ENABLED=true`.                 |
+| `src/app/(en)/dev`           | Explicitly gated, non-indexable visual inventory and launch-asset workshop.                                                                                                   | Enable only with server-only `VISUAL_REVIEW_ENABLED=true`.                 |
 | `scripts/checks/*.ts`        | Named automated-check registry and one focused implementation per check.                                                                                                      | Checklist `check` values must map to this explicit registry.               |
 | `scripts/tests/**/*.test.ts` | Tests for checklist parsing, registry dispatch, and individual automated checks.                                                                                              | Each automated check needs passing and failing fixtures.                   |
 | `.agents/skills/*/SKILL.md`  | Focused workflows for cloning, animation, visuals, SEO review, and launch review.                                                                                             | Skills point back to canonical docs instead of copying them.               |
@@ -293,7 +293,7 @@ The blog is a default, deletable surface rather than a feature flag. It connects
 4. dynamic sitemap integration and an RSS feed;
 5. related and featured articles, optional filters backed by real source tags, numbered pagination, and server-built article contents/share links.
 
-`WISP_BLOG_ID` is server-only. Calls are direct, with no retry or application cache. Featured slugs and optional filters live in route-owned `src/app/blog/blog.config.ts`; filter/search/page variants remain server-rendered and canonical to `/blog`. Replace the demo publication ID for a client project. `docs/recipes/blog.md` records configuration and the complete deletion path.
+`WISP_BLOG_ID` is server-only. Calls are direct, with no retry or application cache. Featured slugs and optional filters live in route-owned `src/app/(en)/blog/blog.config.ts`; filter/search/page variants remain server-rendered and canonical to `/blog`. Replace the demo publication ID for a client project. `docs/recipes/blog.md` records configuration and the complete deletion path.
 
 ### Phase 6 — agent skills
 

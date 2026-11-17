@@ -44,8 +44,8 @@ Check:
   - `src/app/icon.svg`
   - `src/app/opengraph-image.tsx`
   - `public/media`
-  - `src/app/dev/visuals`
-  - `src/app/dev/launch-assets`
+  - `src/app/(en)/dev/visuals`
+  - `src/app/(en)/dev/launch-assets`
   - `src/components/visuals`
   - `src/content/pages`
   - `src/lib/visuals.ts`
@@ -93,8 +93,8 @@ Check:
 - Recipe: [docs/recipes/homepage.md](../recipes/homepage.md)
 - Files:
   - `src/components/site-header.tsx`
-  - `src/app/(marketing)/page.tsx`
-  - `src/app/contact/page.tsx`
+  - `src/app/(en)/(marketing)/page.tsx`
+  - `src/app/(en)/contact/page.tsx`
 
 Why it matters: a visitor should not have to decode several competing actions or scroll back to the top to find the real next step.
 
@@ -112,7 +112,7 @@ This check covers reaching the conversion path. `FORM-01` separately covers whet
 - [ ] **Todo**
 - Recipe: [docs/recipes/homepage.md](../recipes/homepage.md)
 - Files:
-  - `src/app/(marketing)/page.tsx`
+  - `src/app/(en)/(marketing)/page.tsx`
   - `public/media`
 
 Why it matters: invented or vague proof creates legal and trust risk. A layout gap is safer than a believable fictional customer claim.
@@ -140,8 +140,8 @@ Check every header, footer, CTA, card, body, canonical, hreflang, and sitemap UR
 
 - [ ] **Todo**
 - Files:
-  - `src/app/not-found.tsx`
-  - `src/app/error.tsx`
+  - `src/app/(en)/not-found.tsx`
+  - `src/app/(en)/error.tsx`
   - `src/config/redirects.ts`
 
 Why it matters: returning a generic 200 page for missing content creates soft 404s. Redirecting unrelated removed pages to home confuses users and search engines.
@@ -404,8 +404,8 @@ Verify old and new Search Console properties and host variants. Use Search Conso
 - [ ] **Todo**
 - Recipe: [docs/recipes/contact.md](../recipes/contact.md)
 - Files:
-  - `src/app/contact/page.tsx`
-  - `src/app/contact/_components/contact-form.tsx`
+  - `src/app/(en)/contact/page.tsx`
+  - `src/app/(en)/contact/_components/contact-form.tsx`
   - `src/app/api/contact/route.ts`
   - `src/lib/contact-delivery.ts`
   - `scripts/launch-audit.ts`
@@ -430,7 +430,7 @@ Validate types and sensible lengths server-side, escape output, reject unexpecte
 - Files:
   - `src/app/api/contact/route.ts`
   - `src/app/api/contact/_lib/rate-limit.ts`
-  - `src/app/contact/_components/turnstile.tsx`
+  - `src/app/(en)/contact/_components/turnstile.tsx`
   - `src/lib/turnstile.ts`
   - `src/app/privacy/page.tsx`
   - `docs/recipes/contact.md`
@@ -446,9 +446,9 @@ The included honeypot, completion-time check, same-origin check, and in-memory p
 - Recipe: [docs/recipes/contact.md](../recipes/contact.md)
 - Files:
   - `src/lib/visitor-context.ts`
-  - `src/app/contact/_components/visitor-context-tracker.tsx`
+  - `src/app/(en)/contact/_components/visitor-context-tracker.tsx`
   - `src/lib/contact.ts`
-  - `src/app/contact/_components/contact-form.tsx`
+  - `src/app/(en)/contact/_components/contact-form.tsx`
 
 Collect only useful attribution fields, document first/recent-page storage, avoid sensitive query values, and align analytics/storage with the privacy decision.
 
@@ -487,12 +487,12 @@ The live launch audit checks both homepage representations, quality-value select
 
 ### PRIVACY-02 — the client approves analytics and session replay before launch
 
-- [ ] **Todo**
+- [x] **Done**
 - Recipe: [docs/recipes/posthog.md](../recipes/posthog.md)
 
-PostHog (US cloud) records pageviews, autocapture, heatmaps, session replay with masked inputs, and the `cta_clicked`, `contact_form_submitted`, `job_application_submitted` and `call_booked` events. There is no consent banner.
-Before launch, the client confirms whether session replay stays on and whether a consent banner is needed, and approves privacy-policy wording that covers analytics cookies, session replay, the US data location, and the PostHog retention period.
-Draft wording is in Section 14 of `src/content/legal/privacy-policy.json`, covering PostHog and the `visitor_context_v1` visit history. The site has no consent banner, so the policy explains how to block tracking. The stated retention (1 year for events, 30 days for recordings) matches the PostHog free plan; revise it if the plan changes. Update the effective date when the client approves the revised policy.
+PostHog (US cloud) records pageviews, autocapture, heatmaps, session replay with masked inputs, and the `cta_clicked`, `contact_form_submitted`, `job_application_submitted` and `call_booked` events. Contact and partnership form submissions call `posthog.identify` with the submitted email, which creates a person profile and links the lead to earlier anonymous visits. Those events, and `call_booked`, also carry `first_touch_*` and `last_touch_*` referring domain and UTM properties from the `visitor_context_v1` history, where the last touch is the most recent visit from another website or a campaign link. No other form contents are sent. There is no consent banner.
+Approved on 7 November 2026: session replay stays on, the site launches without a consent banner, and the Section 14 wording in `src/content/legal/privacy-policy.json` covers analytics cookies, session replay, sending the enquiry email to PostHog, the US data location, and the PostHog retention period. The policy's effective date is 7 November 2026.
+The stated retention (1 year for events, 30 days for recordings) matches the PostHog free plan. If the plan, the data sent to PostHog, or the replay settings change, revise Section 14, update the effective date, and reopen this item.
 
 ## P1 — non-blocking quality and feature-dependent checks
 
@@ -502,7 +502,7 @@ Draft wording is in Section 14 of `src/content/legal/privacy-policy.json`, cover
 - Recipe: [docs/recipes/homepage.md](../recipes/homepage.md)
 - Files:
   - `src/config/site.ts`
-  - `src/app/(marketing)/page.tsx`
+  - `src/app/(en)/(marketing)/page.tsx`
   - `src/lib/seo.ts`
 
 Why it matters: one concise definition helps people, search results, and other systems understand the site without combining fragments from several sections.
@@ -553,8 +553,8 @@ For animation work, use `.agents/skills/micro-ui` and verify both ordinary and `
   - `src/lib/visuals.ts`
   - `src/components/visuals/project-visual.tsx`
   - `src/components/content-page/content-page.tsx`
-  - `src/app/dev/visuals`
-  - `src/app/dev/launch-assets`
+  - `src/app/(en)/dev/visuals`
+  - `src/app/(en)/dev/launch-assets`
   - `scripts/launch-assets.mjs`
   - `docs/recipes/launch-assets.md`
   - `.agents/skills/micro-ui/SKILL.md`
@@ -598,6 +598,24 @@ Check Search Console, analytics, uptime/error monitoring, and field performance 
 
 The /careers/[slug] application form posts to /api/careers and emails the resume to CAREERS_TO_EMAIL, falling back to CONTACT_TO_EMAIL.
 Set the mail values, submit a test application with a PDF and a Word file, and confirm the attachment and reply-to arrive in the reviewed inbox.
+
+## P1 — localisation
+
+### LOCALE-01 — Japanese pages are reviewed by a native speaker
+
+- [ ] **Todo**
+- Recipe: [docs/localisation/README.md](../localisation/README.md)
+
+The Japanese homepage and shared header, navigation and footer copy are machine translations, indexed and listed in hreflang. Each has `status: machine` in `src/config/translations.json`.
+A native Japanese reviewer checks tone, terms and claims against `docs/localisation/ja-jp.md`. Apply the fixes, then run `pnpm i18n --stamp <id> --reviewed`.
+
+### LOCALE-02 — Japanese sales route and Safie relationship are confirmed
+
+- [ ] **Todo**
+- Recipe: [docs/localisation/ja-jp.md](../localisation/ja-jp.md)
+
+Safie sells a co-branded Ailytics(SF) product in Japan. Confirm whether Japanese pages mention or link to Safie, and who answers Japanese demo requests and in which language.
+Translate `/contact` (tier 1) only after the destination for Japanese leads is decided.
 
 ## P2 — later enhancements
 
@@ -667,11 +685,11 @@ Add URL submission automation only when publishing frequency and target search e
 - [ ] **Todo**
 - Recipe: [docs/recipes/blog.md](../recipes/blog.md)
 - Files:
-  - `src/app/blog/blog.config.ts`
-  - `src/app/blog/page.tsx`
-  - `src/app/blog/_components/blog-pagination.tsx`
-  - `src/app/blog/[slug]/page.tsx`
-  - `src/app/blog/[slug]/_components/article-sidebar.tsx`
+  - `src/app/(en)/blog/blog.config.ts`
+  - `src/app/(en)/blog/page.tsx`
+  - `src/app/(en)/blog/_components/blog-pagination.tsx`
+  - `src/app/(en)/blog/[slug]/page.tsx`
+  - `src/app/(en)/blog/[slug]/_components/article-sidebar.tsx`
   - `src/lib/blog.ts`
   - `src/lib/blog-content.ts`
 
@@ -681,7 +699,7 @@ Why it matters: editorial controls should help readers find useful articles with
 
 Check:
 
-- Declare optional filters and featured behavior in `src/app/blog/blog.config.ts`; do not scatter tag names or pinned slugs through components.
+- Declare optional filters and featured behavior in `src/app/(en)/blog/blog.config.ts`; do not scatter tag names or pinned slugs through components.
 - Map each visible filter to a real Wisp tag. Remove a filter when the publication does not maintain that tag, and never invent a generic category for untagged posts.
 - Set `BLOG_FEATURED.heroSlug` to an approved lead article or `null`. Set `BLOG_FEATURED.tag` to the real featured tag or `null`. These are content choices, not feature flags.
 - Keep the default list, filters, search results, article links, and pagination in server-rendered HTML. Filters and pagination must use real links, while search must work as a normal GET form.
@@ -698,7 +716,7 @@ Check:
 - [ ] **Todo**
 - Recipe: [docs/launch/clone-journal.md](./clone-journal.md)
 
-The rebuilt About, Partnerships, Careers and Projects pages leave out the old site's Talk-to-us popup form, footer office addresses and phone numbers, the LinkedIn footer link, and the Japanese locale. EULA is migrated and linked from the footer. The News articles moved to /blog, with a News tab on the blog hub linked from the footer and the Company menu, and every /news URL redirects there.
+The rebuilt About, Partnerships, Careers and Projects pages leave out the old site's Talk-to-us popup form, footer office addresses and phone numbers, and the LinkedIn footer link. The Japanese locale is rebuilt page by page under /ja-jp (see LOCALE-01). EULA is migrated and linked from the footer. The News articles moved to /blog, with a News tab on the blog hub linked from the footer and the Company menu, and every /news URL redirects there.
 Confirm with the client that these stay out, or supply the approved contact details and destinations.
 
 ### CAREERS-02 — job postings carry JobPosting structured data with real dates
@@ -708,6 +726,23 @@ Confirm with the client that these stay out, or supply the approved contact deta
 
 The migrated roles have no posting or closing dates, so no JobPosting schema is emitted yet.
 Add datePosted and validThrough from the client's ATS before adding the schema.
+
+## P2 — localisation
+
+### LOCALE-03 — Japanese keywords are validated with search data
+
+- [ ] **Todo**
+- Recipe: [docs/localisation/ja-jp.md](../localisation/ja-jp.md)
+
+The keyword map in `docs/localisation/ja-jp.md` comes from Japanese vendor and contractor pages, not search volume. Validate the homepage keyword (AI映像解析) and the tier 1 page keywords with a Japanese keyword tool before writing those pages.
+
+### LOCALE-04 — Japanese social image and product visuals are localised
+
+- [ ] **Todo**
+- Recipe: [docs/localisation/README.md](../localisation/README.md)
+
+Japanese pages share the English Open Graph image, and the shared product visuals show English interface labels.
+Add a Japanese `opengraph-image` with a Japanese font passed to `ImageResponse`, and translate visual labels only if the product ships a Japanese interface.
 
 ## Primary references
 

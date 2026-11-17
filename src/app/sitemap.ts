@@ -1,8 +1,15 @@
 import type { MetadataRoute } from "next";
 
 import { siteConfig } from "@/config/site";
-import { listJobSlugs } from "@/app/careers/_jobs";
+import { listJobSlugs } from "@/app/(en)/careers/_jobs";
 import { getAllBlogPosts, type BlogPostSummary } from "@/lib/blog";
+import {
+  languageAlternates,
+  LOCALES,
+  localePath,
+  translatedPaths,
+  type TranslatedLocale,
+} from "@/lib/i18n";
 import { listNewsArticles } from "@/lib/news-content";
 import { listPageContent } from "@/lib/page-content";
 
@@ -44,8 +51,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // A migrated news article takes precedence over a Wisp post with its slug.
   const newsSlugs = new Set(news.map((article) => article.slug));
 
+  const toUrl = (path: string) => `${siteConfig.url}${path}`;
+  // A translated page lists every language version, including its own.
+  const localized = (route: string) => {
+    const languages = languageAlternates(route, toUrl);
+    return languages ? { alternates: { languages } } : {};
+  };
+  const translated = LOCALES.filter(
+    (locale): locale is TranslatedLocale => locale !== "en",
+  ).flatMap((locale) =>
+    translatedPaths(locale).map((route) => ({
+      url: toUrl(localePath(locale, route)),
+      ...localized(route),
+    })),
+  );
+
   return [
-    ...routes.map((route) => ({ url: `${siteConfig.url}${route}` })),
+    ...routes.map((route) => ({ url: toUrl(route), ...localized(route) })),
+    ...translated,
     ...news.map((article) => ({
       url: `${siteConfig.url}/blog/${article.slug}`,
       lastModified: article.publishedAt,

@@ -51,7 +51,7 @@ describe("page content", () => {
 
   it("names the missing slug and the file to edit when route copy is missing", () => {
     expect(() => assertRouteCopy("uses", ["new-page"], {})).toThrow(
-      'Missing route copy for src/content/pages/uses/new-page.json. Add "new-page" to src/app/use-cases/[slug]/_content.ts.',
+      'Missing route copy for src/content/pages/uses/new-page.json. Add "new-page" to src/app/(en)/use-cases/[slug]/_content.ts.',
     );
     expect(() =>
       assertRouteCopy("uses", ["ppe-detection"], { "ppe-detection": {} }),

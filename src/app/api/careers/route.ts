@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { getJob } from "@/app/careers/_jobs";
+import { getJob } from "@/app/(en)/careers/_jobs";
 import {
   APPLICATION_LIMITS,
   safeResumeFileName,

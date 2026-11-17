@@ -182,8 +182,8 @@ Inserted in canonical order; `docs/launch/checklist.md` regenerated with `pnpm l
 - `src/lib/seo.ts` — new `buildFaqJsonLd` for the questions section.
 - `src/components/site-header.tsx` — CTA label unified to "Launch Website".
 - `src/config/site.ts` — `siteConfig.description` holds the canonical positioning sentence, under 155 characters, shared by the page, the meta description, and the JSON-LD.
-- `src/app/(marketing)/home.module.css` — `.faqItem` and `.faqMarker`. Reduced motion is already handled globally in `globals.css`; do not re-declare it per module.
-- `src/app/(marketing)/page.tsx` — the existing server-rendered homepage with a real-stack trust bar, positioning summary, reordered checklist/workflow, questions, and closing action. Customer-proof placement is recorded beside the intentionally omitted proof block.
+- `src/app/(en)/(marketing)/home.module.css` — `.faqItem` and `.faqMarker`. Reduced motion is already handled globally in `globals.css`; do not re-declare it per module.
+- `src/app/(en)/(marketing)/page.tsx` — the existing server-rendered homepage with a real-stack trust bar, positioning summary, reordered checklist/workflow, questions, and closing action. Customer-proof placement is recorded beside the intentionally omitted proof block.
 
 ---
 

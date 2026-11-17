@@ -20,6 +20,10 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  experimental: {
+    // Needed for a site-wide 404 with one root layout per locale.
+    globalNotFound: true,
+  },
   outputFileTracingIncludes: {
     "/api/agent-markdown": ["./src/content/markdown/**/*.md"],
   },

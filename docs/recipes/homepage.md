@@ -62,12 +62,12 @@ Critical copy and links stay in server-rendered HTML. Animation may enhance a se
 
 ## Implementation map
 
-- Homepage composition and the proof-placement decision: `src/app/(marketing)/page.tsx`
-- Route-local styling: `src/app/(marketing)/home.module.css`
+- Homepage composition and the proof-placement decision: `src/app/(en)/(marketing)/page.tsx`
+- Route-local styling: `src/app/(en)/(marketing)/home.module.css`
 - Canonical positioning sentence and public configuration: `src/config/site.ts`
 - Shared primary action: `src/components/site-header.tsx`
 - Metadata and FAQ/WebSite structured data: `src/lib/seo.ts`
-- Conversion destination: `src/app/contact`
+- Conversion destination: `src/app/(en)/contact`
 - Canonical readiness checks: `docs/launch/checklist.json`
 
 Keep new homepage sections route-local. Promote a component only after a second real use. Do not add proof flags or a serialized section schema.

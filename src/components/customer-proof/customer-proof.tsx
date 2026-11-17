@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { CountUp } from "@/components/count-up.client";
+import { chromeCopy } from "@/config/chrome-copy";
+import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
 
 import styles from "./customer-proof.module.css";
 const LOGOS = [
@@ -57,26 +59,23 @@ const LOGOS = [
 
 export type ProofStat = { value: string; label: string };
 
-const DEFAULT_STATS: ProofStat[] = [
-  { value: "60–80%", label: "reduction in safety non-compliance" },
-  {
-    value: "50+",
-    label: "configurable safety, security and productivity use cases",
-  },
-  { value: "<2 weeks", label: "to go live on the cameras you already own" },
-];
-
 /**
  * `spacious` adds 80px above and below, for the homepage. `stats` replaces
- * the default stat row for a page that needs different figures.
+ * the default stat row for a page that needs different figures. The title
+ * and default stats come from the shared copy for `locale`.
  */
 export function CustomerProof({
   spacious = false,
-  stats = DEFAULT_STATS,
+  stats,
+  locale = DEFAULT_LOCALE,
 }: {
   spacious?: boolean;
   stats?: ProofStat[];
+  locale?: Locale;
 }) {
+  const copy = chromeCopy(locale).proof;
+  const shownStats = stats ?? copy.stats;
+
   return (
     <section
       className={styles.proof}
@@ -84,10 +83,10 @@ export function CustomerProof({
       aria-labelledby="proof-title"
     >
       <h2 id="proof-title" className={styles.proofTitle}>
-        Trusted on 400+ projects worldwide
+        {copy.title}
       </h2>
       <div className={styles.marquee}>
-        <ul className={styles.track} aria-label="Customers">
+        <ul className={styles.track} aria-label={copy.customersLabel}>
           {[0, 1].map((copy) =>
             LOGOS.map((logo) => (
               <li
@@ -111,7 +110,7 @@ export function CustomerProof({
         </ul>
       </div>
       <ul className={styles.stats}>
-        {stats.map((s) => (
+        {shownStats.map((s) => (
           <li key={s.value} className={styles.stat}>
             <strong className={styles.statValue}>
               <CountUp value={s.value} />

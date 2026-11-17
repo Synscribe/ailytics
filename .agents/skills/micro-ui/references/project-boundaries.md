@@ -11,10 +11,10 @@
 - Use-case placement wrapper: `src/app/uses/[slug]/_components/use-case-visual.tsx`
 - Use-case local files: `public/media/uses`
 - Motion kit, once copied in: `src/components/visuals/visuals/_kit.tsx` and `brand.ts`
-- Gated visual inventory: `src/app/dev/visuals/page.tsx`
-- Gated launch gallery: `src/app/dev/launch-assets`
+- Gated visual inventory: `src/app/(en)/dev/visuals/page.tsx`
+- Gated launch gallery: `src/app/(en)/dev/launch-assets`
 - Launch exporter: `scripts/launch-assets.mjs`
-- Homepage-only composition: `src/app/(marketing)/_components`
+- Homepage-only composition: `src/app/(en)/(marketing)/_components`
 - Launch requirements and status: `docs/launch/checklist.json`
 - Generated readable checklist: `docs/launch/checklist.md`
 

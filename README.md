@@ -88,7 +88,7 @@ The template code is available under the [MIT License](LICENSE).
 
 Global identity and navigation live in `src/config/site.ts`; `src/config/env.ts` parses the deployment-specific site URL and Wisp publication ID. Page content does not belong in global config.
 
-Set the server-only `WISP_BLOG_ID` to the publication used by `/blog`. Featured content and optional filters are declared in `src/app/blog/blog.config.ts`. See [`docs/recipes/blog.md`](docs/recipes/blog.md) for configuration and complete removal steps.
+Set the server-only `WISP_BLOG_ID` to the publication used by `/blog`. Featured content and optional filters are declared in `src/app/(en)/blog/blog.config.ts`. See [`docs/recipes/blog.md`](docs/recipes/blog.md) for configuration and complete removal steps.
 
 Set all `MAIL_*` values and `CONTACT_TO_EMAIL` to activate `/contact`; none may use a `NEXT_PUBLIC_` prefix. The default stores only first-touch campaign fields and five recent same-site paths, and sends no form values to PostHog. See [`docs/recipes/contact.md`](docs/recipes/contact.md) for privacy decisions, verification, and removal.
 

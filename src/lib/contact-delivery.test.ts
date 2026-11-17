@@ -22,6 +22,19 @@ const submission: ContactSubmission = {
       term: null,
       content: null,
     },
+    lastTouch: {
+      referrerUrl: "https://www.linkedin.com/",
+      referrerDomain: "www.linkedin.com",
+      visitUrl: "https://example.com/contact?utm_source=linkedin",
+      visitAt: "2026-08-25T10:00:00.000Z",
+      utm: {
+        source: "linkedin",
+        medium: null,
+        campaign: null,
+        term: null,
+        content: null,
+      },
+    },
     recentPages: ["https://example.com/uses", "https://example.com/contact"],
   },
 };
@@ -36,5 +49,6 @@ describe("contact email", () => {
     expect(email.html).toContain("&lt;script&gt;");
     expect(email.text).toContain("UTM source:\ngoogle");
     expect(email.text).toContain("https://example.com/contact");
+    expect(email.text).toContain("Latest UTM source:\nlinkedin");
   });
 });

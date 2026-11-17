@@ -1,4 +1,4 @@
-import { listBlogEntries } from "@/app/blog/_entries";
+import { listBlogEntries } from "@/app/(en)/blog/_entries";
 import { siteConfig } from "@/config/site";
 import { absoluteUrl } from "@/lib/seo";
 

@@ -17,7 +17,7 @@ VISUAL_REVIEW_ENABLED=true pnpm dev
 not infer access from `NODE_ENV`, and the value must not use a
 `NEXT_PUBLIC_` prefix. Do not configure it on a public deployment.
 
-The shared `src/app/dev/layout.tsx` owns the access check and noindex metadata for:
+The shared `src/app/(en)/dev/layout.tsx` owns the access check and noindex metadata for:
 
 - `/dev`: workspace index;
 - `/dev/visuals`: every registered project visual and its content placements;
@@ -34,7 +34,7 @@ Reusable illustrations have one implementation boundary:
 - Exhaustive ID-to-source map and renderer: `src/components/visuals/project-visual.tsx`
 - React implementations: `src/components/visuals`
 - Detail-page placement: `src/components/content-page/content-page.tsx`
-- Visual inventory: `src/app/dev/visuals/page.tsx`
+- Visual inventory: `src/app/(en)/dev/visuals/page.tsx`
 
 Use-case and industry pages, the inventory, and launch assets all consume that one resolver. Do not add a separate
 feature-visual map. Content JSON may select only a validated `visualId`; it never receives a
@@ -48,10 +48,10 @@ then use browser emulation to inspect `prefers-reduced-motion: reduce` separatel
 
 The launch set lives with its route:
 
-- Copy, IDs, dimensions, proof, tones, and `visualId`: `src/app/dev/launch-assets/_lib/launch-assets.ts`
-- Frame composition: `src/app/dev/launch-assets/_components/launch-frame.tsx`
-- Gallery composition: `src/app/dev/launch-assets/_components/launch-asset-gallery.tsx`
-- Gallery/single-frame route: `src/app/dev/launch-assets/page.tsx`
+- Copy, IDs, dimensions, proof, tones, and `visualId`: `src/app/(en)/dev/launch-assets/_lib/launch-assets.ts`
+- Frame composition: `src/app/(en)/dev/launch-assets/_components/launch-frame.tsx`
+- Gallery composition: `src/app/(en)/dev/launch-assets/_components/launch-asset-gallery.tsx`
+- Gallery/single-frame route: `src/app/(en)/dev/launch-assets/page.tsx`
 
 The included entries are Launch Template examples marked
 `TEMPLATE_PLACEHOLDER_LAUNCH_ASSETS`. Replace or remove them before a client launch. Use only
@@ -143,7 +143,7 @@ Before approval:
 
 To remove only launch export while keeping the visual inventory:
 
-1. Delete `src/app/dev/launch-assets` and `scripts/launch-assets.mjs`.
+1. Delete `src/app/(en)/dev/launch-assets` and `scripts/launch-assets.mjs`.
 2. Remove `launch:assets` from `package.json`.
 3. Remove the `ws` development dependency if nothing else uses it.
 4. Remove launch-asset references from this recipe, `README.md`, `docs/features.md`, `AGENTS.md`,
@@ -151,7 +151,7 @@ To remove only launch export while keeping the visual inventory:
 
 To remove the entire visual workspace as well:
 
-1. Delete `src/app/dev`.
+1. Delete `src/app/(en)/dev`.
 2. Remove `VISUAL_REVIEW_ENABLED` from `.env.example`.
 3. Remove `/dev/` from the production robots disallow list if no other internal route uses it.
 

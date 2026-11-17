@@ -1,0 +1,23 @@
+{
+  "entries": [
+    {
+      "id": "chrome",
+      "locale": "ja-jp",
+      "source": ["src/config/chrome-copy/en.ts", "src/config/site.ts"],
+      "target": ["src/config/chrome-copy/ja-jp.ts"],
+      "sourceHash": "999917976d7b7f76",
+      "status": "machine",
+      "updated": "2026-11-17"
+    },
+    {
+      "id": "home",
+      "locale": "ja-jp",
+      "path": "/",
+      "source": ["src/app/(en)/(marketing)/_copy/en.ts"],
+      "target": ["src/app/(en)/(marketing)/_copy/ja-jp.ts"],
+      "sourceHash": "a619ab96117b43f5",
+      "status": "machine",
+      "updated": "2026-11-03"
+    }
+  ]
+}

@@ -1,13 +1,23 @@
 import type { Metadata } from "next";
 
 import { siteConfig } from "../config/site";
+import {
+  DEFAULT_LOCALE,
+  languageAlternates,
+  LOCALE_SETTINGS,
+  localePath,
+  type Locale,
+} from "./i18n";
 
 export type PageMetadataInput = {
   title: string;
   description: string;
+  /** The English pathname. A translated page passes the same path. */
   path: string;
   imagePath?: string;
   noIndex?: boolean;
+  /** The locale this page renders in. Defaults to English. */
+  locale?: Locale;
 };
 
 export function absoluteUrl(path = "/"): string {
@@ -20,18 +30,21 @@ export function createPageMetadata({
   path,
   imagePath = "/opengraph-image",
   noIndex = false,
+  locale = DEFAULT_LOCALE,
 }: PageMetadataInput): Metadata {
-  const canonical = absoluteUrl(path);
+  const canonical = absoluteUrl(localePath(locale, path));
   const image = absoluteUrl(imagePath);
+  // A noindex page is left out of the hreflang cluster.
+  const languages = noIndex ? undefined : languageAlternates(path, absoluteUrl);
 
   return {
     title,
     description,
-    alternates: { canonical },
+    alternates: languages ? { canonical, languages } : { canonical },
     robots: noIndex ? { index: false, follow: false } : undefined,
     openGraph: {
       type: "website",
-      locale: siteConfig.locale.replace("-", "_"),
+      locale: LOCALE_SETTINGS[locale].openGraphLocale,
       url: canonical,
       siteName: siteConfig.name,
       title,

@@ -64,6 +64,14 @@ Start with one primary keyword and the searcher's likely problem, desired result
 - Do not install a CMS, docs framework, content sync, or component catalog until the current project requires it.
 - `framer-motion` is the one accepted animation dependency; it backs the `$micro-ui` motion kit. Do not add a second one.
 
+## Localisation
+
+- English is served at the root from `src/app/(en)/`. Each other locale has its own root layout under its prefix (`src/app/ja-jp/`) and only the pages that have been translated.
+- Put page copy in `_copy/en.ts` beside the English route, with each translation beside it typed against the English copy. Shared header, navigation and footer copy lives in `src/config/chrome-copy/`.
+- List every translated page and shared copy file in `src/config/translations.json`. After changing English copy that has translations, update them and run `pnpm i18n --stamp <id>`; `pnpm check` fails on stale translations.
+- Translate with `.agents/skills/translate-page` and follow `docs/localisation/<locale>.md`. Page priorities are in `docs/localisation/README.md`.
+- Never publish a locale URL with English content. Untranslated pages link to English.
+
 ## Launch safety
 
 - Never replace a missing client value with a believable fictional value.

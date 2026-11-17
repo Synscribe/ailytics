@@ -9,7 +9,7 @@ import {
 import Image from "next/image";
 import { useRef, useState } from "react";
 
-import { useScrollScene } from "@/app/(marketing)/_components/use-scroll-scene";
+import { useScrollScene } from "@/app/(en)/(marketing)/_components/use-scroll-scene";
 
 import type { DetailScene } from "./scenes";
 import styles from "./step-scene.module.css";

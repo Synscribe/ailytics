@@ -10,6 +10,12 @@
   white-space: nowrap;
 }
 
+/* Japanese has no spaces, so a whole phrase is one "word". Let it wrap
+   between letters instead of running off narrow screens. */
+:global(:lang(ja)) .word {
+  white-space: normal;
+}
+
 .letter {
   position: relative;
   display: inline-block;

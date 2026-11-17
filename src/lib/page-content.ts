@@ -208,7 +208,7 @@ export function assertRouteCopy(
         .map((slug) => `src/content/pages/${kind}/${slug}.json`)
         .join(", ")}. Add ${missing
         .map((slug) => `"${slug}"`)
-        .join(", ")} to src/app/${routeDirectory}/[slug]/_content.ts.`,
+        .join(", ")} to src/app/(en)/${routeDirectory}/[slug]/_content.ts.`,
     );
   }
 }
