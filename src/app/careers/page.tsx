@@ -47,7 +47,7 @@ const REASONS = [
   },
   {
     title: "We're Already Global",
-    body: "Our headquarters are in Singapore, but our team and mission is global. With 11 different nationalities, 300+ projects across 10 countries; we're taking on the world.",
+    body: "Our headquarters are in Singapore, but our team and mission is global. With 11 different nationalities, 400+ projects across 15 countries; we're taking on the world.",
     image: "/media/careers/already-global.webp",
     alt: "The Ailytics team gathered for a group photo at dinner",
   },

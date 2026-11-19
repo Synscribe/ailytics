@@ -72,20 +72,18 @@ About us, Partner with us, Projects and Careers move to the footer.
 - **Visual:** the camera wall catching hazards on its own, using client clips from `public/media/ailytics/`
 - **Proof chips:**
 
-| Chip                       | Source                                                        |
-| -------------------------- | ------------------------------------------------------------- |
-| 400+ projects worldwide    | Ledger #9 (NVIDIA Cosmos news post, case studies p2, deck S6) |
-| 50+ configurable use cases | Ledger #11 (live homepage, brochure p2)                       |
-| Live in under 2 weeks      | Ledger safe #5 (brochure p1, deck S3)                         |
-| ISO/IEC 27001 certified    | Ledger #28 (live site, deck S7, S27)                          |
+| Chip                          | Source                                                                                                         |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| 400+ projects in 15 countries | Ledger #9 (NVIDIA Cosmos news post, case studies p2, deck S6); country count confirmed by the client on 19 Nov |
+| 50+ configurable use cases    | Ledger #11 (live homepage, brochure p2)                                                                        |
+| Live in under 2 weeks         | Ledger safe #5 (brochure p1, deck S3)                                                                          |
+| ISO/IEC 27001 certified       | Ledger #28 (live site, deck S7, S27)                                                                           |
 
-Dropped from the team draft: 73% TRIR (unsourced, ledger #1), 84% (ledger #2), 15 countries (four conflicting counts, ledger #10).
+Dropped from the team draft: 73% TRIR (unsourced, ledger #1), 84% (ledger #2).
 
 ## 3. Customer logos
 
-**Heading:** `Trusted on sites and facilities in TODO_CLIENT_COUNTRY_COUNT countries`
-
-Until the country count is confirmed, use `Trusted by teams across construction, manufacturing, logistics and aviation`.
+**Heading:** `Trusted on 400+ projects in 15 countries`
 
 Logos (public on the live site **and** on the client's approved list, ledger customer table):
 
@@ -271,7 +269,7 @@ _Sources: ledger #11, Use Case Guide p8._
 
 ## Decisions for the client at kickoff
 
-1. Country count to publish (9, 10, 11 or 15 all appear today)
+1. ~~Country count to publish~~ Confirmed 19 Nov: 15 countries
 2. Source for 73% TRIR and 50% fewer inspections, or drop them
 3. Approve or remove the 10 live-site logos not on the approved list
 4. Can case-study numbers appear without the customer's name, and can CSCEC and NatSteel be named?
