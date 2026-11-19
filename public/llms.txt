@@ -1,8 +1,8 @@
 # Ailytics
 
 > Ailytics adds AI video analytics to the CCTV cameras a site already owns, detecting safety, security and productivity risks on construction sites, plants, ports, airports and yards, with real-time alerts and compliance reporting.
-> Born in Singapore in 2019, Ailytics runs on 400+ projects worldwide, deploys on the edge, on-premise or in the cloud, and goes live in under 2 weeks.
-> Last reviewed: 2026-10-30.
+> Born in Singapore in 2019, Ailytics runs on 400+ projects in 15 countries, deploys on the edge, on-premise or in the cloud, and goes live in under 2 weeks.
+> Last reviewed: 2026-11-19.
 
 ## Product
 

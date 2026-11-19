@@ -55,7 +55,7 @@ Ailytics turns the CCTV a site already owns into AI video analytics that detects
 
 ## Evidence on Hand
 
-- Claims: only those marked USE or USE WITH WORDING in `docs/research/ailytics/claims-ledger.md` (for example 400+ projects, 60-80% fewer non-compliances as a typical result, 69.1% on one construction site, 50+ use cases, live in under 2 weeks, ISO/IEC 27001). Not usable until confirmed: 73% TRIR, 84%, 50% fewer inspections, country count, "patented", "saved 13 lives".
+- Claims: only those marked USE or USE WITH WORDING in `docs/research/ailytics/claims-ledger.md` (for example 400+ projects, 15 countries, 60-80% fewer non-compliances as a typical result, 69.1% on one construction site, 50+ use cases, live in under 2 weeks, ISO/IEC 27001). Not usable until confirmed: 73% TRIR, 84%, 50% fewer inspections, "patented", "saved 13 lives".
 - Customers: only the client's approved list may be named. Public and approved today: Changi Airport Group, DHL, Laing O'Rourke, LTA, NatSteel, Obayashi, Rogers-O'Brien Construction, Woh Hup.
 - Media: detection clips and posters in `public/media/ailytics/`, originals in `client-assets/Assets/`, deck media in `docs/research/ailytics/deck-media/`. Never use the gun-incident footage; some footage shows faces, plates or client codes.
 - No approved testimonials or named case studies yet.

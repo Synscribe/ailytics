@@ -84,7 +84,7 @@ export function CustomerProof({
       aria-labelledby="proof-title"
     >
       <h2 id="proof-title" className={styles.proofTitle}>
-        Trusted on 400+ projects worldwide
+        Trusted on 400+ projects in 15 countries
       </h2>
       <div className={styles.marquee}>
         <ul className={styles.track} aria-label="Customers">
