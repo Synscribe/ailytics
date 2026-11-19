@@ -28,12 +28,26 @@ describe("booking page", () => {
     );
   });
 
+  it("sends the /lenard short link to Lenard's booking page and keeps UTM tags", async () => {
+    const response = await unstable_getResponseFromNextConfig({
+      url: "https://www.ailytics.ai/lenard?utm_source=email",
+      nextConfig,
+    });
+
+    expect(response.status).toBe(307);
+    expect(getRedirectUrl(response)).toBe(
+      "https://www.ailytics.ai/book/lenard?utm_source=email",
+    );
+  });
+
   it("tells search engines not to index /book or personal booking pages", async () => {
     for (const url of [
       "https://www.ailytics.ai/book",
       "https://www.ailytics.ai/book.md",
       "https://www.ailytics.ai/book/theo",
       "https://www.ailytics.ai/book/theo.md",
+      "https://www.ailytics.ai/book/lenard",
+      "https://www.ailytics.ai/book/lenard.md",
     ]) {
       const response = await unstable_getResponseFromNextConfig({
         url,

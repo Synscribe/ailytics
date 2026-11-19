@@ -2,7 +2,8 @@
  * The booking calendar lives at /book. Earlier outreach emails linked to
  * book.ailytics.ai, so that host redirects there with its query string (and
  * any UTM tags) intact. Personal booking pages such as /book/theo live under
- * the same path. Search engines are told not to index any of these URLs.
+ * the same path, and short links such as /lenard redirect to them. Search
+ * engines are told not to index any of these URLs.
  */
 export const BOOKING_PATH = "/book";
 export const BOOKING_URL = `https://www.ailytics.ai${BOOKING_PATH}`;
@@ -16,6 +17,11 @@ export const bookingRedirects = [
     has: [{ type: "host" as const, value: LEGACY_BOOKING_HOST }],
     destination: BOOKING_URL,
     permanent: true,
+  },
+  {
+    source: "/lenard",
+    destination: `${BOOKING_PATH}/lenard`,
+    permanent: false,
   },
 ];
 
