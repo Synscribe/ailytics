@@ -28,10 +28,12 @@ describe("booking page", () => {
     );
   });
 
-  it("tells search engines not to index /book", async () => {
+  it("tells search engines not to index /book or personal booking pages", async () => {
     for (const url of [
       "https://www.ailytics.ai/book",
       "https://www.ailytics.ai/book.md",
+      "https://www.ailytics.ai/book/theo",
+      "https://www.ailytics.ai/book/theo.md",
     ]) {
       const response = await unstable_getResponseFromNextConfig({
         url,

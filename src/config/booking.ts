@@ -1,7 +1,8 @@
 /**
  * The booking calendar lives at /book. Earlier outreach emails linked to
  * book.ailytics.ai, so that host redirects there with its query string (and
- * any UTM tags) intact. Search engines are told not to index either URL.
+ * any UTM tags) intact. Personal booking pages such as /book/theo live under
+ * the same path. Search engines are told not to index any of these URLs.
  */
 export const BOOKING_PATH = "/book";
 export const BOOKING_URL = `https://www.ailytics.ai${BOOKING_PATH}`;
@@ -18,6 +19,8 @@ export const bookingRedirects = [
   },
 ];
 
-export const bookingHeaderRules = [BOOKING_PATH, `${BOOKING_PATH}.md`].map(
-  (source) => ({ source, headers: noindex }),
-);
+export const bookingHeaderRules = [
+  BOOKING_PATH,
+  `${BOOKING_PATH}.md`,
+  `${BOOKING_PATH}/:path*`,
+].map((source) => ({ source, headers: noindex }));
