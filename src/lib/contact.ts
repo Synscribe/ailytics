@@ -2,6 +2,7 @@ import {
   ATTRIBUTION_RETENTION_DAYS,
   MAX_RECENT_PAGES,
   parseUtm,
+  type TouchPoint,
   type UtmParams,
 } from "./visitor-context";
 
@@ -29,6 +30,7 @@ export type ContactAttribution = {
   firstVisitUrl: string | null;
   firstVisitAt: string | null;
   firstUtm: UtmParams | null;
+  lastTouch: TouchPoint | null;
   recentPages: string[];
 };
 
@@ -162,17 +164,9 @@ function parseAttribution(
       ? (value as Record<string, unknown>)
       : {};
   const firstVisitAt = validVisitDate(source.firstVisitAt);
-  const candidateReferrer = firstVisitAt
-    ? safeHttpUrl(source.referrerUrl)
+  const referrer = firstVisitAt
+    ? externalReferrer(source.referrerUrl, requestOrigin)
     : null;
-  const referrer =
-    candidateReferrer?.origin !== requestOrigin ? candidateReferrer : null;
-  if (referrer) {
-    referrer.username = "";
-    referrer.password = "";
-    referrer.search = "";
-    referrer.hash = "";
-  }
   const firstVisitUrl = firstVisitAt
     ? sameOriginPage(source.firstVisitUrl, requestOrigin)
     : null;
@@ -189,7 +183,38 @@ function parseAttribution(
     firstVisitUrl,
     firstVisitAt,
     firstUtm: firstVisitUrl ? parseUtm(firstVisitUrl) : null,
+    lastTouch: firstVisitAt
+      ? parseTouch(source.lastTouch, requestOrigin)
+      : null,
     recentPages: [...new Set(pages)],
+  };
+}
+
+function externalReferrer(value: unknown, requestOrigin: string): URL | null {
+  const referrer = safeHttpUrl(value);
+  if (!referrer || referrer.origin === requestOrigin) return null;
+  referrer.username = "";
+  referrer.password = "";
+  referrer.search = "";
+  referrer.hash = "";
+  return referrer;
+}
+
+function parseTouch(value: unknown, requestOrigin: string): TouchPoint | null {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+  const source = value as Record<string, unknown>;
+  const visitAt = validVisitDate(source.visitAt);
+  if (!visitAt) return null;
+  const referrer = externalReferrer(source.referrerUrl, requestOrigin);
+  const visitUrl = sameOriginPage(source.visitUrl, requestOrigin);
+  const utm = visitUrl ? parseUtm(visitUrl) : null;
+  if (!referrer && !utm) return null;
+  return {
+    referrerUrl: referrer?.toString() ?? null,
+    referrerDomain: referrer?.hostname ?? null,
+    visitUrl,
+    visitAt,
+    utm,
   };
 }
 

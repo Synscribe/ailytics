@@ -3,6 +3,8 @@
 import posthog from "posthog-js";
 import { useEffect } from "react";
 
+import { attributionProperties } from "@/lib/visitor-context";
+
 // The calendar runs on Google's sandbox host, which posts this message to the
 // top window after a booking succeeds.
 const BOOKED_MESSAGE = "ailytics:call-booked";
@@ -23,7 +25,12 @@ export function BookingFrame({ src }: { src: string }) {
     function onMessage(event: MessageEvent) {
       if (booked || !isBookedMessage(event)) return;
       booked = true;
-      posthog.capture("call_booked", { source: "book" });
+      const { firstTouch, lastTouch } = attributionProperties();
+      posthog.capture("call_booked", {
+        source: "book",
+        ...firstTouch,
+        ...lastTouch,
+      });
     }
     window.addEventListener("message", onMessage);
     return () => window.removeEventListener("message", onMessage);

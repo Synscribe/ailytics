@@ -51,6 +51,12 @@ describe("contact validation", () => {
           firstVisitUrl:
             "https://example.com/uses?utm_source=google&private=value",
           firstVisitAt: "2026-08-20T10:00:00.000Z",
+          lastTouch: {
+            referrerUrl: "https://www.linkedin.com/feed/?trk=private",
+            visitUrl:
+              "https://example.com/contact?utm_source=linkedin&token=private",
+            visitAt: "2026-08-20T11:00:00.000Z",
+          },
           recentPages: [
             "https://malicious.example/steal",
             "https://example.com/blog?token=private",
@@ -68,6 +74,13 @@ describe("contact validation", () => {
       referrerDomain: "google.com",
       firstVisitUrl: "https://example.com/uses?utm_source=google",
       firstUtm: { source: "google" },
+      lastTouch: {
+        referrerUrl: "https://www.linkedin.com/feed/",
+        referrerDomain: "www.linkedin.com",
+        visitUrl: "https://example.com/contact?utm_source=linkedin",
+        visitAt: "2026-08-20T11:00:00.000Z",
+        utm: { source: "linkedin" },
+      },
       recentPages: ["https://example.com/blog", "https://example.com/contact"],
     });
   });

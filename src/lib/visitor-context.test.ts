@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  attributionProperties,
   MAX_RECENT_PAGES,
   isAttributionExpired,
   parseUtm,
@@ -14,6 +15,7 @@ const emptyContext: VisitorContext = {
   firstVisitUrl: null,
   firstVisitAt: null,
   firstUtm: null,
+  lastTouch: null,
   recentPages: [],
 };
 
@@ -56,6 +58,60 @@ describe("visitor context", () => {
     expect(context.recentPages).toHaveLength(MAX_RECENT_PAGES);
     expect(context.recentPages[0]).toBe("https://example.com/4");
     expect(context.recentPages.at(-1)).toBe("https://example.com/8");
+  });
+
+  it("credits a return visit to the latest external channel", () => {
+    let context = updateVisitorContext(emptyContext, {
+      pageUrl: "https://example.com/",
+      referrerUrl: "https://www.google.com/",
+      visitedAt: new Date("2026-08-01T10:00:00.000Z"),
+    });
+    context = updateVisitorContext(context, {
+      pageUrl:
+        "https://example.com/uses?utm_source=linkedin&utm_medium=paid_social&utm_campaign=autumn",
+      referrerUrl: "https://www.linkedin.com/",
+      visitedAt: new Date("2026-08-10T10:00:00.000Z"),
+    });
+    // A later direct return and internal navigation keep the LinkedIn touch.
+    context = updateVisitorContext(context, {
+      pageUrl: "https://example.com/contact",
+      visitedAt: new Date("2026-08-15T10:00:00.000Z"),
+    });
+
+    expect(context.referrerDomain).toBe("www.google.com");
+    expect(context.lastTouch).toMatchObject({
+      referrerDomain: "www.linkedin.com",
+      visitAt: "2026-08-10T10:00:00.000Z",
+      utm: { source: "linkedin", campaign: "autumn" },
+    });
+    expect(attributionProperties(context)).toEqual({
+      firstTouch: {
+        first_touch_referring_domain: "www.google.com",
+        first_touch_utm_source: null,
+        first_touch_utm_medium: null,
+        first_touch_utm_campaign: null,
+      },
+      lastTouch: {
+        last_touch_referring_domain: "www.linkedin.com",
+        last_touch_utm_source: "linkedin",
+        last_touch_utm_medium: "paid_social",
+        last_touch_utm_campaign: "autumn",
+      },
+    });
+  });
+
+  it("falls back to the first touch for histories without a latest touch", () => {
+    const { lastTouch } = attributionProperties({
+      ...emptyContext,
+      referrerDomain: "www.google.com",
+      firstVisitUrl: "https://example.com/",
+      firstVisitAt: "2026-08-01T10:00:00.000Z",
+    });
+    expect(lastTouch.last_touch_referring_domain).toBe("www.google.com");
+    expect(attributionProperties(emptyContext)).toEqual({
+      firstTouch: {},
+      lastTouch: {},
+    });
   });
 
   it("returns null when no UTM value exists", () => {
